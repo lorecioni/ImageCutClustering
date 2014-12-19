@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/tbdmelaniniccolai/!svn/ver/190/UStatesClustering/preprocessing
+END
+LinesRemover.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/tbdmelaniniccolai/!svn/ver/188/UStatesClustering/preprocessing/LinesRemover.cpp
+END
+Projection.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/tbdmelaniniccolai/!svn/ver/73/UStatesClustering/preprocessing/Projection.cpp
+END
+StateImage.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/tbdmelaniniccolai/!svn/ver/142/UStatesClustering/preprocessing/StateImage.h
+END
+Projector.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/tbdmelaniniccolai/!svn/ver/53/UStatesClustering/preprocessing/Projector.h
+END
+FeaturesMiner.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/tbdmelaniniccolai/!svn/ver/89/UStatesClustering/preprocessing/FeaturesMiner.cpp
+END
+LinesRemover.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/tbdmelaniniccolai/!svn/ver/101/UStatesClustering/preprocessing/LinesRemover.h
+END
+FeaturesMiner.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/tbdmelaniniccolai/!svn/ver/89/UStatesClustering/preprocessing/FeaturesMiner.h
+END
+StateImage.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/tbdmelaniniccolai/!svn/ver/190/UStatesClustering/preprocessing/StateImage.cpp
+END
