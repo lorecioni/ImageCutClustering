@@ -1,2 +1,3 @@
 *.svn-base
 /.DS_Store
+/Debug/

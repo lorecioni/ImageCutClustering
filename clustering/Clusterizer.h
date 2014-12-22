@@ -26,7 +26,7 @@ private:
 	vector<float> precisions;
 	std::vector<StateImage*> vectorOfStates;
 	/*Per ogni immagine ho un vettore di float*/
-	std::vector<std::vector<Feature*>> features;
+	std::vector<std::vector<Feature*> > features;
 	void preprocessing();
 	int getMaxChanges();
 	float L1_distance(std::vector<Feature*> a,std::vector<Feature*> b, int maxChanges);
