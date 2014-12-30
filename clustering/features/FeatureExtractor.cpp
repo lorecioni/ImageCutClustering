@@ -7,7 +7,7 @@
  ***
  *** LOOP: L
  *** Incrocio : X
- *
+ *   barretta / =  /
  */
 
 
