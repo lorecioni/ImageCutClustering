@@ -43,6 +43,8 @@ void Clusterizer::clusterize() {
 	maxChanges = getMaxChanges();
 	std::string prova = "";
 
+	//TODO ciclo per estrazione nuove features
+
 	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
 		(this->vectorOfStates[i])->parseContentsFile();
 	}
