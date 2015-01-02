@@ -162,6 +162,7 @@ int main(int argc, char *argv[]) {
 			//printf("Thread %d arrivato!!!\n",index);
 		}
 
+		int i = 909090;
 		testFeatures(listOfCroppedStates);
 
 		Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates);
