@@ -39,6 +39,7 @@ static mutex mtx;
 
 int main(int argc, char *argv[]) {
 
+
 	int c;
 	int N_THREAD = 2;
 	char* directory;
@@ -160,6 +161,8 @@ int main(int argc, char *argv[]) {
 			threads[index].join();
 			//printf("Thread %d arrivato!!!\n",index);
 		}
+
+		testFeatures(listOfCroppedStates);
 
 		Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates);
 		clusterizer->clusterize();
@@ -359,4 +362,8 @@ void showUsage() {
 			<< "where option include:\n"
 			<< "\t--directory (-d)\t directory that contains the files to be analyzed\n"
 			<< "\t--threads   (-t)\t number of threads for parallel job [default value = 2]\n";
+}
+
+void testFeatures(std::vector<StateImage*> vectorOfStates){
+	//Metodo main per il test delle nuove features
 }
