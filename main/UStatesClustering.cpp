@@ -30,6 +30,7 @@ using namespace std;
 int execute(char* path, vector<dirent*>, int offset, int length);
 void showInfo();
 void showUsage();
+void testFeatures(std::vector<StateImage*> vectorOfStates);
 
 /* Flag set by ‘--verbose’. */
 static int verbose_flag;
@@ -162,7 +163,7 @@ int main(int argc, char *argv[]) {
 			//printf("Thread %d arrivato!!!\n",index);
 		}
 
-		int i = 909090;
+
 		testFeatures(listOfCroppedStates);
 
 		Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates);
@@ -367,4 +368,8 @@ void showUsage() {
 
 void testFeatures(std::vector<StateImage*> vectorOfStates){
 	//Metodo main per il test delle nuove features
+
+
+
+
 }

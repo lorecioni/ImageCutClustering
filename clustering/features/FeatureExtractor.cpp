@@ -18,6 +18,7 @@
  */
 
 #include "FeatureExtractor.h"
+#include "WhiteSpaceFeature.h"
 #define WIDTH 8  //todo ??? boh si prova
 
 
