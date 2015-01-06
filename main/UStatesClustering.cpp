@@ -374,7 +374,7 @@ void testFeatures(std::vector<StateImage*> vectorOfStates){
 	//Metodo main per il test delle nuove features
 
 
-	int i = 1;
+	int i = 2;
 
 	//crea folder /clusters/ dentro debug
 	string mainfolder = "./Test/";
@@ -403,15 +403,15 @@ void testFeatures(std::vector<StateImage*> vectorOfStates){
 
 		//crea file testo
 
-		ofstream f("./Test/"+ ss.str() + ".txt"); //se il file non esiste lo crea, altrimenti lo sovrascrive!
+		ofstream f("./Test/Comparatore.txt", ios::app); //se il file non esiste lo crea, altrimenti appende
 		if (!f) {
-			cout << "Errore nella creazione del file!";
+			cout << "Errore nella creazione/apertura del file!";
 			return;
 		}
 
 
 		//inserisce in file testo stringa
-		f << "test " +ss.str() <<  endl;
+		f << "stringa_" +ss.str() +":_" << FeatureExtractor::searchFeatures(vector[j]) << endl;
 		f.close();
 
 	}

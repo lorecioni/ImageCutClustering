@@ -6,8 +6,8 @@
  */
 
 #include "DiagonalsAndCrossesFeature.h"
-#define TRIES 2
-#define BLACKTHRES 15
+#define TRIES 15
+#define BLACKTHRES 60
 
 DiagonalsAndCrossesFeature::DiagonalsAndCrossesFeature(){
 

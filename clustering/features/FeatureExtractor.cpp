@@ -6,11 +6,14 @@
  *
  ***
  *** LOOP: L
- *** Incrocio : X
- *   / : s
- *   \ : S
- *   piccola barretta(es.i) : i
- *   barretta grossa | : l
+ *** IncrocioAlto : X
+ *   Incrocio : x
+ *   / bassa : s
+ *   / alta : S
+ *   \ bassa : u
+ *   \ alta : U
+ *   piccola barretta vertic.(es.i) : i
+ *   barretta grossa vertic. | : I
  *   puntino : .
  *   spazio bianco: " "
  *
@@ -18,7 +21,15 @@
  */
 
 #include "FeatureExtractor.h"
-#include "WhiteSpaceFeature.h"
+
+#include <leptonica/pix.h>
+#include <iterator>
+
+
+//#include "../../utils/UsClusteringUtils.h"   se si binarizza viene uno schifo atroce //TODO toglimi
+#include "DiagonalsAndCrossesFeature.h"
+
+
 #define WIDTH 32  //todo ??? boh si prova
 
 
@@ -46,6 +57,8 @@ std::string FeatureExtractor::findFeatures(){
 //TODO attenzione a dove sono x y w h delle box, Come le avevano trovate in UStat.. le box cambiano da pix a pix?)
 
 std::vector<PIX*> FeatureExtractor::cutImage( PIX* pix){
+
+	//PIX* pix = pix8Binarize(pixA, 150);  //TODO controllare se con binarizzazione è meglio o peggio
 	std::vector<PIX* > vector;
 
 //	if(pix == NULL)pix = this->pix;
@@ -80,14 +93,12 @@ std::vector<PIX*> FeatureExtractor::cutImage( PIX* pix){
 
 //richiama ogni singola ricerca di Feature partendo dal PIX gia tagliato DOPO aver visto se è vuota o no
 std::string FeatureExtractor::searchFeatures(PIX* cut){
-	if( WhiteSpaceFeature::isWhiteSpace(cut) ){
-		return " ";
-	}
+//	if( WhiteSpaceFeature::isWhiteSpace(cut) ){
+//		return " ";
+//	}
 	std::string featureString;
+	featureString += DiagonalsAndCrossesFeature::isCross(cut);
 
-	//***
-	//***
-	//***
 
 	return featureString;
 }
