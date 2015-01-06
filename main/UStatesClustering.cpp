@@ -21,6 +21,10 @@
 #include "../clustering/Clusterizer.h"
 #include "../utils/UsClusteringUtils.h"
 
+
+#include "../clustering/features/FeatureExtractor.h"
+
+
 #define JPG "jpg"
 #define VERSION "1.0.0"
 #define PROJECT_NAME "UStateClustering"
@@ -370,6 +374,45 @@ void testFeatures(std::vector<StateImage*> vectorOfStates){
 	//Metodo main per il test delle nuove features
 
 
+	int i = 1;
+
+	//crea folder /clusters/ dentro debug
+	string mainfolder = "./Test/";
+	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
 
 
+	string path = "./Test/";
+
+	std::vector<PIX*> vector;
+	vector =  FeatureExtractor::cutImage( vectorOfStates[i]->getImage());
+	int parts =  vector.size();
+
+	for(int j=0; j< parts ; j++){
+
+		stringstream ss;
+		ss << j;
+
+		//crea nuovo file immagine da PIX
+		string name = ss.str() + ".jpg";
+		string filepath = path + name;
+
+		cout << filepath << endl;
+		pixWrite(filepath.c_str(), vector[j],
+				IFF_JFIF_JPEG);
+
+
+		//crea file testo
+
+		ofstream f("./Test/"+ ss.str() + ".txt"); //se il file non esiste lo crea, altrimenti lo sovrascrive!
+		if (!f) {
+			cout << "Errore nella creazione del file!";
+			return;
+		}
+
+
+		//inserisce in file testo stringa
+		f << "test " +ss.str() <<  endl;
+		f.close();
+
+	}
 }

@@ -20,7 +20,9 @@ public:
 private:
 	PIX* pix;
 	std::string searchFeatures(PIX* cut);
-	std::vector<PIX*> cutImage();
+
+public:
+	static std::vector<PIX*> cutImage(PIX* pix);
 };
 
 
