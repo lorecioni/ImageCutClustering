@@ -87,7 +87,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 
 		}else i += width/8;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
 	}
-	return false;
+	return false; //
 }
 
 bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2 , bool over){
