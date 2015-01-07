@@ -8,8 +8,9 @@
  */
 
 #include "WhiteSpaceFeature.h"
+#define THRESHOLD 230
 
-#define THRESHOLD 15
+using namespace std;
 
 WhiteSpaceFeature::WhiteSpaceFeature(){
 
@@ -19,15 +20,12 @@ WhiteSpaceFeature::~WhiteSpaceFeature(){
 
 }
 
-
 bool WhiteSpaceFeature::isWhiteSpace(PIX* pix){
-	unsigned int value;
-	int r = pixGetAverageValue(pix, 0, 0, &value);
-	if(r != -1){
-		if(value > THRESHOLD){
-			return " ";
-		}
+	int value;
+	value = getAverageValue(pix);
+	if(value > THRESHOLD){
+		return true;
 	}
-	return "";
+	return false;
 }
 

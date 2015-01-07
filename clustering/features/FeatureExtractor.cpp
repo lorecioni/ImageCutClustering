@@ -28,6 +28,7 @@
 
 //#include "../../utils/UsClusteringUtils.h"   se si binarizza viene uno schifo atroce //TODO toglimi
 #include "DiagonalsAndCrossesFeature.h"
+#include "WhiteSpaceFeature.h"
 
 
 #define WIDTH 32  //todo ??? boh si prova

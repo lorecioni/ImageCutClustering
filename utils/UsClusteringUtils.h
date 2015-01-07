@@ -1,9 +1,9 @@
 #include <leptonica/allheaders.h>
-
+#include <iostream>
 #include <string>
 #include <vector>
 #include "../preprocessing/StateImage.h"
-
+#include <sstream>
 
 
 using namespace std;
@@ -18,3 +18,4 @@ PIX* removeText(PIX* pix);
 vector<string> splitStringBy(string stringToSplit, string regex);
 string getState(string line);
 string getGeneratedOutputFileName(string path);
+int getAverageValue(PIX* img);

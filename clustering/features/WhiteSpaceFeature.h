@@ -9,6 +9,9 @@
 #define CLUSTERING_FEATURES_WHITESPACEFEATURE_H_
 #include <leptonica/allheaders.h>
 #include <string>
+#include <iostream>
+#include <sstream>
+#include "../../utils/UsClusteringUtils.h"
 
 class WhiteSpaceFeature{
 public:
