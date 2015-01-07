@@ -26,7 +26,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 
     int a1,a2,b1,b2; //a=x b=y
 
-
+ cout << "dentro Up" <<endl;
 	int height;
 	pixGetDimensions(image, NULL, &height, NULL);
 
@@ -43,6 +43,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 	while(i< offset +(width/2) ){
 		unsigned int val = 0;
 
+		cout << "dentro while" <<endl;
 		for (int j = start+1; j < end - 6; j++) {
 			pixGetPixel(image, i, j, &val);
 			if(val<BLACK_THRES){
@@ -59,6 +60,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 		}
 
 		if(firstBlackFound==true){
+			cout << "trovato primo nero" <<endl;
 			while(val<BLACK_THRES && b2<height-3 && a2< offset+width-3){
 				unsigned int a,b,c;
 				pixGetPixel(image, a2+1 ,b2+2 , &a);
@@ -79,14 +81,22 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 				}
 			}
 			if( a2+b2-a1-b1> width/2 ){
+
+				cout << "trovato primo segmento" <<endl;
 				*x1 = a1;
 				*x2 = a2;
 				*y1 = b1;
 				*y2 = b2;
 				return true;
 			}
-		}else i += 3;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
+		}else {
+
+			cout << "dopo else" <<endl;
+			i += 3;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
+		}
 	}
+
+	cout << "fuori da while" <<endl;
 	return false; //
 }
 
