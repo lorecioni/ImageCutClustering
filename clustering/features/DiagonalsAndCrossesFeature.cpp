@@ -6,8 +6,7 @@
  */
 
 #include "DiagonalsAndCrossesFeature.h"
-#define TRIES 15
-#define BLACKTHRES 60
+#define BLACK_THRES 60
 
 DiagonalsAndCrossesFeature::DiagonalsAndCrossesFeature(){
 
@@ -23,13 +22,13 @@ DiagonalsAndCrossesFeature::~DiagonalsAndCrossesFeature(){
 // x1,y1 corrispondono al primo punto a sx   x2,y2 corrispondono al secondo punto a dx a prescindere se sopra o sotto
 //ricordiamo white 255 black 0
 
-bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2, bool over){
+bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2, bool over, int offset, int width){
 
     int a1,a2,b1,b2; //a=x b=y
 
-	int width;
+
 	int height;
-	pixGetDimensions(image, &width, &height, NULL);
+	pixGetDimensions(image, NULL, &height, NULL);
 
 	int start = 0;
 	int end = height / 2;
@@ -39,16 +38,16 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 	}
 
 	bool firstBlackFound = false;
-	int i=0;
-	int tries= TRIES;
-	while(i<(width/2) && tries>0){
+	int i=offset;
+
+	while(i< offset +(width/2) ){
 		unsigned int val = 0;
 
-		for (int j = start; j < end - 6; j++) {
+		for (int j = start+1; j < end - 6; j++) {
 			pixGetPixel(image, i, j, &val);
-			if(val<BLACKTHRES){
+			if(val<BLACK_THRES){
 
-				if(pixGetPixel(image, i+2, j+2, &val) < BLACKTHRES && pixGetPixel(image, i+5, j+5, &val) < BLACKTHRES){
+				if(pixGetPixel(image, i+2, j+2, &val) < BLACK_THRES && pixGetPixel(image, i+5, j+5, &val) < BLACK_THRES){
 					firstBlackFound = true;
 					b1= j; b2 =j;
 					a1 = i; a2 =i;
@@ -58,7 +57,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 		}
 
 		if(firstBlackFound==true){
-			while(val<BLACKTHRES && b2<=height && a2<= width){
+			while(val<BLACK_THRES && b2<height-3 && a2< offset+width-3){
 				unsigned int a,b,c;
 				pixGetPixel(image, a2+1 ,b2+2 , &a);
 				pixGetPixel(image, a2+1 ,b2+1 , &b);
@@ -83,37 +82,47 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 				*y1 = b1;
 				*y2 = b2;
 				return true;
-			}else tries = tries -1;
-
-		}else i += width/8;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
+			}
+		}else i += 3;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
 	}
 	return false; //
 }
 
-bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2 , bool over){
+bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2 , bool over, int offset, int width){
 	int a1,a2,b1,b2; //a=x b=y
 
-	int width;
+
 	int height;
-	pixGetDimensions(image, &width, &height, NULL);
+	pixGetDimensions(image, NULL, &height, NULL);
+
+	int start = height;
+	int end = height / 2;
+	if(over == true){
+		start = start / 2;
+		end = 0;
+	}
+
 	bool firstBlackFound = false;
-	int i=0;
-	int tries= TRIES;
-	while(i<(width/2) && tries>0){
+	int i=offset;
+
+	while(i< offset +(width/2) ){
 		unsigned int val = 0;
 
-		for (int j =height; j >0; j--) {
+		for (int j = start -1; j > end + 6; j--) {
 			pixGetPixel(image, i, j, &val);
-			if(val<BLACKTHRES){
-				firstBlackFound = true;
-				b1= j; b2 =j;
-				a1 = i; a2 =i;
-				break;
+			if(val<BLACK_THRES){
+
+				if(pixGetPixel(image, i+2, j-2, &val) < BLACK_THRES && pixGetPixel(image, i+5, j-5, &val) < BLACK_THRES){
+					firstBlackFound = true;
+					b1= j; b2 =j;
+					a1 = i; a2 =i;
+					break;
+				}
 			}
 		}
 
 		if(firstBlackFound==true){
-			while(val<BLACKTHRES && b2<=height && a2<= width){
+			while(val<BLACK_THRES && b2>height-3 && a2< offset+width-3){
 				unsigned int a,b,c;
 				pixGetPixel(image, a2+1 ,b2-2 , &a);
 				pixGetPixel(image, a2+1 ,b2-1 , &b);
@@ -132,22 +141,21 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 					b2 -=1;
 				}
 			}
-			if( a2+b1-a1-b2> width/2 ){
+			if( a2-b2-a1+b1> width/2 ){
 				*x1 = a1;
 				*x2 = a2;
 				*y1 = b1;
 				*y2 = b2;
 				return true;
-			}else tries = tries -1;
-
-		}else i += width/8;  //vo abbastanza avanti in width a cercare un punto nero Scendendo "\"
+			}
+		}else i += 3;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
 	}
-	return false;
-
+	return false; //
 }
 
 
-string DiagonalsAndCrossesFeature::isCross(PIX* image){
+
+string DiagonalsAndCrossesFeature::isCross(PIX* image, int offset, int width){
 	string report;
 
 	struct diag{
@@ -160,13 +168,13 @@ string DiagonalsAndCrossesFeature::isCross(PIX* image){
 
 	Diag d1;
 
-	bool a= isUpwardDiag(image,&d1.x, &d1.X, &d1.y, &d1.Y, NULL);
+	bool a= isUpwardDiag(image,&d1.x, &d1.X, &d1.y, &d1.Y, NULL, offset, width);
 	Diag d2;
-	bool b= isUpwardDiag(image,&d2.x, &d2.X, &d2.y, &d2.Y, true);
+	bool b= isUpwardDiag(image,&d2.x, &d2.X, &d2.y, &d2.Y, true, offset, width);
 	Diag d3;
-	bool c= isDownwardDiag(image,&d3.x, &d3.X, &d3.y, &d3.Y, NULL);
+	bool c= isDownwardDiag(image,&d3.x, &d3.X, &d3.y, &d3.Y, NULL, offset, width);
 	Diag d4;
-	bool d= isDownwardDiag(image,&d4.x, &d4.X, &d4.y, &d4.Y, true);
+	bool d= isDownwardDiag(image,&d4.x, &d4.X, &d4.y, &d4.Y, true, offset, width);
 
 	bool crossx = false;
 	bool crossX = false;
