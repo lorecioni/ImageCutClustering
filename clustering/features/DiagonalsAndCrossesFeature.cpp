@@ -6,7 +6,11 @@
  */
 
 #include "DiagonalsAndCrossesFeature.h"
-#define BLACK_THRES 60
+
+#include <leptonica/pix.h>
+#include <iostream>
+
+#define BLACK_THRES 30
 
 DiagonalsAndCrossesFeature::DiagonalsAndCrossesFeature(){
 
@@ -15,7 +19,7 @@ DiagonalsAndCrossesFeature::~DiagonalsAndCrossesFeature(){
 
 }
 
-//TRUE se partono Up in metà superiore DW in metà inferiore
+//TRUE se partono Up in metï¿½ superiore DW in metï¿½ inferiore
 
 
 
@@ -54,6 +58,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 					firstBlackFound = true;
 					b1= j; b2 =j;
 					a1 = i; a2 =i;
+					start = j + 2;
 					break;
 				}
 			}
@@ -89,6 +94,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 				*y2 = b2;
 				return true;
 			}
+			firstBlackFound = false;
 		}else {
 
 			cout << "dopo else" <<endl;
@@ -131,6 +137,7 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 					firstBlackFound = true;
 					b1= j; b2 =j;
 					a1 = i; a2 =i;
+					start = j - 2;
 					break;
 				}
 			}
@@ -163,6 +170,7 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 				*y2 = b2;
 				return true;
 			}
+			firstBlackFound = false;
 		}else i += 3;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
 	}
 	return false; //

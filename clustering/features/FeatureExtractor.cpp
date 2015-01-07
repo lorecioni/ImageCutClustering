@@ -23,10 +23,10 @@
 #include "FeatureExtractor.h"
 
 #include <leptonica/pix.h>
-#include <iterator>
+#include <fstream>
+#include <iostream>
+#include <sstream>
 
-
-//#include "../../utils/UsClusteringUtils.h"   se si binarizza viene uno schifo atroce //TODO toglimi
 #include "DiagonalsAndCrossesFeature.h"
 #include "WhiteSpaceFeature.h"
 
@@ -44,17 +44,17 @@ std::string FeatureExtractor::findFeatures(PIX* img){
 	std::string report;
 	int w,h;
 	pixGetDimensions(img, &w, &h, NULL);
-	ofstream f("./Test/Comparatore.txt", ios::app); //se il file non esiste lo crea, altrimenti appende
+	ofstream f("./Comparatore.txt", ios::app); //se il file non esiste lo crea, altrimenti appende
 	if (!f) {
 		cout << "Errore nella creazione/apertura del file!";
 	}
 
-	stringstream ss;
 	unsigned int count = 0;
 
 	for (int i = 0; i < (w - 2*BOX_WIDTH); i+=BOX_WIDTH) {
 		std::string l = searchFeatures(img, i, BOX_WIDTH);
 		report+= l;
+		stringstream ss;
 		ss << count;
 		f << "stringa_" +ss.str() +":_" << l << "_" << endl;
 		count++;

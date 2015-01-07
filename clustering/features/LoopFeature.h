@@ -8,7 +8,17 @@
 #ifndef CLUSTERING_FEATURES_LOOPFEATURE_H_
 #define CLUSTERING_FEATURES_LOOPFEATURE_H_
 
+#include <leptonica/allheaders.h>
+#include <string>
+#include<vector>
+using namespace std;
 
+class LoopFeature{
+public:
+	LoopFeature();
+	virtual ~LoopFeature();
+	static string isLoop(PIX* image, int offset, int width);
+};
 
 
 

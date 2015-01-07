@@ -377,6 +377,7 @@ void testFeatures(std::vector<StateImage*> vectorOfStates){
 	int i = 2;
 
 	PIX* testImage = vectorOfStates[i]->getImage();
+	FeatureExtractor::findFeatures(testImage);
 
 	//crea folder /clusters/ dentro debug
 	string mainfolder = "./Test/";
