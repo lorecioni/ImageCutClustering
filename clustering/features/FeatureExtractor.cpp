@@ -89,10 +89,6 @@ std::vector<PIX*> FeatureExtractor::cutImage( PIX* pix){
 	vector.push_back(pixN);
 	}
 
-
-
-
-
 	return vector;
 }
 
