@@ -93,9 +93,9 @@ std::vector<PIX*> FeatureExtractor::cutImage( PIX* pix){
 
 //richiama ogni singola ricerca di Feature partendo dal PIX gia tagliato DOPO aver visto se è vuota o no
 std::string FeatureExtractor::searchFeatures(PIX* cut){
-//	if( WhiteSpaceFeature::isWhiteSpace(cut) ){
-//		return " ";
-//	}
+	if(WhiteSpaceFeature::isWhiteSpace(cut)){
+		return " ";
+	}
 	std::string featureString;
 	featureString += DiagonalsAndCrossesFeature::isCross(cut);
 
