@@ -8,10 +8,12 @@
 #ifndef CLUSTERING_FEATURES_WHITESPACEFEATURE_H_
 #define CLUSTERING_FEATURES_WHITESPACEFEATURE_H_
 #include <leptonica/allheaders.h>
+#include <string>
+
 class WhiteSpaceFeature{
 public:
 	WhiteSpaceFeature();
 	virtual ~WhiteSpaceFeature();
-	bool static isWhiteSpace(PIX* pix);
+	std::string static isWhiteSpace(PIX* pix);
 };
 #endif /* CLUSTERING_FEATURES_WHITESPACEFEATURE_H_ */

@@ -17,13 +17,13 @@ int LCSLength(string X,string Y){
 	int k=0;
 	for (string::size_type i = 0; i < X.length(); i++)
 	{
-		if(X[i]!=" "){
+		if(X[i]!= ' '){
 			x1[j++] =(X[i]);
 		}
 	}
 	for (string::size_type i = 0; i < Y.length(); i++)
 	{
-		if(Y[i]!=" "){
+		if(Y[i]!= ' '){
 			y1[k++] =(Y[i]);
 		}
 	}

@@ -21,6 +21,10 @@
 #include "../clustering/Clusterizer.h"
 #include "../utils/UsClusteringUtils.h"
 
+
+#include "../clustering/features/FeatureExtractor.h"
+
+
 #define JPG "jpg"
 #define VERSION "1.0.0"
 #define PROJECT_NAME "UStateClustering"
@@ -30,6 +34,7 @@ using namespace std;
 int execute(char* path, vector<dirent*>, int offset, int length);
 void showInfo();
 void showUsage();
+void testFeatures(std::vector<StateImage*> vectorOfStates);
 
 /* Flag set by ‘--verbose’. */
 static int verbose_flag;
@@ -162,7 +167,7 @@ int main(int argc, char *argv[]) {
 			//printf("Thread %d arrivato!!!\n",index);
 		}
 
-		int i = 909090;
+
 		testFeatures(listOfCroppedStates);
 
 		Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates);
@@ -367,4 +372,47 @@ void showUsage() {
 
 void testFeatures(std::vector<StateImage*> vectorOfStates){
 	//Metodo main per il test delle nuove features
+
+
+	int i = 2;
+
+	//crea folder /clusters/ dentro debug
+	string mainfolder = "./Test/";
+	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+
+
+	string path = "./Test/";
+
+	std::vector<PIX*> vector;
+	vector =  FeatureExtractor::cutImage( vectorOfStates[i]->getImage());
+	int parts =  vector.size();
+
+	for(int j=0; j< parts ; j++){
+
+		stringstream ss;
+		ss << j;
+
+		//crea nuovo file immagine da PIX
+		string name = ss.str() + ".jpg";
+		string filepath = path + name;
+
+		cout << filepath << endl;
+		pixWrite(filepath.c_str(), vector[j],
+				IFF_JFIF_JPEG);
+
+
+		//crea file testo
+
+		ofstream f("./Test/Comparatore.txt", ios::app); //se il file non esiste lo crea, altrimenti appende
+		if (!f) {
+			cout << "Errore nella creazione/apertura del file!";
+			return;
+		}
+
+
+		//inserisce in file testo stringa
+		f << "stringa_" +ss.str() +":_" << FeatureExtractor::searchFeatures(vector[j]) << endl;
+		f.close();
+
+	}
 }

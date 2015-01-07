@@ -6,11 +6,14 @@
  *
  ***
  *** LOOP: L
- *** Incrocio : X
- *   / : s
- *   \ : S
- *   piccola barretta(es.i) : i
- *   barretta grossa | : l
+ *** IncrocioAlto : X
+ *   Incrocio : x
+ *   / bassa : s
+ *   / alta : S
+ *   \ bassa : u
+ *   \ alta : U
+ *   piccola barretta vertic.(es.i) : i
+ *   barretta grossa vertic. | : I
  *   puntino : .
  *   spazio bianco: " "
  *
@@ -18,7 +21,16 @@
  */
 
 #include "FeatureExtractor.h"
-#define WIDTH 8  //todo ??? boh si prova
+
+#include <leptonica/pix.h>
+#include <iterator>
+
+
+//#include "../../utils/UsClusteringUtils.h"   se si binarizza viene uno schifo atroce //TODO toglimi
+#include "DiagonalsAndCrossesFeature.h"
+
+
+#define WIDTH 32  //todo ??? boh si prova
 
 
 FeatureExtractor::FeatureExtractor(PIX* pixd) {
@@ -33,7 +45,7 @@ FeatureExtractor::~FeatureExtractor() {
 
 std::string FeatureExtractor::findFeatures(){
 	std::string report;
-	std::vector<PIX*> cutUps = cutImage(); //sliding window idea: usare il metodo usato da loro per spezzettare
+	std::vector<PIX*> cutUps = cutImage(NULL); //sliding window idea: usare il metodo usato da loro per spezzettare
                                            //fig originale nelle parole applicato alle parole stesse
 	 for (std::vector<PIX*>::iterator it = cutUps.begin(); it != cutUps.end(); ++it) {
 		report+= searchFeatures(*it);
@@ -42,10 +54,14 @@ std::string FeatureExtractor::findFeatures(){
 	return report;
 }
 
-//TODO attenzione a dove sono w h x y delle box, Come le avevano trovate in UStat.. le box cambiano da pix a pix?)
+//TODO attenzione a dove sono x y w h delle box, Come le avevano trovate in UStat.. le box cambiano da pix a pix?)
 
-std::vector<PIX*> FeatureExtractor::cutImage(){
+std::vector<PIX*> FeatureExtractor::cutImage( PIX* pix){
+
+	//PIX* pix = pix8Binarize(pixA, 150);  //TODO controllare se con binarizzazione è meglio o peggio
 	std::vector<PIX* > vector;
+
+//	if(pix == NULL)pix = this->pix;
 
 	int w,h;
 	pixGetDimensions(pix, &w, &h, NULL);
@@ -56,7 +72,7 @@ std::vector<PIX*> FeatureExtractor::cutImage(){
 		PIX* pixN;
 		BOX* cropWindow = boxCreate(i*WIDTH, 0, WIDTH, h);  //questo crea una box relativa alle coordinate pix (?)
 		pixN = pixClipRectangle(pix, cropWindow, NULL); //con la box mi prendo parte della PIX e ne faccio un altra PIX
-		//aggiungi a vettore vector.add?                //TODO 2 tipi di box a volta con width diverse ma centrate?
+		vector.push_back(pixN);              //TODO 2 tipi di box a volta con width diverse ma centrate?
 		pixRemaining = pixRemaining - WIDTH ;
 	}
 
@@ -64,6 +80,7 @@ std::vector<PIX*> FeatureExtractor::cutImage(){
 		PIX* pixN;
 	BOX* cropWindow = boxCreate(w-pixRemaining, 0, pixRemaining, h);
 	pixN = pixClipRectangle(pix, cropWindow, NULL);
+	vector.push_back(pixN);
 	}
 
 
@@ -76,14 +93,12 @@ std::vector<PIX*> FeatureExtractor::cutImage(){
 
 //richiama ogni singola ricerca di Feature partendo dal PIX gia tagliato DOPO aver visto se è vuota o no
 std::string FeatureExtractor::searchFeatures(PIX* cut){
-	if( WhiteSpaceFeature::isWhiteSpace(cut) ){
-		return " ";
-	}
+//	if( WhiteSpaceFeature::isWhiteSpace(cut) ){
+//		return " ";
+//	}
 	std::string featureString;
+	featureString += DiagonalsAndCrossesFeature::isCross(cut);
 
-	//***
-	//***
-	//***
 
 	return featureString;
 }

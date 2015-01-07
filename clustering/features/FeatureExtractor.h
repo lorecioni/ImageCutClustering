@@ -17,10 +17,12 @@ public:
 	virtual ~FeatureExtractor();
 	std::string findFeatures();
 
-private:
+
 	PIX* pix;
-	std::string searchFeatures(PIX* cut);
-	std::vector<PIX*> cutImage();
+	static std::string searchFeatures(PIX* cut);
+
+
+	static std::vector<PIX*> cutImage(PIX* pix);
 };
 
 
