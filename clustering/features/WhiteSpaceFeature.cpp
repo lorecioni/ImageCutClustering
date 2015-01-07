@@ -20,8 +20,7 @@ WhiteSpaceFeature::~WhiteSpaceFeature(){
 }
 
 
-
-std::string static WhiteSpaceFeature::isWhiteSpace(PIX* pix){
+bool WhiteSpaceFeature::isWhiteSpace(PIX* pix){
 	unsigned int value;
 	int r = pixGetAverageValue(pix, 0, 0, &value);
 	if(r != -1){

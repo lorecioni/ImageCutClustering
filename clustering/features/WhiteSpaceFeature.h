@@ -14,6 +14,6 @@ class WhiteSpaceFeature{
 public:
 	WhiteSpaceFeature();
 	virtual ~WhiteSpaceFeature();
-	std::string static isWhiteSpace(PIX* pix);
+	bool static isWhiteSpace(PIX* pix);
 };
 #endif /* CLUSTERING_FEATURES_WHITESPACEFEATURE_H_ */
