@@ -30,8 +30,5 @@ std::string static WhiteSpaceFeature::isWhiteSpace(PIX* pix){
 		}
 	}
 	return "";
-
-	//trovare funzione (?? pixColumnStats??) che dia una somma / media sull'intero PIX del colore, se esso è relativamente
-	//tutto bianco allora si spara bianco e fine
 }
 
