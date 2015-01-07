@@ -411,7 +411,7 @@ void testFeatures(std::vector<StateImage*> vectorOfStates){
 
 
 		//inserisce in file testo stringa
-		f << "stringa_" +ss.str() +":_" << FeatureExtractor::searchFeatures(vector[j]) << endl;
+		f << "stringa_" +ss.str() +":_" << FeatureExtractor::searchFeatures(vector[j]) << "_" << endl;
 		f.close();
 
 	}
