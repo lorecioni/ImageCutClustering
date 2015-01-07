@@ -18,4 +18,4 @@ PIX* removeText(PIX* pix);
 vector<string> splitStringBy(string stringToSplit, string regex);
 string getState(string line);
 string getGeneratedOutputFileName(string path);
-int getAverageValue(PIX* img);
+int getAverageValue(PIX* img, int offset, int width);

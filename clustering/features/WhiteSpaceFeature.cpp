@@ -20,9 +20,9 @@ WhiteSpaceFeature::~WhiteSpaceFeature(){
 
 }
 
-bool WhiteSpaceFeature::isWhiteSpace(PIX* pix){
+bool WhiteSpaceFeature::isWhiteSpace(PIX* pix, int offset, int width){
 	int value;
-	value = getAverageValue(pix);
+	value = getAverageValue(pix, offset, width);
 	if(value > THRESHOLD){
 		return true;
 	}

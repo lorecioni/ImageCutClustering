@@ -170,13 +170,13 @@ string getGeneratedOutputFileName(string path) {
 }
 
 //Restituisce il valore medio dei pixel nella singola immagine
-int getAverageValue(PIX* img){
+int getAverageValue(PIX* img, int offset, int width){
 	int w, h, d;
 	pixGetDimensions(img, &w, &h, &d);
 	unsigned int val;
 	unsigned int count = 0;
 	unsigned int num = 0;
-	for(int i = 0; i < w; i++){
+	for(int i = offset; i < (offset + width); i++){
 		for(int j = 0; j < h; j++){
 			pixGetPixel(img, i, j, &val);
 			count += val;

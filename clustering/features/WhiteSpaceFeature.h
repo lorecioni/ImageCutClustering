@@ -17,6 +17,6 @@ class WhiteSpaceFeature{
 public:
 	WhiteSpaceFeature();
 	virtual ~WhiteSpaceFeature();
-	bool static isWhiteSpace(PIX* pix);
+	bool static isWhiteSpace(PIX* pix, int offset, int width);
 };
 #endif /* CLUSTERING_FEATURES_WHITESPACEFEATURE_H_ */

@@ -13,15 +13,10 @@
 #include <vector>
 class FeatureExtractor {
 public:
-	FeatureExtractor(PIX* pixd);
+	FeatureExtractor();
 	virtual ~FeatureExtractor();
-	std::string findFeatures();
-
-
-	PIX* pix;
-	static std::string searchFeatures(PIX* cut);
-
-
+	static std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int width)
+	static std::string FeatureExtractor::findFeatures(PIX* img);
 	static std::vector<PIX*> cutImage(PIX* pix);
 };
 

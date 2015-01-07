@@ -376,6 +376,8 @@ void testFeatures(std::vector<StateImage*> vectorOfStates){
 
 	int i = 2;
 
+	PIX* testImage = vectorOfStates[i]->getImage();
+
 	//crea folder /clusters/ dentro debug
 	string mainfolder = "./Test/";
 	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
@@ -384,7 +386,7 @@ void testFeatures(std::vector<StateImage*> vectorOfStates){
 	string path = "./Test/";
 
 	std::vector<PIX*> vector;
-	vector =  FeatureExtractor::cutImage( vectorOfStates[i]->getImage());
+	vector =  FeatureExtractor::cutImage(testImage);
 	int parts =  vector.size();
 
 	for(int j=0; j< parts ; j++){
@@ -399,20 +401,6 @@ void testFeatures(std::vector<StateImage*> vectorOfStates){
 		cout << filepath << endl;
 		pixWrite(filepath.c_str(), vector[j],
 				IFF_JFIF_JPEG);
-
-
-		//crea file testo
-
-		ofstream f("./Test/Comparatore.txt", ios::app); //se il file non esiste lo crea, altrimenti appende
-		if (!f) {
-			cout << "Errore nella creazione/apertura del file!";
-			return;
-		}
-
-
-		//inserisce in file testo stringa
-		f << "stringa_" +ss.str() +":_" << FeatureExtractor::searchFeatures(vector[j]) << "_" << endl;
-		f.close();
 
 	}
 }
