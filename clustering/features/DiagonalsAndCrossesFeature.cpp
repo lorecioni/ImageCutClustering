@@ -34,7 +34,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 	int end = height / 2;
 	if(over == true){
 		start = height / 2;
-		end = end *2;
+		end = height;
 	}
 
 	bool firstBlackFound = false;
@@ -47,7 +47,9 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 			pixGetPixel(image, i, j, &val);
 			if(val<BLACK_THRES){
 
-				if(pixGetPixel(image, i+2, j+2, &val) < BLACK_THRES && pixGetPixel(image, i+5, j+5, &val) < BLACK_THRES){
+				unsigned int val1 = pixGetPixel(image, i+2, j+2, &val);
+				unsigned int val2 = pixGetPixel(image, i+5, j+5, &val);
+				if( val1 < BLACK_THRES && val2 < BLACK_THRES){
 					firstBlackFound = true;
 					b1= j; b2 =j;
 					a1 = i; a2 =i;
@@ -112,7 +114,10 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 			pixGetPixel(image, i, j, &val);
 			if(val<BLACK_THRES){
 
-				if(pixGetPixel(image, i+2, j-2, &val) < BLACK_THRES && pixGetPixel(image, i+5, j-5, &val) < BLACK_THRES){
+				unsigned int val1 = pixGetPixel(image, i+2, j-2, &val);
+				unsigned int val2 = pixGetPixel(image, i+5, j-5, &val);
+
+				if(val1 < BLACK_THRES && val2 < BLACK_THRES){
 					firstBlackFound = true;
 					b1= j; b2 =j;
 					a1 = i; a2 =i;
@@ -168,11 +173,11 @@ string DiagonalsAndCrossesFeature::isCross(PIX* image, int offset, int width){
 
 	Diag d1;
 
-	bool a= isUpwardDiag(image,&d1.x, &d1.X, &d1.y, &d1.Y, NULL, offset, width);
+	bool a= isUpwardDiag(image, &d1.x, &d1.X, &d1.y, &d1.Y, false, offset, width);
 	Diag d2;
 	bool b= isUpwardDiag(image,&d2.x, &d2.X, &d2.y, &d2.Y, true, offset, width);
 	Diag d3;
-	bool c= isDownwardDiag(image,&d3.x, &d3.X, &d3.y, &d3.Y, NULL, offset, width);
+	bool c= isDownwardDiag(image,&d3.x, &d3.X, &d3.y, &d3.Y, false, offset, width);
 	Diag d4;
 	bool d= isDownwardDiag(image,&d4.x, &d4.X, &d4.y, &d4.Y, true, offset, width);
 
