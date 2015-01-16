@@ -18,6 +18,10 @@ public:
 	LoopFeature();
 	virtual ~LoopFeature();
 	static string isLoop(PIX* image, int offset, int width);
+
+private:
+
+	static bool checkLoop(PIX* image, int i, int j, int offset, int width);
 };
 
 
