@@ -9,8 +9,10 @@
 
 #include <leptonica/pix.h>
 #include <iostream>
+#include <sstream>
 
-#define BLACK_THRES 30
+#define BLACK_THRES 40
+#define BLACK_THRESLOW 60
 
 DiagonalsAndCrossesFeature::DiagonalsAndCrossesFeature(){
 
@@ -48,17 +50,37 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 		unsigned int val = 0;
 
 		cout << "dentro while" <<endl;
-		for (int j = start+1; j < end - 6; j++) {
+		for (int j = start+1; j < end - 6; j=j+2) {
 			pixGetPixel(image, i, j, &val);
 			if(val<BLACK_THRES){
 
-				unsigned int val1 = pixGetPixel(image, i+2, j+2, &val);
-				unsigned int val2 = pixGetPixel(image, i+5, j+5, &val);
-				if( val1 < BLACK_THRES && val2 < BLACK_THRES){
+				unsigned int val1;
+				pixGetPixel(image, i+2, j+2, &val1);
+				unsigned int val2;
+				pixGetPixel(image, i+3, j+3, &val2); //TODO da testare
+				if( val1 < BLACK_THRESLOW && val2 < BLACK_THRESLOW){
 					firstBlackFound = true;
 					b1= j; b2 =j;
 					a1 = i; a2 =i;
+
+					stringstream ss4;
+					ss4 << start;
+
+					cout << "Prima_start è " + ss4.str() <<endl;
+
 					start = j + 2;
+
+					stringstream ss1;
+					ss1 << a1;
+					stringstream ss2;
+					ss2 << b1;
+					cout << "a1 " + ss1.str() <<endl;
+					cout << "b1 " + ss2.str() <<endl;
+
+					stringstream ss3;
+					ss3 << start;
+
+					cout << "start è " + ss3.str() <<endl;
 					break;
 				}
 			}
@@ -66,7 +88,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 
 		if(firstBlackFound==true){
 			cout << "trovato primo nero" <<endl;
-			while(val<BLACK_THRES && b2<height-3 && a2< offset+width-3){
+			while(val<BLACK_THRESLOW && b2<height-3 && a2< offset+width-3){
 				unsigned int a,b,c;
 				pixGetPixel(image, a2+1 ,b2+2 , &a);
 				pixGetPixel(image, a2+1 ,b2+1 , &b);
@@ -84,6 +106,14 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 					a2 +=2;
 					b2 +=1;
 				}
+
+				stringstream ss1;
+				ss1 << a2;
+				stringstream ss2;
+				ss2 << b2;
+				cout << "Nero_a2 " + ss1.str() <<endl;
+				cout << "Nero_b2 " + ss2.str() <<endl;
+
 			}
 			if( a2+b2-a1-b1> width/2 ){
 
@@ -99,11 +129,16 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 
 			cout << "dopo else" <<endl;
 			i += 3;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
+
+			if(over == true){
+				start = height / 2;
+			}else start = 0;
+
 		}
 	}
 
 	cout << "fuori da while" <<endl;
-	return false; //
+	return false;
 }
 
 bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2 , bool over, int offset, int width){
@@ -116,7 +151,7 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 	int start = height;
 	int end = height / 2;
 	if(over == true){
-		start = start / 2;
+		start = height / 2;
 		end = 0;
 	}
 
@@ -126,14 +161,16 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 	while(i< offset +(width/2) ){
 		unsigned int val = 0;
 
-		for (int j = start -1; j > end + 6; j--) {
+		for (int j = start -1; j > end + 6; j=j-2) {
 			pixGetPixel(image, i, j, &val);
 			if(val<BLACK_THRES){
 
-				unsigned int val1 = pixGetPixel(image, i+2, j-2, &val);
-				unsigned int val2 = pixGetPixel(image, i+5, j-5, &val);
+				unsigned int val1;
+				pixGetPixel(image, i+2, j-2, &val1);
+				unsigned int val2;
+				pixGetPixel(image, i+3, j-3, &val2);
 
-				if(val1 < BLACK_THRES && val2 < BLACK_THRES){
+				if(val1 < BLACK_THRESLOW && val2 < BLACK_THRESLOW){
 					firstBlackFound = true;
 					b1= j; b2 =j;
 					a1 = i; a2 =i;
@@ -144,7 +181,7 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 		}
 
 		if(firstBlackFound==true){
-			while(val<BLACK_THRES && b2>height-3 && a2< offset+width-3){
+			while(val<BLACK_THRESLOW && b2>height-3 && a2< offset+width-3){
 				unsigned int a,b,c;
 				pixGetPixel(image, a2+1 ,b2-2 , &a);
 				pixGetPixel(image, a2+1 ,b2-1 , &b);
@@ -171,9 +208,14 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 				return true;
 			}
 			firstBlackFound = false;
-		}else i += 3;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
+		}else{
+			if(over == true){
+					start = height / 2;
+				}else start = height;
+			i += 3;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
+		}
 	}
-	return false; //
+	return false;
 }
 
 
@@ -204,11 +246,15 @@ string DiagonalsAndCrossesFeature::isCross(PIX* image, int offset, int width){
 	if(a== true){
 		if(c == true){
 			if(crossing(d1.x,d1.X,d1.y,d1.Y,d3.x,d3.X,d3.y,d3.Y) == true){crossx = true;}
-		}else if(d == true)	if(crossing(d1.x,d1.X,d1.y,d1.Y,d4.x,d4.X,d4.y,d4.Y) == true){crossx = true;}
+		}else if(d == true){
+			if(crossing(d1.x,d1.X,d1.y,d1.Y,d4.x,d4.X,d4.y,d4.Y) == true){crossx = true;}
+		}
 	}else if (b == true){
 		if(c == true){
 			if(crossing(d2.x,d2.X,d2.y,d2.Y,d3.x,d3.X,d3.y,d3.Y) == true){crossX = true;}
-		}else if(d == true)	if(crossing(d2.x,d2.X,d2.y,d2.Y,d4.x,d4.X,d4.y,d4.Y) == true){crossx = true;}
+		}else if(d == true){
+			if(crossing(d2.x,d2.X,d2.y,d2.Y,d4.x,d4.X,d4.y,d4.Y) == true){crossx = true;}
+		}
 	}
 
 	if(a==true) report+= "s";

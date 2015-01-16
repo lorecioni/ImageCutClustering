@@ -53,7 +53,8 @@ std::string FeatureExtractor::findFeatures(PIX* img){
 
 	unsigned int count = 0;
 
-	for (int i = 0; i < (w - 2*BOX_WIDTH); i+=BOX_WIDTH) {
+	//si salta l'ultima perchè quasi certamente vuota o di poco valore
+	for (int i = 0; i < (w - BOX_WIDTH -1); i+=BOX_WIDTH) {
 		std::string l = searchFeatures(img, i, BOX_WIDTH);
 		report+= l;
 		stringstream ss;
@@ -96,18 +97,36 @@ std::vector<PIX*> FeatureExtractor::cutImage( PIX* pix){
 
 
 //richiama ogni singola ricerca di Feature partendo dal PIX gia tagliato DOPO aver visto se è vuota o no
-std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int width){
-	if(WhiteSpaceFeature::isWhiteSpace(cut, offset, width)){
-		return " ";
-	}
+std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int double_width){
 	std::string featureString;
-	featureString += DiagonalsAndCrossesFeature::isCross(cut, offset, width);
-	featureString += LoopFeature::isLoop(cut, offset, width);
-	featureString += DotFeature::isDot(cut, offset, width);
+	std::string firstHalf;
+	std::string secondHalf;
+	int width = double_width / 2;
+
+	if(WhiteSpaceFeature::isWhiteSpace(cut, offset, width)){
+		firstHalf = " ";
+	}else{
+		firstHalf += DiagonalsAndCrossesFeature::isCross(cut, offset, width);
+		firstHalf += VerticalStrokeFeature::isVertical(cut, offset, width);
+		firstHalf += LoopFeature::isLoop(cut, offset, width);
+		firstHalf += DotFeature::isDot(cut, offset, width);
+	}
+
+
+
+	if(WhiteSpaceFeature::isWhiteSpace(cut, offset+width, width)){
+		secondHalf = " ";
+	}else{
+		secondHalf += DiagonalsAndCrossesFeature::isCross(cut, offset+width, width);
+		secondHalf += VerticalStrokeFeature::isVertical(cut, offset+width, width);
+		secondHalf += LoopFeature::isLoop(cut, offset+width, width);
+		secondHalf += DotFeature::isDot(cut, offset+width, width);
+	}
+	featureString = firstHalf + secondHalf;
 
 	return featureString;
 }
-
+//// Spostare le cose che vanno meglio cercate sugli interi 32 pixel dopo
 
 
 
