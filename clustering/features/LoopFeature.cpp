@@ -68,7 +68,7 @@ bool LoopFeature::checkLoop(PIX* image, int i, int j, int offset, int width){
 			pixGetPixel(image, i, j, &val);
 			if(val > BLACK_THRES){
 				//Trovato un pixel bianco
-				while(!transitionFound && i > (offset)){
+				while(!transitionFound && i > 2*offset && i > 0){
 					//Scorro verso sinistra
 					pixGetPixel(image, i, j, &val);
 					if(val < BLACK_THRES){
@@ -82,7 +82,7 @@ bool LoopFeature::checkLoop(PIX* image, int i, int j, int offset, int width){
 				if(transitionFound){
 					i = start_i;
 					transitionFound = false;
-					while(!transitionFound && i < (offset + width)){
+					while(!transitionFound && i < (2 * offset + width) && i < w){
 						//Scorro verso sinistra
 						pixGetPixel(image, i, j, &val);
 						if(val < BLACK_THRES){
