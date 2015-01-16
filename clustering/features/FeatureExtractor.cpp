@@ -30,6 +30,7 @@
 #include "DiagonalsAndCrossesFeature.h"
 #include "WhiteSpaceFeature.h"
 #include "LoopFeature.h"
+#include "DotFeature.h"
 
 
 #define BOX_WIDTH 32
@@ -102,6 +103,7 @@ std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int width){
 	std::string featureString;
 	featureString += DiagonalsAndCrossesFeature::isCross(cut, offset, width);
 	featureString += LoopFeature::isLoop(cut, offset, width);
+	featureString += DotFeature::isDot(cut, offset, width);
 
 	return featureString;
 }

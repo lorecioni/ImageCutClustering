@@ -8,8 +8,8 @@
 #include "LoopFeature.h"
 
 #define BLACK_THRES 30
-#define H_STEP 10 //Impostato a 10 per i test da risultati verosimili
-#define V_STEP 10
+#define H_STEP 5 //Impostato a 5 per i test da risultati verosimili
+#define V_STEP 5
 
 LoopFeature::LoopFeature(){
 }
