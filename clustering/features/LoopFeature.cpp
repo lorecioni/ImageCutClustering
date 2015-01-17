@@ -10,6 +10,7 @@
 #define BLACK_THRES 30
 #define H_STEP 5 //Impostato a 5 per i test da risultati verosimili
 #define V_STEP 5
+using namespace std;
 
 LoopFeature::LoopFeature(){
 }

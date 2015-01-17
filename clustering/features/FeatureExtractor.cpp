@@ -14,6 +14,8 @@
  *   \ alta : U
  *   piccola barretta vertic.(es.i) : i
  *   barretta grossa vertic. | : I
+ *   piccola barr orizzont : -
+ *   barretta grossa orizzont : _
  *   puntino : .
  *   spazio bianco: " "
  *

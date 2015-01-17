@@ -11,13 +11,13 @@
 #include <leptonica/allheaders.h>
 #include <string>
 #include<vector>
-using namespace std;
+
 
 class DiagonalsAndCrossesFeature{
 public:
 	DiagonalsAndCrossesFeature();
 	virtual ~DiagonalsAndCrossesFeature();
-	static string isCross(PIX* image, int offset, int width);
+	static std::string isCross(PIX* image, int offset, int width);
 private:
 	static bool isUpwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2,bool over, int offset, int width);
 	static bool isDownwardDiag(PIX* image,  int* x1,int* x2,int* y1,int* y2, bool over, int offset, int width);

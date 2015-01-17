@@ -10,14 +10,14 @@
 
 #include <leptonica/allheaders.h>
 #include <string>
-#include<vector>
-using namespace std;
+#include <vector>
+
 
 class LoopFeature{
 public:
 	LoopFeature();
 	virtual ~LoopFeature();
-	static string isLoop(PIX* image, int offset, int width);
+	static std::string isLoop(PIX* image, int offset, int width);
 
 private:
 	static bool checkLoop(PIX* image, int i, int j, int offset, int width);

@@ -11,6 +11,7 @@
 #define BLACK_THRES 30
 #define RADIUS 4 //TODO da testare
 #define STEP 5
+using namespace std;
 
 DotFeature::DotFeature(){
 }

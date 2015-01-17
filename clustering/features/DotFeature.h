@@ -11,13 +11,13 @@
 #include <leptonica/allheaders.h>
 #include <string>
 #include<vector>
-using namespace std;
+
 
 class DotFeature {
 	public:
 		DotFeature();
 		virtual ~DotFeature();
-		static string isDot(PIX* image, int offset, int width);
+		static std::string isDot(PIX* image, int offset, int width);
 
 	private:
 		static bool checkDot(PIX* image, int i, int j, int offset, int width);

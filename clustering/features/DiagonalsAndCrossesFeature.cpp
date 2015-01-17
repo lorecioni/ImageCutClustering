@@ -13,6 +13,7 @@
 
 #define BLACK_THRES 40
 #define BLACK_THRESLOW 60
+using namespace std;
 
 DiagonalsAndCrossesFeature::DiagonalsAndCrossesFeature(){
 
