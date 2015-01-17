@@ -9,14 +9,24 @@
 #define CLUSTERING_FEATURES_FEATUREEXTRACTOR_H_
 
 #include<leptonica/allheaders.h>
+#include <leptonica/pix.h>
+#include <sstream>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <iostream>
+#include <sys/stat.h>
+#include <dirent.h>
 #include <vector>
+#include "../../preprocessing/StateImage.h"
+
 class FeatureExtractor {
 public:
 	FeatureExtractor();
 	virtual ~FeatureExtractor();
+	static void extractFeatures(std::vector<StateImage*> vectorOfStates);
 	static std::string searchFeatures(PIX* cut, int offset, int width);
-	static std::string findFeatures(PIX* img);
+	static std::string findFeatures(PIX* img, string* singleResults);
 	static std::vector<PIX*> cutImage(PIX* pix);
 };
 

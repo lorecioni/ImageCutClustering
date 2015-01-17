@@ -17,6 +17,7 @@
 
 using namespace std;
 
-int LCSLength(string X,string Y);
+int LCSDistance(string x, string y);
+int LCSLength(string x,string y);
 
 #endif /* CLUSTERING_LCS_LCSLENGTH_H_ */

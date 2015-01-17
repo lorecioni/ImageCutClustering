@@ -26,6 +26,8 @@ private:
 	PIX* image;
 	int cluster;
 	std::vector<Feature*> features;
+	//Stringa di comparazione
+	string structure;
 
 
 public:
@@ -44,6 +46,9 @@ public:
 	void setCluster(int cluster);
 
 	void setFeatures(std::vector<Feature*>& features);
+
+	void setStructure(string structure);
+	string getStructure();
 };
 
 #endif /* STATEIMAGE_H_ */

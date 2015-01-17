@@ -26,6 +26,7 @@
 #include "../utils/UsClusteringUtils.h"
 #include "affinitypropagation/ap.cpp"
 #include "affinitypropagation/AffinityPropagationValue.h"
+#include "lcs/LCSLength.h"
 
 #define WHITE 255
 #define BLACK 0
@@ -36,8 +37,25 @@ Clusterizer::Clusterizer(std::vector<StateImage*> vectorOfStates) {
 }
 
 void Clusterizer::clusterize() {
-	/*eseguo il preprocessing prima dell'estrazione delle feautures*/
 	vector<AffinityPropagationValue> values;
+
+	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
+			(this->vectorOfStates[i])->parseContentsFile();
+	}
+
+	//Popola il vettore di AffinityPropagationValues che verrà passato al metodo di AffinityPropagation
+	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
+		for (unsigned int j = i + 1; j < this->vectorOfStates.size(); j++) {
+			//Per ogni coppia (i, j) calcola la distanza LCS tra le due stringhe di struttura estratte
+			int distance = LCSDistance(this->vectorOfStates[i]->getStructure(), this->vectorOfStates[j]->getStructure());
+			values.push_back(*(new AffinityPropagationValue(i, j, distance)));
+		}
+	}
+
+	/* DA QUI CODICE OBSOLETO
+
+	//seguo il preprocessing prima dell'estrazione delle feautures
+
 	int maxChanges;
 	preprocessing();
 	maxChanges = getMaxChanges();
@@ -59,6 +77,8 @@ void Clusterizer::clusterize() {
 		}
 	}
 
+	FINE CODICE OBSOLETO */
+
 	string mainfolder = "./Clusters/";
 	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
 
@@ -68,11 +88,6 @@ void Clusterizer::clusterize() {
 		return;
 	}
 
-	/*vector<AffinityPropagationValue> values,
-	 int prefType = 1,
-	 double damping = 0.9,
-	 int maxit = 1000,
-	 int convit = 50*/
 
 	printf("Il numero di ritagli è %d\n: ", this->vectorOfStates.size());
 
@@ -98,10 +113,8 @@ void Clusterizer::clusterize() {
 		stringstream ss2;
 		this->vectorOfStates[i]->setCluster(examplar[i]);
 
-		//	printf("%s %d\n ",this->vectorOfStates[i]->getLabel().c_str(), this->vectorOfStates[i]->getCluster());
-
 		ss << examplar[i];
-		string path = "./Clusters/" + ss.str() + "/";
+		string path = "./clusters/" + ss.str() + "/";
 		string scopy = getGeneratedOutputFileName(
 				vectorOfStates[i]->getSourceFile());
 
@@ -156,7 +169,7 @@ void Clusterizer::clusterize() {
 
 	}
 
-	ofstream nf("./Clusters/result.txt", ios::app); //apre il file in modalità append, lasciando intatto quello che c'è e scrivendo alla fine
+	ofstream nf("./clusters/result.txt", ios::app); //apre il file in modalità append, lasciando intatto quello che c'è e scrivendo alla fine
 	if (!nf) {
 		cout << "Errore nell'apertura del file!";
 		return;

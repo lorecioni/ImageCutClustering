@@ -21,9 +21,7 @@
 #include "../clustering/Clusterizer.h"
 #include "../utils/UsClusteringUtils.h"
 
-
 #include "../clustering/features/FeatureExtractor.h"
-
 
 #define JPG "jpg"
 #define VERSION "1.0.0"
@@ -34,7 +32,6 @@ using namespace std;
 int execute(char* path, vector<dirent*>, int offset, int length);
 void showInfo();
 void showUsage();
-void testFeatures(std::vector<StateImage*> vectorOfStates);
 
 /* Flag set by ‘--verbose’. */
 static int verbose_flag;
@@ -167,8 +164,8 @@ int main(int argc, char *argv[]) {
 			//printf("Thread %d arrivato!!!\n",index);
 		}
 
-
-		testFeatures(listOfCroppedStates);
+		//Estrazione features dalle immagini
+		FeatureExtractor::extractFeatures(listOfCroppedStates);
 
 		Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates);
 		clusterizer->clusterize();
@@ -211,17 +208,12 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 	FeaturesMiner *extractor;
 	int * rows;
 
-//printf("offset: %d length: %d\n",offset,length);
-
 	for (int index = offset; index < offset + length; index++) {
 
 		dirent* ent = entVect[index];
-		//listOfCroppedStates.clear();
 
 		filepath = (char*) malloc(
 				sizeof(char) * (arglen + strlen(ent->d_name) + 2));
-		/*croppedPath =	(char*) malloc(sizeof(char) * (arglen + strlen("output/") + strlen(ent->d_name) - 4 + 2));
-		 cropped		=	(char*) malloc(sizeof(char)	* (arglen + strlen("output/") + strlen(ent->d_name) + 2));*/
 
 		strcpy(filepath, "");
 		strcat(filepath, path);
@@ -229,13 +221,6 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 		printf("%s\n", filepath);
 		PIX* pixs = pixRead(filepath);
 
-		/*strcpy(croppedPath, "");
-		 strcat(croppedPath, path);
-		 strcat(croppedPath, substring(ent->d_name, 0, strlen(ent->d_name) - 4));
-		 strcat(croppedPath, "-");
-		 strcat(croppedPath, "output/");*/
-
-		//mkdir(croppedPath, S_IRWXU | S_IRWXG | S_IRWXO);
 		PIX* pixd = pixs;
 		pixGetDimensions(pixd, &w, &h, NULL);
 
@@ -245,12 +230,10 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 		int borderH = extractor->findBlackBorder(0);
 
 		if (borderW != -1) {
-			//pixd = pixRemoveBorder(pixd, borderW);
 			BOX* cropWindow = boxCreate(borderW, 0, w, h);
 			pixd = pixClipRectangle(pixd, cropWindow, NULL);
 		}
 		if (borderH != -1) {
-			//pixd = pixRemoveBorder(pixd, borderW);
 			BOX* cropWindow = boxCreate(0, borderH, w, h);
 			pixd = pixClipRectangle(pixd, cropWindow, NULL);
 		}
@@ -312,12 +295,6 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 				croppedcroppedImage = pixClipRectangle(croppedImage, cropWindow,
 						NULL);
 				if (croppedcroppedImage != NULL) {
-					//strcpy(cropped, "");
-					//strcat(cropped, croppeAlabamadPath);
-					//char* buffer = (char*) malloc(sizeof(char) * strlen("40_crop") + 2);
-					//sprintf(buffer, "%d_crop", i);
-					//strcat(cropped, buffer);
-					//strcat(cropped, ".jpg");
 					LinesRemover *remover = new LinesRemover(
 							croppedcroppedImage);
 					auxPixs = remover->removeLines();
@@ -326,8 +303,6 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 					mtx.lock();
 					listOfCroppedStates.push_back(stateImage);
 					mtx.unlock();
-					//TODO debug
-					//pixWrite(cropped, auxPixs, IFF_JFIF_JPEG);
 				}
 			}
 
@@ -336,12 +311,6 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 			if (croppedBinarized != NULL)
 				pixFreeData(croppedBinarized);
 		}
-		/*strcpy(cropped, "");
-		 strcat(cropped, croppedPath);
-		 char* buffer = (char*) malloc(sizeof(char) * strlen(ent->d_name) + 2);
-		 sprintf(buffer, ent->d_name);
-		 strcat(cropped, buffer);*/
-		//pixWrite(cropped, pixd, IFF_JFIF_JPEG);
 		if (pixs != NULL)
 			pixFreeData(pixs);
 		if (pixd != NULL)
@@ -368,40 +337,4 @@ void showUsage() {
 			<< "where option include:\n"
 			<< "\t--directory (-d)\t directory that contains the files to be analyzed\n"
 			<< "\t--threads   (-t)\t number of threads for parallel job [default value = 2]\n";
-}
-
-void testFeatures(std::vector<StateImage*> vectorOfStates){
-	//Metodo main per il test delle nuove features
-
-
-	int i = 2;
-
-	PIX* testImage = vectorOfStates[i]->getImage();
-	FeatureExtractor::findFeatures(testImage);
-
-	//crea folder /clusters/ dentro debug
-	string mainfolder = "./Test/";
-	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
-
-
-	string path = "./Test/";
-
-	std::vector<PIX*> vector;
-	vector =  FeatureExtractor::cutImage(testImage);
-	int parts =  vector.size();
-
-	for(int j=0; j< parts ; j++){
-
-		stringstream ss;
-		ss << j;
-
-		//crea nuovo file immagine da PIX
-		string name = ss.str() + ".jpg";
-		string filepath = path + name;
-
-		cout << filepath << endl;
-		pixWrite(filepath.c_str(), vector[j],
-				IFF_JFIF_JPEG);
-
-	}
 }

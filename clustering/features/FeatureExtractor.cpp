@@ -21,49 +21,82 @@
  */
 
 #include "FeatureExtractor.h"
-
-#include <leptonica/pix.h>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-
 #include "DiagonalsAndCrossesFeature.h"
 #include "WhiteSpaceFeature.h"
 #include "LoopFeature.h"
 #include "DotFeature.h"
 
-
 #define BOX_WIDTH 32
 
+FeatureExtractor::FeatureExtractor() {}
 
-FeatureExtractor::FeatureExtractor() {
+void FeatureExtractor::extractFeatures(std::vector<StateImage*> vectorOfStates){
+	//Metodo main per l'estrazione delle nuove features
+
+	string mainfolder = "./Test/";
+	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+
+	for(int i = 0; i < vectorOfStates.size(); i++){
+		PIX* testImage = vectorOfStates[i]->getImage();
+
+		string singleResults = "";
+		string structure = FeatureExtractor::findFeatures(testImage, &singleResults);
+		vectorOfStates[i]->setStructure(structure);
+
+		//Crea la cartella per il test delle festure
+		//TODO da rimuovere dopo i test, non è necessario salvare i singoli pezzi
+		stringstream strs;
+		strs << i;
+		string mainfolder = "./Test/" + strs.str() +"/";
+		mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+
+		string path = "./Test/" + strs.str() +"/";
+
+		std::vector<PIX*> vector;
+		vector =  FeatureExtractor::cutImage(testImage);
+		int parts =  vector.size();
+
+		for(int j=0; j< parts ; j++){
+
+			stringstream ss;
+			ss << j;
+
+			//crea nuovo file immagine da PIX
+			string name = ss.str() + ".jpg";
+			string filepath = path + name;
+
+			cout << filepath << endl;
+			pixWrite(filepath.c_str(), vector[j],
+					IFF_JFIF_JPEG);
+
+		}
+
+		//Scrive il report della stringa
+		ofstream f(path + "comparatore.txt"); //se il file non esiste lo crea, altrimenti appende
+		if (!f) {
+			cout << "Errore nella creazione/apertura del file!";
+		}
+		f << "Stringa generata [" << strs.str() << "]: _" << structure << "_" << endl;
+		f << singleResults;
+		f.close();
+	}
 }
 
-FeatureExtractor::~FeatureExtractor() {
-}
-
-std::string FeatureExtractor::findFeatures(PIX* img){
+std::string FeatureExtractor::findFeatures(PIX* img, string* singleResults){
 	std::string report;
 	int w,h;
 	pixGetDimensions(img, &w, &h, NULL);
-	ofstream f("./Comparatore.txt", ios::app); //se il file non esiste lo crea, altrimenti appende
-	if (!f) {
-		cout << "Errore nella creazione/apertura del file!";
-	}
-
-	unsigned int count = 0;
+	int count = 0;
 
 	//si salta l'ultima perchè quasi certamente vuota o di poco valore
 	for (int i = 0; i < (w - BOX_WIDTH -1); i+=BOX_WIDTH) {
 		std::string l = searchFeatures(img, i, BOX_WIDTH);
-		report+= l;
+		report += l;
 		stringstream ss;
 		ss << count;
-		f << "stringa_" +ss.str() +":_" << l << "_" << endl;
+		*singleResults += "Stringa " + ss.str() + ": " + l + "\n";
 		count++;
 	}
-
-	f.close();
 	return report;
 }
 
@@ -107,7 +140,7 @@ std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int double_wi
 		firstHalf = " ";
 	}else{
 		firstHalf += DiagonalsAndCrossesFeature::isCross(cut, offset, width);
-		firstHalf += VerticalStrokeFeature::isVertical(cut, offset, width);
+		//firstHalf += VerticalStrokeFeature::isVertical(cut, offset, width);
 		firstHalf += LoopFeature::isLoop(cut, offset, width);
 		firstHalf += DotFeature::isDot(cut, offset, width);
 	}
@@ -118,7 +151,7 @@ std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int double_wi
 		secondHalf = " ";
 	}else{
 		secondHalf += DiagonalsAndCrossesFeature::isCross(cut, offset+width, width);
-		secondHalf += VerticalStrokeFeature::isVertical(cut, offset+width, width);
+		//secondHalf += VerticalStrokeFeature::isVertical(cut, offset+width, width);
 		secondHalf += LoopFeature::isLoop(cut, offset+width, width);
 		secondHalf += DotFeature::isDot(cut, offset+width, width);
 	}
@@ -128,6 +161,7 @@ std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int double_wi
 }
 //// Spostare le cose che vanno meglio cercate sugli interi 32 pixel dopo
 
+FeatureExtractor::~FeatureExtractor() {}
 
 
 

@@ -31,7 +31,7 @@ VerticalStrokeFeature::~VerticalStrokeFeature() {
 
 
 int findStroke(PIX* image, int offset, int width){
-		int height;
+		/*int height;
 		pixGetDimensions(image, NULL, &height, NULL);
 
 		bool firstBlackFound = false;
@@ -120,8 +120,8 @@ int findStroke(PIX* image, int offset, int width){
 			}
 		}
 
-		cout << "fuori da while" <<endl;
-		return false;
+		cout << "fuori da while" <<endl;*/
+		return NONE;
 }
 
 

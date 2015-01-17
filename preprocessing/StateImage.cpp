@@ -15,6 +15,7 @@ StateImage::StateImage(string* sourceFile, int index, PIX* image) {
 	this->label = *(new string("no_label"));
 	this->index = index;
 	this->sourceFile = *sourceFile;
+	this->structure = "";
 }
 
 void StateImage::setFeatures(std::vector<Feature*>& features) {
@@ -137,4 +138,12 @@ int StateImage::getCluster() const {
 
 void StateImage::setCluster(int cluster) {
 	this->cluster = cluster;
+}
+
+string StateImage::getStructure() {
+	return this->structure;
+}
+
+void StateImage::setStructure(string structure) {
+	this->structure = structure;
 }
