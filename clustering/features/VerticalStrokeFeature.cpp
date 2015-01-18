@@ -7,16 +7,16 @@
 
 #include "VerticalStrokeFeature.h"
 
-#include <leptonica/allheaders.h>
-#include <cmath>
+#include <leptonica/pix.h>
 #include <iostream>
+#include <sstream>
 
-#define NONE 0
-#define LITTLE 1
-#define LONG 2
 #define BLACK_THRES 40
 #define BLACK_THRESLOW 60
-#define LOW_HEIGHT
+#define LOW_HEIGHT 30
+#define HIGH_HEIGHT 60
+
+using namespace std;
 
 VerticalStrokeFeature::VerticalStrokeFeature() {
 }
@@ -30,105 +30,94 @@ VerticalStrokeFeature::~VerticalStrokeFeature() {
 //può essere un idea
 
 
-int findStroke(PIX* image, int offset, int width){
-		/*int height;
-		pixGetDimensions(image, NULL, &height, NULL);
+string VerticalStrokeFeature::isVertical(PIX* image, int offset, int width){
 
-		bool firstBlackFound = false;
-		int currentWidth;
-		int start=offset+1;
+	string found;
+
+	int y2;
+	int y1;
+
+	int height;///TODO toglimi w
+	int w;
+	pixGetDimensions(image, &w, &height, NULL);
+
+	stringstream ss;
+		ss << w;
+		cout << "Limite x " + ss.str() <<endl;
+
+
+	bool firstBlackFound = false;
+
+	unsigned int val = 0;
+
+	for(int i=offset+1; i< offset+width-6 ; i=i+2){
+
+		cout << "dentro for" <<endl;
 		int j = 0;
-		while(j < height - 7){
-			j += 6;  // scansiono in orizzontale ogni 6 pixel
-			unsigned int val = 0;
+		bool foundColumn = false;
 
-			cout << "dentro while" <<endl;
-			for(int i=start; i< offset+width-3 ; i=i+2){
+		while(j < height-6){
+			while(firstBlackFound == false && j < height-6){
 
 				pixGetPixel(image, i, j, &val);
 				if(val<BLACK_THRES){
-
 					unsigned int val1;
-					pixGetPixel(image, i+1, j+2, &val1);//checkko da sinistra verso dx se è spesso è spesso a dx
+					pixGetPixel(image, i, j+2, &val1);
 					unsigned int val2;
-					pixGetPixel(image, i+2, j+3, &val2); //TODO da testare
-					if( val1 < BLACK_THRESLOW && val2 < BLACK_THRESLOW){
-						currentWidth = i+1;
-
-						stringstream ss4;
-						ss4 << start;
-						cout << "Prima_start è " + ss4.str() <<endl;
+					pixGetPixel(image, i, j+3, &val2);
+					if( val1 < BLACK_THRESLOW && val2 < BLACK_THRESLOW){//prima accettabilità
+						firstBlackFound = true;
+						y1 = j;
+						y2 = j;
 
 						stringstream ss1;
-						ss4 << currentWidth;
+						ss1 << i;
 						cout << "Width attuale è " + ss1.str() <<endl;
-
-						start = i + 2;
-
-						stringstream ss3;
-						ss3 << start;
-						cout << "start è " + ss3.str() <<endl;
-						break;
 					}
 				}
+				j+=2;
 			}
 
 			if(firstBlackFound==true){
-				cout << "trovato primo nero" <<endl;
-				while(val<BLACK_THRESLOW && b2<height-3 && a2< offset+width-3){
-					unsigned int a,b,c;
-					pixGetPixel(image, a2+1 ,b2+2 , &a);
-					pixGetPixel(image, a2+1 ,b2+1 , &b);
-					pixGetPixel(image, a2+2 ,b2+1 , &c);
-					if(a<=b && a<=c){
-						val=a;
-						a2 +=1;
-						b2 +=2;
-					}else if(b<=c){
-						val=b;
-						a2 +=1;
-						b2 +=2;
+				cout << "trovato primo nero accettab" <<endl;
+				while(val<BLACK_THRESLOW && y2<height-4){
+
+					pixGetPixel(image, i, y2+2 , &val);
+					if(val < BLACK_THRESLOW){
+						y2 +=2;
 					}else{
-						val=c;
-						a2 +=2;
-						b2 +=1;
+						pixGetPixel(image, i, y2+3 , &val);
+						if(val < BLACK_THRESLOW){
+						y2 +=3;
+						}
 					}
 
-					stringstream ss1;
-					ss1 << a2;
 					stringstream ss2;
-					ss2 << b2;
-					cout << "Nero_a2 " + ss1.str() <<endl;
-					cout << "Nero_b2 " + ss2.str() <<endl;
-
+					ss2 << y2;
+					cout << "Nero_y2 " + ss2.str() <<endl;
 				}
-				if( a2+b2-a1-b1> width/2 ){
+				int h = y2-y1;
+				if( h > LOW_HEIGHT +3  ){ //3 per ricordare il salto fatto "nel vuoto"
+					foundColumn = true;
+					if(h > HIGH_HEIGHT){
+						found +="I";
 
-					cout << "trovata colonna" <<endl;
-						return true;
+						cout << "trovata colonna_grande" <<endl;
+					}else{
+						found +="i";
+						cout << "trovata colonna_picc" <<endl;
+					}
 				}
 				firstBlackFound = false;
-			}else {
-
-				cout << "dopo else" <<endl;
-				i += 3;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
-
-				if(over == true){
-					start = height / 2;
-				}else start = 0;
-
+				j=y2;
+			}
+			if(foundColumn==true){
+				i=i+3; //mi allontano in w
+				break; //non cerco più sullo stesso h
 			}
 		}
+	}
 
-		cout << "fuori da while" <<endl;*/
-		return NONE;
-}
-
-
-
-string isVertical(PIX* image, int offset, int width){
-	int result = findStroke(image,offset,width);
-	if(result==LITTLE)return "i";
-	else if(result==LONG)return "I";
-	else return "";
+	cout << "fuori da for" <<endl;
+	return found;
 }

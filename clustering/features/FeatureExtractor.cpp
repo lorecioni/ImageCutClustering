@@ -23,10 +23,15 @@
  */
 
 #include "FeatureExtractor.h"
+
+#include <leptonica/imageio.h>
+
 #include "DiagonalsAndCrossesFeature.h"
-#include "WhiteSpaceFeature.h"
-#include "LoopFeature.h"
 #include "DotFeature.h"
+#include "HorizontalStrokeFeature.h"
+#include "LoopFeature.h"
+#include "VerticalStrokeFeature.h"
+#include "WhiteSpaceFeature.h"
 
 #define BOX_WIDTH 32
 
@@ -38,7 +43,7 @@ void FeatureExtractor::extractFeatures(std::vector<StateImage*> vectorOfStates){
 	string mainfolder = "./Test/";
 	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
 
-	for(int i = 0; i < vectorOfStates.size(); i++){
+	for(unsigned int i = 0; i < vectorOfStates.size(); i++){
 		PIX* testImage = vectorOfStates[i]->getImage();
 
 		string singleResults = "";
@@ -91,7 +96,7 @@ std::string FeatureExtractor::findFeatures(PIX* img, string* singleResults){
 	int count = 0;
 
 	//si salta l'ultima perchè quasi certamente vuota o di poco valore
-	for (int i = 0; i < (w - BOX_WIDTH -1); i+=BOX_WIDTH) {
+	for (int i = 1; i < (w - 2*BOX_WIDTH +1); i+=BOX_WIDTH) {
 		std::string l = searchFeatures(img, i, BOX_WIDTH);
 		report += l;
 		stringstream ss;
@@ -141,9 +146,9 @@ std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int double_wi
 	if(WhiteSpaceFeature::isWhiteSpace(cut, offset, width)){
 		firstHalf = " ";
 	}else{
-		firstHalf += DiagonalsAndCrossesFeature::isCross(cut, offset, width);
-		//firstHalf += VerticalStrokeFeature::isVertical(cut, offset, width);
-		firstHalf += LoopFeature::isLoop(cut, offset, width);
+	//	firstHalf += DiagonalsAndCrossesFeature::isCross(cut, offset, width);
+	//	firstHalf += VerticalStrokeFeature::isVertical(cut, offset, width);
+	//	firstHalf += LoopFeature::isLoop(cut, offset, width);
 		firstHalf += DotFeature::isDot(cut, offset, width);
 	}
 
@@ -152,16 +157,17 @@ std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int double_wi
 	if(WhiteSpaceFeature::isWhiteSpace(cut, offset+width, width)){
 		secondHalf = " ";
 	}else{
-		secondHalf += DiagonalsAndCrossesFeature::isCross(cut, offset+width, width);
-		//secondHalf += VerticalStrokeFeature::isVertical(cut, offset+width, width);
-		secondHalf += LoopFeature::isLoop(cut, offset+width, width);
-		secondHalf += DotFeature::isDot(cut, offset+width, width);
+//	secondHalf += DiagonalsAndCrossesFeature::isCross(cut, offset+width, width);
+	//	secondHalf += VerticalStrokeFeature::isVertical(cut, offset+width, width);
+	//	secondHalf += LoopFeature::isLoop(cut, offset+width, width);
+//		secondHalf += DotFeature::isDot(cut, offset+width, width);
 	}
 	featureString = firstHalf + secondHalf;
+//	featureString += HorizontalStrokeFeature::isHorizontal(cut,offset,double_width);
 
 	return featureString;
 }
-//// Spostare le cose che vanno meglio cercate sugli interi 32 pixel dopo
+
 
 FeatureExtractor::~FeatureExtractor() {}
 

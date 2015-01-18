@@ -33,25 +33,63 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 
     int a1,a2,b1,b2; //a=x b=y
 
- cout << "dentro Up" <<endl;
-	int height;
-	pixGetDimensions(image, NULL, &height, NULL);
+    stringstream ss;
+    ss << offset;
 
-	int start = 0;
-	int end = height / 2;
+    cout << "UPDiag Offset è " + ss.str() <<endl;
+    stringstream as6;
+    as6 << width;
+
+    cout << "UPDiag Width è " + as6.str() <<endl;
+
+
+
+    cout << "dentro Up" <<endl;
+    int height;
+	int w;
+	pixGetDimensions(image, &w, &height, NULL);
+
+	stringstream bs6;
+	bs6 << w;
+
+	cout << "WidthmaxUPD è " + bs6.str() <<endl;
+
+
+	int start;
+	int end;
 	if(over == true){
 		start = height / 2;
 		end = height;
+	}else{
+		start = 0;
+		end = height / 2;
 	}
 
 	bool firstBlackFound = false;
 	int i=offset;
 
 	while(i< offset +(width/2) ){
+		stringstream cs6;
+		cs6 << i;
+
+		cout << "I_UPD del while è " + cs6.str() <<endl;
+
+
 		unsigned int val = 0;
 
 		cout << "dentro while" <<endl;
 		for (int j = start+1; j < end - 6; j=j+2) {
+			stringstream ss0;
+			ss0 << j;
+
+			cout << "subitoForj è " + ss0.str() <<endl;
+
+			stringstream ss6;
+			ss6 << height;
+
+			cout << "SubitoForHeightLimit è " + ss6.str() <<endl;
+
+
 			pixGetPixel(image, i, j, &val);
 			if(val<BLACK_THRES){
 
@@ -89,7 +127,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 
 		if(firstBlackFound==true){
 			cout << "trovato primo nero" <<endl;
-			while(val<BLACK_THRESLOW && b2<height-3 && a2< offset+width-3){
+			while(val<BLACK_THRESLOW && b2<height-3 && a2< offset+width -5){
 				unsigned int a,b,c;
 				pixGetPixel(image, a2+1 ,b2+2 , &a);
 				pixGetPixel(image, a2+1 ,b2+1 , &b);

@@ -11,14 +11,12 @@
 #include <leptonica/allheaders.h>
 #include <string>
 
-using namespace std;
-class VerticalStrokeFeature {
+class VerticalStrokeFeature{
 public:
 	VerticalStrokeFeature();
 	virtual ~VerticalStrokeFeature();
-	static string isVertical(PIX* image, int offset, int width);
+	static std::string isVertical(PIX* image, int offset, int width);
 
-private: int findStroke(PIX* image, int offset, int width);
 };
 
 #endif /* CLUSTERING_FEATURES_VERTICALSTROKEFEATURE_H_ */
