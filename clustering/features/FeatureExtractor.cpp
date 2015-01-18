@@ -72,7 +72,6 @@ void FeatureExtractor::extractFeatures(std::vector<StateImage*> vectorOfStates){
 			string name = ss.str() + ".jpg";
 			string filepath = path + name;
 
-			cout << filepath << endl;
 			pixWrite(filepath.c_str(), vector[j],
 					IFF_JFIF_JPEG);
 
@@ -146,9 +145,9 @@ std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int double_wi
 	if(WhiteSpaceFeature::isWhiteSpace(cut, offset, width)){
 		firstHalf = " ";
 	}else{
-	//	firstHalf += DiagonalsAndCrossesFeature::isCross(cut, offset, width);
-	//	firstHalf += VerticalStrokeFeature::isVertical(cut, offset, width);
-	//	firstHalf += LoopFeature::isLoop(cut, offset, width);
+		//firstHalf += DiagonalsAndCrossesFeature::isCross(cut, offset, width);
+		//firstHalf += VerticalStrokeFeature::isVertical(cut, offset, width);
+		firstHalf += LoopFeature::isLoop(cut, offset, width);
 		firstHalf += DotFeature::isDot(cut, offset, width);
 	}
 
@@ -156,14 +155,14 @@ std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int double_wi
 
 	if(WhiteSpaceFeature::isWhiteSpace(cut, offset+width, width)){
 		secondHalf = " ";
-	}else{
-//	secondHalf += DiagonalsAndCrossesFeature::isCross(cut, offset+width, width);
-	//	secondHalf += VerticalStrokeFeature::isVertical(cut, offset+width, width);
-	//	secondHalf += LoopFeature::isLoop(cut, offset+width, width);
-//		secondHalf += DotFeature::isDot(cut, offset+width, width);
+	} else{
+		//secondHalf += DiagonalsAndCrossesFeature::isCross(cut, offset+width, width);
+		//secondHalf += VerticalStrokeFeature::isVertical(cut, offset+width, width);
+		secondHalf += LoopFeature::isLoop(cut, offset+width, width);
+		secondHalf += DotFeature::isDot(cut, offset+width, width);
 	}
 	featureString = firstHalf + secondHalf;
-//	featureString += HorizontalStrokeFeature::isHorizontal(cut,offset,double_width);
+	//featureString += HorizontalStrokeFeature::isHorizontal(cut,offset,double_width);
 
 	return featureString;
 }

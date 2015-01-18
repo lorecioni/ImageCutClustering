@@ -10,10 +10,14 @@
 int LCSDistance(string x, string y){
 	//Calcola la distanza tra due stringhe
 	int length = LCSLength(x, y);
+	int difference = 0;
+	//TODO da valutare come interpretare la distanza
 	if(x.length() > y.length()) {
-		return y.length() - length;
+		difference = x.length() - y.length();
+		return (y.length() - length);
 	} else {
-		return x.length() - length;
+		difference = y.length() - x.length();
+		return (x.length() - length) ;
 	}
 }
 
