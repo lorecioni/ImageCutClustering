@@ -44,7 +44,7 @@ string HorizontalStrokeFeature::isHorizontal(PIX* image, int offset, int width){
 		int i = offset+1;
 		bool foundRow = false;
 
-		while(i < height-6){
+		while(i < offset+width-6){
 			while(firstBlackFound == false && i < offset+width-6){
 
 				pixGetPixel(image, i, j, &val);
