@@ -4,9 +4,9 @@
  *  Created on: 30/dic/2014
  *      Author: lorenzocioni
  *
- ***
- *** LOOP: L
- *** IncrocioAlto : X
+ *
+ *   LOOP: L
+ *   IncrocioAlto : X
  *   Incrocio : x
  *   / bassa : s
  *   / alta : S
@@ -95,7 +95,7 @@ std::string FeatureExtractor::findFeatures(PIX* img, string* singleResults){
 	int count = 0;
 
 	//si salta l'ultima perchè quasi certamente vuota o di poco valore
-	for (int i = 1; i < (w - 2*BOX_WIDTH +1); i+=BOX_WIDTH) {
+	for (int i = 1; i < (w - 2*BOX_WIDTH +1); i+=(BOX_WIDTH/2)) {
 		std::string l = searchFeatures(img, i, BOX_WIDTH);
 		report += l;
 		stringstream ss;

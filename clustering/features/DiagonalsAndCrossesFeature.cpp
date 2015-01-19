@@ -36,15 +36,15 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
     stringstream ss;
     ss << offset;
 
-    cout << "UPDiag Offset è " + ss.str() <<endl;
+    //cout << "UPDiag Offset è " + ss.str() <<endl;
     stringstream as6;
     as6 << width;
 
-    cout << "UPDiag Width è " + as6.str() <<endl;
+    //cout << "UPDiag Width è " + as6.str() <<endl;
 
 
 
-    cout << "dentro Up" <<endl;
+    //cout << "dentro Up" <<endl;
     int height;
 	int w;
 	pixGetDimensions(image, &w, &height, NULL);
@@ -52,7 +52,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 	stringstream bs6;
 	bs6 << w;
 
-	cout << "WidthmaxUPD è " + bs6.str() <<endl;
+	//cout << "WidthmaxUPD è " + bs6.str() <<endl;
 
 
 	int start;
@@ -72,22 +72,22 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 		stringstream cs6;
 		cs6 << i;
 
-		cout << "I_UPD del while è " + cs6.str() <<endl;
+		//cout << "I_UPD del while è " + cs6.str() <<endl;
 
 
 		unsigned int val = 0;
 
-		cout << "dentro while" <<endl;
+		//cout << "dentro while" <<endl;
 		for (int j = start+1; j < end - 6; j=j+2) {
 			stringstream ss0;
 			ss0 << j;
 
-			cout << "subitoForj è " + ss0.str() <<endl;
+			//cout << "subitoForj è " + ss0.str() <<endl;
 
 			stringstream ss6;
 			ss6 << height;
 
-			cout << "SubitoForHeightLimit è " + ss6.str() <<endl;
+			//cout << "SubitoForHeightLimit è " + ss6.str() <<endl;
 
 
 			pixGetPixel(image, i, j, &val);
@@ -105,7 +105,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 					stringstream ss4;
 					ss4 << start;
 
-					cout << "Prima_start è " + ss4.str() <<endl;
+					//cout << "Prima_start è " + ss4.str() <<endl;
 
 					start = j + 2;
 
@@ -113,20 +113,20 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 					ss1 << a1;
 					stringstream ss2;
 					ss2 << b1;
-					cout << "a1 " + ss1.str() <<endl;
-					cout << "b1 " + ss2.str() <<endl;
+					//cout << "a1 " + ss1.str() <<endl;
+					//cout << "b1 " + ss2.str() <<endl;
 
 					stringstream ss3;
 					ss3 << start;
 
-					cout << "start è " + ss3.str() <<endl;
+					//cout << "start è " + ss3.str() <<endl;
 					break;
 				}
 			}
 		}
 
 		if(firstBlackFound==true){
-			cout << "trovato primo nero" <<endl;
+			//cout << "trovato primo nero" <<endl;
 			while(val<BLACK_THRESLOW && b2<height-3 && a2< offset+width -5){
 				unsigned int a,b,c;
 				pixGetPixel(image, a2+1 ,b2+2 , &a);
@@ -150,13 +150,13 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 				ss1 << a2;
 				stringstream ss2;
 				ss2 << b2;
-				cout << "Nero_a2 " + ss1.str() <<endl;
-				cout << "Nero_b2 " + ss2.str() <<endl;
+				//cout << "Nero_a2 " + ss1.str() <<endl;
+				//cout << "Nero_b2 " + ss2.str() <<endl;
 
 			}
 			if( a2+b2-a1-b1> width/2 ){
 
-				cout << "trovato primo segmento" <<endl;
+				//cout << "trovato primo segmento" <<endl;
 				*x1 = a1;
 				*x2 = a2;
 				*y1 = b1;
@@ -166,7 +166,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 			firstBlackFound = false;
 		}else {
 
-			cout << "dopo else" <<endl;
+			//cout << "dopo else" <<endl;
 			i += 3;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
 
 			if(over == true){
@@ -176,7 +176,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 		}
 	}
 
-	cout << "fuori da while" <<endl;
+	//cout << "fuori da while" <<endl;
 	return false;
 }
 

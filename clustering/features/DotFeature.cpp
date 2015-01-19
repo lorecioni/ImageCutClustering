@@ -23,9 +23,9 @@ string DotFeature::isDot(PIX* img, int offset, int width){
 	unsigned int val = 0;
 	//Scorre l'immagine orizzontalmente di STEP
 	for(int i = (offset + STEP); i < (offset + width); i++){
-		j = 0;
+		j = RADIUS + 1;
 		//Scorre l'immagine verticalmente
-		while(j < imgHeight){
+		while(j < (imgHeight - RADIUS - 1)){
 			pixGetPixel(img, i, j, &val);
 			if(val < BLACK_THRES){
 				//Ho trovato un primo pixel nero, controllo se è un punto

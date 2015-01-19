@@ -69,7 +69,9 @@ void StateImage::calculateFeatures() {
 
 		}
 
-		pixFreeData(auxPix);
+		if(auxPix != NULL){
+			pixFreeData(auxPix);
+		}
 		feature->setChanges(countChanges);
 		this->features.push_back(feature);
 		countChanges = 0;

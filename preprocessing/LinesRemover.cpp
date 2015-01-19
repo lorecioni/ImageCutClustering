@@ -256,7 +256,9 @@ PIX* LinesRemover::removeLines() {
 	deleteBlackColumns(imgToOut);
 	deleteBlackRows(row, imgToOut);
 
-	pixFreeData(imgToOut);
+	if(imgToOut != NULL){
+		pixFreeData(imgToOut);
+	}
 
 	return this->image;
 

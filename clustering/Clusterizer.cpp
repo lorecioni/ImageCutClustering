@@ -7,21 +7,18 @@
 
 #include "Clusterizer.h"
 
-//#include <errno.h>
 #include <leptonica/environ.h>
 #include <leptonica/imageio.h>
 #include <leptonica/pix.h>
 #include <stddef.h>
+#include <sys/_types/_s_ifmt.h>
 #include <sys/stat.h>
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <sstream>
 #include <string>
-#include <dirent.h>
 #include <unordered_map>
+#include <utility>
 
 #include "../utils/UsClusteringUtils.h"
 #include "affinitypropagation/ap.cpp"
@@ -114,7 +111,7 @@ void Clusterizer::clusterize() {
 		this->vectorOfStates[i]->setCluster(examplar[i]);
 
 		ss << examplar[i];
-		string path = "./clusters/" + ss.str() + "/";
+		string path = "./Clusters/" + ss.str() + "/";
 		string scopy = getGeneratedOutputFileName(
 				vectorOfStates[i]->getSourceFile());
 
@@ -123,7 +120,7 @@ void Clusterizer::clusterize() {
 		string name = scopy + "_" + ss2.str() + ".jpg";
 		string filepath = path + name;
 
-		cout << filepath << endl;
+		//cout << filepath << endl;
 		pixWrite(filepath.c_str(), this->vectorOfStates[i]->getImage(),
 				IFF_JFIF_JPEG);
 
@@ -169,7 +166,7 @@ void Clusterizer::clusterize() {
 
 	}
 
-	ofstream nf("./clusters/result.txt", ios::app); //apre il file in modalità append, lasciando intatto quello che c'è e scrivendo alla fine
+	ofstream nf("./Clusters/result.txt", ios::app); //apre il file in modalità append, lasciando intatto quello che c'è e scrivendo alla fine
 	if (!nf) {
 		cout << "Errore nell'apertura del file!";
 		return;
@@ -244,7 +241,10 @@ void Clusterizer::preprocessing() {
 
 		}
 
-		pixFreeData(auxPix);
+		if(auxPix != NULL){
+			pixFreeData(auxPix);
+		}
+
 
 		this->vectorOfStates[i]->setFeatures(imageFeatures); //features.push_back(imageFeatures);
 
@@ -435,7 +435,7 @@ void Clusterizer::calculateOccurencies(int exemplar,
 	f.close();
 
 	sort(singlePrecisions.begin(), singlePrecisions.end());
-	this->precisions.push_back(singlePrecisions[singlePrecisions.size() - 1]);
+	this->precisions.push_back(singlePrecisions[singlePrecisions.size() - 1] * singlePrecisions.size());
 
 }
 /**
@@ -449,7 +449,9 @@ float Clusterizer::calculatePrecision() {
 		sumprecision += this->precisions[i];
 	}
 
-	return (sumprecision / this->precisions.size()) * 100;
+	//TODO la precisione è ora corretta ma fa abbastanza schifo
+	//return (sumprecision / this->precisions.size()) * 100;
+	return (sumprecision) * 100 / this->vectorOfStates.size();
 
 }
 

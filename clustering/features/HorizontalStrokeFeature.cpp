@@ -40,7 +40,7 @@ string HorizontalStrokeFeature::isHorizontal(PIX* image, int offset, int width){
 
 	for(int j=0; j< height -6 ; j=j+2){
 
-		cout << "dentro for" <<endl;
+		//cout << "dentro for" <<endl;
 		int i = offset+1;
 		bool foundRow = false;
 
@@ -60,14 +60,14 @@ string HorizontalStrokeFeature::isHorizontal(PIX* image, int offset, int width){
 
 						stringstream ss1;
 						ss1 << j;
-						cout << "Height attuale è " + ss1.str() <<endl;
+						//cout << "Height attuale è " + ss1.str() <<endl;
 					}
 				}
 				i+=2;
 			}
 
 			if(firstBlackFound==true){
-				cout << "trovato primo nero accettab" <<endl;
+				//cout << "trovato primo nero accettab" <<endl;
 				while(val<BLACK_THRESLOW && x2<offset+width-4){
 
 					pixGetPixel(image, x2+2, j , &val);
@@ -82,7 +82,7 @@ string HorizontalStrokeFeature::isHorizontal(PIX* image, int offset, int width){
 
 					stringstream ss2;
 					ss2 << x2;
-					cout << "Nero_x2 " + ss2.str() <<endl;
+					//cout << "Nero_x2 " + ss2.str() <<endl;
 				}
 				int w = x2-x1;
 				if( w > LOW_WIDTH +3  ){ //3 per ricordare il salto fatto "nel vuoto"
@@ -90,10 +90,10 @@ string HorizontalStrokeFeature::isHorizontal(PIX* image, int offset, int width){
 					if(w > HIGH_WIDTH){
 						found +="_";
 
-						cout << "trovata riga_grande" <<endl;
+						//cout << "trovata riga_grande" <<endl;
 					}else{
 						found +="-";
-						cout << "trovata riga_picc" <<endl;
+						//cout << "trovata riga_picc" <<endl;
 					}
 				}
 				firstBlackFound = false;
@@ -106,7 +106,7 @@ string HorizontalStrokeFeature::isHorizontal(PIX* image, int offset, int width){
 		}
 	}
 
-	cout << "fuori da for" <<endl;
+	//cout << "fuori da for" <<endl;
 	return found;
 }
 

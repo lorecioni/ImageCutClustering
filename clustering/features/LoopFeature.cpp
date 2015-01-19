@@ -10,6 +10,8 @@
 #include <leptonica/pix.h>
 #include <iostream>
 
+//TODO mettere i bordi del cut a nero
+
 #define BLACK_THRES 30
 #define H_STEP 8 //Impostato a 8 per i test da risultati verosimili
 #define V_STEP 8

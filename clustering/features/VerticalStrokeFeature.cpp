@@ -43,7 +43,7 @@ string VerticalStrokeFeature::isVertical(PIX* image, int offset, int width){
 
 	stringstream ss;
 		ss << w;
-		cout << "Limite x " + ss.str() <<endl;
+		//cout << "Limite x " + ss.str() <<endl;
 
 
 	bool firstBlackFound = false;
@@ -52,7 +52,7 @@ string VerticalStrokeFeature::isVertical(PIX* image, int offset, int width){
 
 	for(int i=offset+1; i< offset+width-6 ; i=i+2){
 
-		cout << "dentro for" <<endl;
+		//cout << "dentro for" <<endl;
 		int j = 0;
 		bool foundColumn = false;
 
@@ -72,14 +72,14 @@ string VerticalStrokeFeature::isVertical(PIX* image, int offset, int width){
 
 						stringstream ss1;
 						ss1 << i;
-						cout << "Width attuale è " + ss1.str() <<endl;
+						//cout << "Width attuale è " + ss1.str() <<endl;
 					}
 				}
 				j+=2;
 			}
 
 			if(firstBlackFound==true){
-				cout << "trovato primo nero accettab" <<endl;
+				//cout << "trovato primo nero accettab" <<endl;
 				while(val<BLACK_THRESLOW && y2<height-4){
 
 					pixGetPixel(image, i, y2+2 , &val);
@@ -94,7 +94,7 @@ string VerticalStrokeFeature::isVertical(PIX* image, int offset, int width){
 
 					stringstream ss2;
 					ss2 << y2;
-					cout << "Nero_y2 " + ss2.str() <<endl;
+					//cout << "Nero_y2 " + ss2.str() <<endl;
 				}
 				int h = y2-y1;
 				if( h > LOW_HEIGHT +3  ){ //3 per ricordare il salto fatto "nel vuoto"
@@ -102,10 +102,10 @@ string VerticalStrokeFeature::isVertical(PIX* image, int offset, int width){
 					if(h > HIGH_HEIGHT){
 						found +="I";
 
-						cout << "trovata colonna_grande" <<endl;
+						//cout << "trovata colonna_grande" <<endl;
 					}else{
 						found +="i";
-						cout << "trovata colonna_picc" <<endl;
+						//cout << "trovata colonna_picc" <<endl;
 					}
 				}
 				firstBlackFound = false;
@@ -118,6 +118,6 @@ string VerticalStrokeFeature::isVertical(PIX* image, int offset, int width){
 		}
 	}
 
-	cout << "fuori da for" <<endl;
+	//cout << "fuori da for" <<endl;
 	return found;
 }
