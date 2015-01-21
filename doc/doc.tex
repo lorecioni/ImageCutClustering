@@ -15,17 +15,12 @@
 \maketitle
 
 \begin{abstract}
-<<<<<<< HEAD
 In this report we will discuss a method of extracting features from manostritti characters in order of clustering similar words that represent the American States from census of 1970.
-=======
-In this paper we discuss a method for extracting primitive features from images containing handwritten US states to cluster them.
->>>>>>> branch 'master' of https://github.com/lorecioni/ImageCutClustering.git
 \end{abstract}
 
 \tableofcontents
 
 \section{Introduction}
-<<<<<<< HEAD
 Segmentation and clustering of large amounts of data is one of the main research fields of modern artificial intelligence.
 
 The basis of our work is the collection of u.s. Census data in the year 1940 and fits into the process of digitalizing of handwritten documents that characterizes our time. In this case we have scans of census register and the main problem is to divide enrollees for each American State.
@@ -37,10 +32,6 @@ Document segmentation and extraction of the word corresponding to the State was 
 \includegraphics[width=0.6\textwidth]{images/img1.jpg}
 \caption{An example of a table containing census data}
 \end{figure}
-=======
-Segmentation and clustering of big data is one of the main purpose of Artificial Intelligence at now. 
-The aim of our work is to improve the performance of the clustering method implemented previously in an algorithm.
->>>>>>> branch 'master' of https://github.com/lorecioni/ImageCutClustering.git
 
 \section{The project}
 
@@ -143,22 +134,6 @@ While the simplest way to create the windows is simply creating a new PIX with t
 
 % %parte su diversa width diverse feature
 
-% % pezzo su come sono fatte stringhe
-
-
-In this work we want to find "primitive" features, resembling the possible types of strokes used to write a word, to characterize the sample from which they are extracted in order to perform clustering on their set.
-The features are identified by the study of a sub-portion,or window, of the images extracted by the paper on which this work is based.
-The features are located through a study of an area, the window, to which they are implicitly associated: as such there is no clear order of which of the features found in the area comes first.
-Due to the absence of such "native" order the string that defines a window is maintained consistent with the other strings trough the convention of generating the string with the features' identifiers always taking the same order, if present.
-The chosen way to resolve the issue however presents the problem of making sliding windows inapplicable: this means that a sample must necessarily be cut in separate windows, which are allowed to overlap, with the corresponding effect that due to the random cut some features like \textit{Loop}s may not be recognised in an instance and recognised in another. 
-
-\paragraph{Windows}
-Currently we have chosen to cut the samples in windows of 32 pixels each with the exception of the last part of the sample that, deemed irrelevant to the end of characterization due to containing almost always white space, is simply ignored.
-These windows are spaced only 16 pixels from the preceding and succeeding one, with the intent of creating overlap and lengthening the string that characterizes the samples.
-While the simplest way to create the windows is simply creating a new PIX with the required coordinates it requires unnecessary passages and time in the creation of new objects. We have thus preferred to increase the complexity of the functions that search for the features, to whom we pass as a variable the original sample PIX with information about the \textit{offset} at which to start the search and the \textit{width} of the window.
-
-% %parte su diversa width diverse feature
-
 \subsubsection{Whitespace}  
 
 \subsubsection{Loop}
@@ -167,16 +142,7 @@ While the simplest way to create the windows is simply creating a new PIX with t
 
 \subsubsection{Diagonal line}
 The feature representing a diagonal line, both upward and downward facing, is extracted through a simple exhaustive scansion of the window for lines of connected black pixels that have an incline in a range of values and are sufficiently long.
-<<<<<<< HEAD
-=======
-At the moment the function doesn't account for the width of the lines found, thus diagonal features can be recognised in a shapeless blob of black pixel that is sufficiently big.    
-There's a distinction for diagonal features that appear in the lower and upper bottom of the window.
-At most in a window the function identifies a couple of upward and a couple of downward facing lines (lower and upper parts), once one has been found it stops searching for the same type.
-Of these couples the function search %searchs
- then if they possibly intersects, in such a case a "crossing" feature is extracted too, with distinction if the crossing happens in the lower or upper part. 
->>>>>>> branch 'master' of https://github.com/lorecioni/ImageCutClustering.git
 
-<<<<<<< HEAD
 At the moment the function doesn't account for the width of the lines found, thus diagonal features can be recognised in a shapeless blob of black pixel that is sufficiently big. 
    
 There's a distinction for diagonal features that appear in the lower and upper bottom of the window.
@@ -184,8 +150,6 @@ At most in a window the function identifies a couple of upward and a couple of d
 
 Of these couples the function search searchs then if they possibly intersects, in such a case a "crossing" feature is extracted too, with distinction if the crossing happens in the lower or upper part. 
 
-=======
->>>>>>> branch 'master' of https://github.com/lorecioni/ImageCutClustering.git
 \subsubsection{Horizontal and Vertical line}
 Both horizontal and vertical lines' features are extracted through
 a simple scan of the window.
