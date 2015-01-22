@@ -48,7 +48,12 @@ At the moment the function doesn't account for the width of the lines found, thu
 There's a distinction for diagonal features that appear in the lower and upper bottom of the window.
 At most in a window the function identifies a couple of upward and a couple of downward facing lines (lower and upper parts), once one has been found it stops searching for the same type.
 
-Of these couples the function search searchs then if they possibly intersects, in such a case a \emph{crossing} feature is extracted too, with distinction if the crossing happens in the lower or upper part. 
+\paragraph{Cross}
+The function, having found at most a lower and upper case for upward and downward diagonal lines, proceeds to confront the edge points of these lines: if they possibly intersects it extracts a \emph{crossing} feature with distinction if the crossing happens in the lower or upper part of the window. 
+The problems with this sub-feature are that intersections of bottom and upper lines of the same type (e.g. both upward facing) with different inclines are not recognised, in the same way there's no consideration for intersections made from lines that are not the "primary" bottom and upper diagonals: if in a single windows are present more lower upwards diagonals and one of them other than the first intersects the recognised downward diagonal, such a crossing is ignored.
+The crossing feature may also not necessarily be a complete intersection, in fact for recognition there just needs to be a merging of a downward and upward line. 
+
+
 
 \subsubsection{Horizontal and Vertical line}
 Both horizontal and vertical lines' features are extracted through
@@ -57,5 +62,3 @@ The horizontal lines requires a double-window for their implicit characteristic.
 The function identifies a line if it finds a connected row or column of black pixels that has sufficient length, in particular it distinguishes the lines found in normal or long through an ulterior threshold.
 Once a fitting line has been found the function keeps searching for more, continuing the scansion of the window after having moved a certain distance from the last line found in order not to confuse a particularly thick stroke as different separate lines.
 There still persists the problem that the stroke width is not fully considered so a big blob of black pixels is seen as a series of horizontal and vertical lines, at the same time such an occurrence is rare so the presence of many horizontal and vertical lines ends up distinguishing the word in itself.     
-
-\subsubsection{Cross}  
