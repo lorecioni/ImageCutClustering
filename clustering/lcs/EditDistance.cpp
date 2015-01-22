@@ -35,7 +35,7 @@ int edit_distance(const string& A, const string& B)
             int x = M[a-1][b] + 1;
             int y = M[a][b-1] + 1;
             int z = M[a-1][b-1] + (A[a-1] == B[b-1] ? 0 : 1);
-            M[a][b] = min(x,y,z);
+            M[a][b] = min(min(x,y),z);
         }
 
     return M[A.size()][B.size()];
