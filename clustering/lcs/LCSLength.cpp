@@ -46,9 +46,7 @@ int LCSLength(string x,string y){
 
     for(int i=1; i<=m; i++){
         for(int j=1; j<=n; j++){
-            if(i==0 || j==0){
-            	L[i][j] = 0;
-            } else if(x[i]==y[j]){
+        	if(x[i]==y[j]){
             	L[i][j] = L[i-1][j-1]+1;
             } else {
             	L[i][j] = max(L[i-1][j],L[i][j-1]);
