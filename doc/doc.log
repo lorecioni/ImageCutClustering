@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.4.22)  21 JAN 2015 23:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.4.22)  22 JAN 2015 10:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -261,56 +261,58 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write3
 \openout3 = `doc.toc'.
 
- [1
+ (./introduzione.tex [1
 
 {/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] <images
 /img1.jpg, id=14, 1204.5pt x 931.48pt>
 File: images/img1.jpg Graphic file (type jpg)
- <use images/img1.jpg>
-Package pdftex.def Info: images/img1.jpg used on input line 32.
+
+<use images/img1.jpg>
+Package pdftex.def Info: images/img1.jpg used on input line 10.
 (pdftex.def)             Requested size: 273.14923pt x 211.2369pt.
-
-[2 <./images/img1.jpg>] <images/img2.jpg, id=20, 344.28625pt x 77.28876pt>
+) (./progetto.tex [2 <./images/img1.jpg>]
+<images/img2.jpg, id=20, 344.28625pt x 77.28876pt>
 File: images/img2.jpg Graphic file (type jpg)
-
-<use images/img2.jpg>
-Package pdftex.def Info: images/img2.jpg used on input line 82.
+ <use images/img2.jpg>
+Package pdftex.def Info: images/img2.jpg used on input line 47.
 (pdftex.def)             Requested size: 227.62206pt x 51.09917pt.
- [3 <./images/img2.jpg>]
-<images/img3.jpg, id=24, 336.25626pt x 70.2625pt>
+
+[3 <./images/img2.jpg>] <images/img3.jpg, id=24, 336.25626pt x 70.2625pt>
 File: images/img3.jpg Graphic file (type jpg)
- <use images/img3.jpg>
-Package pdftex.def Info: images/img3.jpg used on input line 100.
+
+<use images/img3.jpg>
+Package pdftex.def Info: images/img3.jpg used on input line 65.
 (pdftex.def)             Requested size: 136.57462pt x 28.53763pt.
-
-<images/img4.jpg, id=25, 344.28625pt x 89.33376pt>
+ <images/img4.jpg, id=25, 344.28625pt x 89.33376pt>
 File: images/img4.jpg Graphic file (type jpg)
- <use images/img4.jpg>
-Package pdftex.def Info: images/img4.jpg used on input line 103.
-(pdftex.def)             Requested size: 136.57462pt x 35.43706pt.
 
-[4 <./images/img3.jpg> <./images/img4.jpg>] [5] [6] (./doc.aux) ) 
+<use images/img4.jpg>
+Package pdftex.def Info: images/img4.jpg used on input line 68.
+(pdftex.def)             Requested size: 136.57462pt x 35.43706pt.
+) (./clustering.tex) (./features.tex [4 <./images/img3.jpg> <./images/img4.jpg>
+] [5]) (./lcs.tex) (./affinitypropagation.tex)
+(./results.tex) (./conclusion.tex) [6] (./doc.aux) ) 
 Here is how much of TeX's memory you used:
- 3587 strings out of 493315
- 50785 string characters out of 6137904
+ 3611 strings out of 493315
+ 51096 string characters out of 6137904
  118698 words of memory out of 5000000
  6994 multiletter control sequences out of 15000+600000
  17842 words of font info for 40 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,7n,32p,463b,267s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/te
-xlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texl
-ive/2013/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texliv
-e/2013/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/
-2013/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/20
-13/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2013
-/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2013/t
-exmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2013/tex
-mf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2013/texmf
--dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2013/texmf-d
-ist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2013/texmf-dis
-t/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2013/texmf-dist/
-fonts/type1/public/cm-super/sfti1200.pfb>
+ 38i,7n,32p,480b,267s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2013/te
+xmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2013/texm
+f-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2013/texmf-
+dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2013/texmf-di
+st/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2013/texmf-dist
+/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2013/texmf-dist/f
+onts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2013/texmf-dist/fon
+ts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2013/texmf-dist/fonts
+/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2013/texmf-dist/fonts/t
+ype1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2013/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1
+/public/cm-super/sfti1095.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/p
+ublic/cm-super/sfti1200.pfb>
 Output written on doc.pdf (6 pages, 654332 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
