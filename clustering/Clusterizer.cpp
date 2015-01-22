@@ -24,6 +24,7 @@
 #include "affinitypropagation/ap.cpp"
 #include "affinitypropagation/AffinityPropagationValue.h"
 #include "lcs/LCSLength.h"
+#include "lcs/EditDistance.h"
 
 #define WHITE 255
 #define BLACK 0
@@ -45,7 +46,7 @@ void Clusterizer::clusterize() {
 		for (unsigned int j = i + 1; j < this->vectorOfStates.size(); j++) {
 			//Per ogni coppia (i, j) calcola la distanza LCS tra le due stringhe di struttura estratte
 			int distance = LCSDistance(this->vectorOfStates[i]->getStructure(), this->vectorOfStates[j]->getStructure());
-			values.push_back(*(new AffinityPropagationValue(i, j, distance)));
+			values.push_back(*(new AffinityPropagationValue(i, j, -distance)));
 		}
 	}
 

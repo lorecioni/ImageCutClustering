@@ -25,11 +25,13 @@
 #include "FeatureExtractor.h"
 
 #include <leptonica/imageio.h>
+#include <sys/_types/_s_ifmt.h>
 
 #include "DiagonalsAndCrossesFeature.h"
 #include "DotFeature.h"
 #include "HorizontalStrokeFeature.h"
 #include "LoopFeature.h"
+#include "TrashFeature.h"
 #include "VerticalStrokeFeature.h"
 #include "WhiteSpaceFeature.h"
 
@@ -47,7 +49,15 @@ void FeatureExtractor::extractFeatures(std::vector<StateImage*> vectorOfStates){
 		PIX* testImage = vectorOfStates[i]->getImage();
 
 		string singleResults = "";
-		string structure = FeatureExtractor::findFeatures(testImage, &singleResults);
+		string structure = "";
+
+		//Controlla se il segmento contiene solo "spazzatura"
+		if(!TrashFeature::isTrash(testImage)){
+			structure = FeatureExtractor::findFeatures(testImage, &singleResults);
+		} else {
+			structure = TrashFeature::getTrashStructure();
+		}
+
 		vectorOfStates[i]->setStructure(structure);
 
 		//Crea la cartella per il test delle festure
