@@ -436,7 +436,8 @@ void Clusterizer::calculateOccurencies(int exemplar,
 	f.close();
 
 	sort(singlePrecisions.begin(), singlePrecisions.end());
-	this->precisions.push_back(singlePrecisions[singlePrecisions.size() - 1] * singlePrecisions.size());
+	this->precisions.push_back(singlePrecisions[singlePrecisions.size() - 1]);
+	//this->precisions.push_back(singlePrecisions[singlePrecisions.size() - 1] * singlePrecisions.size());
 
 }
 /**
@@ -450,9 +451,9 @@ float Clusterizer::calculatePrecision() {
 		sumprecision += this->precisions[i];
 	}
 
-	//TODO la precisione è ora corretta ma fa abbastanza schifo
-	//return (sumprecision / this->precisions.size()) * 100;
-	return (sumprecision) * 100 / this->vectorOfStates.size();
+	//TODO la precisione è da rivedere dovrebbe andar bene la media
+	return (sumprecision / this->precisions.size()) * 100;
+	//return (sumprecision) * 100 / this->vectorOfStates.size();
 
 }
 
