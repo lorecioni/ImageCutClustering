@@ -1,26 +1,30 @@
 \subsection{Features}
 
-% % pezzo su come sono fatte stringhe
-
-
 In this work we want to find \emph{primitive} features, resembling the possible types of strokes used to write a word, to characterize the sample from which they are extracted in order to perform clustering on their set.
 
 The features are identified by the study of a sub-portion, or window, of the images extracted by the paper on which this work is based.
 
-The features are located through a study of an area, the window, to which they are implicitly associated: as such there is no clear order of which of the features found in the area comes first.
+The features are located through a study of an area, the window, with which they are implicitly associated: as such there is no clear order of which of the possibly multiple features found in the area comes first.
 Due to the absence of such \emph{native} order the string that defines a window is maintained consistent with the other strings trough the convention of generating the string with the features' identifiers always taking the same order, if present.
 
 The chosen way to resolve the issue however presents the problem of making sliding windows inapplicable: this means that a sample must necessarily be cut in separate windows, which are allowed to overlap, with the corresponding effect that due to the random cut some features like \textit{loops} may not be recognised in an instance and recognised in another. 
 
+Each sample is associated to a characterizing string of characters made from the identifiers of the features recognized in the sample.
+The string is constructed modularly by appending in order the strings associated to each window the sample is divided in.
+After having recognised the presence of a feature in a given window the corresponding identifier is added to the end of the string correspondent to the window; the order in which the features are searched and thus added to the queue is decided a priori and maintained consistent during the construction of the strings. 
+
+
 \paragraph{Windows}
 
-Currently we have chosen to cut the samples in windows of 32 pixels each with the exception of the last part of the sample that, deemed irrelevant to the end of characterization due to containing almost always white space, is simply ignored.
+Currently we have chosen to cut the samples in windows of 32 pixels each, with the exception of the last part of the sample that, deemed irrelevant to the end of characterization due to containing almost always white space, is simply ignored.
 
 These windows are spaced only 16 pixels from the preceding and succeeding one, with the intent of creating overlap and lengthening the string that characterizes the samples.
 
-While the simplest way to create the windows is simply creating a new PIX with the required coordinates it requires unnecessary passages and time in the creation of new objects. We have thus preferred to increase the complexity of the functions that search for the features, to whom we pass as a variable the original sample PIX with information about the \textit{offset} at which to start the search and the \textit{width} of the window.
+While the simplest way to create the windows is simply creating a new PIX with the required coordinates it requires unnecessary passages and time in the creation of new objects. We have thus preferred to increase the complexity of the functions that search for the features, to whom we pass as a variable the original sample PIX with information about the \textit{offset} at which to start the search and the \textit{width} of the window. The width of the window passed has actually a non banal meaning duo to the fact that different features are linked to areas of the image with varying dimensions: for example we can't reasonably search for an horizontal line and a vertical line utilizing windows with the same width due to the fact that horizontal lines realistically will require windows with great width but will not have requisites on the height.
+The height of the windows used is never considered as a parameter since for all features' functions the height is customarily the whole height of the sample.  
 
-% %parte su diversa width diverse feature
+
+//possibilmente sezione stringa/caratteri?
 
 \subsubsection{Whitespace}  
 

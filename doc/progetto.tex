@@ -1,42 +1,49 @@
-\section{The project}
+\section{The Pre-existing project}
 
-The page that contains the data in digital form, contains a wealth of information about each person surveyed including name, gender, membership status and some secondary features such as work or the breed. 
+The census page that contains the data in digital form holds a wealth of information about each person surveyed: name, gender, membership status and some secondary features such as work or the breed. 
 
-All these data are housed in a moulded grid composed of numbered rows and columns for each field to conduct a census. In addition to the data of persons are reported on each archive also additional data related to censor or data relating to samples of the population.
+All these data are housed in a moulded grid composed of numbered rows and columns. In addition to the citizens data, each archive also contains additional information related to the censor or data relating to samples of the population.
 
-The objective of the project was concerned with finding a particular grid area, the State of each person, from which extract handwritten text associated with the correct name of the State.
+The project's objective was finding a particular grid area, corresponding to the area containing the registered State of each person, from which extract the handwritten text.
 
-Following the data extraction, the project plans to group visually similar elements to form a collection of homogenous States. So each set and then will contain grid theoretically corresponding cutouts of the same State.
+Following the words localization, the existing work proceeds by grouping visually similar elements to form a collection of homogeneous samples, in hope that each set will then contain cut outs of the same State.
+
+The goal of the work is not to group all the words corresponding to the same state in a single cluster but rather to generate clusters that contain words that belong to a single state, the major requirement of the work is thus precision in the retrieval steps.
 
 \subsection{Process steps}
 
 We can summarize the project in three basic steps:
 \begin{enumerate}
-\item Search for the text area containing the words of interest
+\item Localization of the text area containing the words of interest
 \item Row segmentation
-\item Postprocessing of each cut image
+\item Post-processing of each cut image
 \end{enumerate}
 
-The last step, the clustering of images, is our point of interest: it has been rewritten and improved using new features extraction method and a new method for evaluating similarity and will be discussed in detail later.
+//questo dovrebbe essere dopo
 
-\subsubsection{Word searching}
+The last step, corresponding to the clustering of images, is the point of interest of our paper: while the past work was focused on the localization and retrieval not much thought was put on the features to be extracted preferring simplicity and efficiency to effectiveness.
+It is this very point that gives our paper a reason d'etre: starting from the preceding, already implemented, two steps, we proceed by providing a rewritten and improved clustering method through the use of new features, these steps will be discussed later in the section \ref{Nostro_prog}.
 
-In this first phase the aim is to identify the region of the grid within which we find the State words. 
+\subsubsection{Word localization}
+//direi di togliere "we" visto che non siamo noi
 
-First of all we remove the black border of the document resulting from scanning. Then, using the technique of vertical histogram, we can locate the grid columns and, knowing the correct column's offset relative to the beginning of the document, just the one concerned is extracted is extracted.
+In this first phase the aim is to identify the region of the grid within which the State words are located. 
+
+First of all we remove the black border of the document, an artefact resulting from the physical scanning. Then, through a vertical projection of the pixels and the creation of an histogram, we locate the grid columns and, knowing the correct column's offset regarding the beginning of the document, just the one concerned is extracted.
 
 \subsubsection{Row segmentation}
 
-After the extraction of the column concerned from the document, we proceed with row segmentation.
+After the extraction of the concerned column from the document, we proceed with row segmentation.
 
-Similar to the previous step, but using the histogram horizontal this time, we are able to determine with some accuracy the rows in the grid. In this case, however, was necessary to center the word in the extracted image: this is done by correcting the height of each row by the analysis of black spikes on the histogram.
+Similar to the previous step, but using an horizontal projection this time, we are able to determine with some accuracy the rows of the grid. In this case, however, it's necessary to centre the word in the extracted image: this is done by correcting the height of each row by the analysis of black spikes on the created histogram.
 
-At the end of this phase, each word is contained in a single image.
+At the end of this phase, ideally each word is contained in an individual image.
 
-\subsubsection{Postprocessing}
+\subsubsection{Post-processing}
 
-In this postprocessing phase the individual images extracted are reworked in order to remove any  vertical or horizontal residual lines from the previous cut.
+In the post-processing phase the individual images extracted are reworked in order to remove any  vertical or horizontal residual lines left from an imperfect previous cut.
 
+//?
 Delete row/column strokes can be about as bring back the black pixels related to the residual value of pure white (255 as grayscale).
 
 This allows us to extract the most significant features in the next steps of processing.
@@ -53,11 +60,11 @@ As you can see in Figure \ref{fig:extracted_image}, the word is centered and the
 
 \subsection{Troubles}
 
-The identification of words and their segmentation and has some strong issues.
+The localization of words and their segmentation has inherent strong difficulties.
 
-A first problem is represented by the document skew. In this case, this may be due to a not perfectly horizontal scan of the original document. The presence of skew reduces the performance in searching for rows and columns of the grid, thus making impossible segmentation. In some cases, for example, is interpreted incorrectly the first column and this causes the extraction of the wrong column in the first stage of the process.
+A first problem is represented by the document skew. In this case, the skew may be due to a not perfectly horizontal scan of the original document. The presence of skew reduces the capability in searching for rows and columns of the grid, thus making the segmentation impossible with the given implementation. In some cases, for example, the first column is interpreted incorrectly causing the extraction of the wrong column in the first stage of the process thus dooming that particular word recognition.
 
-The main problems of the second phase are mainly related to the identification of extraneous lines. Because of the large number of dashed lines present isn't always possible to \emph{clean} the images and this can cause errors in clustering.
+The main problems of the second phase are mainly related to the identification of extraneous lines. Because of the large number of dashed lines present it isn't always possible to \emph{clean} the images and this can cause errors in the clustering phase.
 
 \begin{figure}[!ht]
  \centering
@@ -66,8 +73,8 @@ The main problems of the second phase are mainly related to the identification o
  \hspace{5mm}
  \subfigure[The line intersects the word]
    {\includegraphics[width=0.3\textwidth]{images/img4.jpg}}
- \caption{Segmentation and postprocessing issues}
+ \caption{Segmentation and post-processing issues}
  \end{figure}
 
-In other cases the word intersects directly gridlines. Because of this we may experience a loss of information about words by removing the line using the method described above.
+In other cases the word intersects directly gridlines. Because of this we may experience a loss of information about words if the line is removed using the method described above.
 

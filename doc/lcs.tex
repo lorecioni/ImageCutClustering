@@ -1,5 +1,31 @@
 \subsection{LCS} 
+In order to compare the generated strings one another we must define a distance on the samples.
+The distance used in our work is based on the \emph{Longest Common Subsequence} (LCS) algorithm. 
 
-In order to compare the generated strings each others we use the \emph{Longest Common Subsequence} (LCS) algorithm for evaluating distances.
+The LCS algorithm has the aim of extracting from a set of sequences (in this case only two) the longest common subsequence, that is a sequence that is obtainable from both the starting sequences by deleting some elements without changing the order of the remaining ones.
 
- 
+LCS is a particular case of the \emph{Edit Distance} algorithm where the only allowed operations are insertion and deletion.
+The distance associated with LCS in our current work is the number of insertion and deletions that must be applied to obtain the longest subsequence, in accordance with the Edit distance where the distance is calculated with the number of operations needed to morph a string in the other (in Edit Distance it's possible moreover to confer customizable costs to the substitutions).   
+
+While the LCS algorithm may require high costs when applied concurrently to high numbers of sequences, in our case there exists an easy and light implementation that exploits \textit{dynamic programming}, in this type of implementation the cost ends up being $O(n*m)$ where $n$ and $m$ are the length of the compared strings.  
+
+
+$$\label{LCS}
+LCS(X_i,Y_j) =
+ \left\{\begin{array}{cl}
+ \displaystyle
+ 0 & if~i=0~ or~ j=0\\
+ LCS(X_{i-1},Y_{j-1})\cup x_i & if~ x_i=y_j\\
+ longest(LCS(X_i,Y_{j-1}), LCS(X_{i-1},Y_j)) & if~ x_i\neq y_j
+ \end{array}\right.
+$$
+
+
+Obtained the Longest Common Subsequence between two strings the distance between them is thus:
+$$ x.length() + y.length() - 2*LcsLength$$
+
+where $x$ and $y$ are the strings and the $length()$ function returns the length of a string.
+
+
+
+
