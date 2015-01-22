@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.4.22)  22 JAN 2015 10:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.4.22)  22 JAN 2015 12:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -290,33 +290,66 @@ File: images/img4.jpg Graphic file (type jpg)
 Package pdftex.def Info: images/img4.jpg used on input line 68.
 (pdftex.def)             Requested size: 136.57462pt x 35.43706pt.
 ) (./clustering.tex) (./features.tex [4 <./images/img3.jpg> <./images/img4.jpg>
-] [5]) (./lcs.tex) (./affinitypropagation.tex)
-(./results.tex) (./conclusion.tex) [6] (./doc.aux) ) 
+] [5]) (./lcs.tex) (./affinitypropagation.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 4.
+
+Underfull \hbox (badness 2644) in paragraph at lines 4--4
+[][]\T1/cmr/m/n/10 Brendan J. Frey, Del-bert Dueck, \T1/cmr/m/it/10 Clus-ter-in
+g by Pass-ing Mes-sages Be-tween Data Points\T1/cmr/m/n/10 ,
+ []
+
+[6]
+Missing character: There is no â in font cmr12!
+Missing character: There is no ˆ in font cmr12!
+Missing character: There is no ’ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no ˆ in font cmr12!
+Missing character: There is no ’ in font cmr12!
+ <images/ap.jpg, id=44, 1284.8pt x 1124.2pt>
+File: images/ap.jpg Graphic file (type jpg)
+ <use images/ap.jpg>
+Package pdftex.def Info: images/ap.jpg used on input line 49.
+(pdftex.def)             Requested size: 318.66948pt x 278.83646pt.
+)
+(./results.tex [7 <./images/ap.jpg>]) (./conclusion.tex) [8] (./doc.aux) ) 
 Here is how much of TeX's memory you used:
- 3611 strings out of 493315
- 51096 string characters out of 6137904
- 118698 words of memory out of 5000000
- 6994 multiletter control sequences out of 15000+600000
- 17842 words of font info for 40 fonts, out of 8000000 for 9000
+ 3624 strings out of 493315
+ 51257 string characters out of 6137904
+ 118706 words of memory out of 5000000
+ 7003 multiletter control sequences out of 15000+600000
+ 20060 words of font info for 43 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,7n,32p,480b,267s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2013/te
-xmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2013/texm
-f-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2013/texmf-
-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2013/texmf-di
-st/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2013/texmf-dist
-/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2013/texmf-dist/f
-onts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2013/texmf-dist/fon
-ts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2013/texmf-dist/fonts
-/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2013/texmf-dist/fonts/t
-ype1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2013/texmf-dist/fonts/typ
-e1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1
-/public/cm-super/sfti1095.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/p
-ublic/cm-super/sfti1200.pfb>
-Output written on doc.pdf (6 pages, 654332 bytes).
+ 38i,8n,32p,501b,267s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr
+/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/l
+ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/lo
+cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/loc
+al/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/loca
+l/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/
+texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/te
+xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texl
+ive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
+/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/20
+13/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2013
+/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2013/t
+exmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2013/tex
+mf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2013/texmf
+-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2013/texmf-d
+ist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2013/texmf-dis
+t/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2013/texmf-dist/
+fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2013/texmf-dist/fo
+nts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2013/texmf-dist/font
+s/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2013/texmf-dist/fonts/
+type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2013/texmf-dist/fonts/ty
+pe1/public/cm-super/sfti1000.pfb></usr/local/texlive/2013/texmf-dist/fonts/type
+1/public/cm-super/sfti1095.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/
+public/cm-super/sfti1200.pfb>
+Output written on doc.pdf (8 pages, 971332 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 129 PDF objects out of 1000 (max. 8388607)
+ 90 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

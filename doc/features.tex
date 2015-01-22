@@ -40,7 +40,14 @@ However, with appropriate threshold values you can get good results and to ident
 
 \subsubsection{Dot}
 
+To find the points in the segment we proceed as in the previous case, seeking a first black pixel.
+
+At that point, for it to be a Dot, there must be a circle of a given radius (whose value is preset and adjustable) in which the pixels are black and outside of that, for some white space.
+
+Even in this case you have the problem of determining a good value of the radius of the circle, having to remember even the size of the stroke.
+
 \subsubsection{Diagonal line}
+
 The feature representing a diagonal line, both upward and downward facing, is extracted through a simple exhaustive scansion of the window for lines of connected black pixels that have an incline in a range of values and are sufficiently long.
 
 At the moment the function doesn't account for the width of the lines found, thus diagonal features can be recognised in a shapeless blob of black pixel that is sufficiently big. 
@@ -48,11 +55,12 @@ At the moment the function doesn't account for the width of the lines found, thu
 There's a distinction for diagonal features that appear in the lower and upper bottom of the window.
 At most in a window the function identifies a couple of upward and a couple of downward facing lines (lower and upper parts), once one has been found it stops searching for the same type.
 
-\paragraph{Cross}
+\subsubsection{Cross}
 The function, having found at most a lower and upper case for upward and downward diagonal lines, proceeds to confront the edge points of these lines: if they possibly intersects it extracts a \emph{crossing} feature with distinction if the crossing happens in the lower or upper part of the window. 
-The problems with this sub-feature are that intersections of bottom and upper lines of the same type (e.g. both upward facing) with different inclines are not recognised, in the same way there's no consideration for intersections made from lines that are not the "primary" bottom and upper diagonals: if in a single windows are present more lower upwards diagonals and one of them other than the first intersects the recognised downward diagonal, such a crossing is ignored.
-The crossing feature may also not necessarily be a complete intersection, in fact for recognition there just needs to be a merging of a downward and upward line. 
 
+The problems with this sub-feature are that intersections of bottom and upper lines of the same type (e.g. both upward facing) with different inclines are not recognised, in the same way there's no consideration for intersections made from lines that are not the "primary" bottom and upper diagonals: if in a single windows are present more lower upwards diagonals and one of them other than the first intersects the recognised downward diagonal, such a crossing is ignored.
+
+The crossing feature may also not necessarily be a complete intersection, in fact for recognition there just needs to be a merging of a downward and upward line. 
 
 
 \subsubsection{Horizontal and Vertical line}
