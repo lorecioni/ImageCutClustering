@@ -11,8 +11,9 @@
 #include <iostream>
 #include <sstream>
 
-#define BLACK_THRES 40
-#define BLACK_THRESLOW 60
+#define BLACK_THRES 100
+#define BLACK_THRESLOW 110
+#define LENGTH_THRES 13
 using namespace std;
 
 DiagonalsAndCrossesFeature::DiagonalsAndCrossesFeature(){
@@ -29,7 +30,7 @@ DiagonalsAndCrossesFeature::~DiagonalsAndCrossesFeature(){
 // x1,y1 corrispondono al primo punto a sx   x2,y2 corrispondono al secondo punto a dx a prescindere se sopra o sotto
 //ricordiamo white 255 black 0
 
-bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2, bool over, int offset, int width){
+bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2, bool over, int offset, int width){
 
     int a1,a2,b1,b2; //a=x b=y
 
@@ -68,7 +69,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 	bool firstBlackFound = false;
 	int i=offset;
 
-	while(i< offset +(width/2) ){
+	while(i< offset +width - 6 ){
 		stringstream cs6;
 		cs6 << i;
 
@@ -154,7 +155,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 				//cout << "Nero_b2 " + ss2.str() <<endl;
 
 			}
-			if( a2+b2-a1-b1> width/2 ){
+			if( a2+b2-a1-b1> LENGTH_THRES ){
 
 				//cout << "trovato primo segmento" <<endl;
 				*x1 = a1;
@@ -180,7 +181,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 	return false;
 }
 
-bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2 , bool over, int offset, int width){
+bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2 , bool over, int offset, int width){
 	int a1,a2,b1,b2; //a=x b=y
 
 
@@ -239,7 +240,7 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 					b2 -=1;
 				}
 			}
-			if( a2-b2-a1+b1> width/2 ){
+			if( a2-b2-a1+b1> LENGTH_THRES ){
 				*x1 = a1;
 				*x2 = a2;
 				*y1 = b1;
