@@ -164,10 +164,8 @@ void LinesRemover::deleteBlackRows(std::vector<int> row, PIX* img) {
 		thickness = findThickness(img, row[i]);
 		//thickness+=3;
 		window = (int*) malloc((thickness + 4) * sizeof(int));
-		/*per tutta la lunghezza della riga da cancellare*/
 		for (int j = 0; j < this->width; j++) {
 
-			/*creo una finestra spessa 1 pixel e alta 12, partendo da 2 pixel prima del presunto punto di inizio riga*/
 			for (k = 0; k < thickness + 4; k++) {
 				window[k] = 0;
 				if (row[i] + k < this->height) {
@@ -178,12 +176,6 @@ void LinesRemover::deleteBlackRows(std::vector<int> row, PIX* img) {
 
 			int incrementCount = 0;
 			bool cancelled = false;
-			/*se la riga è all'inizio di una immagine, oppure nella finestra c'è del bianco, la riga va cancellata
-			 * se la finestra fosse tutta nera, non potrei distinguere la riga dalla parola
-			 * se c'è del bianco, posso distinguere riga e parola
-			 * FIX ME: al momento cancello tutto il nero di riga e parola, va cercata la riga intelligentemente
-			 * ad esempio cancellando solo dalla prima zona di bianco trovata in poi*/
-			//for (k = 0; k < thickness + 4; k++) {
 			while (!cancelled && incrementCount < 30) {
 				incrementCount++;
 
@@ -227,11 +219,9 @@ void LinesRemover::deleteBlackRows(std::vector<int> row, PIX* img) {
 
 			//}
 
-			/*se la riga è cancellabile*/
 			//if (black != 0) {
 			for (k = black; k < thickness + 4; k++) {
 
-				/*cancello le zone di riga nere (FIX ME)*/
 				if (k + row[i] - 2 < this->height && window[k] == 0) {
 					pixSetPixel(this->image, j, k + row[i] - 2, 255);
 

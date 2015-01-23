@@ -35,7 +35,7 @@
 #include "VerticalStrokeFeature.h"
 #include "WhiteSpaceFeature.h"
 
-#define BOX_WIDTH 40
+#define BOX_WIDTH 32
 
 FeatureExtractor::FeatureExtractor() {}
 
@@ -199,8 +199,6 @@ std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int double_wi
 		firstHalf += LoopFeature::isLoop(cut, offset, width);
 		firstHalf += DotFeature::isDot(cut, offset, width);
 	}
-
-
 
 	if(WhiteSpaceFeature::isWhiteSpace(cut, offset+width, width)){
 		secondHalf = " ";
