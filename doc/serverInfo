@@ -1,0 +1,32 @@
+Istruzioni per entrare nel server:
+
+da terminale inserire:  ssh santoni@snoopy.dinfo.unifi.it     //password è "kassan"
+> questo collega al terminale del server
+> se si usa l'opzione "-X" allora si ha lo scambio con grafica
+> si può quindi interagire tramite terminale, dare comandi
+
+per scambio file:  sftp santoni@snoopy.dinfo.unifi.it
+>operazioni usabili sono put/get ls e cd, per scambio di file SINGOLI o file zip
+
+per scambio cartelle:   scp -r santoni@snoopy.dinfo.unifi.it 
+
+Nell'esecuzione su terminale del server: pippo=comando
+    
+    pippo &      <--- esegue il comando in background, da output sullo stesso terminale
+                      se terminale si chiude, si chiude esecuzione
+                      
+    fg           <--- riporta su l'ultimo comando in background                  
+
+    nohup pippo & <----   per esecuzione in background e separata da chiusura terminale
+                          per testare basta far partire chiudere terminale e riaprirlo quindi 
+                          usare comando "top" che mostra i task in esecuzione
+    
+    
+    nohup pippo > pippo.log &   <---- stesso di prima ma ridirige standard output su pippo.log per vedere
+                                      che è accaduto se si è chiuso male o dove è arrivato   
+ 
+    display  xxxxx.png          <---- mostra l'immagine xxxx.png
+    
+    
+In generale fare logout dalle nostre sessioni non shutdown     
+    

@@ -11,7 +11,7 @@
 #include <leptonica/imageio.h>
 #include <leptonica/pix.h>
 #include <stddef.h>
-#include <sys/_types/_s_ifmt.h>
+#include <sys/types.h>
 #include <sys/stat.h>
 #include <algorithm>
 #include <cmath>
