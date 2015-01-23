@@ -4,5 +4,8 @@
 /20images/
 /40images/
 /60images/
-/test/
-/test2/
+/test/*
+/test2/*
+/1image/*
+/4images/*
+

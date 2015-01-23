@@ -176,7 +176,7 @@ void Clusterizer::clusterize() {
 	float prec = calculatePrecision();
 	float precOld = calculatePrecisionOld();
 	cout << "La precision del cluster è: " << prec << endl;
-	cout << "La precision (old) del cluster è" << precOld << endl;
+	cout << "La precision (old) del cluster è " << precOld << endl;
 	nf << "La precision del cluster è: " << prec << " %" << endl;
 	nf << "La precision (old) del cluster è: " << precOld << " %" << endl;
 	nf.close();
