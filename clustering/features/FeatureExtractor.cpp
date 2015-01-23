@@ -5,19 +5,19 @@
  *      Author: lorenzocioni
  *
  *
- *   LOOP: L
- *   IncrocioAlto : X
- *   Incrocio : x
- *   / bassa : s
- *   / alta : S
- *   \ bassa : u
- *   \ alta : U
- *   piccola barretta vertic.(es.i) : i
- *   barretta grossa vertic. | : I
- *   piccola barr orizzont : -
- *   barretta grossa orizzont : _
- *   puntino : .
- *   spazio bianco: " "
+ *   LOOP: 'LL'
+ *   IncrocioAlto : 'XXXX'
+ *   Incrocio : 'xxxx'
+ *   / bassa : 's'
+ *   / alta : 'S'
+ *   \ bassa : 'u'
+ *   \ alta : 'U'
+ *   piccola barretta vertic.(es.i) : 'i'
+ *   barretta grossa vertic. | : 'I'
+ *   piccola barr orizzont : '-'
+ *   barretta grossa orizzont : '_'
+ *   puntino : '...'
+ *   spazio bianco: ' '
  *
  * da considerare anche l'ordine con cui appaiono, da mantenere coerente.
  */
@@ -35,7 +35,7 @@
 #include "VerticalStrokeFeature.h"
 #include "WhiteSpaceFeature.h"
 
-#define BOX_WIDTH 32
+#define BOX_WIDTH 40
 
 FeatureExtractor::FeatureExtractor() {}
 
