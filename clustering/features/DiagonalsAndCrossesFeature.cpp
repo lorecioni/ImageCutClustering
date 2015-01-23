@@ -14,6 +14,7 @@
 #define BLACK_THRES 100
 #define BLACK_THRESLOW 110
 #define LENGTH_THRES 13
+#define LENGTH_THRES_HI 18
 using namespace std;
 
 DiagonalsAndCrossesFeature::DiagonalsAndCrossesFeature(){
@@ -30,7 +31,7 @@ DiagonalsAndCrossesFeature::~DiagonalsAndCrossesFeature(){
 // x1,y1 corrispondono al primo punto a sx   x2,y2 corrispondono al secondo punto a dx a prescindere se sopra o sotto
 //ricordiamo white 255 black 0
 
-bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2, bool over, int offset, int width){
+int DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2, bool over, int offset, int width){
 
     int a1,a2,b1,b2; //a=x b=y
 
@@ -155,14 +156,18 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 				//cout << "Nero_b2 " + ss2.str() <<endl;
 
 			}
-			if( a2+b2-a1-b1> LENGTH_THRES ){
+			int diff = a2+b2-a1-b1;
+			if(diff > LENGTH_THRES ){
 
 				//cout << "trovato primo segmento" <<endl;
 				*x1 = a1;
 				*x2 = a2;
 				*y1 = b1;
 				*y2 = b2;
-				return true;
+				if(diff > LENGTH_THRES_HI){
+					return 2;
+				}
+				return 1;
 			}
 			firstBlackFound = false;
 		}else {
@@ -178,10 +183,10 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 	}
 
 	//cout << "fuori da while" <<endl;
-	return false;
+	return 0;
 }
 
-bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2 , bool over, int offset, int width){
+int DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2 , bool over, int offset, int width){
 	int a1,a2,b1,b2; //a=x b=y
 
 
@@ -240,12 +245,16 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 					b2 -=1;
 				}
 			}
-			if( a2-b2-a1+b1> LENGTH_THRES ){
+			int diff =  a2-b2-a1+b1;
+			if(diff > LENGTH_THRES ){
 				*x1 = a1;
 				*x2 = a2;
 				*y1 = b1;
 				*y2 = b2;
-				return true;
+				if(diff > LENGTH_THRES_HI){
+					return 2;
+				}
+				return 1;
 			}
 			firstBlackFound = false;
 		}else{
@@ -255,7 +264,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 			i += 3;  //vo abbastanza avanti in width a cercare un punto nero risalendo /
 		}
 	}
-	return false;
+	return 0;
 }
 
 
@@ -273,34 +282,38 @@ string DiagonalsAndCrossesFeature::isCross(PIX* image, int offset, int width){
 
 	Diag d1;
 
-	bool a= isUpwardDiag(image, &d1.x, &d1.X, &d1.y, &d1.Y, false, offset, width);
+	int a= isUpwardDiag(image, &d1.x, &d1.X, &d1.y, &d1.Y, true, offset, width);
 	Diag d2;
-	bool b= isUpwardDiag(image,&d2.x, &d2.X, &d2.y, &d2.Y, true, offset, width);
+	int b= isUpwardDiag(image,&d2.x, &d2.X, &d2.y, &d2.Y, false, offset, width);
 	Diag d3;
-	bool c= isDownwardDiag(image,&d3.x, &d3.X, &d3.y, &d3.Y, false, offset, width);
+	int c= isDownwardDiag(image,&d3.x, &d3.X, &d3.y, &d3.Y, false, offset, width);
 	Diag d4;
-	bool d= isDownwardDiag(image,&d4.x, &d4.X, &d4.y, &d4.Y, true, offset, width);
+	int d= isDownwardDiag(image,&d4.x, &d4.X, &d4.y, &d4.Y, true, offset, width);
 
 	bool crossx = false;
 	bool crossX = false;
-	if(a== true){
-		if(c == true){
+	if(a != 0){
+		if(c !=0){
 			if(crossing(d1.x,d1.X,d1.y,d1.Y,d3.x,d3.X,d3.y,d3.Y) == true){crossx = true;}
-		}else if(d == true){
+		}else if(d !=0){
 			if(crossing(d1.x,d1.X,d1.y,d1.Y,d4.x,d4.X,d4.y,d4.Y) == true){crossx = true;}
 		}
-	}else if (b == true){
-		if(c == true){
+	}else if (b !=0){
+		if(c !=0){
 			if(crossing(d2.x,d2.X,d2.y,d2.Y,d3.x,d3.X,d3.y,d3.Y) == true){crossX = true;}
-		}else if(d == true){
+		}else if(d !=0){
 			if(crossing(d2.x,d2.X,d2.y,d2.Y,d4.x,d4.X,d4.y,d4.Y) == true){crossx = true;}
 		}
 	}
 
-	if(a==true) report+= "s";
-	if(b==true) report+= "S";
-	if(c==true) report+= "U";
-	if(d==true) report+= "u";
+	if(a==1) report+= "s";
+	if(a==2) report+= "bs";
+	if(b==1) report+= "S";
+	if(b==2) report+= "BS";
+	if(c==1) report+= "U";
+	if(c==2) report+= "VU";
+	if(d==1) report+= "u";
+	if(d==2) report+= "vu";
 	if(crossx==true) report+= "x";
 	if(crossX==true) report+= "X";
 

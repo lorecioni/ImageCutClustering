@@ -19,8 +19,8 @@ public:
 	virtual ~DiagonalsAndCrossesFeature();
 	static std::string isCross(PIX* image, int offset, int width);
 private:
-	static bool isUpwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2,bool over, int offset, int width);
-	static bool isDownwardDiag(PIX* image,  int* x1,int* x2,int* y1,int* y2, bool over, int offset, int width);
+	static int isUpwardDiag(PIX* image, int* x1,int* x2,int* y1,int* y2,bool over, int offset, int width);
+	static int isDownwardDiag(PIX* image,  int* x1,int* x2,int* y1,int* y2, bool over, int offset, int width);
 	static bool crossing(int x1,int x2,int y1,int y2, int x11,int x22,int y11,int y22);
 
 };
