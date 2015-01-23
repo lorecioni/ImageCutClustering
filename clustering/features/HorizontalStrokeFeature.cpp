@@ -88,7 +88,7 @@ string HorizontalStrokeFeature::isHorizontal(PIX* image, int offset, int width){
 				if( w > LOW_WIDTH +3  ){ //3 per ricordare il salto fatto "nel vuoto"
 					foundRow = true;
 					if(w > HIGH_WIDTH){
-						found +="_";
+						found +="_-";
 
 						//cout << "trovata riga_grande" <<endl;
 					}else{

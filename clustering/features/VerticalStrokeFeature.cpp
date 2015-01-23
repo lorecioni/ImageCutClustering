@@ -100,7 +100,7 @@ string VerticalStrokeFeature::isVertical(PIX* image, int offset, int width){
 				if( h > LOW_HEIGHT +3  ){ //3 per ricordare il salto fatto "nel vuoto"
 					foundColumn = true;
 					if(h > HIGH_HEIGHT){
-						found +="I";
+						found +="Ii";
 
 						//cout << "trovata colonna_grande" <<endl;
 					}else{
