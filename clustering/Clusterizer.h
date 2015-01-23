@@ -24,6 +24,7 @@
 class Clusterizer {
 private:
 	vector<float> precisions;
+	vector<float> precisionOld;
 	std::vector<StateImage*> vectorOfStates;
 	/*Per ogni immagine ho un vettore di float*/
 	std::vector<std::vector<Feature*> > features;
@@ -37,6 +38,7 @@ private:
 	void adaptStateImagesWidth();
 	void calculateOccurencies(int exemplar,std::vector<StateImage*> auxStateImage);
 	float calculatePrecision();
+	float calculatePrecisionOld();
 
 public:
 	Clusterizer(std::vector<StateImage*> vectorOfPixs);

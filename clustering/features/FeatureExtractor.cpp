@@ -115,11 +115,11 @@ void FeatureExtractor::extractFeatures(std::vector<StateImage*> vectorOfStates){
 	int w;
 	int h;
 	pixGetDimensions(test1,&w,&h,NULL);
-	for(int i=1;i<w; i++){
+	/*for(int i=1;i<w; i++){
 		for(int j=1;j<h;j++){
 			pixSetPixel(test1,i,j,250);
 			}
-	}
+	}*/
 	for(int i=4;i<18; i++){
 		for(int j=1;j<40;j++){
 			pixSetPixel(test1,i,5,150);

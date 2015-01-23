@@ -12,7 +12,7 @@
 
 //TODO mettere i bordi del cut a nero
 
-#define BLACK_THRES 30
+#define BLACK_THRES 100
 #define H_STEP 8 //Impostato a 8 per i test da risultati verosimili
 #define V_STEP 8
 using namespace std;
@@ -33,7 +33,7 @@ string LoopFeature::isLoop(PIX* image, int offset, int width){
 			if(val < BLACK_THRES){
 				//Ho trovato un primo pixel nero, controllo se è il contorno di un loop
 				if(checkLoop(image, i, j + V_STEP, offset, width)){
-					return "L";
+					return "LL";
 				}
 			}
 			j++;

@@ -8,7 +8,7 @@
 
 #include "DotFeature.h"
 
-#define BLACK_THRES 30
+#define BLACK_THRES 100
 #define RADIUS 4 //TODO da testare
 #define STEP 5
 using namespace std;
@@ -30,7 +30,7 @@ string DotFeature::isDot(PIX* img, int offset, int width){
 			if(val < BLACK_THRES){
 				//Ho trovato un primo pixel nero, controllo se è un punto
 				if(checkDot(img, i, j, offset, width)){
-					return ".";
+					return "...";
 				}
 			}
 			//Incremento di uno STEP > RADIUS in verticale

@@ -139,7 +139,7 @@ bool DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y
 				}else if(b<=c){
 					val=b;
 					a2 +=1;
-					b2 +=2;
+					b2 +=1;
 				}else{
 					val=c;
 					a2 +=2;
@@ -220,7 +220,7 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 		}
 
 		if(firstBlackFound==true){
-			while(val<BLACK_THRESLOW && b2>height-3 && a2< offset+width-3){
+			while(val<BLACK_THRESLOW && b2>3 && a2< offset+width-3){
 				unsigned int a,b,c;
 				pixGetPixel(image, a2+1 ,b2-2 , &a);
 				pixGetPixel(image, a2+1 ,b2-1 , &b);
@@ -232,7 +232,7 @@ bool DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int*
 				}else if(b<=c){
 					val=b;
 					a2 +=1;
-					b2 -=2;
+					b2 -=1;
 				}else{
 					val=c;
 					a2 +=2;

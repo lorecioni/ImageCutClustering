@@ -174,8 +174,11 @@ void Clusterizer::clusterize() {
 	}
 
 	float prec = calculatePrecision();
+	float precOld = calculatePrecisionOld();
 	cout << "La precision del cluster è: " << prec << endl;
+	cout << "La precision (old) del cluster è" << precOld << endl;
 	nf << "La precision del cluster è: " << prec << " %" << endl;
+	nf << "La precision (old) del cluster è: " << precOld << " %" << endl;
 	nf.close();
 
 }
@@ -436,12 +439,26 @@ void Clusterizer::calculateOccurencies(int exemplar,
 	f.close();
 
 	sort(singlePrecisions.begin(), singlePrecisions.end());
-	this->precisions.push_back(singlePrecisions[singlePrecisions.size() - 1]);
-	//this->precisions.push_back(singlePrecisions[singlePrecisions.size() - 1] * singlePrecisions.size());
+	this->precisionOld.push_back(singlePrecisions[singlePrecisions.size() - 1]);
+	this->precisions.push_back(singlePrecisions[singlePrecisions.size() - 1] * auxStateImage.size());
 
 }
 /**
- * percentage
+ * percentage old
+ */
+float Clusterizer::calculatePrecisionOld() {
+
+	float sumprecision = 0;
+
+	for (int i = 0; i < this->precisionOld.size(); i++) {
+		sumprecision += this->precisionOld[i];
+	}
+
+	return (sumprecision / this->precisionOld.size()) * 100;
+}
+
+/**
+ * percentage new
  */
 float Clusterizer::calculatePrecision() {
 
@@ -451,9 +468,7 @@ float Clusterizer::calculatePrecision() {
 		sumprecision += this->precisions[i];
 	}
 
-	//TODO la precisione è da rivedere dovrebbe andar bene la media
-	return (sumprecision / this->precisions.size()) * 100;
-	//return (sumprecision) * 100 / this->vectorOfStates.size();
+	return (sumprecision) * 100 / this->vectorOfStates.size();
 
 }
 
