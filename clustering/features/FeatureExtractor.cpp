@@ -25,7 +25,7 @@
 #include "FeatureExtractor.h"
 
 #include <leptonica/imageio.h>
-#include <sys/_types/_s_ifmt.h>
+#include <sys/types.h>
 
 #include "DiagonalsAndCrossesFeature.h"
 #include "DotFeature.h"
@@ -44,9 +44,17 @@ void FeatureExtractor::extractFeatures(std::vector<StateImage*> vectorOfStates){
 
 	string mainfolder = "./Test/";
 	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+	PIX* test1;///////////////////////
 
 	for(unsigned int i = 0; i < vectorOfStates.size(); i++){
 		PIX* testImage = vectorOfStates[i]->getImage();
+
+		////
+		if(i==2){
+			test1 =  vectorOfStates[i]->getImage();
+
+		}
+		////
 
 		string singleResults = "";
 		string structure = "";
@@ -87,6 +95,8 @@ void FeatureExtractor::extractFeatures(std::vector<StateImage*> vectorOfStates){
 
 		}
 
+
+
 		//Scrive il report della stringa
 		ofstream f(path + "comparatore.txt"); //se il file non esiste lo crea, altrimenti appende
 		if (!f) {
@@ -96,6 +106,35 @@ void FeatureExtractor::extractFeatures(std::vector<StateImage*> vectorOfStates){
 		f << singleResults;
 		f.close();
 	}
+
+
+
+	/*/*/
+	string p = "./Test/1.jpg";
+
+	int w;
+	int h;
+	pixGetDimensions(test1,&w,&h,NULL);
+	for(int i=1;i<w; i++){
+		for(int j=1;j<h;j++){
+			pixSetPixel(test1,i,j,250);
+			}
+	}
+	for(int i=4;i<18; i++){
+		for(int j=1;j<40;j++){
+			pixSetPixel(test1,i,5,150);
+			pixSetPixel(test1,i+10,10,60);
+			pixSetPixel(test1,i+30,j,40);
+		}
+
+	}
+
+
+
+	pixWrite(p.c_str(), test1,
+						IFF_JFIF_JPEG);
+
+	/*/*/
 }
 
 std::string FeatureExtractor::findFeatures(PIX* img, string* singleResults){
@@ -178,7 +217,9 @@ std::string FeatureExtractor::searchFeatures(PIX* cut, int offset, int double_wi
 }
 
 
-FeatureExtractor::~FeatureExtractor() {}
+FeatureExtractor::~FeatureExtractor() {
+}
+
 
 
 
