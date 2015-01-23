@@ -44,11 +44,11 @@ However, with appropriate threshold values you can get good results and to ident
 
 \subsubsection{Dot}
 
-To find the points in the segment we proceed as in the previous case, seeking a first black pixel.
+To search for Dots within the segment we first proceed locating the \emph{connected components} inside it. The individual components are extracted and inserted into a \emph{box} which we can know the size and the relative position to the segment.
 
-At that point, for it to be a Dot, there must be a circle of a given radius (whose value is preset and adjustable) in which the pixels are black and outside of that, for some white space.
+At this point we look for those boxes with dimensions between two preset values (minimum and maximum radius) and those that meet this condition are most likely points.
 
-Even in this case you have the problem of determining a good value of the radius of the circle, having to remember even the size of the stroke.
+Using connected components we can retrieve Dot feature in a simple way.
 
 \subsubsection{Diagonal line}
 

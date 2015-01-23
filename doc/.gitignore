@@ -1,7 +1,7 @@
 /.DS_Store
 /doc_ita.txt
-/doc.aux
-/doc.log
-/doc.pdf
-/doc.synctex.gz
-/doc.toc
+/*.aux
+/*.log
+/*.pdf
+/*.synctex.gz
+/*.toc
