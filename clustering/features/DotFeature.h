@@ -18,9 +18,6 @@ class DotFeature {
 		DotFeature();
 		virtual ~DotFeature();
 		static std::string isDot(PIX* image, int offset, int width);
-
-	private:
-		static bool checkDot(PIX* image, int i, int j, int offset, int width);
 };
 
 
