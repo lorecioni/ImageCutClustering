@@ -10,8 +10,7 @@
 
 #include <leptonica/allheaders.h>
 #include <string>
-#include<vector>
-
+#include <vector>
 
 class DotFeature {
 	public:
@@ -19,7 +18,5 @@ class DotFeature {
 		virtual ~DotFeature();
 		static std::string isDot(PIX* image, int offset, int width);
 };
-
-
 
 #endif /* CLUSTERING_FEATURES_DOTFEATURE_H_ */
