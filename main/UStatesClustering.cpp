@@ -47,6 +47,12 @@ int main(int argc, char *argv[]) {
 	char* directory;
 	bool firstTime = true;
 	int option_index = 0;
+
+	//TODO:toglimi PER DEBUG
+	string mainfolder = "./Test/";
+	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+
+
 	while (1) {
 
 		static struct option long_options[] = {
@@ -164,8 +170,6 @@ int main(int argc, char *argv[]) {
 			//printf("Thread %d arrivato!!!\n",index);
 		}
 
-		//Estrazione features dalle immagini
-		FeatureExtractor::extractFeatures(listOfCroppedStates);
 
 		Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates);
 		clusterizer->clusterize();
@@ -300,6 +304,13 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 					auxPixs = remover->removeLines();
 					StateImage* stateImage = new StateImage(
 							new string(filepath), i, auxPixs);
+
+					//DENTRO THREAD ESTRAZIONE FEATURES
+					//Estrazione features dalle immagini
+					FeatureExtractor::extractFeatures(stateImage);
+
+					//
+
 					mtx.lock();
 					listOfCroppedStates.push_back(stateImage);
 					mtx.unlock();

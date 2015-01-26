@@ -11,10 +11,10 @@
 #include <iostream>
 #include <sstream>
 
-#define BLACK_THRES 40
-#define BLACK_THRESLOW 60
-#define LOW_HEIGHT 30
-#define HIGH_HEIGHT 60
+#define BLACK_THRES 100
+#define BLACK_THRESLOW 100
+#define LOW_HEIGHT 20
+#define HIGH_HEIGHT 40
 
 using namespace std;
 
@@ -99,12 +99,15 @@ string VerticalStrokeFeature::isVertical(PIX* image, int offset, int width){
 				int h = y2-y1;
 				if( h > LOW_HEIGHT +3  ){ //3 per ricordare il salto fatto "nel vuoto"
 					foundColumn = true;
+					if(i > offset+width/2){
+						found+="V";
+					}
 					if(h > HIGH_HEIGHT){
-						found +="Ii";
+						found +="IIii";
 
 						//cout << "trovata colonna_grande" <<endl;
 					}else{
-						found +="i";
+						found +="ii";
 						//cout << "trovata colonna_picc" <<endl;
 					}
 				}

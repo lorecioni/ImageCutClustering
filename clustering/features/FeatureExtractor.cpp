@@ -12,10 +12,10 @@
  *   / alta : 'S'
  *   \ bassa : 'u'
  *   \ alta : 'U'
- *   piccola barretta vertic.(es.i) : 'i'
- *   barretta grossa vertic. | : 'I'
- *   piccola barr orizzont : '-'
- *   barretta grossa orizzont : '_'
+ *   piccola barretta vertic.(es.i) : 'ii'   verticale in 2nda metà: prefisso V
+ *   barretta grossa vertic. | : 'IIii'
+ *   piccola barr orizzont : '-'            orizzontale alte: prefisso H
+ *   barretta grossa orizzont : '_-'
  *   puntino : '...'
  *   spazio bianco: ' '
  *
@@ -35,67 +35,69 @@
 #include "VerticalStrokeFeature.h"
 #include "WhiteSpaceFeature.h"
 
-#define BOX_WIDTH 32
+#define BOX_WIDTH 36
+#define JUMP 16
 
 FeatureExtractor::FeatureExtractor() {}
 
-void FeatureExtractor::extractFeatures(std::vector<StateImage*> vectorOfStates){
+int FeatureExtractor::counterForName;
+
+void FeatureExtractor::extractFeatures(StateImage* imageState){
 	//Metodo per l'estrazione delle nuove features
 
-	string mainfolder = "./Test/";
+	//TODO:toglimi x avere nome test file
+	FeatureExtractor::counterForName +=1;
+
+	PIX* testImage =  imageState->getImage();
+
+	string singleResults = "";
+	string structure = "";
+
+	//Controlla se il segmento contiene solo "spazzatura"
+	if(!TrashFeature::isTrash(testImage)){
+		structure = FeatureExtractor::findFeatures(testImage, &singleResults);
+	} else {
+		structure = TrashFeature::getTrashStructure();
+	}
+
+	imageState->setStructure(structure);
+
+	//Crea la cartella per il test delle festure
+	//TODO da rimuovere dopo i test, non è necessario salvare i singoli pezzi
+	stringstream strs;
+	strs << FeatureExtractor::counterForName;
+	string mainfolder = "./Test/" + strs.str() +"/";
 	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
 
-	for(unsigned int i = 0; i < vectorOfStates.size(); i++){
-		PIX* testImage = vectorOfStates[i]->getImage();
+	string path = "./Test/" + strs.str() +"/";
 
-		string singleResults = "";
-		string structure = "";
+	std::vector<PIX*> vector;
+	vector =  FeatureExtractor::cutImage(testImage);
+	int parts =  vector.size();
 
-		//Controlla se il segmento contiene solo "spazzatura"
-		if(!TrashFeature::isTrash(testImage)){
-			structure = FeatureExtractor::findFeatures(testImage, &singleResults);
-		} else {
-			structure = TrashFeature::getTrashStructure();
-		}
+	for(int j=0; j< parts ; j++){
 
-		vectorOfStates[i]->setStructure(structure);
+		stringstream ss;
+		ss << j;
 
-		//Crea la cartella per il test delle festure
-		//TODO da rimuovere dopo i test, non è necessario salvare i singoli pezzi
-		stringstream strs;
-		strs << i;
-		string mainfolder = "./Test/" + strs.str() +"/";
-		mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+		//crea nuovo file immagine da PIX
+		string name = ss.str() + ".jpg";
+		string filepath = path + name;
 
-		string path = "./Test/" + strs.str() +"/";
+		pixWrite(filepath.c_str(), vector[j],
+				IFF_JFIF_JPEG);
 
-		std::vector<PIX*> vector;
-		vector =  FeatureExtractor::cutImage(testImage);
-		int parts =  vector.size();
-
-		for(int j=0; j< parts ; j++){
-
-			stringstream ss;
-			ss << j;
-
-			//crea nuovo file immagine da PIX
-			string name = ss.str() + ".jpg";
-			string filepath = path + name;
-
-			pixWrite(filepath.c_str(), vector[j],
-					IFF_JFIF_JPEG);
-
-		}
-
-		//Scrive il report della stringa
-		ofstream f(path + "comparatore.txt"); //se il file non esiste lo crea, altrimenti appende
-		if (!f) {
-			cout << "Errore nella creazione/apertura del file!";
-		}
-		f << "Stringa generata [" << strs.str() << "]: _" << structure << "_" << endl;
-		f << singleResults;
-		f.close();
 	}
+
+	//Scrive il report della stringa
+	ofstream f(path + "comparatore.txt"); //se il file non esiste lo crea, altrimenti appende
+	if (!f) {
+		cout << "Errore nella creazione/apertura del file!";
+	}
+	f << "Stringa generata [" << strs.str() << "]: _" << structure << "_" << endl;
+	f << singleResults;
+	f.close();
+
 }
 
 std::string FeatureExtractor::findFeatures(PIX* img, string* singleResults){
@@ -105,7 +107,7 @@ std::string FeatureExtractor::findFeatures(PIX* img, string* singleResults){
 	int count = 0;
 
 	//si salta l'ultima perchè quasi certamente vuota o di poco valore
-	for (int i = 1; i < (w - 2*BOX_WIDTH +1); i+=(BOX_WIDTH/2)) {
+	for (int i = 1; i < (w - 2*BOX_WIDTH +1); i+=JUMP) {
 		std::string l = searchFeatures(img, i, BOX_WIDTH);
 		report += l;
 		stringstream ss;
@@ -119,18 +121,16 @@ std::string FeatureExtractor::findFeatures(PIX* img, string* singleResults){
 
 std::vector<PIX*> FeatureExtractor::cutImage( PIX* pix){
 	std::vector<PIX* > vector;
-
 	int w,h;
 	pixGetDimensions(pix, &w, &h, NULL);
-	int divNumber = (w / BOX_WIDTH)*2;
-	int pixRemaining = w;
-	for(int i=0; i< divNumber - 1; i++){
+	int i=0;
+	for(int curWid=0; curWid< w - BOX_WIDTH-1; curWid+=JUMP){
 		PIX* pixN;
-		BOX* cropWindow = boxCreate(i*BOX_WIDTH/2, 0, BOX_WIDTH, h);  //questo crea una box relativa alle coordinate pix (?)
+		BOX* cropWindow = boxCreate(i*JUMP, 0, BOX_WIDTH, h);  //questo crea una box relativa alle coordinate pix (?)
 		pixN = pixClipRectangle(pix, cropWindow, NULL); //con la box mi prendo parte della PIX e ne faccio un altra PIX
 		boxDestroy(&cropWindow);
 		vector.push_back(pixN);
-		pixRemaining = pixRemaining - BOX_WIDTH ;
+		i++;
 	}
 
 	return vector;

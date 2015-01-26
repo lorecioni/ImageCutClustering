@@ -13,8 +13,8 @@
 
 using namespace std;
 
-#define BLACK_THRES 40
-#define BLACK_THRESLOW 60
+#define BLACK_THRES 100
+#define BLACK_THRESLOW 100
 #define LOW_WIDTH 13
 #define HIGH_WIDTH 20
 
@@ -87,6 +87,9 @@ string HorizontalStrokeFeature::isHorizontal(PIX* image, int offset, int width){
 				int w = x2-x1;
 				if( w > LOW_WIDTH +3  ){ //3 per ricordare il salto fatto "nel vuoto"
 					foundRow = true;
+					if( j < height/2){
+						found+="H";
+					}
 					if(w > HIGH_WIDTH){
 						found +="_-";
 

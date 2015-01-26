@@ -22,13 +22,13 @@
 
 class FeatureExtractor {
 public:
+	static int counterForName;
 	FeatureExtractor();
 	virtual ~FeatureExtractor();
-	static void extractFeatures(std::vector<StateImage*> vectorOfStates);
+	static void extractFeatures(StateImage* State);
 	static std::string searchFeatures(PIX* cut, int offset, int width);
 	static std::string findFeatures(PIX* img, string* singleResults);
 	static std::vector<PIX*> cutImage(PIX* pix);
 };
-
 
 #endif /* CLUSTERING_FEATURES_FEATUREEXTRACTOR_H_ */
