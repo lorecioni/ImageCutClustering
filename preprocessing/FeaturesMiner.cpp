@@ -129,10 +129,10 @@ int* FeaturesMiner::findColums() {
 			oldColumn = column;
 			/*END OF DEBUG*/
 
-			if ((column - firstCol) >= 2230 && (column - firstCol) <= 2290) {
+			if ((column - firstCol) >= 1320 && (column - firstCol) <= 1400) {
 				ala1 = column;
 			}
-			if ((column - firstCol) >= 2560 && (column - firstCol) <= 2630) {
+			if ((column - firstCol) >= 1550 && (column - firstCol) <= 1625) {
 				ala2 = column;
 			}
 
@@ -172,7 +172,8 @@ int* FeaturesMiner::findRows(int windowsSizeForRows) {
 	unsigned int threshold_2 = 1000;
 	int firstRowFound = 0;
 	int secondRowFound = 0;
-	int *rows = (int*) malloc(41 * sizeof(int));
+	//TODO definire numero righe come costante
+	int *rows = (int*) malloc(51 * sizeof(int));
 
 	window = (unsigned int*) malloc(this->windowsSize * sizeof(unsigned int));
 
@@ -219,8 +220,8 @@ int* FeaturesMiner::findRows(int windowsSizeForRows) {
 				 printf("%d ==> %d\n",j+k-1,(j + k - 1) - firstColumnFound);
 				 }*/
 				if (window[k] <= threshold_2 && secondRowFound == 0
-						&& (j + k - 1) - firstRowFound > 570
-						&& (j + k - 1) - firstRowFound < 640) {
+						&& (j + k - 1) - firstRowFound > 170
+						&& (j + k - 1) - firstRowFound < 240) {
 					secondRowFound = j + k - 1;
 					//printf("Seconda Riga in %d con %d\n", secondColumnFound,window[k]);
 				}
@@ -242,7 +243,7 @@ int* FeaturesMiner::findRows(int windowsSizeForRows) {
 
 		windows = (int*) malloc(windowsSizeForRows * sizeof(int));
 
-		for (int ii = 0; ii < 40; ii++) {
+		for (int ii = 0; ii < 50; ii++) {
 			rows[ii] = 0;
 		}
 		rows[0] = secondRowFound;
@@ -267,12 +268,12 @@ int* FeaturesMiner::findRows(int windowsSizeForRows) {
 
 			}
 
-			if (row - oldrow > 68 && row - oldrow < 100
+			if (row - oldrow > 25 && row - oldrow < 55
 					&& max > 255 * (this->width - 50)) {
 				rows[count] = row;
 				//	printf("Riga %d in %d min %d\n", count, (int) rows[count], max);
 				count++;
-				if (count == 41) {
+				if (count == 51) {
 					return rows;
 				}
 				oldrow = row;

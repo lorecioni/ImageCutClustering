@@ -243,8 +243,8 @@ PIX* LinesRemover::removeLines() {
 	/*binarizzo per cercare meglio le linee*/
 	imgToOut = pix8Binarize(this->image, 150);
 	row = findBlackRows(imgToOut);
-	deleteBlackColumns(imgToOut);
-	deleteBlackRows(row, imgToOut);
+	//deleteBlackColumns(imgToOut);
+	//deleteBlackRows(row, imgToOut);
 
 	if(imgToOut != NULL){
 		pixFreeData(imgToOut);
