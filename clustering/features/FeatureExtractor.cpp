@@ -49,6 +49,7 @@ void FeatureExtractor::extractFeatures(StateImage* imageState){
 	FeatureExtractor::counterForName +=1;
 
 	PIX* testImage =  imageState->getImage();
+	if(testImage != NULL){
 
 	string singleResults = "";
 	string structure = "";
@@ -72,7 +73,7 @@ void FeatureExtractor::extractFeatures(StateImage* imageState){
 	string path = "./Test/" + strs.str() +"/";
 
 	std::vector<PIX*> vector;
-	vector =  FeatureExtractor::cutImage(testImage);
+	/*vector =  FeatureExtractor::cutImage(testImage);
 	int parts =  vector.size();
 
 	for(int j=0; j< parts ; j++){
@@ -96,7 +97,8 @@ void FeatureExtractor::extractFeatures(StateImage* imageState){
 	}
 	f << "Stringa generata [" << strs.str() << "]: _" << structure << "_" << endl;
 	f << singleResults;
-	f.close();
+	f.close();*/
+	}
 
 }
 
