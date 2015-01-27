@@ -26,6 +26,7 @@
 #define EXTENSION "j2k"
 #define VERSION "1.0.0"
 #define PROJECT_NAME "UStateClustering"
+#define NUM_ROWS 50
 
 #define BORDER_OFFSET 50
 
@@ -296,7 +297,7 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 
 			PIX* croppedcroppedImage = NULL;
 			PIX* auxPixs = NULL;
-			for (int i = 0; i < 40; i++) {
+			for (int i = 0; i < NUM_ROWS; i++) {
 				if (rows[i + 1] == 0) {
 					break;
 				}
@@ -310,11 +311,8 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 					StateImage* stateImage = new StateImage(
 							new string(filepath), i, auxPixs);
 
-					//DENTRO THREAD ESTRAZIONE FEATURES
 					//Estrazione features dalle immagini
 					FeatureExtractor::extractFeatures(stateImage);
-
-					//
 
 					mtx.lock();
 					listOfCroppedStates.push_back(stateImage);

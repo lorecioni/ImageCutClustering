@@ -215,12 +215,9 @@ int* FeaturesMiner::findRows(int windowsSizeForRows) {
 
 			for (int k = 0; k < this->windowsSize; k++) {
 
-				//ONLY FOR DEBUG
-				/*if(window[k] <= 1000 && secondColumnFound == 0){
-				 printf("%d ==> %d\n",j+k-1,(j + k - 1) - firstColumnFound);
-				 }*/
+				//TODO costanti
 				if (window[k] <= threshold_2 && secondRowFound == 0
-						&& (j + k - 1) - firstRowFound > 170
+						&& (j + k - 1) - firstRowFound > 200
 						&& (j + k - 1) - firstRowFound < 240) {
 					secondRowFound = j + k - 1;
 					//printf("Seconda Riga in %d con %d\n", secondColumnFound,window[k]);
@@ -268,7 +265,8 @@ int* FeaturesMiner::findRows(int windowsSizeForRows) {
 
 			}
 
-			if (row - oldrow > 25 && row - oldrow < 55
+			//TODO costanti
+			if (row - oldrow > 35 && row - oldrow < 60
 					&& max > 255 * (this->width - 50)) {
 				rows[count] = row;
 				//	printf("Riga %d in %d min %d\n", count, (int) rows[count], max);
