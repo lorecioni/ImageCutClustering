@@ -23,9 +23,11 @@
 
 #include "../clustering/features/FeatureExtractor.h"
 
-#define JPG "jpg"
+#define EXTENSION "j2k"
 #define VERSION "1.0.0"
 #define PROJECT_NAME "UStateClustering"
+
+#define BORDER_OFFSET 50
 
 using namespace std;
 
@@ -125,7 +127,7 @@ int main(int argc, char *argv[]) {
 		fileType = (char*) malloc(3 * sizeof(char*));
 		/* print all the files and directories within directory */
 
-		l_int32 files = countFiles(directory);
+		l_int32 files = countFiles(directory, EXTENSION);
 
 		int filesPerThread = files / (N_THREAD);
 		int remainingFilesPerThread = files - ((N_THREAD) * filesPerThread);
@@ -139,7 +141,7 @@ int main(int argc, char *argv[]) {
 			fileType[1] = entGeneral->d_name[strlen(entGeneral->d_name) - 2];
 			fileType[2] = entGeneral->d_name[strlen(entGeneral->d_name) - 1];
 
-			if (entGeneral->d_type == DT_REG && strcmp(fileType, JPG) == 0) {
+			if (entGeneral->d_type == DT_REG && strcmp(fileType, EXTENSION) == 0) {
 
 				pathVector.push_back(entGeneral);
 
@@ -223,10 +225,14 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 		strcat(filepath, path);
 		strcat(filepath, ent->d_name);
 		printf("%s\n", filepath);
-		PIX* pixs = pixRead(filepath);
 
-		PIX* pixd = pixs;
-		pixGetDimensions(pixd, &w, &h, NULL);
+		//TODO da verificare in base all'estensione del file
+		PIX* pixs = pixReadJp2k(filepath, NULL, NULL, NULL);
+
+		pixGetDimensions(pixs, &w, &h, NULL);
+		//Inserito un offset nel bordo per evitare
+		BOX* cropWindow = boxCreate(BORDER_OFFSET, BORDER_OFFSET, w, h);
+		PIX* pixd = pixClipRectangle(pixs, cropWindow, NULL);
 
 		extractor = new FeaturesMiner();
 		extractor->setImage(pixd);
