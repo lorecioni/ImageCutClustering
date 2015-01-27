@@ -48,7 +48,7 @@ char * substring(char *string, int position, int length) {
 /**
  *
  */
-l_int32 countFiles(char* path, char* ext) {
+l_int32 countFiles(char* path, string ext) {
 	l_int32 numFiles = 0;
 	DIR*dir;
 	if ((dir = opendir(path)) != NULL) {
@@ -61,7 +61,7 @@ l_int32 countFiles(char* path, char* ext) {
 			fileType[0] = ent->d_name[strlen(ent->d_name) - 3];
 			fileType[1] = ent->d_name[strlen(ent->d_name) - 2];
 			fileType[2] = ent->d_name[strlen(ent->d_name) - 1];
-			if (ent->d_type == DT_REG && strcmp(fileType, ext) == 0) {
+			if (ent->d_type == DT_REG && fileType == ext) {
 				numFiles++;
 			}
 		}

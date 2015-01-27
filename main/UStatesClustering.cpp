@@ -226,10 +226,9 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 		strcat(filepath, ent->d_name);
 		printf("%s\n", filepath);
 
-		//TODO da verificare in base all'estensione del file
-		PIX* pixs = pixReadJp2k(filepath, NULL, NULL, NULL);
-
+		PIX* pixs = pixRead(filepath);
 		pixGetDimensions(pixs, &w, &h, NULL);
+
 		//Inserito un offset nel bordo per evitare
 		BOX* cropWindow = boxCreate(BORDER_OFFSET, BORDER_OFFSET, w, h);
 		PIX* pixd = pixClipRectangle(pixs, cropWindow, NULL);
