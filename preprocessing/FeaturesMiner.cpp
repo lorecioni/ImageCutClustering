@@ -6,7 +6,19 @@
  */
 
 #include "FeaturesMiner.h"
+
+#include <leptonica/environ.h>
+#include <leptonica/pix.h>
 #include <cmath>
+#include <cstdio>
+#include <cstdlib>
+
+#define HEADER_HEIGHT_MIN 200
+#define HEADER_HEIGHT_MAX 240
+#define ROW_HEIGHT_MIN 35
+#define ROW_HEIGHT_MAX 65
+
+#define NUM_ROWS 50
 
 FeaturesMiner::FeaturesMiner() {
 
@@ -172,7 +184,7 @@ int* FeaturesMiner::findRows(int windowsSizeForRows) {
 	unsigned int threshold_2 = 1000;
 	int firstRowFound = 0;
 	int secondRowFound = 0;
-	//TODO definire numero righe come costante
+
 	int *rows = (int*) malloc(51 * sizeof(int));
 
 	window = (unsigned int*) malloc(this->windowsSize * sizeof(unsigned int));
@@ -184,13 +196,11 @@ int* FeaturesMiner::findRows(int windowsSizeForRows) {
 
 	/*inizio il confronto*/
 	for (int j = 0; j < this->height - this->windowsSize; j++) {
-		//printf("projection[%d]=%d\n", j, projection[j]);
 		for (int k = 0; k < this->windowsSize; k++) {
 
 			if (window[k] <= threshold_1 && firstRowFound == 0
 					&& (j + k - 1) > 150) {
 				firstRowFound = j + k - 1;
-				//printf("Prima Riga in %d con %d\n", firstColumnFound,	window[k]);
 			}
 		}
 
@@ -214,13 +224,11 @@ int* FeaturesMiner::findRows(int windowsSizeForRows) {
 				j++) {
 
 			for (int k = 0; k < this->windowsSize; k++) {
-
-				//TODO costanti
+				//Ricerca la riga d'intestazione della tabella
 				if (window[k] <= threshold_2 && secondRowFound == 0
-						&& (j + k - 1) - firstRowFound > 200
-						&& (j + k - 1) - firstRowFound < 240) {
+						&& (j + k - 1) - firstRowFound > HEADER_HEIGHT_MIN
+						&& (j + k - 1) - firstRowFound < HEADER_HEIGHT_MAX) {
 					secondRowFound = j + k - 1;
-					//printf("Seconda Riga in %d con %d\n", secondColumnFound,window[k]);
 				}
 			}
 
@@ -240,19 +248,19 @@ int* FeaturesMiner::findRows(int windowsSizeForRows) {
 
 		windows = (int*) malloc(windowsSizeForRows * sizeof(int));
 
-		for (int ii = 0; ii < 50; ii++) {
+		for (int ii = 0; ii < NUM_ROWS; ii++) {
 			rows[ii] = 0;
 		}
 		rows[0] = secondRowFound;
 		int count = 1;
 
 		oldrow = secondRowFound;
-		/*inizializzo la finestra che esamina l'immagine*/
+		//inizializzo la finestra che esamina l'immagine
 		for (int i = 0; i < windowsSizeForRows; i++) {
 			windows[i - 1] = this->projectionHorizontal[secondRowFound + i];
 		}
 
-		/*inizio il confronto*/
+		// inizio il confronto
 		for (int j = secondRowFound; j < this->height - windowsSizeForRows;
 				j++) {
 			max = 0;
@@ -265,19 +273,18 @@ int* FeaturesMiner::findRows(int windowsSizeForRows) {
 
 			}
 
-			//TODO costanti
-			if (row - oldrow > 35 && row - oldrow < 60
+			//Taglia le singole righe
+			if (row - oldrow > ROW_HEIGHT_MIN && row - oldrow < ROW_HEIGHT_MAX
 					&& max > 255 * (this->width - 50)) {
 				rows[count] = row;
-				//	printf("Riga %d in %d min %d\n", count, (int) rows[count], max);
 				count++;
-				if (count == 51) {
+				if (count == NUM_ROWS + 1) {
 					return rows;
 				}
 				oldrow = row;
 			}
 
-			/*scorre la finestra*/
+			//scorre la finestra
 			for (int l = 0; l < windowsSizeForRows - 1; l++) {
 				windows[l] = windows[l + 1];
 			}
