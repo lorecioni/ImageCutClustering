@@ -23,7 +23,7 @@
 
 #include "../clustering/features/FeatureExtractor.h"
 
-#define EXTENSION "j2k"
+#define EXTENSION "jpg"
 #define VERSION "1.0.0"
 #define PROJECT_NAME "UStateClustering"
 #define NUM_ROWS 50
@@ -178,6 +178,8 @@ int main(int argc, char *argv[]) {
 			Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates);
 			clusterizer->clusterize();
 
+		}else{
+			cout << "Nessun ritaglio estratto";
 		}
 		closedir(dir);
 
