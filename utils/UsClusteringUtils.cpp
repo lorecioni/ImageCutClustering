@@ -59,12 +59,9 @@ l_int32 countFiles(char* path, string ext) {
 		while ((ent = readdir(dir)) != NULL) {
 
 			fileType[0] = ent->d_name[strlen(ent->d_name) - 3];
-			cout <<"1:" << fileType[0] << endl;
 			fileType[1] = ent->d_name[strlen(ent->d_name) - 2];
-			cout <<"2" << fileType[1] << endl;
 			fileType[2] = ent->d_name[strlen(ent->d_name) - 1];
-			cout << "3" << fileType[2] << endl;
-			if (ent->d_type == DT_REG && strcmp(fileType, ext.c_str()) == 0) {
+			if (ent->d_type == DT_REG && strncmp(fileType, ext.c_str(),3) == 0) {
 				numFiles++;
 			}
 		}

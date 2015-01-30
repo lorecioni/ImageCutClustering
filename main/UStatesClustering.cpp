@@ -142,7 +142,7 @@ int main(int argc, char *argv[]) {
 			fileType[1] = entGeneral->d_name[strlen(entGeneral->d_name) - 2];
 			fileType[2] = entGeneral->d_name[strlen(entGeneral->d_name) - 1];
 
-			if (entGeneral->d_type == DT_REG && strcmp(fileType, ext.c_str()) == 0) {
+			if (entGeneral->d_type == DT_REG && strncmp(fileType, ext.c_str(),3) == 0) {
 
 				pathVector.push_back(entGeneral);
 
