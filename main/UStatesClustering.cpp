@@ -44,7 +44,7 @@ static mutex mtx;
 
 int main(int argc, char *argv[]) {
 
-
+	string ext = EXTENSION;
 	int c;
 	int N_THREAD = 2;
 	char* directory;
@@ -128,7 +128,7 @@ int main(int argc, char *argv[]) {
 		fileType = (char*) malloc(3 * sizeof(char*));
 		/* print all the files and directories within directory */
 
-		l_int32 files = countFiles(directory, EXTENSION);
+		l_int32 files = countFiles(directory, ext);
 
 		int filesPerThread = files / (N_THREAD);
 		int remainingFilesPerThread = files - ((N_THREAD) * filesPerThread);
@@ -142,7 +142,7 @@ int main(int argc, char *argv[]) {
 			fileType[1] = entGeneral->d_name[strlen(entGeneral->d_name) - 2];
 			fileType[2] = entGeneral->d_name[strlen(entGeneral->d_name) - 1];
 
-			if (entGeneral->d_type == DT_REG && strcmp(fileType, EXTENSION) == 0) {
+			if (entGeneral->d_type == DT_REG && strcmp(fileType, ext.c_str()) == 0) {
 
 				pathVector.push_back(entGeneral);
 
