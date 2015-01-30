@@ -173,9 +173,12 @@ int main(int argc, char *argv[]) {
 			//printf("Thread %d arrivato!!!\n",index);
 		}
 
+		if(listOfCroppedStates.size() != 0){
 
-		Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates);
-		clusterizer->clusterize();
+			Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates);
+			clusterizer->clusterize();
+
+		}
 		closedir(dir);
 
 	} else {
