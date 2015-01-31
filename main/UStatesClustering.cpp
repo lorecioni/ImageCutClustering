@@ -28,7 +28,7 @@
 #define PROJECT_NAME "UStateClustering"
 #define NUM_ROWS 50
 
-#define BORDER_OFFSET 50
+#define BORDER_OFFSET 5
 
 using namespace std;
 
@@ -60,10 +60,10 @@ int main(int argc, char *argv[]) {
 
 		static struct option long_options[] = {
 
-		{ "verbose", no_argument, &verbose_flag, 1 }, { "brief", no_argument,
-				&verbose_flag, 0 }, { "directory", required_argument, 0, 'd' },
-				{ "threads", required_argument, 0, 't' }, { "help", no_argument,
-						0, 'h' }
+				{ "verbose", no_argument, &verbose_flag, 1 }, { "brief", no_argument,
+						&verbose_flag, 0 }, { "directory", required_argument, 0, 'd' },
+						{ "threads", required_argument, 0, 't' }, { "help", no_argument,
+								0, 'h' }
 
 		};
 		/* getopt_long stores the option index here. */
@@ -231,9 +231,14 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 		strcat(filepath, path);
 		strcat(filepath, ent->d_name);
 		printf("%s\n", filepath);
+//DEB
+		cout << "sono arrivato dentro execute" << endl;
 
 		PIX* pixs = pixRead(filepath);
 		pixGetDimensions(pixs, &w, &h, NULL);
+
+//DEB
+		cout << "w e h di pix"<< w << " "<< h << endl;
 
 		//Inserito un offset nel bordo per evitare
 		BOX* cropWindow = boxCreate(BORDER_OFFSET, BORDER_OFFSET, w, h);
@@ -253,6 +258,22 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 			pixd = pixClipRectangle(pixd, cropWindow, NULL);
 		}
 
+//DEBUG
+		static int exeNum = 0;
+		cout << "croppedImage null" << (pixd == NULL) << endl;
+		static int test = 0;
+		if(test ==0){
+			string a ="/fast/snoopy_b/santoni/ImageCutClustering/Test/";
+			stringstream ss;//create a stringstream
+			ss << exeNum;//add number to the stream
+			exeNum++;
+
+			a += ss.str();
+			a += ".jpg";
+			pixWrite(a.c_str(), pixd,IFF_JFIF_JPEG);
+			test =1;
+		}
+//ENDDEBUG
 		projector = new Projector(pixd, false);
 
 		vproj = projector->verticalProjection();
@@ -263,6 +284,9 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 		extractor->setProjectionHorizontal(hproj);
 		extractor->setProjectionVertical(vproj);
 		stateColumns = extractor->findColums();
+
+		//DEB
+		cout << stateColumns[0] <<" colonna0 " << " colonna1 " << stateColumns[1] <<endl;
 
 		if (stateColumns[0] != 0 && stateColumns[1] != 0) {
 
@@ -330,6 +354,9 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 			if (croppedBinarized != NULL)
 				pixFreeData(croppedBinarized);
 		}
+
+		cout << "numero cropp" << listOfCroppedStates.size() << endl;
+
 		if (pixs != NULL)
 			pixFreeData(pixs);
 		if (pixd != NULL)
