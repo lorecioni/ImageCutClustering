@@ -13,6 +13,13 @@
 #include <cstdio>
 #include <cstdlib>
 
+#define STATE_COLUMN_LEFT_MIN 1400
+#define STATE_COLUMN_LEFT_MAX 1470
+#define STATE_COLUMN_RIGHT_MIN 1625
+#define STATE_COLUMN_RIGHT_MAX 1710
+
+#define DIFFERENCE 100000
+
 #define HEADER_HEIGHT_MIN 200
 #define HEADER_HEIGHT_MAX 240
 #define ROW_HEIGHT_MIN 35
@@ -126,9 +133,10 @@ int* FeaturesMiner::findColums() {
 		}
 
 		difference = (l_uint32) fmax((double) max1, (double) max2) - min;
-		if (difference >= /*soglia tra massimo e minimo*/100000
+
+		if (difference >= DIFFERENCE
 				&& difference > oldDifference
-				&& abs(max2 - max1) < 100000 /*soglia tra massimi*/) {
+				&& abs(max2 - max1) < DIFFERENCE) {
 
 			if (firstCol == 0) {
 				firstCol = column;
@@ -141,10 +149,10 @@ int* FeaturesMiner::findColums() {
 			oldColumn = column;
 			/*END OF DEBUG*/
 
-			if ((column - firstCol) >= 1320 && (column - firstCol) <= 1400) {
+			if ((column - firstCol) >= STATE_COLUMN_LEFT_MIN && (column - firstCol) <= STATE_COLUMN_LEFT_MAX) {
 				ala1 = column;
 			}
-			if ((column - firstCol) >= 1550 && (column - firstCol) <= 1625) {
+			if ((column - firstCol) >= STATE_COLUMN_RIGHT_MIN && (column - firstCol) <= STATE_COLUMN_RIGHT_MAX) {
 				ala2 = column;
 			}
 
@@ -158,10 +166,12 @@ int* FeaturesMiner::findColums() {
 		}
 		window[9] = this->projectionVertical[this->windowsSize - 1 + j];
 	}
-	/*printf("Prima colonna: %d\n", firstCol);
+	/*
+	 printf("Prima colonna: %d\n", firstCol);
 	 printf("Colonna iniziale: %d \n", ala1);
 	 printf("Colonna finale: %d \n", ala2);
 	 */
+
 	int* results = (int*) malloc(2 * sizeof(int));
 	results[0] = ala1;
 	results[1] = ala2;

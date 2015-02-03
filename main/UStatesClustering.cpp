@@ -28,7 +28,7 @@
 #define PROJECT_NAME "UStateClustering"
 #define NUM_ROWS 50
 
-#define BORDER_OFFSET 5
+#define BORDER_OFFSET 50
 
 using namespace std;
 
@@ -231,14 +231,9 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 		strcat(filepath, path);
 		strcat(filepath, ent->d_name);
 		printf("%s\n", filepath);
-//DEB
-		cout << "sono arrivato dentro execute" << endl;
 
 		PIX* pixs = pixRead(filepath);
 		pixGetDimensions(pixs, &w, &h, NULL);
-
-//DEB
-		cout << "w e h di pix"<< w << " "<< h << endl;
 
 		//Inserito un offset nel bordo per evitare
 		BOX* cropWindow = boxCreate(BORDER_OFFSET, BORDER_OFFSET, w, h);
@@ -257,8 +252,8 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 			BOX* cropWindow = boxCreate(0, borderH, w, h);
 			pixd = pixClipRectangle(pixd, cropWindow, NULL);
 		}
-
-//DEBUG
+			/*
+		//FIXME DEBUG
 		static int exeNum = 0;
 		cout << "croppedImage null" << (pixd == NULL) << endl;
 		static int test = 0;
@@ -273,7 +268,8 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 			pixWrite(a.c_str(), pixd,IFF_JFIF_JPEG);
 			test =1;
 		}
-//ENDDEBUG
+		//FIXME ENDDEBUG */
+
 		projector = new Projector(pixd, false);
 
 		vproj = projector->verticalProjection();
@@ -284,9 +280,6 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 		extractor->setProjectionHorizontal(hproj);
 		extractor->setProjectionVertical(vproj);
 		stateColumns = extractor->findColums();
-
-		//DEB
-		cout << stateColumns[0] <<" colonna0 " << " colonna1 " << stateColumns[1] <<endl;
 
 		if (stateColumns[0] != 0 && stateColumns[1] != 0) {
 
@@ -313,7 +306,6 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 
 			PIX*croppedBinarized = pix8Binarize(croppedImage, 150);
 
-			//pixWrite("bin.jpg",croppedBinarized,IFF_JFIF_JPEG);
 			projector->setImage(croppedBinarized);
 			projector->setSaveProjection(true);
 			hproj = projector->horizontalProjection();
@@ -355,17 +347,12 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 				pixFreeData(croppedBinarized);
 		}
 
-		cout << "numero cropp" << listOfCroppedStates.size() << endl;
+		cout << "Numero ritagli: " << listOfCroppedStates.size() << endl;
 
 		if (pixs != NULL)
 			pixFreeData(pixs);
 		if (pixd != NULL)
 			pixFreeData(pixd);
-
-		/*Abbiamo eseguito ritaglio e pulizia dell'immagine procediamo ad estrarre le features per il clustering*/
-
-		/*clusterizer->clusterize();*/
-
 	}
 
 	return 1;
