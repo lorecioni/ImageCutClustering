@@ -58,7 +58,7 @@ void Clusterizer::clusterize() {
 				distanceLCS = LCSDistance(this->vectorOfStates[i]->getStructure(), this->vectorOfStates[j]->getStructure());
 			}
 			if(L1){
-				L1_distance(this->vectorOfStates[i]->getFeatures(), this->vectorOfStates[j]->getFeatures(), maxChanges);
+				distanceL1 = L1_distance(this->vectorOfStates[i]->getFeatures(), this->vectorOfStates[j]->getFeatures(), maxChanges);
 			}
 			//La distance L1 è pesata alla metà
 			totalDistance = (float) distanceLCS + distanceL1 * 1/2;
