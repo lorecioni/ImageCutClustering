@@ -123,12 +123,12 @@ void reset(int** myPointer) {
 /**
  *
  */
-string getState(string line) {
+string getState(string line, int labelPosition) {
 
 	vector<string> splittedLine = splitStringBy(line, "|");
 	string toReturn="";
-	if(splittedLine.size()>22){
-		toReturn=splittedLine[22];
+	if(splittedLine.size()>labelPosition){
+		toReturn=splittedLine[labelPosition];
 	}
 	else{
 		toReturn="no_label";

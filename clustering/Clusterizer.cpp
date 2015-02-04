@@ -29,6 +29,8 @@
 #define WHITE 255
 #define BLACK 0
 
+#define LABEL_POSITION 9
+
 Clusterizer::Clusterizer(std::vector<StateImage*> vectorOfStates) {
 
 	this->vectorOfStates = vectorOfStates;
@@ -41,7 +43,7 @@ void Clusterizer::clusterize() {
 	maxChanges = getMaxChanges();
 
 	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
-			(this->vectorOfStates[i])->parseContentsFile();
+			(this->vectorOfStates[i])->parseContentsFile(LABEL_POSITION);
 	}
 
 	//Popola il vettore di AffinityPropagationValues che verrà passato al metodo di AffinityPropagation

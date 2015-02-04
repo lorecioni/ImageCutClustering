@@ -42,7 +42,7 @@ public:
 	string getSourceFile();
 	void setLabel(string label);
 	std::vector<DimensionFeatures*> getFeatures();
-	void parseContentsFile();
+	void parseContentsFile(int labelPosition);
 	int getCluster() const;
 	void setCluster(int cluster);
 

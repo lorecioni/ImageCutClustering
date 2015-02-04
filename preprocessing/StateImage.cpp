@@ -26,7 +26,7 @@ void StateImage::calculateFeatures() {
 
 }
 
-void StateImage::parseContentsFile() {
+void StateImage::parseContentsFile(int labelPosition) {
 	ifstream infile;
 	string inputFilePath = this->getSourceFile();
 	inputFilePath=inputFilePath.substr(0, inputFilePath.size() - 3);
@@ -39,7 +39,7 @@ void StateImage::parseContentsFile() {
 		getline(infile, riga);
 		if (row == this->getIndex()) {
 			//cout<<riga;
-			this->setLabel(getState(riga));
+			this->setLabel(getState(riga, labelPosition));
 			riga="";
 			return;
 		}

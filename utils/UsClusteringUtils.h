@@ -16,6 +16,6 @@ void reset(char** myPointer);
 void reset(int** myPointer);
 PIX* removeText(PIX* pix);
 vector<string> splitStringBy(string stringToSplit, string regex);
-string getState(string line);
+string getState(string line, int labelPosition);
 string getGeneratedOutputFileName(string path);
 int getAverageValue(PIX* img, int offset, int width);
