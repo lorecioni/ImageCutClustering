@@ -24,7 +24,7 @@
 
 
 #define EXTENSION "jpg"
-#define VERSION "1.0.0"
+#define VERSION "1.5.0"
 #define PROJECT_NAME "UStateClustering"
 #define NUM_ROWS 50
 
@@ -50,6 +50,11 @@ int main(int argc, char *argv[]) {
 	char* directory;
 	bool firstTime = true;
 	int option_index = 0;
+	/* Flags for calculating distances */
+	bool LCS = true;
+	bool L1 = true;
+
+	showInfo();
 
 	//TODO:toglimi PER DEBUG
 	string mainfolder = "./Test/";
@@ -63,7 +68,7 @@ int main(int argc, char *argv[]) {
 				{ "verbose", no_argument, &verbose_flag, 1 }, { "brief", no_argument,
 						&verbose_flag, 0 }, { "directory", required_argument, 0, 'd' },
 						{ "threads", required_argument, 0, 't' }, { "help", no_argument,
-								0, 'h' }
+								0, 'h' }, { "lcs", no_argument, 0, 'l' }, { "l1", no_argument, 0, 'L' }
 
 		};
 		/* getopt_long stores the option index here. */
@@ -94,16 +99,31 @@ int main(int argc, char *argv[]) {
 			}
 			break;
 		case 'h':
-			showInfo();
 			showUsage();
 			abort();
 
+		case 'l':
+			L1 = false;
+			break;
+
+		case 'L':
+			LCS = false;
+			break;
+
 		default:
-			showInfo();
 			showUsage();
 			abort();
 		}
 		firstTime = false;
+	}
+
+	/* Print evaluating distance metrics */
+	if(LCS && L1){
+		cout << "Using LCS and L1 distance" << endl;
+	} else if(LCS && !L1){
+		cout << "Using only LCS distance" << endl;
+	} else {
+		cout << "Using only L1 distance" << endl;
 	}
 
 	/* Instead of reporting ‘--verbose’
@@ -111,11 +131,6 @@ int main(int argc, char *argv[]) {
 	 we report the final status resulting from them. */
 	if (verbose_flag) {
 		puts("verbose flag is set");
-	}
-	/* Print any remaining command line arguments (not options). */
-	if (optind < argc) {
-		showInfo();
-		//showusage();
 	}
 
 	struct timeval begin, end;
@@ -175,7 +190,7 @@ int main(int argc, char *argv[]) {
 
 		if(listOfCroppedStates.size() != 0){
 
-			Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates);
+			Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates, LCS, L1);
 			clusterizer->clusterize();
 
 		}else{
@@ -369,5 +384,7 @@ void showUsage() {
 	cout << "usage: " << PROJECT_NAME << " [-option ...]\n"
 			<< "where option include:\n"
 			<< "\t--directory (-d)\t directory that contains the files to be analyzed\n"
-			<< "\t--threads   (-t)\t number of threads for parallel job [default value = 2]\n";
+			<< "\t--threads   (-t)\t number of threads for parallel job [default value = 2]\n"
+			<< "\t--LCSdistance   (--lcs)\t use only LCS distance\n"
+			<< "\t--L1distance   (--l1)\t use only L1 distance\n";
 }

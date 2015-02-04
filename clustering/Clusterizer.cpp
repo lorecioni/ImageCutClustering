@@ -31,9 +31,10 @@
 
 #define LABEL_POSITION 9
 
-Clusterizer::Clusterizer(std::vector<StateImage*> vectorOfStates) {
-
+Clusterizer::Clusterizer(std::vector<StateImage*> vectorOfStates, bool LCS, bool L1) {
 	this->vectorOfStates = vectorOfStates;
+	this->LCS = LCS;
+	this->L1 = L1;
 }
 
 void Clusterizer::clusterize() {
@@ -50,9 +51,15 @@ void Clusterizer::clusterize() {
 	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
 		for (unsigned int j = i + 1; j < this->vectorOfStates.size(); j++) {
 			float totalDistance;
+			int distanceLCS = 0;
+			float distanceL1 = 0;
 			//Per ogni coppia (i, j) calcola la distanza LCS tra le due stringhe di struttura estratte
-			int distanceLCS = LCSDistance(this->vectorOfStates[i]->getStructure(), this->vectorOfStates[j]->getStructure());
-			float distanceL1 = L1_distance(this->vectorOfStates[i]->getFeatures(), this->vectorOfStates[j]->getFeatures(), maxChanges);
+			if(LCS){
+				distanceLCS = LCSDistance(this->vectorOfStates[i]->getStructure(), this->vectorOfStates[j]->getStructure());
+			}
+			if(L1){
+				L1_distance(this->vectorOfStates[i]->getFeatures(), this->vectorOfStates[j]->getFeatures(), maxChanges);
+			}
 			totalDistance = (float) distanceLCS + distanceL1;
 			values.push_back(*(new AffinityPropagationValue(i, j, -totalDistance)));
 		}
