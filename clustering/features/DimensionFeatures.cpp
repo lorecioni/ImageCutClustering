@@ -5,7 +5,7 @@
  *      Author: alessio
  */
 
-#include "Feature.h"
+#include "DimensionFeatures.h"
 
 #define W 100
 #define W1 50
@@ -13,38 +13,38 @@
 /**
  *
  */
-Feature::Feature() {
+DimensionFeatures::DimensionFeatures() {
 	setTopBlack(0);
 	setBottomBlack(0);
 	setChanges(0);
 
 }
 
-float Feature::getBottomBlack() const {
+float DimensionFeatures::getBottomBlack() const {
 	return bottomBlack;
 }
 
-void Feature::setBottomBlack(float bottomBlack) {
+void DimensionFeatures::setBottomBlack(float bottomBlack) {
 	this->bottomBlack = bottomBlack;
 }
 
-int Feature::getChanges() const {
+int DimensionFeatures::getChanges() const {
 	return changes;
 }
 
-void Feature::setChanges(int changes) {
+void DimensionFeatures::setChanges(int changes) {
 	this->changes = changes;
 }
 
-float Feature::getTopBlack() const {
+float DimensionFeatures::getTopBlack() const {
 	return topBlack;
 }
 
-void Feature::setTopBlack(float topBlack) {
+void DimensionFeatures::setTopBlack(float topBlack) {
 	this->topBlack = topBlack;
 }
 
-bool Feature::isWhite(){
+bool DimensionFeatures::isWhite(){
 	if(this->bottomBlack==-1 && this->topBlack==-1){
 		return false;
 	}
@@ -52,12 +52,12 @@ bool Feature::isWhite(){
 }
 
 
-int Feature::cost(){
+int DimensionFeatures::cost(){
 	return ((int)(this->bottomBlack-this->topBlack)*W)+this->changes*W1;
 }
 
 
-Feature::~Feature() {
+DimensionFeatures::~DimensionFeatures() {
 	// TODO Auto-generated destructor stub
 }
 

@@ -15,7 +15,7 @@
 #include <fstream>
 #include <iostream>
 #include "../preprocessing/StateImage.h"
-#include "Feature.h"
+#include "features/DimensionFeatures.h"
 
 
 /**
@@ -27,14 +27,14 @@ private:
 	vector<float> precisionOld;
 	std::vector<StateImage*> vectorOfStates;
 	/*Per ogni immagine ho un vettore di float*/
-	std::vector<std::vector<Feature*> > features;
-	void preprocessing();
+	std::vector<std::vector<DimensionFeatures*> > features;
+	void extractDimensionFeatures();
 	int getMaxChanges();
-	float L1_distance(std::vector<Feature*> a,std::vector<Feature*> b, int maxChanges);
+	float L1_distance(std::vector<DimensionFeatures*> a,std::vector<DimensionFeatures*> b, int maxChanges);
 	int factorize(int number);
 	float minimum(float a,float b,float c);
 	vector<int> getExamplars(vector<int> examplars);
-	float distance(Feature a,Feature b, int maxChanges);
+	float distance(DimensionFeatures a,DimensionFeatures b, int maxChanges);
 	void adaptStateImagesWidth();
 	void calculateOccurencies(int exemplar,std::vector<StateImage*> auxStateImage);
 	float calculatePrecision();

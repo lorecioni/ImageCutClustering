@@ -23,17 +23,16 @@
  */
 
 #include "FeatureExtractor.h"
-
 #include <leptonica/imageio.h>
 #include <sys/types.h>
 
-#include "DiagonalsAndCrossesFeature.h"
-#include "DotFeature.h"
-#include "HorizontalStrokeFeature.h"
-#include "LoopFeature.h"
-#include "TrashFeature.h"
-#include "VerticalStrokeFeature.h"
-#include "WhiteSpaceFeature.h"
+#include "features/DiagonalsAndCrossesFeature.h"
+#include "features/DotFeature.h"
+#include "features/HorizontalStrokeFeature.h"
+#include "features/LoopFeature.h"
+#include "features/TrashFeature.h"
+#include "features/VerticalStrokeFeature.h"
+#include "features/WhiteSpaceFeature.h"
 
 #define BOX_WIDTH 36
 #define JUMP 16
@@ -61,6 +60,7 @@ void FeatureExtractor::extractFeatures(StateImage* imageState){
 		structure = TrashFeature::getTrashStructure();
 	}
 
+	//Imposta la stringa di struttura
 	imageState->setStructure(structure);
 
 	//Crea la cartella per il test delle festure
@@ -69,25 +69,17 @@ void FeatureExtractor::extractFeatures(StateImage* imageState){
 	strs << FeatureExtractor::counterForName;
 	string mainfolder = "./Test/" + strs.str() +"/";
 	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
-
 	string path = "./Test/" + strs.str() +"/";
-
 	std::vector<PIX*> vector;
 	vector =  FeatureExtractor::cutImage(testImage);
 	int parts =  vector.size();
-
 	for(int j=0; j< parts ; j++){
-
 		stringstream ss;
 		ss << j;
-
 		//crea nuovo file immagine da PIX
 		string name = ss.str() + ".jpg";
 		string filepath = path + name;
-
-		pixWrite(filepath.c_str(), vector[j],
-				IFF_JFIF_JPEG);
-
+		pixWrite(filepath.c_str(), vector[j], IFF_JFIF_JPEG);
 	}
 
 	//Scrive il report della stringa

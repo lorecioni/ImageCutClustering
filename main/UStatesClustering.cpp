@@ -19,9 +19,9 @@
 #include "../preprocessing/LinesRemover.h"
 #include "../preprocessing/Projector.h"
 #include "../clustering/Clusterizer.h"
+#include "../clustering/FeatureExtractor.h"
 #include "../utils/UsClusteringUtils.h"
 
-#include "../clustering/features/FeatureExtractor.h"
 
 #define EXTENSION "jpg"
 #define VERSION "1.0.0"

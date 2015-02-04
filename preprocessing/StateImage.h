@@ -8,11 +8,12 @@
 #ifndef STATEIMAGE_H_
 #define STATEIMAGE_H_
 
-#include "../clustering/Feature.h"
 #include <leptonica/allheaders.h>
 #include "../utils/UsClusteringUtils.h"
 #include <vector>
 #include <string>
+
+#include "../clustering/features/DimensionFeatures.h"
 
 #define WHITE 255
 #define BLACK 0
@@ -25,7 +26,7 @@ private:
 	int index;
 	PIX* image;
 	int cluster;
-	std::vector<Feature*> features;
+	std::vector<DimensionFeatures*> features;
 	//Stringa di comparazione
 	string structure;
 
@@ -40,12 +41,12 @@ public:
 	int getIndex();
 	string getSourceFile();
 	void setLabel(string label);
-	std::vector<Feature*> getFeatures();
+	std::vector<DimensionFeatures*> getFeatures();
 	void parseContentsFile();
 	int getCluster() const;
 	void setCluster(int cluster);
 
-	void setFeatures(std::vector<Feature*>& features);
+	void setFeatures(std::vector<DimensionFeatures*>& features);
 
 	void setStructure(string structure);
 	string getStructure();

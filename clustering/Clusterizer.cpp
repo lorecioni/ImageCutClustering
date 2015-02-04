@@ -36,6 +36,9 @@ Clusterizer::Clusterizer(std::vector<StateImage*> vectorOfStates) {
 
 void Clusterizer::clusterize() {
 	vector<AffinityPropagationValue> values;
+	int maxChanges;
+	extractDimensionFeatures();
+	maxChanges = getMaxChanges();
 
 	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
 			(this->vectorOfStates[i])->parseContentsFile();
@@ -44,38 +47,14 @@ void Clusterizer::clusterize() {
 	//Popola il vettore di AffinityPropagationValues che verrà passato al metodo di AffinityPropagation
 	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
 		for (unsigned int j = i + 1; j < this->vectorOfStates.size(); j++) {
+			float totalDistance;
 			//Per ogni coppia (i, j) calcola la distanza LCS tra le due stringhe di struttura estratte
-			int distance = LCSDistance(this->vectorOfStates[i]->getStructure(), this->vectorOfStates[j]->getStructure());
-			values.push_back(*(new AffinityPropagationValue(i, j, -distance)));
+			int distanceLCS = LCSDistance(this->vectorOfStates[i]->getStructure(), this->vectorOfStates[j]->getStructure());
+			float distanceL1 = L1_distance(this->vectorOfStates[i]->getFeatures(), this->vectorOfStates[j]->getFeatures(), maxChanges);
+			totalDistance = (float) distanceLCS + distanceL1;
+			values.push_back(*(new AffinityPropagationValue(i, j, -totalDistance)));
 		}
 	}
-
-	/* DA QUI CODICE OBSOLETO
-
-	//seguo il preprocessing prima dell'estrazione delle feautures
-
-	int maxChanges;
-	preprocessing();
-	maxChanges = getMaxChanges();
-	std::string prova = "";
-
-
-	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
-		(this->vectorOfStates[i])->parseContentsFile();
-	}
-
-	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
-		for (unsigned int j = i + 1; j < this->vectorOfStates.size(); j++) {
-
-			//float dis = DTWdistance(this->features[i], this->features[j]);
-			float dis = L1_distance(this->vectorOfStates[i]->getFeatures(),
-					this->vectorOfStates[j]->getFeatures(), maxChanges);
-			values.push_back(*(new AffinityPropagationValue(i, j, -dis)));
-
-		}
-	}
-
-	FINE CODICE OBSOLETO */
 
 	string mainfolder = "./Clusters/";
 	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
@@ -85,7 +64,6 @@ void Clusterizer::clusterize() {
 		cout << "Errore nella creazione del file!";
 		return;
 	}
-
 
 	printf("Il numero di ritagli è %d\n: ", this->vectorOfStates.size());
 
@@ -186,7 +164,7 @@ void Clusterizer::clusterize() {
 /**
  *
  */
-void Clusterizer::preprocessing() {
+void Clusterizer::extractDimensionFeatures() {
 
 	int width = 0;
 	bool firstBlackPixel = false;
@@ -198,12 +176,12 @@ void Clusterizer::preprocessing() {
 	adaptStateImagesWidth();
 
 	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
-		std::vector<Feature*> imageFeatures;
+		std::vector<DimensionFeatures*> imageFeatures;
 		PIX* auxPix = pix8Binarize((this->vectorOfStates[i])->getImage(), 150);
 		pixGetDimensions(auxPix, &width, &height, NULL);
 		for (int x = 0; x < width; x++) {
 
-			Feature* feature = new Feature();
+			DimensionFeatures* feature = new DimensionFeatures();
 
 			l_uint32 val = 0;
 			for (int y = 0; y < height; y++) {
@@ -259,7 +237,7 @@ void Clusterizer::preprocessing() {
 int Clusterizer::getMaxChanges() {
 	int max = 0;
 	for (unsigned int i = 0; i < vectorOfStates.size(); i++) {
-		vector<Feature*> copy = this->vectorOfStates[i]->getFeatures();
+		vector<DimensionFeatures*> copy = this->vectorOfStates[i]->getFeatures();
 		for (int j = 0; j < copy.size(); j++) {
 			if (copy[j]->getChanges() > max) {
 				max = copy[j]->getChanges();
@@ -272,7 +250,7 @@ int Clusterizer::getMaxChanges() {
 /**
  *
  */
-float Clusterizer::L1_distance(std::vector<Feature*> a, std::vector<Feature*> b,
+float Clusterizer::L1_distance(std::vector<DimensionFeatures*> a, std::vector<DimensionFeatures*> b,
 		int maxChanges) {
 
 	float distanceVal = 0;
@@ -285,7 +263,7 @@ float Clusterizer::L1_distance(std::vector<Feature*> a, std::vector<Feature*> b,
 /**
  *
  */
-float Clusterizer::distance(Feature a, Feature b, int maxChanges) {
+float Clusterizer::distance(DimensionFeatures a, DimensionFeatures b, int maxChanges) {
 //TODO è indifferente al numero di cambiamenti, da sistemarxemplar15e la presenza di feature -1
 	//return abs(a.coofs st() - b.cost());
 

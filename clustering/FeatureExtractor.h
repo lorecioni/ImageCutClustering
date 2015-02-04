@@ -5,8 +5,8 @@
  *      Author: lorenzocioni
  */
 
-#ifndef CLUSTERING_FEATURES_FEATUREEXTRACTOR_H_
-#define CLUSTERING_FEATURES_FEATUREEXTRACTOR_H_
+#ifndef CLUSTERING_FEATUREEXTRACTOR_H_
+#define CLUSTERING_FEATUREEXTRACTOR_H_
 
 #include<leptonica/allheaders.h>
 #include <leptonica/pix.h>
@@ -18,7 +18,7 @@
 #include <sys/stat.h>
 #include <dirent.h>
 #include <vector>
-#include "../../preprocessing/StateImage.h"
+#include "../preprocessing/StateImage.h"
 
 class FeatureExtractor {
 public:
@@ -31,4 +31,4 @@ public:
 	static std::vector<PIX*> cutImage(PIX* pix);
 };
 
-#endif /* CLUSTERING_FEATURES_FEATUREEXTRACTOR_H_ */
+#endif /* CLUSTERING_FEATUREEXTRACTOR_H_ */

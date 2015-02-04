@@ -5,17 +5,17 @@
  *      Author: alessio
  */
 
-#ifndef FEATURE_H_
-#define FEATURE_H_
+#ifndef DIMENSION_FEATURES_H_
+#define DIMENSION_FEATURES_H_
 
-class Feature {
+class DimensionFeatures {
 private:
 	float topBlack;
 	float bottomBlack;
 	int changes;
 public:
-	Feature();
-	virtual ~Feature();
+	DimensionFeatures();
+	virtual ~DimensionFeatures();
 	float getBottomBlack() const;
 	void setBottomBlack(float bottomBlack);
 	int getChanges() const;
