@@ -60,7 +60,8 @@ void Clusterizer::clusterize() {
 			if(L1){
 				L1_distance(this->vectorOfStates[i]->getFeatures(), this->vectorOfStates[j]->getFeatures(), maxChanges);
 			}
-			totalDistance = (float) distanceLCS + distanceL1;
+			//La distance L1 è pesata alla metà
+			totalDistance = (float) distanceLCS + distanceL1 * 1/2;
 			values.push_back(*(new AffinityPropagationValue(i, j, -totalDistance)));
 		}
 	}
