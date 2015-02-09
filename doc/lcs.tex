@@ -1,4 +1,7 @@
-\subsection{Evaluating distances: LCS} 
+\subsection{Evaluating distances}
+
+\subsubsection{Longest Common Subsequence} 
+
 In order to compare the generated strings one another we must define a distance on the samples.
 The distance used in our work is based on the \emph{Longest Common Subsequence} (\textbf{LCS}) algorithm. 
 
@@ -26,6 +29,22 @@ $$ x.length() + y.length() - 2*LcsLength$$
 
 where $x$ and $y$ are the strings and the $length()$ function returns the length of a string.
 
+\subsubsection{Euclidean distance} 
 
+Longest Common Subsequence is only used with strings. In order to improve the correctness of words distance we combine LCS distance with euclidean distance which uses dimensional features insted of structure features.
 
+The eucliden distance is evaluated with
+$$d = \sqrt{((a_b - a_t)−(b_b - b_t))^2 +(a_c - b_c)^2}$$
 
+with
+
+\begin{itemize}
+\item $a_b$ representing the end of the stroke $a$
+\item $a_t$ representing the begin of the stroke $a$
+\item $b_b$ representing the end of the stroke $b$
+\item $b_t$ representing the begin of the stroke $b$
+\item $a_c$ representing the number of transition (normalized) of $a$
+\item $b_c$ representing the number of transition (normalized) of $b$
+\end{itemize}
+
+At this point we evaluate the L1 normalization for each segment we proceed evaluatin distances from different features with the previous way.

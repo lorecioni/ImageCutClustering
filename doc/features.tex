@@ -1,4 +1,4 @@
-\subsection{Features}
+\subsection{Structure features}
 
 In this work we want to find \emph{primitive} features, resembling the possible types of strokes used to write a word, to characterize the sample from which they are extracted in order to perform clustering on their set.
 
@@ -134,3 +134,10 @@ We present now an example of extraction of features from a word. We initially cr
 \end{enumerate}
 
 Once those strings are generated they are combined together to generate the word \textit{structure string}. 
+
+\subsection{Dimensional features}
+
+In some cases the structure feature extraction leads to some problems of recognition or it may not be sufficient to properly assess the similarity between two words.
+In order to improve word clustering we combine structure features with \emph{dimensional features} for each word. 
+
+As in the previous feature extraction process, words are splitted in smaller boxes. For each of them we evaluate the stroke height and the number of transitions from white to black. With those features two words are similar if their strokes are similar compared by length and height. The height is stored as the difference between the end of the stroke and the start.
