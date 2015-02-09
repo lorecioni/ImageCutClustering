@@ -73,4 +73,64 @@ a simple scan of the window.
 The horizontal lines requires a double-window for their implicit characteristic.
 The function identifies a line if it finds a connected row or column of black pixels that has sufficient length, in particular it distinguishes the lines found in normal or long through an ulterior threshold.
 Once a fitting line has been found the function keeps searching for more, continuing the scansion of the window after having moved a certain distance from the last line found in order not to confuse a particularly thick stroke as different separate lines.
-There still persists the problem that the stroke width is not fully considered so a big blob of black pixels is seen as a series of horizontal and vertical lines, at the same time such an occurrence is rare so the presence of many horizontal and vertical lines ends up distinguishing the word in itself.     
+There still persists the problem that the stroke width is not fully considered so a big blob of black pixels is seen as a series of horizontal and vertical lines, at the same time such an occurrence is rare so the presence of many horizontal and vertical lines ends up distinguishing the word in itself.    
+
+\subsection{Feature extraction example}
+
+We present now an example of extraction of features from a word. We initially create, as described above, a sliding window that scrolls along the image by a fixed step. Than, for each section,  features are extracted and a substring is generated.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.5\textwidth]{images/missiouri/missiouri.jpg}
+\caption{Feature extraction from \emph{Missiouri} word}
+\label{fig:ap}
+\end{figure} 
+
+\begin{figure}[!ht]
+ \centering
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/0.jpg}}
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/1.jpg}}
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/2.jpg}}
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/3.jpg}}
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/4.jpg}}
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/5.jpg}}
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/6.jpg}}
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/7.jpg}}
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/8.jpg}}  
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/9.jpg}}
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/10.jpg}}
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/11.png}}
+ \subfigure[]
+   {\includegraphics[width=0.06\textwidth]{images/missiouri/12.png}}   
+ \caption{Sliding window segmentation}
+ \end{figure}
+
+\begin{enumerate}[label=(\alph*)]
+\item Some \textbf{diagonal lines} (ascending (s) and descending (u) ), at the top (S) and at the bottom (s) of the image. Generated string: ''\emph{sSUusSUSu}''.
+\item As the previous image and two more diagonal lines representing the "\emph{i}". An \textbf{horizonal line} (H). Generated string: ''\emph{sSUusSUSuHsu}''.
+\item Some diagonal lines and, at the end of the window, an horizontal line. Generated string: ''\emph{ssSusSsH}''.
+\item Two consecutive similar character represented by diagonal lines and \textbf{vertical lines} in the middle. Generated string: ''\emph{sVHsV}''.
+\item In that window we can find a \textbf{dot} (.). Generated string: ''\emph{ssVHs.}''
+\item The same previous dot and a little \textbf{loop} (L) at the bottom. Generated string: ''\emph{ssVs.LssH}''.
+\item The same loop as previous, an horizontal line a vertical line and two diagonal. Generated string: ''\emph{LVHssu}''.
+\item Generated string: ''\emph{ssVHus}''.
+\item The other dot here. Generated string ''\emph{ssus.H}''.
+\item An i. Generated string: ''\emph{ssuu.}''.
+\item Only a diagonal line. Generated string: ''\emph{s}''.
+\item Empty window.
+\item Empty window.
+\end{enumerate}
+
+Once those strings are generated they are combined together to generate the word \textit{structure string}. 
