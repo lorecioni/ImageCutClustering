@@ -42,11 +42,17 @@ vector<int> LinesRemover::findBlackRows(PIX* img) {
 		if (lineProjection < soglia
 				&& (i > (0.85 * this->height) || (i < 0.2 * this->height))) {
 			if (row.size() == 0 && i >= 2) {
-				row.push_back(i);
+				//Se la riga si trova nel bordo alto la aggiungo
+				if(i < 20){
+					row.push_back(i);
+				}
 				//printf("\nHo trovato una riga in %d dell'immagine ritagliata con valore %d",i,lineProjection);
 			}
 			if (row.size() != 0 && i > row[row.size() - 1] + 8) {
-				row.push_back(i);
+				//Se la riga si trova nel bordo alto la aggiungo
+				if(i < 20){
+					row.push_back(i);
+				}
 				//printf("\nHo trovato una riga in %d dell'immagine ritagliata con valore %d",i,lineProjection);
 			}
 		}
@@ -243,18 +249,14 @@ PIX* LinesRemover::removeLines() {
 	/*binarizzo per cercare meglio le linee*/
 	imgToOut = pix8Binarize(this->image, 150);
 	row = findBlackRows(imgToOut);
-	//deleteBlackColumns(imgToOut);
-	//deleteBlackRows(row, imgToOut);
+	deleteBlackColumns(imgToOut);
+	deleteBlackRows(row, imgToOut);
 
 	if(imgToOut != NULL){
 		pixFreeData(imgToOut);
 	}
 
 	return this->image;
-
-	//DEBUG: salva la binarizzata
-	//return imgToOut;
-
 }
 
 double LinesRemover::degToRad(double value) {

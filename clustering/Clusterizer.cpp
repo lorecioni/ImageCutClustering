@@ -49,7 +49,7 @@ void Clusterizer::clusterize() {
 
 	//Stampa il tempo di esecuzione una volta estratte le feature
 	double featureExtractionTime = evaluateTime(this->begin);
-	printf("Features estratte. Tempo di esecuzione: %.3f s\n", featureExtractionTime);
+	printf("\nFeatures estratte in %.3f s\n", featureExtractionTime);
 
 	//Popola il vettore di AffinityPropagationValues che verrà passato al metodo di AffinityPropagation
 	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
@@ -72,7 +72,7 @@ void Clusterizer::clusterize() {
 
 	//Stampa il tempo di esecuzione una volta estratte le feature
 	double evaluatingDistancesTime = evaluateTime(this->begin) - featureExtractionTime;
-	printf("Distanze calcolate. Tempo di esecuzione: %.3f s\n", evaluatingDistancesTime);
+	printf("Distanze calcolate in %.3f s\n", evaluatingDistancesTime);
 
 	string mainfolder = "./Clusters/";
 	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
@@ -83,10 +83,11 @@ void Clusterizer::clusterize() {
 		return;
 	}
 
-	printf("Il numero di ritagli è %d\n: ", this->vectorOfStates.size());
+	printf("\n----- Risultati -----\n\n");
+	printf("Numero di ritagli: %d\n", this->vectorOfStates.size());
 
 	f << "Resoconto risultati" << endl;
-	f << "Il numero di ritagli è: " << this->vectorOfStates.size() << endl;
+	f << "Numero ritagli: " << this->vectorOfStates.size() << endl;
 
 	//Invoca affinity propagation sul vettore di similarità
 	vector<int> examplar = affinityPropagation(this->vectorOfStates.size(),
@@ -125,8 +126,6 @@ void Clusterizer::clusterize() {
 	}
 	vector<StateImage *> auxStateImage;
 
-	cout << examplar.size() << endl;
-
 	vector<int> clusterHead;
 	for (int i = 0; i < examplar.size(); i++) {
 		bool found = false;
@@ -142,13 +141,13 @@ void Clusterizer::clusterize() {
 
 	sort(clusterHead.begin(), clusterHead.end());
 
-	f << "Il numero di cluster: " << clusterHead.size() << endl;
-	cout << "Il numero di cluster: " << clusterHead.size() << endl;
-	f << "Il numero medio di elementi per cluster: "
-			<< (float) this->vectorOfStates.size() / clusterHead.size() << endl;
-	cout << "Il numero medio di elementi per cluster: "
-			<< (float) this->vectorOfStates.size() / clusterHead.size() << endl;
+	f << "Numero clusters: " << clusterHead.size() << endl;
+	cout << "Numero clusters: " << clusterHead.size() << endl;
+	f << "Media elementi per cluster: " << (float) this->vectorOfStates.size() / clusterHead.size() << endl;
+	cout << "Media elementi per cluster: " << (float) this->vectorOfStates.size() / clusterHead.size() << endl;
 	f.close();
+
+	printf("\n-- Clusters--\n\n");
 	for (int i = 0; i < clusterHead.size(); i++) {
 
 		auxStateImage.clear();
@@ -172,17 +171,17 @@ void Clusterizer::clusterize() {
 		return;
 	}
 
-	cout << "Il numero di cluster corretti è: " << this->correctClusters << endl;
-	nf << "Il numero di cluster corretti è: " << this->correctClusters << endl;
-	cout << "Il numero di elementi all'interno di cluster corretti è: " << this->correctElements << endl;
-	nf << "Il numero di elementi all'interno di cluster corretti è: " << this->correctElements << endl;
+	cout << "\nNumero cluster corretti: " << this->correctClusters << endl;
+	nf << "\nNumero cluster corretti:: " << this->correctClusters << endl;
+	cout << "Elementi in cluster corretti: " << this->correctElements << endl;
+	nf << "Elementi in cluster corretti: " << this->correctElements << endl;
 
 	float prec = calculatePrecision();
 	float precOld = calculatePrecisionOld();
-	cout << "La precision del clustering è: " << prec << endl;
-	cout << "La precision (old) del clustering è " << precOld << endl;
-	nf << "La precision del clustering è: " << prec << " %" << endl;
-	nf << "La precision (old) del clustering è: " << precOld << " %" << endl;
+	cout << "La precisione del clustering è: " << prec << endl;
+	cout << "La precisione media del clustering è " << precOld << endl;
+	nf << "La precisione del clustering è: " << prec << " %" << endl;
+	nf << "La precisione media del clustering è: " << precOld << " %" << endl;
 	nf.close();
 
 }
@@ -419,15 +418,16 @@ void Clusterizer::calculateOccurencies(int exemplar,
 		}
 	}
 
-	std::cout << "exemplar " << exemplar << " contains:";
+	std::cout << "- Cluster numero " << exemplar << " ";
 	ofstream f("./Clusters/result.txt", ios::app); //apre il file in modalità append, lasciando intatto quello che c'è e scrivendo alla fine
 	if (!f) {
 		cout << "Errore nell'apertura del file!";
 		return;
 	}
-	f << "Cluster " << exemplar << endl;
-	f << "Numero di elementi nel cluster:" << auxStateImage.size() << endl
+	f << "- Cluster numero " << exemplar << endl;
+	f << "Elementi nel cluster:" << auxStateImage.size() << endl
 			<< endl;
+	cout << "(" << auxStateImage.size() << " elementi):" << endl;
 
 	for (auto it = m.begin(); it != m.end(); ++it) {
 		string State = it->first;
@@ -435,7 +435,7 @@ void Clusterizer::calculateOccurencies(int exemplar,
 		f << "\t" << State << "\t" << " # " << count << " ("
 				<< ((float) count / (float) auxStateImage.size()) * 100 << "%)"
 				<< endl;
-		std::cout << " " << State << ":" << count << endl;
+		std::cout << " " << State << ": " << count << endl;
 		singlePrecisions.push_back(
 				(float) count / (float) auxStateImage.size());
 	}

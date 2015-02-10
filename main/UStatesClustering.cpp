@@ -119,11 +119,11 @@ int main(int argc, char *argv[]) {
 
 	/* Print evaluating distance metrics */
 	if(LCS && L1){
-		cout << "Using LCS and L1 distance" << endl;
+		cout << "Using LCS and L1 distance\n" << endl;
 	} else if(LCS && !L1){
-		cout << "Using only LCS distance" << endl;
+		cout << "Using only LCS distance\n" << endl;
 	} else {
-		cout << "Using only L1 distance" << endl;
+		cout << "Using only L1 distance\n" << endl;
 	}
 
 	/* Instead of reporting ‘--verbose’
@@ -145,6 +145,8 @@ int main(int argc, char *argv[]) {
 
 		l_int32 files = countFiles(directory, ext);
 
+		cout << "Trovate "  << files << " immagini:" << endl;
+
 		int filesPerThread = files / (N_THREAD);
 		int remainingFilesPerThread = files - ((N_THREAD) * filesPerThread);
 
@@ -158,10 +160,7 @@ int main(int argc, char *argv[]) {
 			fileType[2] = entGeneral->d_name[strlen(entGeneral->d_name) - 1];
 
 			if (entGeneral->d_type == DT_REG && strncmp(fileType, ext.c_str(),3) == 0) {
-
 				pathVector.push_back(entGeneral);
-
-				//execute(path, entGeneral);
 			}
 
 		}
@@ -172,8 +171,6 @@ int main(int argc, char *argv[]) {
 			threads.push_back(
 					thread(execute, path, pathVector, indexFiles,
 							filesPerThread));
-
-			//printf("Thread %d partito!!!\n",index);
 			indexFiles += filesPerThread;
 
 		}
@@ -181,11 +178,9 @@ int main(int argc, char *argv[]) {
 				thread(execute, path, pathVector,
 						files - remainingFilesPerThread,
 						remainingFilesPerThread));
-		//printf("Thread %d partito!!!\n",N_THREAD-1);
 
 		for (int index = 0; index < threads.size(); index++) {
 			threads[index].join();
-			//printf("Thread %d arrivato!!!\n",index);
 		}
 
 		if(listOfCroppedStates.size() != 0){
@@ -242,7 +237,7 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 		strcpy(filepath, "");
 		strcat(filepath, path);
 		strcat(filepath, ent->d_name);
-		printf("%s\n", filepath);
+		printf("-%s\n", filepath);
 
 		PIX* pixs = pixRead(filepath);
 		pixGetDimensions(pixs, &w, &h, NULL);
@@ -264,23 +259,6 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 			BOX* cropWindow = boxCreate(0, borderH, w, h);
 			pixd = pixClipRectangle(pixd, cropWindow, NULL);
 		}
-			/*
-		//FIXME DEBUG
-		static int exeNum = 0;
-		cout << "croppedImage null" << (pixd == NULL) << endl;
-		static int test = 0;
-		if(test ==0){
-			string a ="/fast/snoopy_b/santoni/ImageCutClustering/Test/";
-			stringstream ss;//create a stringstream
-			ss << exeNum;//add number to the stream
-			exeNum++;
-
-			a += ss.str();
-			a += ".jpg";
-			pixWrite(a.c_str(), pixd,IFF_JFIF_JPEG);
-			test =1;
-		}
-		//FIXME ENDDEBUG */
 
 		projector = new Projector(pixd, false);
 
@@ -299,22 +277,17 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 					stateColumns[1] - stateColumns[0], h);
 			PIX* croppedImage = pixClipRectangle(pixd, cropWindow, NULL);
 
-			//get horizontalstring projection of cropped image
 			pixGetDimensions(croppedImage, &w, &h, NULL);
 
 			l_float32 angle, conf;
 			PIX* pixf = pixThresholdToBinary(croppedImage, 80);
 			if (pixFindSkew(pixf, &angle, &conf) == 0) {
-				//printf("%s %g\n", "Skew angle:", angle);
 				croppedImage = pixRotateAMGray(croppedImage,
 						(M_PI / 180) * angle, (l_uint8) 0);
 			}
 
-
-			//pixDestroy(&pixf);
 			if (pixf != NULL)
 				pixFreeData(pixf);
-			//PIX* imageWithoutText=removeText(croppedImage);
 
 			PIX*croppedBinarized = pix8Binarize(croppedImage, 150);
 
@@ -359,8 +332,6 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 				pixFreeData(croppedBinarized);
 		}
 
-		cout << "Numero ritagli: " << listOfCroppedStates.size() << endl;
-
 		if (pixs != NULL)
 			pixFreeData(pixs);
 		if (pixd != NULL)
@@ -373,6 +344,7 @@ int execute(char* path, vector<dirent*> entVect, int offset, int length) {
 void showInfo() {
 
 	cout << PROJECT_NAME << " " << VERSION << "\n";
+	cout << "----------------------\n" << endl;
 
 }
 

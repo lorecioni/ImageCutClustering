@@ -44,7 +44,6 @@ int FeatureExtractor::counterForName;
 void FeatureExtractor::extractFeatures(StateImage* imageState){
 	//Metodo per l'estrazione delle nuove features
 
-	//TODO:toglimi x avere nome test file
 	FeatureExtractor::counterForName +=1;
 
 	PIX* testImage =  imageState->getImage();
