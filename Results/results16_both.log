@@ -1,0 +1,314 @@
+UStateClustering 1.5.0
+----------------------
+
+Using LCS and L1 distance
+
+Trovate 16 immagini:
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00120.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00115.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00102.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00114.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00109.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00108.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00101.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00103.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00117.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00111.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00110.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00116.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00104.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00107.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00113.jpg
+-/fast/snoopy_b/santoni/IMAGES/20-16/ANWRESH1_4584477-00105.jpg
+
+Features estratte in 6.848 s
+Distanze calcolate in 37.754 s
+
+----- Risultati -----
+
+Numero di ritagli: 550
+Numero clusters: 66
+Media elementi per cluster: 8.33333
+
+-- Clusters--
+
+- Cluster numero 49 (1 elementi):
+ Oklahoma: 1
+- Cluster numero 56 (1 elementi):
+ New Mexico: 1
+- Cluster numero 58 (1 elementi):
+ Georgia: 1
+- Cluster numero 76 (1 elementi):
+ Illinois: 1
+- Cluster numero 91 (1 elementi):
+ Australia: 1
+- Cluster numero 95 (1 elementi):
+ Illinois: 1
+- Cluster numero 105 (1 elementi):
+ Kansas: 1
+- Cluster numero 151 (1 elementi):
+ United States: 1
+- Cluster numero 168 (1 elementi):
+ Texas: 1
+- Cluster numero 202 (6 elementi):
+ Scotland: 6
+- Cluster numero 206 (1 elementi):
+ Missouri: 1
+- Cluster numero 210 (4 elementi):
+ California: 1
+ Missouri: 3
+- Cluster numero 213 (2 elementi):
+ Brazil: 1
+ Kansas: 1
+- Cluster numero 214 (1 elementi):
+ Kansas: 1
+- Cluster numero 220 (2 elementi):
+ Kansas: 2
+- Cluster numero 226 (4 elementi):
+ Texas: 1
+ Illinois: 1
+ New York: 1
+ Kansas: 1
+- Cluster numero 246 (3 elementi):
+ Ohio: 1
+ Kansas: 1
+ Arkansas: 1
+- Cluster numero 268 (1 elementi):
+ Kansas: 1
+- Cluster numero 273 (2 elementi):
+ Texas: 1
+ Kansas: 1
+- Cluster numero 275 (4 elementi):
+ Kansas: 4
+- Cluster numero 277 (4 elementi):
+ Colorado: 1
+ Kansas: 3
+- Cluster numero 313 (2 elementi):
+ Iowa: 1
+ Oklahoma: 1
+- Cluster numero 320 (5 elementi):
+ Texas: 1
+ Kansas: 3
+ Indiana: 1
+- Cluster numero 322 (1 elementi):
+ Kansas: 1
+- Cluster numero 329 (11 elementi):
+ Iowa: 1
+ Kansas: 7
+ Oklahoma: 1
+ Missouri: 1
+ Louisiana: 1
+- Cluster numero 334 (18 elementi):
+ United States: 1
+ Kansas: 16
+ Indiana: 1
+- Cluster numero 350 (1 elementi):
+ Oklahoma: 1
+- Cluster numero 374 (5 elementi):
+ Kentucky: 1
+ Kansas: 1
+ Oklahoma: 3
+- Cluster numero 385 (1 elementi):
+ Indiana: 1
+- Cluster numero 390 (1 elementi):
+ Kansas: 1
+- Cluster numero 398 (10 elementi):
+ Kansas: 10
+- Cluster numero 408 (37 elementi):
+ Virginia: 1
+ Idaho: 1
+ Texas: 4
+ California: 1
+ France: 1
+ Illinois: 1
+ Iowa: 2
+ Kansas: 21
+ Indiana: 1
+ Louisiana: 2
+ Missouri: 2
+- Cluster numero 411 (2 elementi):
+ Oklahoma: 1
+ Missouri: 1
+- Cluster numero 414 (13 elementi):
+ Virginia: 1
+ Illinois: 2
+ Kansas: 7
+ Oklahoma: 1
+ Indiana: 1
+ Germany: 1
+- Cluster numero 415 (27 elementi):
+ Illinois: 3
+ New York: 1
+ Florida: 1
+ Arkansas: 1
+ Kansas: 16
+ Oklahoma: 2
+ Indiana: 2
+ Missouri: 1
+- Cluster numero 436 (5 elementi):
+ Texas: 1
+ Mexico: 2
+ Kansas: 2
+- Cluster numero 438 (4 elementi):
+ Kansas: 2
+ Missouri: 2
+- Cluster numero 440 (1 elementi):
+ Kansas: 1
+- Cluster numero 464 (15 elementi):
+ United States: 1
+ Alabama: 1
+ Kansas: 1
+ Oklahoma: 12
+- Cluster numero 472 (5 elementi):
+ Kansas: 4
+ Missouri: 1
+- Cluster numero 474 (18 elementi):
+ Sweden: 1
+ Texas: 3
+ Tennessee: 3
+ Mexico: 1
+ Iowa: 1
+ Kansas: 6
+ Washington: 1
+ Arizona: 1
+ Missouri: 1
+- Cluster numero 475 (32 elementi):
+ Illinois: 3
+ Mexico: 1
+ Ohio: 1
+ Arkansas: 3
+ Kansas: 12
+ Mississippi: 1
+ Germany: 1
+ Missouri: 10
+- Cluster numero 477 (30 elementi):
+ Mexico: 2
+ Kansas: 27
+ Mississippi: 1
+- Cluster numero 480 (4 elementi):
+ Pennsylvania: 2
+ Illinois: 1
+ Indiana: 1
+- Cluster numero 485 (6 elementi):
+ Nebraska: 1
+ Illinois: 2
+ Ohio: 2
+ Indiana: 1
+- Cluster numero 487 (1 elementi):
+ Michigan: 1
+- Cluster numero 491 (12 elementi):
+ Pennsylvania: 1
+ Sweden: 1
+ Ohio: 1
+ Kansas: 1
+ Arkansas: 7
+ Oklahoma: 1
+- Cluster numero 499 (12 elementi):
+ Illinois: 1
+ Kansas: 1
+ Oklahoma: 10
+- Cluster numero 505 (27 elementi):
+ United States: 1
+ Nebraska: 1
+ Texas: 1
+ Illinois: 1
+ Colorado: 1
+ Scotland: 1
+ Iowa: 1
+ Arkansas: 3
+ Kansas: 9
+ Mississippi: 1
+ Missouri: 7
+- Cluster numero 507 (22 elementi):
+ Pennsylvania: 1
+ California: 1
+ Illinois: 2
+ Kansas: 2
+ Missouri: 16
+- Cluster numero 510 (14 elementi):
+ Virginia: 1
+ Kentucky: 1
+ Iowa: 1
+ Kansas: 11
+- Cluster numero 512 (10 elementi):
+ Kansas: 1
+ Oklahoma: 9
+- Cluster numero 513 (1 elementi):
+ South Dakota: 1
+- Cluster numero 514 (3 elementi):
+ Oklahoma: 3
+- Cluster numero 519 (4 elementi):
+ Kansas: 1
+ Indiana: 2
+ Oklahoma: 1
+- Cluster numero 524 (1 elementi):
+ United States: 1
+- Cluster numero 525 (18 elementi):
+ Colorado: 1
+ Kansas: 14
+ Indiana: 1
+ Oklahoma: 1
+ Missouri: 1
+- Cluster numero 526 (18 elementi):
+ South Dakota: 1
+ Illinois: 1
+ Scotland: 1
+ Kansas: 2
+ Arkansas: 5
+ West Virginia: 1
+ Oklahoma: 6
+ Montana: 1
+- Cluster numero 530 (15 elementi):
+ United States: 1
+ Illinois: 9
+ Ohio: 1
+ Iowa: 1
+ Kansas: 2
+ Indiana: 1
+- Cluster numero 535 (19 elementi):
+ North Carolina: 1
+ Kentucky: 1
+ Texas: 7
+ Illinois: 1
+ Mexico: 1
+ Kansas: 4
+ Iowa: 1
+ Indiana: 1
+ Missouri: 2
+- Cluster numero 537 (7 elementi):
+ Kansas: 5
+ Missouri: 1
+ Germany: 1
+- Cluster numero 538 (19 elementi):
+ Pennsylvania: 2
+ Michigan: 1
+ Minnesota: 1
+ Indiana: 1
+ Washington: 1
+ Missouri: 13
+- Cluster numero 546 (7 elementi):
+ Texas: 1
+ Ohio: 1
+ Iowa: 3
+ Missouri: 2
+- Cluster numero 547 (33 elementi):
+ Tennessee: 1
+ Minnesota: 1
+ Georgia: 1
+ Arkansas: 3
+ Kansas: 7
+ Indiana: 1
+ Missouri: 18
+ Germany: 1
+- Cluster numero 548 (7 elementi):
+ Iowa: 6
+ Oklahoma: 1
+- Cluster numero 549 (3 elementi):
+ Kentucky: 1
+ Missouri: 2
+
+Numero cluster corretti: 25
+Elementi in cluster corretti: 45
+La precisione del clustering è: 62.9091
+La precisione media del clustering è 74.3753
+Tempo totale di esecuzione: 47.412 s
