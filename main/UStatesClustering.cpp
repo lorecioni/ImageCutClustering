@@ -190,7 +190,7 @@ int main(int argc, char *argv[]) {
 
 		if(listOfCroppedStates.size() != 0){
 
-			Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates, LCS, L1);
+			Clusterizer* clusterizer = new Clusterizer(listOfCroppedStates, LCS, L1, begin);
 			clusterizer->clusterize();
 
 		}else{
@@ -210,13 +210,10 @@ int main(int argc, char *argv[]) {
 		return -1;
 	}
 
-	gettimeofday(&end, NULL);
-	double diff_sec = difftime(end.tv_sec, begin.tv_sec) * CLOCKS_PER_SEC;
-	double diff_milli = difftime(end.tv_usec, begin.tv_usec);
-	printf("tempo totale di esecuzione: %.3f s",
-			(diff_sec + diff_milli) / CLOCKS_PER_SEC);
+	double executionTime = evaluateTime(begin);
+	printf("Tempo totale di esecuzione: %.3f s", executionTime);
 
-	f << "Tempo totale di esecuzione:" << (diff_sec + diff_milli) / CLOCKS_PER_SEC << endl;
+	f << "Tempo totale di esecuzione:" << executionTime << endl;
 
 	return 0;
 

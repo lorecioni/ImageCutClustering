@@ -4,7 +4,10 @@
 #include <vector>
 #include "../preprocessing/StateImage.h"
 #include <sstream>
-
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <ctime>
+#include <chrono>
 
 using namespace std;
 
@@ -19,3 +22,4 @@ vector<string> splitStringBy(string stringToSplit, string regex);
 string getState(string line, int labelPosition);
 string getGeneratedOutputFileName(string path);
 int getAverageValue(PIX* img, int offset, int width);
+double evaluateTime(timeval begin);

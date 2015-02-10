@@ -14,6 +14,10 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <ctime>
+#include <chrono>
 #include "../preprocessing/StateImage.h"
 #include "features/DimensionFeatures.h"
 
@@ -27,6 +31,9 @@ private:
 	vector<float> precisionOld;
 	bool LCS;
 	bool L1;
+	struct timeval begin;
+	//Il numero di cluster con precisione 100% ed il numero di elementi che contengono
+	int correctClusters, correctElements;
 	std::vector<StateImage*> vectorOfStates;
 	/*Per ogni immagine ho un vettore di float*/
 	std::vector<std::vector<DimensionFeatures*> > features;
@@ -43,7 +50,7 @@ private:
 	float calculatePrecisionOld();
 
 public:
-	Clusterizer(std::vector<StateImage*> vectorOfPixs, bool LCS, bool L1);
+	Clusterizer(std::vector<StateImage*> vectorOfPixs, bool LCS, bool L1, timeval begin);
 	void clusterize();
 	virtual ~Clusterizer();
 };

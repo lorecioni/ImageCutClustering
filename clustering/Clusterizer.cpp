@@ -11,8 +11,6 @@
 #include <leptonica/imageio.h>
 #include <leptonica/pix.h>
 #include <stddef.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
@@ -24,17 +22,19 @@
 #include "affinitypropagation/ap.cpp"
 #include "affinitypropagation/AffinityPropagationValue.h"
 #include "lcs/LCSLength.h"
-#include "lcs/EditDistance.h"
 
 #define WHITE 255
 #define BLACK 0
 
 #define LABEL_POSITION 9
 
-Clusterizer::Clusterizer(std::vector<StateImage*> vectorOfStates, bool LCS, bool L1) {
+Clusterizer::Clusterizer(std::vector<StateImage*> vectorOfStates, bool LCS, bool L1, timeval begin) {
 	this->vectorOfStates = vectorOfStates;
 	this->LCS = LCS;
 	this->L1 = L1;
+	this->begin = begin;
+	this->correctClusters = 0;
+	this->correctElements = 0;
 }
 
 void Clusterizer::clusterize() {
@@ -46,6 +46,10 @@ void Clusterizer::clusterize() {
 	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
 			(this->vectorOfStates[i])->parseContentsFile(LABEL_POSITION);
 	}
+
+	//Stampa il tempo di esecuzione una volta estratte le feature
+	double featureExtractionTime = evaluateTime(this->begin);
+	printf("Features estratte. Tempo di esecuzione: %.3f s\n", featureExtractionTime);
 
 	//Popola il vettore di AffinityPropagationValues che verrà passato al metodo di AffinityPropagation
 	for (unsigned int i = 0; i < this->vectorOfStates.size(); i++) {
@@ -66,6 +70,10 @@ void Clusterizer::clusterize() {
 		}
 	}
 
+	//Stampa il tempo di esecuzione una volta estratte le feature
+	double evaluatingDistancesTime = evaluateTime(this->begin) - featureExtractionTime;
+	printf("Distanze calcolate. Tempo di esecuzione: %.3f s\n", evaluatingDistancesTime);
+
 	string mainfolder = "./Clusters/";
 	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
 
@@ -80,6 +88,7 @@ void Clusterizer::clusterize() {
 	f << "Resoconto risultati" << endl;
 	f << "Il numero di ritagli è: " << this->vectorOfStates.size() << endl;
 
+	//Invoca affinity propagation sul vettore di similarità
 	vector<int> examplar = affinityPropagation(this->vectorOfStates.size(),
 			values, 1, 0.9, 2000, 100);
 
@@ -134,9 +143,11 @@ void Clusterizer::clusterize() {
 	sort(clusterHead.begin(), clusterHead.end());
 
 	f << "Il numero di cluster: " << clusterHead.size() << endl;
+	cout << "Il numero di cluster: " << clusterHead.size() << endl;
 	f << "Il numero medio di elementi per cluster: "
 			<< (float) this->vectorOfStates.size() / clusterHead.size() << endl;
-
+	cout << "Il numero medio di elementi per cluster: "
+			<< (float) this->vectorOfStates.size() / clusterHead.size() << endl;
 	f.close();
 	for (int i = 0; i < clusterHead.size(); i++) {
 
@@ -161,12 +172,17 @@ void Clusterizer::clusterize() {
 		return;
 	}
 
+	cout << "Il numero di cluster corretti è: " << this->correctClusters << endl;
+	nf << "Il numero di cluster corretti è: " << this->correctClusters << endl;
+	cout << "Il numero di elementi all'interno di cluster corretti è: " << this->correctElements << endl;
+	nf << "Il numero di elementi all'interno di cluster corretti è: " << this->correctElements << endl;
+
 	float prec = calculatePrecision();
 	float precOld = calculatePrecisionOld();
-	cout << "La precision del cluster è: " << prec << endl;
-	cout << "La precision (old) del cluster è " << precOld << endl;
-	nf << "La precision del cluster è: " << prec << " %" << endl;
-	nf << "La precision (old) del cluster è: " << precOld << " %" << endl;
+	cout << "La precision del clustering è: " << prec << endl;
+	cout << "La precision (old) del clustering è " << precOld << endl;
+	nf << "La precision del clustering è: " << prec << " %" << endl;
+	nf << "La precision (old) del clustering è: " << precOld << " %" << endl;
 	nf.close();
 
 }
@@ -430,6 +446,11 @@ void Clusterizer::calculateOccurencies(int exemplar,
 	this->precisionOld.push_back(singlePrecisions[singlePrecisions.size() - 1]);
 	this->precisions.push_back(singlePrecisions[singlePrecisions.size() - 1] * auxStateImage.size());
 
+	//Se il cluster ha precisione 100% aumente il numero cluster corretti
+	if((int)singlePrecisions[singlePrecisions.size() - 1] == 1){
+		this->correctClusters++;
+		this->correctElements += auxStateImage.size();
+	}
 }
 /**
  * percentage old

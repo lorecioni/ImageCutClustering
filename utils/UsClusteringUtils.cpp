@@ -185,3 +185,11 @@ int getAverageValue(PIX* img, int offset, int width){
 	}
 	return count/num;
 }
+
+double evaluateTime(timeval begin){
+	timeval now;
+	gettimeofday(&now, NULL);
+	double diff_sec = difftime(now.tv_sec, begin.tv_sec) * CLOCKS_PER_SEC;
+	double diff_milli = difftime(now.tv_usec, begin.tv_usec);
+	return (diff_sec + diff_milli) / CLOCKS_PER_SEC;
+}

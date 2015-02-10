@@ -34,8 +34,8 @@
 #include "features/VerticalStrokeFeature.h"
 #include "features/WhiteSpaceFeature.h"
 
-#define BOX_WIDTH 36
-#define JUMP 16
+#define BOX_WIDTH 40
+#define JUMP 7
 
 FeatureExtractor::FeatureExtractor() {}
 
