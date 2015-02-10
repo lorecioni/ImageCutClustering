@@ -32,12 +32,28 @@ The height of the windows used is never considered as a parameter since for all 
 
 The first feature that is search in the windows is the white space. This way if a window is identified as blank will not be necessary to proceed with the investigation of other features, saving time.
 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/whitespace.jpg}
+\caption{A whitespace}
+\end{figure} 
+
 A window is identified as blank if the average pixel values is below a preset white threshold.
 
 \subsubsection{Loop}
 
 The feature that represents a loop is recognized only with maximum window size.
 To locate a loop is initially found a black pixel. The idea behind is to imagine that we had found a point on the border and meet two transitions going in the same direction, first from black to white then from white to black. Between the two transitions there must be a minimum step above a preset threshold where the pixels are white.
+
+\begin{wrapfigure}{l}{0.3\textwidth}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics[width=0.06\textwidth]{images/loop.jpg}
+  \end{center}
+  \vspace{-20pt}
+  \caption{A loop}
+  \vspace{-10pt}
+\end{wrapfigure}
 
 If the above condition occurs then we verify that it is real in the same way along the horizontal axis. We then sit in the center of the loop (the median value of the segment described above) and check that, moving both right or left you get a transition from white to black after a suitable number of white pixels.
 
@@ -68,6 +84,15 @@ Using connected components we can retrieve Dot feature in a simple way.
 The feature representing a diagonal line, both upward and downward facing, is extracted through a simple exhaustive scansion of the window for lines of connected black pixels that have an incline in a range of values and are sufficiently long.
 
 At the moment the function doesn't account for the width of the lines found, thus diagonal features can be recognised in a shapeless blob of black pixel that is sufficiently big. 
+\begin{wrapfigure}{l}{0.3\textwidth}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics[width=0.06\textwidth]{images/diagonal.jpg}
+  \end{center}
+  \vspace{-20pt}
+  \caption{A diagonal line}
+  \vspace{-10pt}
+\end{wrapfigure}
    
 There's a distinction for diagonal features that appear in the lower and upper bottom of the window.
 At most in a window the function identifies a couple of upward and a couple of downward facing lines (lower and upper parts), once one has been found it stops searching for the same type.
