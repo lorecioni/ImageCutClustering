@@ -1,4 +1,6 @@
-\subsection{Structure features}
+\section{Features extraction}
+
+\subsection{Structural features}
 
 In this work we want to find \emph{primitive} features, resembling the possible types of strokes used to write a word, to characterize the sample from which they are extracted in order to perform clustering on their set.
 
@@ -10,7 +12,9 @@ Due to the absence of such \emph{native} order the string that defines a window 
 The chosen way to resolve the issue however presents the problem of making sliding windows inapplicable: this means that a sample must necessarily be cut in separate windows, which are allowed to overlap, with the corresponding effect that due to the random cut some features like \textit{loops} may not be recognised in an instance and recognised in another. 
 
 Each sample is associated to a characterizing string of characters made from the identifiers of the features recognized in the sample.
+
 The string is constructed modularly by appending in order the strings associated to each window the sample is divided in.
+
 After having recognised the presence of a feature in a given window the corresponding identifier is added to the end of the string correspondent to the window; the order in which the features are searched and thus added to the queue is decided a priori and maintained consistent during the construction of the strings. 
 
 
@@ -21,10 +25,8 @@ Currently we have chosen to cut the samples in windows of 32 pixels each, with t
 These windows are spaced only 16 pixels from the preceding and succeeding one, with the intent of creating overlap and lengthening the string that characterizes the samples.
 
 While the simplest way to create the windows is simply creating a new PIX with the required coordinates it requires unnecessary passages and time in the creation of new objects. We have thus preferred to increase the complexity of the functions that search for the features, to whom we pass as a variable the original sample PIX with information about the \textit{offset} at which to start the search and the \textit{width} of the window. The width of the window passed has actually a non banal meaning duo to the fact that different features are linked to areas of the image with varying dimensions: for example we can't reasonably search for an horizontal line and a vertical line utilizing windows with the same width due to the fact that horizontal lines realistically will require windows with great width but will not have requisites on the height.
+
 The height of the windows used is never considered as a parameter since for all features' functions the height is customarily the whole height of the sample.  
-
-
-//possibilmente sezione stringa/caratteri?
 
 \subsubsection{Whitespace}  
 
@@ -44,7 +46,18 @@ However, with appropriate threshold values you can get good results and to ident
 
 \subsubsection{Dot}
 
+\begin{wrapfigure}{r}{0.3\textwidth}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics[width=0.06\textwidth]{images/dot}
+  \end{center}
+  \vspace{-20pt}
+  \caption{A dot}
+  \vspace{-10pt}
+\end{wrapfigure}
+
 To search for Dots within the segment we first proceed locating the \emph{connected components} inside it. The individual components are extracted and inserted into a \emph{box} which we can know the size and the relative position to the segment.
+
 
 At this point we look for those boxes with dimensions between two preset values (minimum and maximum radius) and those that meet this condition are most likely points.
 
@@ -70,74 +83,130 @@ The crossing feature may also not necessarily be a complete intersection, in fac
 \subsubsection{Horizontal and Vertical line}
 Both horizontal and vertical lines' features are extracted through
 a simple scan of the window.
+
 The horizontal lines requires a double-window for their implicit characteristic.
 The function identifies a line if it finds a connected row or column of black pixels that has sufficient length, in particular it distinguishes the lines found in normal or long through an ulterior threshold.
+
 Once a fitting line has been found the function keeps searching for more, continuing the scansion of the window after having moved a certain distance from the last line found in order not to confuse a particularly thick stroke as different separate lines.
+
 There still persists the problem that the stroke width is not fully considered so a big blob of black pixels is seen as a series of horizontal and vertical lines, at the same time such an occurrence is rare so the presence of many horizontal and vertical lines ends up distinguishing the word in itself.    
 
-\subsection{Feature extraction example}
+\subsection{Dimensional features}
+
+In some cases the structure feature extraction leads to some problems of recognition or it may not be sufficient to properly assess the similarity between two words.
+
+In order to improve word clustering we combine structural features with \emph{dimensional features} for each word. 
+
+As in the previous feature extraction process, words are splitted in smaller boxes. For each of them we evaluate the stroke height and the number of transitions from white to black. With those features two words are similar if their strokes are similar compared by length and height. The height is stored as the difference between the end of the stroke and the start.
+
+\subsection{Features extraction example}
 
 We present now an example of extraction of features from a word. We initially create, as described above, a sliding window that scrolls along the image by a fixed step. Than, for each section,  features are extracted and a substring is generated.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.5\textwidth]{images/missiouri/missiouri.jpg}
-\caption{Feature extraction from \emph{Missiouri} word}
-\label{fig:ap}
+\includegraphics[width=0.5\textwidth]{images/missouri_crop.jpg}
+\caption{Feature extraction from \emph{Missouri} word}
 \end{figure} 
 
 \begin{figure}[!ht]
  \centering
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/0.jpg}}
+   {\includegraphics[width=0.06\textwidth]{images/missouri/0.jpg}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/1.jpg}}
+   {\includegraphics[width=0.06\textwidth]{images/missouri/1.jpg}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/2.jpg}}
+   {\includegraphics[width=0.06\textwidth]{images/missouri/2.jpg}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/3.jpg}}
+   {\includegraphics[width=0.06\textwidth]{images/missouri/3.jpg}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/4.jpg}}
+   {\includegraphics[width=0.06\textwidth]{images/missouri/4.jpg}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/5.jpg}}
+   {\includegraphics[width=0.06\textwidth]{images/missouri/5.jpg}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/6.jpg}}
+   {\includegraphics[width=0.06\textwidth]{images/missouri/6.jpg}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/7.jpg}}
+   {\includegraphics[width=0.06\textwidth]{images/missouri/7.jpg}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/8.jpg}}  
+   {\includegraphics[width=0.06\textwidth]{images/missouri/8.jpg}}  
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/9.jpg}}
+   {\includegraphics[width=0.06\textwidth]{images/missouri/9.jpg}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/10.jpg}}
+   {\includegraphics[width=0.06\textwidth]{images/missouri/10.jpg}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/11.png}}
+   {\includegraphics[width=0.06\textwidth]{images/missouri/11.png}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missiouri/12.png}}   
+   {\includegraphics[width=0.06\textwidth]{images/missouri/12.png}}   
  \caption{Sliding window segmentation}
  \end{figure}
 
 \begin{enumerate}[label=(\alph*)]
 \item Some \textbf{diagonal lines} (ascending (s) and descending (u) ), at the top (S) and at the bottom (s) of the image. Generated string: ''\emph{sSUusSUSu}''.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/0.jpg}
+\end{figure} 
 \item As the previous image and two more diagonal lines representing the "\emph{i}". An \textbf{horizonal line} (H). Generated string: ''\emph{sSUusSUSuHsu}''.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/1.jpg}
+\end{figure} 
 \item Some diagonal lines and, at the end of the window, an horizontal line. Generated string: ''\emph{ssSusSsH}''.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/2.jpg}
+\end{figure} 
 \item Two consecutive similar character represented by diagonal lines and \textbf{vertical lines} in the middle. Generated string: ''\emph{sVHsV}''.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/3.jpg}
+\end{figure} 
 \item In that window we can find a \textbf{dot} (.). Generated string: ''\emph{ssVHs.}''
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/4.jpg}
+\end{figure} 
 \item The same previous dot and a little \textbf{loop} (L) at the bottom. Generated string: ''\emph{ssVs.LssH}''.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/5.jpg}
+\end{figure} 
 \item The same loop as previous, an horizontal line a vertical line and two diagonal. Generated string: ''\emph{LVHssu}''.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/6.jpg}
+\end{figure} 
 \item Generated string: ''\emph{ssVHus}''.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/7.jpg}
+\end{figure} 
 \item The other dot here. Generated string ''\emph{ssus.H}''.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/8.jpg}
+\end{figure} 
 \item An i. Generated string: ''\emph{ssuu.}''.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/9.jpg}
+\end{figure} 
 \item Only a diagonal line. Generated string: ''\emph{s}''.
-\item Empty window.
-\item Empty window.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/10.jpg}
+\end{figure} 
+\item Empty window. Generated string: ''\emph{ }''.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/11.png}
+\end{figure} 
+\item Empty window. Generated string: ''\emph{ }''.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.06\textwidth]{images/missouri/12.png}
+\end{figure} 
 \end{enumerate}
 
 Once those strings are generated they are combined together to generate the word \textit{structure string}. 
 
-\subsection{Dimensional features}
-
-In some cases the structure feature extraction leads to some problems of recognition or it may not be sufficient to properly assess the similarity between two words.
-In order to improve word clustering we combine structure features with \emph{dimensional features} for each word. 
-
-As in the previous feature extraction process, words are splitted in smaller boxes. For each of them we evaluate the stroke height and the number of transitions from white to black. With those features two words are similar if their strokes are similar compared by length and height. The height is stored as the difference between the end of the stroke and the start.

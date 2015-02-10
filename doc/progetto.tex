@@ -1,4 +1,4 @@
-\section{The Pre-existing project}
+\section{The pre-existing project}
 
 The census page that contains the data in digital form holds a wealth of information about each person surveyed: name, gender, membership status and some secondary features such as work or the breed. 
 
@@ -19,17 +19,14 @@ We can summarize the project in three basic steps:
 \item Post-processing of each cut image
 \end{enumerate}
 
-//questo dovrebbe essere dopo
-
 The last step, corresponding to the clustering of images, is the point of interest of our paper: while the past work was focused on the localization and retrieval not much thought was put on the features to be extracted preferring simplicity and efficiency to effectiveness.
 It is this very point that gives our paper a reason d'etre: starting from the preceding, already implemented, two steps, we proceed by providing a rewritten and improved clustering method through the use of new features, these steps will be discussed later in the section \ref{Nostro_prog}.
 
 \subsubsection{Word localization}
-//direi di togliere "we" visto che non siamo noi
 
 In this first phase the aim is to identify the region of the grid within which the State words are located. 
 
-First of all we remove the black border of the document, an artefact resulting from the physical scanning. Then, through a vertical projection of the pixels and the creation of an histogram, we locate the grid columns and, knowing the correct column's offset regarding the beginning of the document, just the one concerned is extracted.
+First of all the black border of the document is removed, an artefact resulting from the physical scanning. Then, through a vertical projection of the pixels and the creation of an histogram, the grid columns are located and, knowing the correct column's offset regarding the beginning of the document, just the one concerned is extracted.
 
 \subsubsection{Row segmentation}
 
@@ -43,7 +40,6 @@ At the end of this phase, ideally each word is contained in an individual image.
 
 In the post-processing phase the individual images extracted are reworked in order to remove any  vertical or horizontal residual lines left from an imperfect previous cut.
 
-//?
 Delete row/column strokes can be about as bring back the black pixels related to the residual value of pure white (255 as grayscale).
 
 This allows us to extract the most significant features in the next steps of processing.
@@ -51,14 +47,14 @@ This allows us to extract the most significant features in the next steps of pro
 \begin{figure}[!ht]
 \centering
 \vspace{0.3cm}
-\includegraphics[width=0.5\textwidth]{images/img2.jpg}
+\includegraphics[width=0.5\textwidth]{images/missouri.jpg}
 \caption{An image extracted from document.}
 \label{fig:extracted_image}
 \end{figure}
 
 As you can see in Figure \ref{fig:extracted_image}, the word is centered and the extra line have been removed (there is a line set to white). For each picture we proceed with feature extraction for handwritten characters and clustering. 
 
-\subsection{Troubles}
+\subsection{Problems}
 
 The localization of words and their segmentation has inherent strong difficulties.
 

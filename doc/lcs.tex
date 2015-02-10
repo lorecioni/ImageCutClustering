@@ -1,6 +1,6 @@
-\subsection{Evaluating distances}
+\section{Evaluating distances}
 
-\subsubsection{Longest Common Subsequence} 
+\subsection{Longest Common Subsequence} 
 
 In order to compare the generated strings one another we must define a distance on the samples.
 The distance used in our work is based on the \emph{Longest Common Subsequence} (\textbf{LCS}) algorithm. 
@@ -29,12 +29,12 @@ $$ x.length() + y.length() - 2*LcsLength$$
 
 where $x$ and $y$ are the strings and the $length()$ function returns the length of a string.
 
-\subsubsection{Euclidean distance} 
+\subsection{Euclidean distance} 
 
 Longest Common Subsequence is only used with strings. In order to improve the correctness of words distance we combine LCS distance with euclidean distance which uses dimensional features insted of structure features.
 
 The eucliden distance is evaluated with
-$$d = \sqrt{((a_b - a_t)−(b_b - b_t))^2 +(a_c - b_c)^2}$$
+$$d = \sqrt{((a_b - a_t)−(b_b - b_t))^2 -(a_c - b_c)^2}$$
 
 with
 
