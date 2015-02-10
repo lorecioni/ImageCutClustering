@@ -49,46 +49,48 @@ void FeatureExtractor::extractFeatures(StateImage* imageState){
 	PIX* testImage =  imageState->getImage();
 	if(testImage != NULL){
 
-	string singleResults = "";
-	string structure = "";
+		string singleResults = "";
+		string structure = "";
 
-	//Controlla se il segmento contiene solo "spazzatura"
-	if(!TrashFeature::isTrash(testImage)){
-		structure = FeatureExtractor::findFeatures(testImage, &singleResults);
-	} else {
-		structure = TrashFeature::getTrashStructure();
-	}
+		//Controlla se il segmento contiene solo "spazzatura"
+		if(!TrashFeature::isTrash(testImage)){
+			structure = FeatureExtractor::findFeatures(testImage, &singleResults);
+		} else {
+			structure = TrashFeature::getTrashStructure();
+		}
 
-	//Imposta la stringa di struttura
-	imageState->setStructure(structure);
+		//Imposta la stringa di struttura
+		imageState->setStructure(structure);
 
-	//Crea la cartella per il test delle festure
-	//TODO da rimuovere dopo i test, non è necessario salvare i singoli pezzi
-	stringstream strs;
-	strs << FeatureExtractor::counterForName;
-	string mainfolder = "./Test/" + strs.str() +"/";
-	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
-	string path = "./Test/" + strs.str() +"/";
-	std::vector<PIX*> vector;
-	vector =  FeatureExtractor::cutImage(testImage);
-	int parts =  vector.size();
-	for(int j=0; j< parts ; j++){
-		stringstream ss;
-		ss << j;
-		//crea nuovo file immagine da PIX
-		string name = ss.str() + ".jpg";
-		string filepath = path + name;
-		pixWrite(filepath.c_str(), vector[j], IFF_JFIF_JPEG);
-	}
+		//Crea la cartella per il test delle festure
+		if(false){
+			//Impostare a 'true' per debug
+			stringstream strs;
+			strs << FeatureExtractor::counterForName;
+			string mainfolder = "./Test/" + strs.str() +"/";
+			mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+			string path = "./Test/" + strs.str() +"/";
+			std::vector<PIX*> vector;
+			vector =  FeatureExtractor::cutImage(testImage);
+			int parts =  vector.size();
+			for(int j=0; j< parts ; j++){
+				stringstream ss;
+				ss << j;
+				//crea nuovo file immagine da PIX
+				string name = ss.str() + ".jpg";
+				string filepath = path + name;
+				pixWrite(filepath.c_str(), vector[j], IFF_JFIF_JPEG);
+			}
 
-	//Scrive il report della stringa
-	ofstream f(path + "comparatore.txt"); //se il file non esiste lo crea, altrimenti appende
-	if (!f) {
-		cout << "Errore nella creazione/apertura del file!";
-	}
-	f << "Stringa generata [" << strs.str() << "]: _" << structure << "_" << endl;
-	f << singleResults;
-	f.close();
+			//Scrive il report della stringa
+			ofstream f(path + "comparatore.txt"); //se il file non esiste lo crea, altrimenti appende
+			if (!f) {
+				cout << "Errore nella creazione/apertura del file!";
+			}
+			f << "Stringa generata [" << strs.str() << "]: _" << structure << "_" << endl;
+			f << singleResults;
+			f.close();
+		}
 	}
 
 }

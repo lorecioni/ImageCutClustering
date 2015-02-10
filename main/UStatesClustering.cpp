@@ -56,10 +56,11 @@ int main(int argc, char *argv[]) {
 
 	showInfo();
 
-	//TODO:toglimi PER DEBUG
-	string mainfolder = "./Test/";
-	mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
-
+	if(false){
+		//Crea la cartella per debug
+		string mainfolder = "./Test/";
+		mkdir(mainfolder.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+	}
 
 	while (1) {
 
