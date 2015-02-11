@@ -11,24 +11,6 @@ int LCSDistance(string x, string y){
 	//Calcola la distanza tra due stringhe
 	int length = LCSLength(x, y);
 	int difference = 0;
-	//TODO da valutare come interpretare la distanza
-
-	//così se uno è completamente contenuto in uno più grande la distanza è 0,
-	//idealmente ciò permette di raggruppare oggetti uguali ma per cui in
-	//uno il primo pezzo non è stato beccato,
-	//MALE perchè il nostro compito è precision non recall,
-	//si finisce per raggruppare una "/" con "/adsdads"
-/*
-	if(x.length() > y.length()) {
-		difference = x.length() - y.length();
-		return (y.length() - length);
-	} else {
-		difference = y.length() - x.length();
-		return (x.length() - length) ;
-	}
-	*/
-
-	//così si restituisce il numero di lettere in + da entrambi i lati
 	return x.length() + y.length() - 2* length;
 }
 
