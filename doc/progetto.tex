@@ -16,7 +16,7 @@ We can summarize the project in three basic steps:
 \begin{enumerate}
 \item Localization of the text area containing the words of interest
 \item Row segmentation
-\item Post-processing of each cut image
+\item Post-processing and clustering
 \end{enumerate}
 
 The last step, corresponding to the clustering of images, is the point of interest of our paper: while the past work was focused on the localization and retrieval not much thought was put on the features to be extracted preferring simplicity and efficiency to effectiveness.
@@ -36,7 +36,7 @@ Similar to the previous step, but using an horizontal projection this time, we a
 
 At the end of this phase, ideally each word is contained in an individual image.
 
-\subsubsection{Post-processing}
+\subsubsection{Post-processing and clustering}
 
 In the post-processing phase the individual images extracted are reworked in order to remove any  vertical or horizontal residual lines left from an imperfect previous cut.
 
@@ -44,11 +44,16 @@ Delete row/column strokes can be about as bring back the black pixels related to
 
 This allows us to extract the most significant features in the next steps of processing.
 
+Each image is divided in windows 1 pixel wide, on these windows the features are then extracted.
+The idea is not placing excessive burden on the operating system, the features are thus relatively simplistic: for each window the value of the height of the first and last black pixels are collected, together with the number of transitions of the pixels from black to white and vice versa.
+The distance between images is then found through the Euclidean Distance where the considered axis are the number of transitions and the stroke height calculated through a simple subtraction of the first and last black pixels height.
+The distance matrix is then fed to the Affinity Propagation algorithm to create the desired clusters.
+
 \begin{figure}[!ht]
 \centering
 \vspace{0.3cm}
-\includegraphics[width=0.5\textwidth]{images/missouri.jpg}
-\caption{An image extracted from document.}
+\includegraphics[width=0.5\textwidth]{images/missouri_1pix.jpg}
+\caption{An image extracted from document, the red box delineates the 1 pixel wide window.}
 \label{fig:extracted_image}
 \end{figure}
 
