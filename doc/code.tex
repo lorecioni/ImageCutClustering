@@ -1,0 +1,15 @@
+\section{Compiling and running notes}
+
+This software was developed entirely in C++, and uses an open source library of image processing and analysis, \emph{Leptonica}\footnote{Leptonica,a pedagogically-oriented open source site containing software that is broadly useful for image processing and image analysis applications -http://www.leptonica.org/}, version 1.70.
+
+\emph{Leptonica} provides many functions for manipulating images pixel by pixel using a high-level approach. Thanks to this library for example, you can draw up a diagram of projections, crop images, or find the connected components in a portion of the image.
+
+To compile the code, once included the library described above, it is necessary, in the case of version of \emph{GCC/G++} less than 4.7, compile with version 11 of C++ that introduces support for threads.
+
+To run this programm use the following parameters:
+\begin{itemize}
+\item \textbf{-d} to specify the images directory.
+\item \textbf{-t} to specify the number of threads. Default is 2.
+\item \textbf{--lcs} to use only LCS distance for building similarity matrix.
+\item \textbf{--l1} to use only Euclidean distance for building similarity matrix.
+\end{itemize}
