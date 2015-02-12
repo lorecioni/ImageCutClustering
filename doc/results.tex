@@ -18,7 +18,6 @@ The data collected for each test are as follows:
 \item \textbf{Running time}: the total execution time, in seconds.
 \item \textbf{Correct clusters}: the number of clusters with maximum precision, therefore containing only words equal to each other.
 \item \textbf{Correct elements}: the number of words within clusters corrected. Even as a percentage.
-\item \textbf{Average precision}: the average precision of the accuracy of individual clusters, as a percentage.
 \item \textbf{Precision}: the accuracy of the result, the average accuracy of individual clusters weighted with the number of words.
 \end{itemize}
 
@@ -44,9 +43,9 @@ In the next table we're going to show the main results for the tests.
 130 scans (L1) & 6500 & 5050 & 425 & 5444.43 & 71.12\\ 
 130 scans (LCS) & 6500 & 5050 & 441 & 5629.71 & 74.41\\ 
 130 scans (LCS and L1) & 6500 & 5050 & 463 & 6729.62 & 77.94\\ 
-700 scans (L1) & 0 & 0 & 0 & 0 & 0\\ 
-700 scans (LCS) & 0 & 0 & 0 & 0 & 0\\ 
-700 scans (LCS and L1) & 0 & 0 & 0 & 0 & 0\\ 
+500 scans (L1) & 0 & 0 & 0 & 0 & 0\\ 
+500 scans (LCS) & 0 & 0 & 0 & 0 & 0\\ 
+500 scans (LCS and L1) & 25000 & 18146 & 3941 & 138309.85 & 82.14\\ 
  \hline
 \end{tabular}
 \caption{Main results}
@@ -86,9 +85,9 @@ Now we're going to focus our attention to time. The running time is divided main
 130 scans (L1) & 70.80 & 313.70 & 5059.93 & 5444.43\\ 
 130 scans (LCS) & 68.17 & 4353.85 & 1207.69 & 5629.71\\ 
 130 scans (LCS and L1) & 73.10 & 5608.82 & 1047.70 & 6729.62\\ 
-700 scans (L1) & 0 & 0 & 0 & 0 \\ 
-700 scans (LCS) & 0 & 0 & 0 & 0\\ 
-700 scans (LCS and L1) & 0 & 0 & 0 & 0\\ 
+500 scans (L1) & 0 & 0 & 0 & 0 \\ 
+500 scans (LCS) & 0 & 0 & 0 & 0\\ 
+500 scans (LCS and L1) & 403.41 & 61424.57 & 76481.87 & 138309.85\\ 
  \hline
 \end{tabular}
 \caption{Running time}
@@ -130,9 +129,9 @@ In the following table are collected the number of clusters that respect the abo
 130 scans (L1) & 138 & 651 & 12.89 & 4.72\\ 
 130 scans (LCS) & 208 & 713 & 14.12 &  3.43\\ 
 130 scans (LCS and L1) & 215 & 860 & 17.03 & 4.00\\ 
-700 scans (L1) & 0 & 0 & 0 & 0\\ 
-700 scans (LCS) & 0 & 0 & 0 & 0\\ 
-700 scans (LCS and L1) & 0 & 0 & 0 & 0\\ 
+500 scans (L1) & 0 & 0 & 0 & 0\\ 
+500 scans (LCS) & 0 & 0 & 0 & 0\\ 
+500 scans (LCS and L1) & 3020 & 7616 & 41.97 & 2.52\\ 
  \hline
 \end{tabular}
 \caption{Correct clusters}
