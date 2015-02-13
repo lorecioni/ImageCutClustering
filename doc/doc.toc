@@ -1,20 +1,26 @@
-\contentsline {section}{\numberline {1}Introduction}{1}
-\contentsline {section}{\numberline {2}The Pre-existing project}{2}
-\contentsline {subsection}{\numberline {2.1}Process steps}{2}
-\contentsline {subsubsection}{\numberline {2.1.1}Word localization}{3}
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {section}{\numberline {2}The pre-existing project}{2}
+\contentsline {subsection}{\numberline {2.1}Process steps}{3}
+\contentsline {subsubsection}{\numberline {2.1.1}Column localization}{3}
 \contentsline {subsubsection}{\numberline {2.1.2}Row segmentation}{3}
-\contentsline {subsubsection}{\numberline {2.1.3}Post-processing}{3}
-\contentsline {subsection}{\numberline {2.2}Troubles}{4}
-\contentsline {section}{\numberline {3}Clustering}{4}
-\contentsline {subsection}{\numberline {3.1}Features}{4}
+\contentsline {subsubsection}{\numberline {2.1.3}Post-processing and clustering}{3}
+\contentsline {subsection}{\numberline {2.2}Problems}{4}
+\contentsline {section}{\numberline {3}Features extraction}{4}
+\contentsline {subsection}{\numberline {3.1}Structural features}{5}
 \contentsline {paragraph}{Windows}{5}
-\contentsline {subsubsection}{\numberline {3.1.1}Whitespace}{5}
+\contentsline {subsubsection}{\numberline {3.1.1}Whitespace}{6}
 \contentsline {subsubsection}{\numberline {3.1.2}Loop}{6}
-\contentsline {subsubsection}{\numberline {3.1.3}Dot}{6}
-\contentsline {subsubsection}{\numberline {3.1.4}Diagonal line}{6}
-\contentsline {subsubsection}{\numberline {3.1.5}Cross}{6}
-\contentsline {subsubsection}{\numberline {3.1.6}Horizontal and Vertical line}{7}
-\contentsline {subsection}{\numberline {3.2}LCS}{7}
-\contentsline {subsection}{\numberline {3.3}Affinity Propagation}{8}
-\contentsline {section}{\numberline {4}Results}{9}
-\contentsline {section}{\numberline {5}Conclusion}{9}
+\contentsline {subsubsection}{\numberline {3.1.3}Dot}{7}
+\contentsline {subsubsection}{\numberline {3.1.4}Diagonal line}{7}
+\contentsline {subsubsection}{\numberline {3.1.5}Cross}{7}
+\contentsline {subsubsection}{\numberline {3.1.6}Horizontal and Vertical line}{8}
+\contentsline {subsection}{\numberline {3.2}Dimensional features}{8}
+\contentsline {subsection}{\numberline {3.3}Features extraction example}{9}
+\contentsline {section}{\numberline {4}Evaluating distances}{11}
+\contentsline {subsection}{\numberline {4.1}Longest Common Subsequence}{11}
+\contentsline {subsection}{\numberline {4.2}Euclidean distance}{11}
+\contentsline {section}{\numberline {5}Clustering}{12}
+\contentsline {subsection}{\numberline {5.1}Affinity Propagation}{12}
+\contentsline {section}{\numberline {6}Results}{14}
+\contentsline {section}{\numberline {7}Compiling and running notes}{17}
+\contentsline {section}{\numberline {8}Conclusion}{17}

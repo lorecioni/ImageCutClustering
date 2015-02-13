@@ -2,7 +2,7 @@
 
 Let's explore the test phase and see the results in detail. Initially we ran debug tests on our personal pc by porter quickly modify some code.
 
-All tests will be shown below were performed on a single machine that has enabled us to work with much larger data in less time. The machine used is composed of two Xeon processors for a total of 16 cores \@ 2, 80Ghz and 48 Gb of RAM.
+All tests will be shown below were performed on a single machine that has enabled us to work with much larger data in less time. The machine used is composed of two Xeon processors for a total of 16 cores @ 2.80Ghz and 48 Gb of RAM.
 
 The tests were performed on a growing number of scans, each containing a maximum of 50 lines from which we extract the word that represents the State. For each number of different scans have been tried the three possible distances calculation: only LCS, only L1 (Euclidean distance) and LCS and L1 combined together.
 
@@ -45,7 +45,7 @@ In the next table we're going to show the main results for the tests.
 130 scans (LCS and L1) & 6500 & 5050 & 463 & 6729.62 & 77.94\\ 
 500 scans (L1) & 0 & 0 & 0 & 0 & 0\\ 
 500 scans (LCS) & 0 & 0 & 0 & 0 & 0\\ 
-500 scans (LCS and L1) & 25000 & 18146 & 3941 & 138309.85 & 82.14\\ 
+500 scans (LCS and L1) & 25000 & 18146 & 3941 & 138309.85\tablefootnote{During this test, the machine used was concurrently executing other tasks creating a bottleneck in the memory used.} & 82.14\\ 
  \hline
 \end{tabular}
 \caption{Main results}
@@ -114,7 +114,7 @@ In the following table are collected the number of clusters that respect the abo
 \footnotesize
 \begin{tabular}{|l | c | c | c | c |} 
  \hline 
- & \multicolumn{1}{p{2cm}|}{\centering\bfseries Correct\\ clusters}&  \multicolumn{1}{p{2cm}|}{\centering\bfseries Correct\\words} & \multicolumn{1}{p{2cm}|}{\centering\bfseries Percentage (\%)} & \multicolumn{1}{p{2cm}|}{\centering\bfseries Average words\\for cluster} \\ [0.5ex] 
+ & \multicolumn{1}{p{2cm}|}{\centering\bfseries Correct\\ clusters}&  \multicolumn{1}{p{2cm}|}{\centering\bfseries Correct\\words} & \multicolumn{1}{p{2cm}|}{\centering\bfseries Percentage\\of words (\%)} & \multicolumn{1}{p{2cm}|}{\centering\bfseries Average words\\for cluster} \\ [0.5ex] 
  \hline\hline
 %% label & clusters & words & percentage %%
 16 scans (L1) & 12 & 18 & 3.27 &  1.50\\ 

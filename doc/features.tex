@@ -1,17 +1,21 @@
 \section{Features extraction}
 
+In this work we want to improve upon the past project by providing an alternate method to calculate the distances, the focus isn't any more simplicity but even at a major cost we want to find characteristics more deeply related to the written words nature in hope they may be better suited for the recognition of similar written words.
+
+
+The idea is thus to find \emph{primitive} features, resembling the possible types of strokes used to write a word, to characterize the sample from which they are extracted in order to perform clustering on their set.
+
 \subsection{Structural features}
 
-In this work we want to find \emph{primitive} features, resembling the possible types of strokes used to write a word, to characterize the sample from which they are extracted in order to perform clustering on their set.
+The features are identified by the study of a sub-portion, or window, of the images correspondent to the entries of the "State" field of the census document on which the procedure is applied.
 
-The features are identified by the study of a sub-portion, or window, of the images extracted by the paper on which this work is based.
-
-The features are located through a study of an area, the window, with which they are implicitly associated: as such there is no clear order of which of the possibly multiple features found in the area comes first.
+The features we search are intrinsically characteristics of the stroke, they are thus linked to a particular position in the image in which that particular stroke is found, as such they are located through the study of the area, the window, with which they are implicitly associated, this poses a problem: there is the possibility that an area may be characterized by multiple features, in this case there is no clear order of which of the multiple features comes first.
 Due to the absence of such \emph{native} order the string that defines a window is maintained consistent with the other strings trough the convention of generating the string with the features' identifiers always taking the same order, if present.
 
 The chosen way to resolve the issue however presents the problem of making sliding windows inapplicable: this means that a sample must necessarily be cut in separate windows, which are allowed to overlap, with the corresponding effect that due to the random cut some features like \textit{loops} may not be recognised in an instance and recognised in another. 
 
 Each sample is associated to a characterizing string of characters made from the identifiers of the features recognized in the sample.
+The features that convey more information about a word, for example loops and dots, are given longer strings so that their presence may be better recognised.
 
 The string is constructed modularly by appending in order the strings associated to each window the sample is divided in.
 
@@ -20,17 +24,20 @@ After having recognised the presence of a feature in a given window the correspo
 
 \paragraph{Windows}
 
-Currently we have chosen to cut the samples in windows of 32 pixels each, with the exception of the last part of the sample that, deemed irrelevant to the end of characterization due to containing almost always white space, is simply ignored.
+Currently we have chosen to cut the samples in windows of 40 pixels each, with the exception of the last part of the sample that, deemed irrelevant to the end of characterization due to containing almost always white space, is simply ignored.
 
-These windows are spaced only 16 pixels from the preceding and succeeding one, with the intent of creating overlap and lengthening the string that characterizes the samples.
+These windows are spaced only 7 pixels from the preceding and succeeding one, with the intent of creating overlap and lengthening the string that characterizes the samples.
+(Both the dimension of the window and the spacing between them was decided through tests to obtain the optimal efficacy of the program)
 
-While the simplest way to create the windows is simply creating a new PIX with the required coordinates it requires unnecessary passages and time in the creation of new objects. We have thus preferred to increase the complexity of the functions that search for the features, to whom we pass as a variable the original sample PIX with information about the \textit{offset} at which to start the search and the \textit{width} of the window. The width of the window passed has actually a non banal meaning duo to the fact that different features are linked to areas of the image with varying dimensions: for example we can't reasonably search for an horizontal line and a vertical line utilizing windows with the same width due to the fact that horizontal lines realistically will require windows with great width but will not have requisites on the height.
+While the simplest way to create the windows in the code would be simply cutting the original image in pieces these steps require memory and time. We have thus preferred to increase the complexity of the functions that search for the features, to whom we pass as a variable the original images with information about the \textit{offset} at which to start the search and the \textit{width} of the window. The width of the window passed has actually a non banal meaning due to the fact that different features are linked to areas of the image with varying dimensions: for example it is not efficient to search for an horizontal line and a vertical line utilizing windows with the same width due to the fact that horizontal lines realistically will require windows with great width but will not have requisites on the height.
 
-The height of the windows used is never considered as a parameter since for all features' functions the height is customarily the whole height of the sample.  
+In particular, the features with less space requirements are searched in both 20 pixels halves of the windows and their strings are appended to the image string the whole 40 pixels window is then searched for the space-hungry features and their strings are added to the "counter". 
+
+The height of the windows used is never considered as a parameter since for all the features searching functions the height is customarily the whole height of the sample.  
 
 \subsubsection{Whitespace}  
 
-The first feature that is search in the windows is the white space. This way if a window is identified as blank will not be necessary to proceed with the investigation of other features, saving time.
+The first feature that is searched in the windows is the white space. This way if a window is identified as blank there won't be a need to proceed with the search of the other features, saving time.
 
 \begin{figure}[!ht]
 \centering
@@ -38,12 +45,14 @@ The first feature that is search in the windows is the white space. This way if 
 \caption{A whitespace}
 \end{figure} 
 
-A window is identified as blank if the average pixel values is below a preset white threshold.
+A window is identified as blank if the average pixel values is below a pre-set threshold.
+
+The string associated with the Whitespace is " ".
 
 \subsubsection{Loop}
 
-The feature that represents a loop is recognized only with maximum window size.
-To locate a loop is initially found a black pixel. The idea behind is to imagine that we had found a point on the border and meet two transitions going in the same direction, first from black to white then from white to black. Between the two transitions there must be a minimum step above a preset threshold where the pixels are white.
+The feature that represents a loop requires the search of the window with greater size.
+The localization of a loop starts by searching for a black pixel which is then tested appropriately. The idea behind is that a point on the border of a loop is such that by looking in a decided direction (in this case the y axis) we meet two pixel value transitions first from black to white and then from white to black. Between the two transitions for a loop to be recognised there must be a minimum number of white pixel, number that is decided discretionally in the code.
 
 \begin{wrapfigure}{l}{0.3\textwidth}
   \vspace{-20pt}
@@ -55,11 +64,11 @@ To locate a loop is initially found a black pixel. The idea behind is to imagine
   \vspace{-10pt}
 \end{wrapfigure}
 
-If the above condition occurs then we verify that it is real in the same way along the horizontal axis. We then sit in the center of the loop (the median value of the segment described above) and check that, moving both right or left you get a transition from white to black after a suitable number of white pixels.
+To recognise a loop the above condition must also be verified in the other cardinal axis. To do so, starting from the center of the supposed loop (the median value of the segment described above) we check that moving either right or left we find a transition from white to black after a suitable number of white pixels.
 
-The implemented method has numerous problems related mainly to the identification of the center of the loop in the segment. With a value of threshold too high also might have to discard some loops too small. The method also does not take into account the thickness of the stroke.
-However, with appropriate threshold values you can get good results and to identify obvious loops of various segments.
+The implemented method has numerous problems related to the difficulty of finding the best white spaces threshold: an excessively little minimum number of white pixels makes us recognise as loops white noise that happens while scanning images, a threshold too high forces us to discard some small but real loops. The method also does not take into account the thickness of the stroke, rendering the overall recognition harder, with appropriate threshold values tough we can achieve good results.
 
+The string associated with the Loop feature is "LL".
 \subsubsection{Dot}
 
 \begin{wrapfigure}{r}{0.3\textwidth}
@@ -72,12 +81,15 @@ However, with appropriate threshold values you can get good results and to ident
   \vspace{-10pt}
 \end{wrapfigure}
 
-To search for Dots within the segment we first proceed locating the \emph{connected components} inside it. The individual components are extracted and inserted into a \emph{box} which we can know the size and the relative position to the segment.
+To search for Dots within the segment we first proceed locating the \emph{connected components} inside of it. The individual components are extracted and inserted into a \emph{box} of which we know the size and the relative position to the segment.
 
 
-At this point we look for those boxes with dimensions between two preset values (minimum and maximum radius) and those that meet this condition are most likely points.
+At this point we search for those boxes with dimensions between two pre-set values (minimum and maximum radius), those that meet this condition are boxes that contain most likely points.
 
-Using connected components we can retrieve Dot feature in a simple way.
+Using the connected components we can thus retrieve dots in a simple way.
+
+The string associated with the Dot feature is "....."
+It is particularly long because the dot helps distinguish the words that contain the "i" letter and is easily recognised with little error.
 
 \subsubsection{Diagonal line}
 
@@ -96,13 +108,19 @@ At the moment the function doesn't account for the width of the lines found, thu
    
 There's a distinction for diagonal features that appear in the lower and upper bottom of the window.
 At most in a window the function identifies a couple of upward and a couple of downward facing lines (lower and upper parts), once one has been found it stops searching for the same type.
+The lines that are found are further categorised on their length if medium or long.
 
+Many strings are associated with the Diagonal feature, they will be properly listed in the Table \ref{features}.
+In particular the string associated with the "long" version of a feature is made from the "medium" version of the string at which is attached an other character: this allows to distinguish features based on their length while at the same time maintaining similarity with a shorter version of themselves to account for variation in the stroke used to write the same word.  
+ 
 \subsubsection{Cross}
 The function, having found at most a lower and upper case for upward and downward diagonal lines, proceeds to confront the edge points of these lines: if they possibly intersects it extracts a \emph{crossing} feature with distinction if the crossing happens in the lower or upper part of the window. 
 
 The problems with this sub-feature are that intersections of bottom and upper lines of the same type (e.g. both upward facing) with different inclines are not recognised, in the same way there's no consideration for intersections made from lines that are not the "primary" bottom and upper diagonals: if in a single windows are present more lower upwards diagonals and one of them other than the first intersects the recognised downward diagonal, such a crossing is ignored.
 
 The crossing feature may also not necessarily be a complete intersection, in fact for recognition there just needs to be a merging of a downward and upward line. 
+
+The string associated depending if the cross is found in the upper or lower half is "X" and "x" respectively.
 
 
 \subsubsection{Horizontal and Vertical line}
@@ -116,13 +134,53 @@ Once a fitting line has been found the function keeps searching for more, contin
 
 There still persists the problem that the stroke width is not fully considered so a big blob of black pixels is seen as a series of horizontal and vertical lines, at the same time such an occurrence is rare so the presence of many horizontal and vertical lines ends up distinguishing the word in itself.    
 
-\subsection{Dimensional features}
 
+\begin{table}[!htbp]
+\centering
+\footnotesize
+\begin{tabular}{|l | c |} 
+ \hline  \multicolumn{1}{|p{2cm}|}{\bfseries Feature}
+ & \multicolumn{1}{p{2cm}|}{\centering\bfseries Associated string} \\ [0.5ex] 
+ \hline\hline
+ Whitespace & " " \\ \hline
+ Loop & "LL"\\\hline
+ Dot & "....."\\ \hline
+ Upward facing diagonal lower half, medium & "s" \\ \hline
+ Upward facing diagonal lower half, long & "bs"  \\\hline
+ Upward facing diagonal upper half, medium & "S" \\ \hline
+ Upward facing diagonal upper half, long & "BS" \\\hline
+ Downward facing diagonal lower half, medium& "u"\\ \hline
+ Downward facing diagonal lower half, long &"vu" \\ \hline
+ Downward facing diagonal upper half, medium& "U" \\\hline
+ Downward facing diagonal upper half, long &"VU" \\\hline
+ Cross upper & "X"\\\hline
+ Cross lower & "x"\\\hline
+ Horizontal line lower half, medium & "-"\\\hline
+  Horizontal line lower half, long & "h-"\\\hline
+   Horizontal line upper half, medium & "H-"\\\hline
+    Horizontal line upper half, long & "Hh-"\\\hline
+ Vertical line lower half, medium & "ii"\\\hline
+  Vertical line lower half, long & "IIii"\\\hline
+   Vertical line upper half, medium & "Vii"\\\hline
+    Vertical line upper half, long & "VIIii"\\ 
+ \hline
+\end{tabular}
+\caption{Recap of the string associated to the features}
+\label{features}
+\end{table}
+
+
+
+\subsection{Dimensional features}
+While the structural feature already proposed help in categorizing and recognising words to cluster they aren't completely able to distinguish a word from similar others, we have thus searched for ways to improve the accuracy of the work:
+while many optimizations have been added to the structural features sought themselves we have found that adding another layer of features of a different kind, in this case \emph{dimensional}, helps tremendously.
+Moreover the complexity added is extremely limited: as can be seen later on in the Table \ref{table:2} the >>><<<<CONTINUA<<>>
 In some cases the structure feature extraction leads to some problems of recognition or it may not be sufficient to properly assess the similarity between two words.
 
 In order to improve word clustering we combine structural features with \emph{dimensional features} for each word. 
+These dimensional features are exactly the ones previously utilized in the pre-existing work: height of the stroke, calculated through the difference between highest and lowest black pixel, and number of transition of the pixels' value from black to white and vice versa.
 
-As in the previous feature extraction process, words are splitted in smaller boxes. For each of them we evaluate the stroke height and the number of transitions from white to black. With those features two words are similar if their strokes are similar compared by length and height. The height is stored as the difference between the end of the stroke and the start.
+The explanation can be found in section \ref{oldFeatures}
 
 \subsection{Features extraction example}
 
