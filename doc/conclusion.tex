@@ -1,1 +1,7 @@
 \section{Conclusion}
+
+Based on the results obtained we can note that the accuracy of the cluster grows with the amount of words extracted. This phenomenon is due to the fact that Affinity Propagation works best with a large number of available data: the greater the number of words, the greater the chances of finding words similar between them, and then combine them within a single cluster.
+
+We can see then that, with the increase of the processed words, correct clusters also increase. This result enables to divide with a good approximation the words between them, even bringing the cluster that contains the same words in post processing.
+
+The other factor to consider is the weather: as shown by the graph above the time increases nearly exponentially as a function of the number of words you want to extract. This, as shown, is due at the time of calculation of the distances between the structural strings of word with LCS. Using another calculation method you might reduce the necessary computing time .
