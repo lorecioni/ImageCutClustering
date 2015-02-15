@@ -31,7 +31,7 @@ string LoopFeature::isLoop(PIX* image, int offset, int width){
 			if(val < BLACK_THRES){
 				//Ho trovato un primo pixel nero, controllo se è il contorno di un loop
 				if(checkLoop(image, i, j + V_STEP, offset, width)){
-					return "LL";
+					return "LLLL";
 				}
 			}
 			j++;

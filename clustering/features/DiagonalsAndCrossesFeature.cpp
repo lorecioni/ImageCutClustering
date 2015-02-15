@@ -15,6 +15,8 @@
 #define BLACK_THRESLOW 110
 #define LENGTH_THRES 13
 #define LENGTH_THRES_HI 18
+
+#define MULTIPLIER 2
 using namespace std;
 
 DiagonalsAndCrossesFeature::DiagonalsAndCrossesFeature(){
@@ -157,14 +159,14 @@ int DiagonalsAndCrossesFeature::isDownwardDiag(PIX* image, int* x1,int* x2,int* 
 
 			}
 			int diff = a2+b2-a1-b1;
-			if(diff > LENGTH_THRES ){
+			if(diff > LENGTH_THRES / MULTIPLIER ){
 
 				//cout << "trovato primo segmento" <<endl;
 				*x1 = a1;
 				*x2 = a2;
 				*y1 = b1;
 				*y2 = b2;
-				if(diff > LENGTH_THRES_HI){
+				if(diff > LENGTH_THRES_HI / MULTIPLIER){
 					return 2;
 				}
 				return 1;
@@ -246,12 +248,12 @@ int DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y1
 				}
 			}
 			int diff =  a2-b2-a1+b1;
-			if(diff > LENGTH_THRES ){
+			if(diff > LENGTH_THRES / MULTIPLIER ){
 				*x1 = a1;
 				*x2 = a2;
 				*y1 = b1;
 				*y2 = b2;
-				if(diff > LENGTH_THRES_HI){
+				if(diff > LENGTH_THRES_HI / MULTIPLIER){
 					return 2;
 				}
 				return 1;
@@ -267,9 +269,16 @@ int DiagonalsAndCrossesFeature::isUpwardDiag(PIX* image, int* x1,int* x2,int* y1
 	return 0;
 }
 
-
-
 string DiagonalsAndCrossesFeature::isCross(PIX* image, int offset, int width){
+	string report;
+	int newWid= width/ MULTIPLIER;
+	for(int i=0; i < MULTIPLIER; i++){
+		report+= isCrossIN(image, offset+i*newWid, newWid);
+	}
+	return report;
+}
+
+string DiagonalsAndCrossesFeature::isCrossIN(PIX* image, int offset, int width){
 	string report;
 
 	struct diag{
@@ -314,8 +323,8 @@ string DiagonalsAndCrossesFeature::isCross(PIX* image, int offset, int width){
 	if(c==2) report+= "VU";
 	if(d==1) report+= "u";
 	if(d==2) report+= "vu";
-	if(crossx==true) report+= "x";
-	if(crossX==true) report+= "X";
+	if(crossx==true) report+= "xxxx";
+	if(crossX==true) report+= "XXXX";
 
 	return report;
 }
