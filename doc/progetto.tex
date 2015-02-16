@@ -19,10 +19,10 @@ We can summarize the project in three basic steps:
 \item Post-processing and clustering
 \end{enumerate}
 
-The last step, corresponding to the clustering of images, is the point of interest of our paper: while the past work was focused on the localization and retrieval not much thought was put on the features to be extracted preferring simplicity and efficiency to effectiveness.
-It is this very point that gives our paper a reason d'etre: starting from the preceding, already implemented, two steps, we proceed by providing a rewritten and improved clustering method through the use of new features, these steps will be discussed later in the section 3.
+The last step, corresponding to the clustering of images, is the point of interest of our paper: while the past work was focused on the localization and retrieval, not much thought was put on the features to be extracted preferring simplicity and efficiency to effectiveness.
+It is this very point that gives our paper a reason d'etre: starting from the preceding, already implemented, two steps, we proceed by providing a rewritten and improved clustering method through the use of new features, these steps will be discussed later in the Section 3.
 
-\subsubsection{Column localization}
+\subsubsection{Localization of the area of interest}
 
 In this first phase the aim is to identify the region of the grid within which the State words are located. 
 
@@ -40,13 +40,14 @@ At the end of this phase, ideally each word is contained in an individual image.
 \label{oldFeatures}
 In the post-processing phase the individual images extracted are reworked in order to remove any  vertical or horizontal residual lines left from an imperfect previous cut.
 
+////NON CAPISCO CHE SIGNIFICHI////
 Delete row/column strokes can be about as bring back the black pixels related to the residual value of pure white (255 as grayscale).
 
-This allows us to extract the most significant features in the next steps of processing.
+This allows us to extract the most significant features in the next steps of the process.
+To extract the features each image is divided in windows with width of 1 pixel, on these windows are then applied the functions utilized for the extraction.
 
-Each image is divided in windows 1 pixel wide, on these windows the features are then extracted.
-The idea is not placing excessive burden on the operating system, the features are thus relatively simplistic: for each window the value of the height of the first and last black pixels are collected, together with the number of transitions of the pixels from black to white and vice versa.
-The distance between images is then found through the Euclidean Distance where the considered axis are the number of transitions and the stroke height calculated through a simple subtraction of the first and last black pixels height.
+The preexisting project focus was the extraction of the words, placing less importance on the clustering and thus the features themselves, moreover the project philosophy is not to place excessive burden on the operating system, from these reasons  the features are relatively simplistic: for each window the features considered are the height of the first and last black pixels and the number of transitions of the pixels from black to white and vice versa.
+The distance between images is found through the Euclidean Distance where the considered axis are the number of transitions and the stroke height calculated through a simple subtraction of the first and last black pixels height.
 The distance matrix is then fed to the Affinity Propagation algorithm to create the desired clusters.
 
 \begin{figure}[!ht]
@@ -57,15 +58,18 @@ The distance matrix is then fed to the Affinity Propagation algorithm to create 
 \label{fig:extracted_image}
 \end{figure}
 
-As you can see in Figure \ref{fig:extracted_image}, the word is centered and the extra line have been removed (there is a line set to white). For each picture we proceed with feature extraction for handwritten characters and clustering. 
+As you can see in Figure \ref{fig:extracted_image} representing an extracted image, the word is centered and the bottom presents a white line: the bottom border row of the grid was intersecting the word and was extracted with it, in the pre-processing phase it was thus removed to not hinder the feature extraction.
 
 \subsection{Problems}
 
-The localization of words and their segmentation has inherent strong difficulties.
+The localization of words and their segmentation has inherent persistent difficulties.
 
-A first problem is represented by the document skew. In this case, the skew may be due to a not perfectly horizontal scan of the original document. The presence of skew reduces the capability in searching for rows and columns of the grid, thus making the segmentation impossible with the given implementation. In some cases, for example, the first column is interpreted incorrectly causing the extraction of the wrong column in the first stage of the process thus dooming that particular word recognition.
+A first error source is represented by the inherent document skew. The skew may be due to a not perfectly horizontal scan of the original document, its presence reduces the efficacy of the work in searching for rows and columns of the grid, making the segmentation impossible with the given implementation of the project.
 
-The main problems of the second phase are mainly related to the identification of extraneous lines. Because of the large number of dashed lines present it isn't always possible to \emph{clean} the images and this can cause errors in the clustering phase.
+Other source of errors is the presence in some scanned images of other census forms below the current one: black columns from the lower document are seen as belonging to the upper one, making the application recognize them as the first column of the form.
+This erroneous association renders the scan unusable since the targeted state area is found from the first black column through an hard-coded distance in pixels, moreover the analysis of the scan introduces in the clustering phase incorrect images that, recognised as similar, due to the particular way the code is implemented, skew the results in favour of the application increasing the supposed precision. 
+
+The identification of extraneous lines is another source of difficulties: the large number of dashed lines present makes the correct recognition extremely hard, it isn't always possible to \emph{clean} the images and this can cause errors in the clustering phase.
 
 \begin{figure}[!ht]
  \centering
@@ -76,6 +80,6 @@ The main problems of the second phase are mainly related to the identification o
    {\includegraphics[width=0.3\textwidth]{images/img4.jpg}}
  \caption{Segmentation and post-processing issues}
  \end{figure}
-
+\hspace{1mm}
 In other cases the word intersects directly gridlines. Because of this we may experience a loss of information about words if the line is removed using the method described above.
 

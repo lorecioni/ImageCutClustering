@@ -1,6 +1,6 @@
 \section{Clustering}
 \label{Nostro_prog}
-The clustering phase consists in the categorization of the various segments in homogeneous groups, so that, at the end of the process, each cluster contains  words corresponding to the same State.
+The clustering phase consists in the categorization of the various segments in homogeneous groups, so that, at the end of the process, each cluster contains only words corresponding to the same state.
 
 At this stage the main goal is the extraction of good features representative of the images to be used for comparison. The aim is to construct a similarity matrix between different segments so that they can be used as input to the clustering algorithm. To do so we generate a measure of distance between couples of samples through the use of the \emph{Longest Common Subsequence} algorithm in which the handled strings, representative of the corresponding samples, are constructed through the appending of conventional identifiers associated with the features found in the samples in a consistent order. 
 
