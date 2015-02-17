@@ -41,14 +41,14 @@ That is, messages between data points are computed from the corresponding propag
 
 $$arg \max {r[i, j] + a[i, j] : \forall \; j = 1, 2, \ldots,n}$$
 
-As described above, the original algorithm requires $O(n^2 t)$ time to update massages, where $n$ and $t$ are the number of data points and the number of iterations, respectively.
-This incurs excessive CPU time, especially when the number of data points is large\footnote{Yasuhiro Fujiwara, Go Irie, Tomoe Kitahara, \emph{Fast Algorithm for Affinity Propagation}, 2009}. The Figure \ref{fig:ap} shows how affinity propagation works\footnote{Brendan J. Frey, Delbert Dueck, \emph{op. cit.}, Figure 1, p. 974}.
-
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.73\textwidth]{images/ap.jpg}
 \caption{How affinity propagation works}
 \label{fig:ap}
 \end{figure}
+
+As described above, the original algorithm requires $O(n^2 t)$ time to update massages, where $n$ and $t$ are the number of data points and the number of iterations, respectively.
+This incurs excessive CPU time, especially when the number of data points is large\footnote{Yasuhiro Fujiwara, Go Irie, Tomoe Kitahara, \emph{Fast Algorithm for Affinity Propagation}, 2009}. The Figure \ref{fig:ap} shows how affinity propagation works\footnote{Brendan J. Frey, Delbert Dueck, \emph{op. cit.}, Figure 1, p. 974}.
 
 The clustering process described is then applied to the array of similarity calculated previously on features extracted from each words. Once you have run the calculation of clusters, segments are organized into individual folders to provide a visual result of the proceedings just completed. Each group is identified by a segment that represents the centroid of the cluster, which is the element to which all others in the group are closer.
