@@ -1,24 +1,27 @@
 \section{Results}
 
-Let's explore the test phase and see the results in detail. Initially we ran debug tests on our personal pc in order to easily modify code.
+Let's explore the test phase and see the results in detail. Initially we ran debug tests on our personal PCs in order to easily modify the code, these starting tests and the tests utilized to determine the right value for the many defined constants(altogether the vast majority of the tests done) are not shown here. 
 
-All tests will be shown below were performed on a single machine that has enabled us to work with much larger data in less time. The machine used is composed of two Xeon processors for a total of 16 cores 2.80 Ghz and 48 Gb of RAM.
+All the tests shown below were performed on a single more powerful machine that has enabled us to work with much larger data in less time. The machine used is composed of two Xeon processors for a total of 16 cores 2.80 Ghz and 48 Gb of RAM.
 
-The tests were performed on a growing number of scans, each containing a maximum of 50 lines from which we extract the words that represent the States. For each number of different scans have been tried the three possible distances calculation: only LCS, only L1 (Euclidean distance) and LCS and L1 combined together.
+The tests were performed on a growing number of scans, each containing a maximum of 50 lines from which we extracted the words that represent the states. For each set of scans we present three possible distances calculation: only LCS, only L1 (Euclidean distance) and LCS and L1 combined together through the formula presented in Section 5.
 
-The data collected for each test are as follows:
+\vspace{3mm}
+
+The data fields for each test are defined as follows:
 \begin{itemize}
-\item \textbf{Number of scans}: the number of scans that was carried out the test.
-\item \textbf{Estimated words}: the number of words estimated on the basis of the number of scans.
-\item\textbf{Extracted words}: the number of words actually mined and processed, as well as a percentage.
+\item \textbf{Number of scans}: the number of scans that were utilized in the test.
+\item \textbf{Estimated words}: the number of words estimated on the basis of the number of scans(50x).
+\item\textbf{Extracted words}: the number of words actually mined and processed, as well as the corresponding percentage.
 \item \textbf{Number of clusters}: the number of clusters created in process.
-\item \textbf{Features extraction time}: the time, in seconds, required for features extraction from words.
+\item \textbf{Features extraction time}: the time, in seconds, required for features extraction from the words.
 \item \textbf{Evaluating distances time}: the time, in seconds, required to generate the similarity matrix with the distances between all the words extracted.
 \item \textbf{Clustering time}: the time, in seconds, required for the creation of clusters.
 \item \textbf{Running time}: the total execution time, in seconds.
-\item \textbf{Correct clusters}: the number of clusters with maximum precision, therefore containing only words equal to each other.
-\item \textbf{Correct elements}: the number of words within clusters corrected. Even as a percentage.
-\item \textbf{Precision}: the accuracy of the result, the average accuracy of individual clusters weighted with the number of words.
+\item \textbf{Correct clusters}: the number of clusters with absolute precision, therefore containing only words equal to each other.
+\item \textbf{Correct elements}: the number of words within the Correct clusters and their corresponding percentage respect to all the elements.
+\item \textbf{Precision}: the accuracy of the results, the average accuracy of individual clusters weighted with the number of words.
+$$Precision = \sum_i PrecisionOfCluster[i]*NumberOfElementsCluster[i]$$
 \end{itemize}
 
 In the next table we're going to show the main results of the tests. 
