@@ -29,15 +29,14 @@ $$ x.length() + y.length() - 2*LcsLength$$
 
 where $x$ and $y$ are the strings and the $length()$ function returns the length of a string.
 
-\subsection{Euclidean distance} 
+\subsection{Euclidean Distance} 
 
-Longest Common Subsequence is only used with strings. In order to improve the correctness of words distance we combine LCS distance with euclidean distance which uses dimensional features insted of structure features.
+The Longest Common Subsequence is only used with strings. In order to improve the correctness of the words' distance matrix we combine LCS distance with the Euclidean Distance obtained through the use of the \textit{dimensional features}.
 
-The eucliden distance is evaluated with
+The Euclidean Distance between two samples is evaluated through the formula:
 $$d = \sqrt{((a_b - a_t)−(b_b - b_t))^2 -(a_c - b_c)^2}$$
 
-with
-
+where:
 \begin{itemize}
 \item $a_b$ representing the end of the stroke $a$
 \item $a_t$ representing the begin of the stroke $a$
@@ -46,5 +45,3 @@ with
 \item $a_c$ representing the number of transition (normalized) of $a$
 \item $b_c$ representing the number of transition (normalized) of $b$
 \end{itemize}
-
-At this point we evaluate the L1 normalization for each segment we proceed evaluatin distances from different features with the previous way.
