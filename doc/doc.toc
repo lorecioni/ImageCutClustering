@@ -6,21 +6,21 @@
 \contentsline {subsubsection}{\numberline {2.1.3}Post-processing and clustering}{4}
 \contentsline {subsection}{\numberline {2.2}Problems}{4}
 \contentsline {section}{\numberline {3}Features extraction}{5}
-\contentsline {subsection}{\numberline {3.1}Structural features}{5}
+\contentsline {subsection}{\numberline {3.1}Structural features}{6}
 \contentsline {paragraph}{Windows}{6}
-\contentsline {subsubsection}{\numberline {3.1.1}Whitespace}{6}
+\contentsline {subsubsection}{\numberline {3.1.1}Whitespace}{7}
 \contentsline {subsubsection}{\numberline {3.1.2}Loop}{7}
-\contentsline {subsubsection}{\numberline {3.1.3}Dot}{7}
-\contentsline {subsubsection}{\numberline {3.1.4}Diagonal line}{7}
-\contentsline {subsubsection}{\numberline {3.1.5}Cross}{8}
-\contentsline {subsubsection}{\numberline {3.1.6}Horizontal and Vertical line}{8}
-\contentsline {subsection}{\numberline {3.2}Dimensional features}{8}
-\contentsline {subsection}{\numberline {3.3}Features extraction example}{10}
-\contentsline {section}{\numberline {4}Evaluating distances}{12}
-\contentsline {subsection}{\numberline {4.1}Longest Common Subsequence}{12}
-\contentsline {subsection}{\numberline {4.2}Euclidean distance}{12}
-\contentsline {section}{\numberline {5}Clustering}{13}
-\contentsline {subsection}{\numberline {5.1}Affinity Propagation}{13}
-\contentsline {section}{\numberline {6}Results}{15}
-\contentsline {section}{\numberline {7}Compiling and running notes}{18}
-\contentsline {section}{\numberline {8}Conclusion}{18}
+\contentsline {subsubsection}{\numberline {3.1.3}Dot}{8}
+\contentsline {subsubsection}{\numberline {3.1.4}Diagonal line}{8}
+\contentsline {subsubsection}{\numberline {3.1.5}Cross}{9}
+\contentsline {subsubsection}{\numberline {3.1.6}Horizontal and Vertical line}{9}
+\contentsline {subsection}{\numberline {3.2}Dimensional features}{10}
+\contentsline {subsection}{\numberline {3.3}Features extraction example}{12}
+\contentsline {section}{\numberline {4}Evaluating distances}{14}
+\contentsline {subsection}{\numberline {4.1}Longest Common Subsequence}{14}
+\contentsline {subsection}{\numberline {4.2}Euclidean Distance}{14}
+\contentsline {section}{\numberline {5}Clustering}{15}
+\contentsline {subsection}{\numberline {5.1}Affinity Propagation}{15}
+\contentsline {section}{\numberline {6}Results}{16}
+\contentsline {section}{\numberline {7}Compiling and running notes}{21}
+\contentsline {section}{\numberline {8}Conclusion}{22}

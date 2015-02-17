@@ -52,7 +52,7 @@ In the next table we're going to show the main results of the tests.
 130 scans (LCS and L1) & 6500 & 5050 & 463 & 6729.62 & 77.94\\ 
 500 scans (L1) & 25000 & 18146 & 3957 & 85545.11 & 77.89\\ 
 500 scans (LCS) & 25000 & 18146 & 3316 &  76324.63 & 81.22\\ 
-500 scans (LCS and L1) & 25000 & 18146 & 3941 & 138309.85\tablefootnote{During this test, the machine used was concurrently executing other tasks creating a bottleneck in the memory used.} & 82.14\\ 
+500 scans (LCS and L1) & 25000 & 18146 & 3941 & 138309.85\tablefootnote{During this test, the machine used was concurrently executing other tasks creating a bottleneck in the allotted memory, in all similar tests the time was in the order of 90k seconds.} & 82.14\\ 
  \hline
 \end{tabular}
 \caption{Main results}
@@ -123,7 +123,7 @@ Now we're going to focus our attention to time. The running time is divided main
 130 scans (LCS and L1) & 73.10 & 5608.82 & 1047.70 & 6729.62\\ 
 500 scans (L1) & 289.33 & 4482.02 & 80773.76 & 85545.11 \\ 
 500 scans (LCS) & 323.66 & 57699.51 & 18301.46 & 76324.63\\ 
-500 scans (LCS and L1) & 403.41 & 61424.57 & 76481.87 & 138309.85\\ 
+500 scans (LCS and L1) & 403.41 & 61424.57 & $76481.87^5$ & $138309.85^5$\\ 
  \hline
 \end{tabular}
 \caption{Running time}
