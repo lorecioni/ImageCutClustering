@@ -1,4 +1,8 @@
 \section{Conclusion}
+In this project we wrote an application that accepting as an input U.S. Census documents returns clusters containing words that corresponds to the same state of birth.
+Starting from a pre-existing work that already located and segmented the samples corresponding to the citizens' state, we added a more thorough search for the targeted area, and with the intent of improving the application by providing an alternate method of calculating the distance matrix we developed a different kind of features that we feel are more closely associated to the way a word is written through different strokes.
+Through the use of these \textit{primitive} features and the already defined dimensional features we are able to generate distance matrices based only on one of the features kinds or on both after a reasoned combination.
+We utilize then the Affinity Propagation algorithm to obtain the desired clusters.
 
 Based on the results obtained we can note that the accuracy of the cluster grows with the amount of words extracted. This phenomenon is due to the fact that Affinity Propagation works best with a large number of available data: the greater the number of words, the greater the chances of finding words similar between them, and then combine them within a single cluster.
 
