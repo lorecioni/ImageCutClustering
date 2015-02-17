@@ -75,6 +75,7 @@ This erroneous association renders the scan unusable since the targeted state ar
 \centering
 \includegraphics[width=0.26\textwidth]{images/wrongColumn.jpg}
 \caption{The resulting erroneous images}
+\label{err}
 \end{figure} 
 
 The identification of extraneous lines is another source of difficulties: the large number of dashed lines present makes the correct recognition extremely hard, it isn't always possible to \emph{clean} the images and this can cause errors in the clustering phase.
@@ -92,3 +93,5 @@ The identification of extraneous lines is another source of difficulties: the la
 \hspace{1mm}
 In other cases the word intersects directly gridlines. Because of this we may experience a loss of information about words if the line is removed using the method described above.
 
+Regarding the previous source of errors many have been corrected in the new implementation:
+through a more precise and thorough identification of the first black column the erroneous segmentation resulting in samples similar to Figure \ref{err} has been rendered not feasible; the problems stemmed from the difficult phase of cleaning the segmented images have been skirted through the removal of the steps to clean intersecting lines altogether, the presence of a black line doesn't generate problems for the new features' detection.

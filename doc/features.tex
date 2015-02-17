@@ -12,7 +12,7 @@ The features are identified by the study of a sub-portion, or window, of the ima
 The features we search are intrinsically characteristics of the stroke, they occupy a non-minimal space, as such they are located through the study of the area, the window, with which they are implicitly associated; this poses a problem: there is the possibility that an area may be characterized by multiple features, in this case there is no clear order of which of the multiple features comes first.
 Due to the absence of such \emph{native} order the string that defines a window is maintained consistent with the other strings trough the convention of generating the string with the features' identifiers always taking the same order, if present.
 
-The chosen way to resolve the issue however presents the problem of making sliding windows inapplicable: this means that a sample must necessarily be cut in separate windows, which are allowed to overlap, with the corresponding result that due to the random cut some features like \textit{loops} may not be recognised in an instance and recognised in another. 
+The chosen way to resolve the issue however presents the problem of making sliding windows not directly applicable: this means that a sample must necessarily be cut in separate windows, which are allowed to overlap, with the corresponding result that due to the random cut some features like \textit{loops} may not be recognised in an instance and recognised in another. 
 
 Each sample is associated to a characterizing string of characters made from the ordered identifiers of the windows in the sample, each window's string is itself made from the identifier strings of the features recognized in the sample.
 The features that convey more information about a word or are more precisely identified, for example loops and dots, are associated to longer strings so that their presence may be better recognised.
@@ -101,14 +101,15 @@ To search for Dots within the segment we first proceed locating the \emph{connec
 At this point we search for those boxes with dimensions between two pre-set values (minimum and maximum radius), those that meet this condition are boxes that contain most likely points.
 Using the connected components we can thus retrieve dots in a simple way.
 
-The string associated with the Dot feature is "....."
+The string associated with the Dot feature is ".....".
+
 It is particularly long because the dot helps distinguish the words that contain the "i" letter and a dot is easily recognised with little error.
 
 \subsubsection{Diagonal line}
 
 The feature representing a diagonal line, both upward and downward facing, is extracted through a simple exhaustive scansion of the window for lines of connected black pixels that have an incline in a range of values and are sufficiently long.
 
-In the case of an upward facing diagonal, given a black pixel we consider it connected to another black pixel if this second one is in one of 3 different position that are illustrated in Figure \ref{pixels}.
+In the case of an upward facing diagonal, given a black pixel we consider it connected to another black pixel if this second one is in one of 3 different position that are illustrated in Figure \ref{pixels}. The lines recognized are thus all those with gradient between 30 and 60\%.
 
 \begin{figure}[!htpb]
 \centering
@@ -223,27 +224,29 @@ We present a recapitulation of the various features and their correspondent stri
 
 
 \subsection{Dimensional features}
-While the structural feature already proposed help in categorizing and recognising words to cluster they aren't completely able to distinguish a word from similar others, we have thus searched for ways to improve the accuracy of the work:
-while many optimizations have been added to the structural features sought themselves we have found that adding another layer of features of a different kind, in this case \emph{dimensional}, helps tremendously.
-Moreover the complexity added is extremely limited: as can be seen later on in the Table \ref{table:2} the >>><<<<CONTINUA<<>>
-In some cases the structure feature extraction leads to some problems of recognition or it may not be sufficient to properly assess the similarity between two words.
+While the already proposed structural features help in categorizing and recognising words to cluster, they aren't completely able to distinguish a word from similar others, we have thus searched for ways to improve the accuracy of the application:
+while many optimizations have been added to the defined structural features we have found that adding another layer of features of a different kind, in this case \emph{dimensional}, helps greatly.
+Moreover the complexity added is extremely limited: as can be seen later on in the Table \ref{table:2} the required calculation time doesn't increase in a particularly meaningful way: the majority of the process complexity isn't located in the features' extraction but rather in the clustering and construction of the LCS-distance matrix.  
+Thus in order to improve word clustering we combine structural features with \emph{dimensional features} for each word, after constructing the distance matrices for both we combine them through a factor determined from testing. 
 
-In order to improve word clustering we combine structural features with \emph{dimensional features} for each word. 
-These dimensional features are exactly the ones previously utilized in the pre-existing work: height of the stroke, calculated through the difference between highest and lowest black pixel, and number of transition of the pixels' value from black to white and vice versa.
+These dimensional features are exactly the ones previously utilized by our colleagues in the pre-existing work: height of the stroke, calculated through the difference between highest and lowest black pixel, and number of transition of the pixels' value from black to white and vice versa.
 
-The explanation can be found in section \ref{oldFeatures}
+A simple explanation on how they are extracted can be found in section \ref{oldFeatures}.
 
 \subsection{Features extraction example}
 
-We present now an example of extraction of features from a word. We initially create, as described above, a sliding window that scrolls along the image by a fixed step. Than, for each section,  features are extracted and a substring is generated.
+We present now an example of features extraction from a word sample, in this case it is presented an older implementation of our application but the ideas and process scheme are maintained constant.
+In particular the older version was chosen to simplify the explanation since it uses smaller windows with lesser overlap so that it is visually more self-explanatory.
 
-\begin{figure}[!ht]
+We initially create, as described in the section above, a sliding window that scrolls along the image by a fixed step. Then, for each section, we extract features and generate a substring.
+
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.5\textwidth]{images/missouri_crop.jpg}
 \caption{Feature extraction from \emph{Missouri} word}
 \end{figure} 
 
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
  \centering
  \subfigure[]
    {\includegraphics[width=0.06\textwidth]{images/missouri/0.jpg}}
@@ -342,5 +345,5 @@ We present now an example of extraction of features from a word. We initially cr
 \end{figure} 
 \end{enumerate}
 
-Once those strings are generated they are combined together to generate the word \textit{structure string}. 
+Once those strings are generated they are combined together to generate the \textit{structure string} associated with the word sample. 
 
