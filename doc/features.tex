@@ -1,6 +1,6 @@
 \section{Features extraction}
 
-In this work we want to improve upon the past project by providing an alternate method to calculate the distances, the focus isn't any more simplicity but even at a major cost we want to find characteristics more deeply related to the written words nature in hope they may be better suited for the recognition of similar written words.
+In this work we want to improve upon the past project by providing an alternate method to calculate the distances, the focus isn't any more speed and simplicity but rather even at a major cost we want to find characteristics more deeply related to the written words nature in hope they may be better suited for the recognition of similar written words.
 
 
 The idea is thus to find \emph{primitive} features, resembling the possible types of strokes used to write a word, to characterize the sample from which they are extracted in order to perform clustering on their set.
@@ -9,15 +9,13 @@ The idea is thus to find \emph{primitive} features, resembling the possible type
 
 The features are identified by the study of a sub-portion, or window, of the images correspondent to the entries of the "State" field of the census document on which the procedure is applied.
 
-The features we search are intrinsically characteristics of the stroke, they are thus linked to a particular position in the image in which that particular stroke is found, as such they are located through the study of the area, the window, with which they are implicitly associated, this poses a problem: there is the possibility that an area may be characterized by multiple features, in this case there is no clear order of which of the multiple features comes first.
+The features we search are intrinsically characteristics of the stroke, they occupy a non-minimal space, as such they are located through the study of the area, the window, with which they are implicitly associated; this poses a problem: there is the possibility that an area may be characterized by multiple features, in this case there is no clear order of which of the multiple features comes first.
 Due to the absence of such \emph{native} order the string that defines a window is maintained consistent with the other strings trough the convention of generating the string with the features' identifiers always taking the same order, if present.
 
-The chosen way to resolve the issue however presents the problem of making sliding windows inapplicable: this means that a sample must necessarily be cut in separate windows, which are allowed to overlap, with the corresponding effect that due to the random cut some features like \textit{loops} may not be recognised in an instance and recognised in another. 
+The chosen way to resolve the issue however presents the problem of making sliding windows inapplicable: this means that a sample must necessarily be cut in separate windows, which are allowed to overlap, with the corresponding result that due to the random cut some features like \textit{loops} may not be recognised in an instance and recognised in another. 
 
-Each sample is associated to a characterizing string of characters made from the identifiers of the features recognized in the sample.
-The features that convey more information about a word, for example loops and dots, are given longer strings so that their presence may be better recognised.
-
-The string is constructed modularly by appending in order the strings associated to each window the sample is divided in.
+Each sample is associated to a characterizing string of characters made from the ordered identifiers of the windows in the sample, each window's string is itself made from the identifier strings of the features recognized in the sample.
+The features that convey more information about a word or are more precisely identified, for example loops and dots, are associated to longer strings so that their presence may be better recognised.
 
 After having recognised the presence of a feature in a given window the corresponding identifier is added to the end of the string correspondent to the window; the order in which the features are searched and thus added to the queue is decided a priori and maintained consistent during the construction of the strings. 
 
@@ -225,67 +223,67 @@ We present now an example of extraction of features from a word. We initially cr
 
 \begin{enumerate}[label=(\alph*)]
 \item Some \textbf{diagonal lines} (ascending (s) and descending (u) ), at the top (S) and at the bottom (s) of the image. Generated string: ''\emph{sSUusSUSu}''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/0.jpg}
 \end{figure} 
 \item As the previous image and two more diagonal lines representing the "\emph{i}". An \textbf{horizonal line} (H). Generated string: ''\emph{sSUusSUSuHsu}''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/1.jpg}
 \end{figure} 
 \item Some diagonal lines and, at the end of the window, an horizontal line. Generated string: ''\emph{ssSusSsH}''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/2.jpg}
 \end{figure} 
 \item Two consecutive similar character represented by diagonal lines and \textbf{vertical lines} in the middle. Generated string: ''\emph{sVHsV}''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/3.jpg}
 \end{figure} 
 \item In that window we can find a \textbf{dot} (.). Generated string: ''\emph{ssVHs.}''
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/4.jpg}
 \end{figure} 
 \item The same previous dot and a little \textbf{loop} (L) at the bottom. Generated string: ''\emph{ssVs.LssH}''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/5.jpg}
 \end{figure} 
 \item The same loop as previous, an horizontal line a vertical line and two diagonal. Generated string: ''\emph{LVHssu}''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/6.jpg}
 \end{figure} 
 \item Generated string: ''\emph{ssVHus}''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/7.jpg}
 \end{figure} 
 \item The other dot here. Generated string ''\emph{ssus.H}''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/8.jpg}
 \end{figure} 
 \item An i. Generated string: ''\emph{ssuu.}''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/9.jpg}
 \end{figure} 
 \item Only a diagonal line. Generated string: ''\emph{s}''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/10.jpg}
 \end{figure} 
 \item Empty window. Generated string: ''\emph{ }''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/11.png}
 \end{figure} 
 \item Empty window. Generated string: ''\emph{ }''.
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/12.png}
 \end{figure} 
