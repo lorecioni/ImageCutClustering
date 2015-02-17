@@ -5,6 +5,8 @@ In this work we want to improve upon the past project by providing an alternate 
 
 The idea is thus to find \emph{primitive} features, resembling the possible types of strokes used to write a word, to characterize the sample from which they are extracted in order to perform clustering on their set.
 
+In particular due to the way the code was implemented the feature extraction follows immediately the segmentation of the image and can thus be executed in direct succession within the same threads without adding great complexity to the process.
+
 \subsection{Structural features}
 
 The features are identified by the study of a sub-portion, or window, of the images correspondent to the entries of the "State" field of the census document on which the procedure is applied.

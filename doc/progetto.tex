@@ -93,5 +93,9 @@ The identification of extraneous lines is another source of difficulties: the la
 \hspace{1mm}
 In other cases the word intersects directly gridlines. Because of this we may experience a loss of information about words if the line is removed using the method described above.
 
+
+
 Regarding the previous source of errors many have been corrected in the new implementation:
 through a more precise and thorough identification of the first black column the erroneous segmentation resulting in samples similar to Figure \ref{err} has been rendered not feasible; the problems stemmed from the difficult phase of cleaning the segmented images have been skirted through the removal of the steps to clean intersecting lines altogether, the presence of a black line doesn't generate problems for the new features' detection.
+
+A problem of the old implementation is also the way the features extraction and the pre-processing are administered: while they could all be realized within the threads that extracted the words, they are instead left for later to be processed single-thread, causing unnecessary slowing downs. This is remedied in the new implementation. 

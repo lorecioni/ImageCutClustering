@@ -1,7 +1,12 @@
 \section{Clustering}
-\label{Nostro_prog}
-The clustering phase consists in the categorization of the various segments in homogeneous groups, so that, at the end of the process, each cluster contains only words corresponding to the same state.
+The clustering phase consists in the categorization of the various segments in homogeneous groups, so that, at the end of the process, each cluster contains only words corresponding to the same state of birth.
 
-At this stage the main goal is the extraction of good features from the words to be used for comparison. The aim is to construct a similarity matrix between different words so that they can be used as input to the clustering algorithm. To do that we generate a measure of distance between couples of words through the use of the \emph{Longest Common Subsequence} algorithm in which the handled strings  are constructed through the appending of conventional identifiers associated with the features found in the word in a consistent order. 
+To do so we utilize the previously built distance matrices obtained by the processing of the structural and dimensional features: the matrices are combined in a single one through a simple weighted sum.
+\begin{displaymath} 
+ClusteringMatrix[i,j]= StructuralMatrix[i,j]+0.5*DimensionalMatrix[i,j]
+\end{displaymath}
 
-Unable to establish \emph{a priori} the optimal number of desired clusters makes the use of the \emph{Affinity Propagation} algorithm a necessity.
+The factor of $0.5$ was determined through extensive tests.
+
+To utilize the vast majority of the clustering algorithms we need to know the number of desired final clusters.
+Since our objective isn't having a particular number of clusters but rather having clusters with elements with certain properties we need to use an algorithm that hasn't the requirement: we have thus used the \emph{Affinity Propagation} algorithm.
