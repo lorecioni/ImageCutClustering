@@ -1,21 +1,14 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.21)  13 FEB 2015 01:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.4.22)  17 FEB 2015 14:01
 entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
 **doc.tex
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.tex
+(./doc.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
- lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
-german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
-ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
-an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
-ishmax, welsh, loaded.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Babel <3.9f> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -30,18 +23,18 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \@enLab=\toks14
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enitkv@toks@=\toks15
 \labelindent=\skip43
@@ -50,31 +43,31 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box26
 \enitdp@description=\count87
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count88
@@ -82,7 +75,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count89
 \lst@gtempboxa=\box27
 \lst@token=\toks18
@@ -96,18 +89,18 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \lst@lineno=\count94
 \lst@maxwidth=\dimen109
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
-File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 \c@lstnumber=\count95
 \lst@skipnumbers=\count96
 \lst@framebox=\box28
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
-File: listings.cfg 2013/08/26 1.5b listings configuration
+(/usr/local/texlive/2013/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
-Package: listings 2013/08/26 1.5b (Carsten Heinz)
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen110
 \WF@size=\dimen111
 \c@WF@wrappedlines=\count97
@@ -115,8 +108,8 @@ Package: listings 2013/08/26 1.5b (Carsten Heinz)
 \WF@everypar=\toks19
 Package: wrapfig 2003/01/31  v 3.6
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\subfigure\subfigure.sty"
-Package: subfigure 2002/07/30 v2.1.4 subfigure package
+(/usr/local/texlive/2013/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfigtopskip=\skip44
 \subfigcapskip=\skip45
 \subfigcaptopadj=\dimen112
@@ -131,22 +124,22 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
-("C:\Program Files\MiKTeX 2.9\tex\latex\subfigure\subfigure.cfg")
+(/usr/local/texlive/2013/texmf-dist/tex/latex/subfigure/subfigure.cfg)
 \subfig@top=\skip48
 \subfig@bottom=\skip49
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count102
@@ -161,9 +154,8 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen120
 \Gm@layoutvoffset=\dimen121
 \Gm@dimlist=\toks20
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/tools/array.sty
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen122
 \extrarowheight=\dimen123
@@ -171,47 +163,27 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \extratabsurround=\skip50
 \backup@length=\skip51
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\tablefootnote\tablefootnote.sty"
-Package: tablefootnote 2014/01/26 v1.1c Table foot notes (HMM)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/tablefootnote/tablefootnote.sty
+Package: tablefootnote 2012/07/29 v1.0h Table foot notes (HMM)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\letltxmacro.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/letltxmacro.sty
 Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\xifthen\xifthen.sty"
-Package: xifthen 2009/04/17 v1.3 Extended ifthen features
+(/usr/local/texlive/2013/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\misc\etex.sty"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/etex-pkg/etex.sty
 Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
 \et@xins=\count105
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
-Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count106
-\calc@Bcount=\count107
-\calc@Adimen=\dimen124
-\calc@Bdimen=\dimen125
-\calc@Askip=\skip52
-\calc@Bskip=\skip53
-LaTeX Info: Redefining \setlength on input line 76.
-LaTeX Info: Redefining \addtolength on input line 77.
-\calc@Ccount=\count108
-\calc@Cskip=\skip54
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\ifmtarg\ifmtarg.sty"
-Package: ifmtarg 2009/09/02 v1.2a check for an empty argument
-))
-("C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
-Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
-\etb@tempcnta=\count109
-))
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.aux
+\etb@tempcnta=\count106
+)) (./doc.aux
 
 LaTeX Warning: Label `table:2' multiply defined.
 
 )
+\openout1 = `doc.aux'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
@@ -224,21 +196,64 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
- ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count110
-\scratchdimen=\dimen126
+\scratchcounter=\count107
+\scratchdimen=\dimen124
 \scratchbox=\box30
-\nofMPsegments=\count111
-\nofMParguments=\count112
+\nofMPsegments=\count108
+\nofMParguments=\count109
 \everyMPshowfont=\toks22
-\MPscratchCnt=\count113
-\MPscratchDim=\dimen127
-\MPnumerator=\count114
-\makeMPintoPDFobject=\count115
+\MPscratchCnt=\count110
+\MPscratchDim=\dimen125
+\MPnumerator=\count111
+\makeMPintoPDFobject=\count112
 \everyMPtoPDFconversion=\toks23
+) (/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
-\c@lstlisting=\count116
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\c@lstlisting=\count113
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -278,7 +293,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 19.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 19.
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.toc
+(./doc.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -287,165 +302,158 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 3.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}])
+{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write3
+\openout3 = `doc.toc'.
 
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\introduzione.tex
-<images/img1.jpg, id=13, 1204.5pt x 931.48pt>
+ (./introduzione.tex <images/img1.jpg, id=14, 1204.5pt x 931.48pt>
 File: images/img1.jpg Graphic file (type jpg)
- <use images/img1.jpg>
-Package pdftex.def Info: images/img1.jpg used on input line 11.
+
+<use images/img1.jpg>
+Package pdftex.def Info: images/img1.jpg used on input line 20.
 (pdftex.def)             Requested size: 273.14923pt x 211.2369pt.
-)
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\progetto.tex
-[2 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/img1.jpg>
-] [3] <images/missouri_1pix.jpg, id=22, 136.07086pt x 30.4889pt>
+) (./progetto.tex [2] [3 <./images/img1.jpg>]
+<images/missouri_1pix.jpg, id=23, 136.07086pt x 30.4889pt>
 File: images/missouri_1pix.jpg Graphic file (type jpg)
 
 <use images/missouri_1pix.jpg>
-Package pdftex.def Info: images/missouri_1pix.jpg used on input line 55.
+Package pdftex.def Info: images/missouri_1pix.jpg used on input line 56.
 (pdftex.def)             Requested size: 227.62206pt x 51.00511pt.
-
-<images/img3.jpg, id=23, 336.25626pt x 70.2625pt>
+ [4 <./images/missouri_1pix.jpg>]
+<images/img3.jpg, id=27, 336.25626pt x 70.2625pt>
 File: images/img3.jpg Graphic file (type jpg)
  <use images/img3.jpg>
-Package pdftex.def Info: images/img3.jpg used on input line 73.
+Package pdftex.def Info: images/img3.jpg used on input line 77.
 (pdftex.def)             Requested size: 136.57462pt x 28.53763pt.
 
-<images/img4.jpg, id=24, 344.28625pt x 89.33376pt>
+<images/img4.jpg, id=28, 344.28625pt x 89.33376pt>
 File: images/img4.jpg Graphic file (type jpg)
  <use images/img4.jpg>
-Package pdftex.def Info: images/img4.jpg used on input line 76.
+Package pdftex.def Info: images/img4.jpg used on input line 80.
 (pdftex.def)             Requested size: 136.57462pt x 35.43706pt.
 )
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\features.tex
-[4 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/missouri_
-1pix.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/im
-g3.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/img4
-.jpg>] [5] <images/whitespace.jpg, id=32, 36.135pt x 39.14626pt>
+(./features.tex [5 <./images/img3.jpg> <./images/img4.jpg>]
+<images/whitespace.jpg, id=33, 36.135pt x 39.14626pt>
 File: images/whitespace.jpg Graphic file (type jpg)
 
 <use images/whitespace.jpg>
 Package pdftex.def Info: images/whitespace.jpg used on input line 44.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
- <images/loop.jpg, id=33, 36.135pt x 39.14626pt>
+ [6 <./images/whitespace.jpg>]
+<images/loop.jpg, id=37, 36.135pt x 39.14626pt>
 File: images/loop.jpg Graphic file (type jpg)
-
-<use images/loop.jpg>
+ <use images/loop.jpg>
 Package pdftex.def Info: images/loop.jpg used on input line 60.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
- <images/dot.jpg, id=34, 36.135pt x 39.14626pt>
-File: images/dot.jpg Graphic file (type jpg)
 
-<use images/dot.jpg>
+<images/dot.jpg, id=38, 36.135pt x 39.14626pt>
+File: images/dot.jpg Graphic file (type jpg)
+ <use images/dot.jpg>
 Package pdftex.def Info: images/dot.jpg used on input line 77.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
- [6 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/whitespa
-ce.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/loop
-.jpg>] <images/diagonal.jpg, id=38, 36.135pt x 39.14626pt>
-File: images/diagonal.jpg Graphic file (type jpg)
 
-<use images/diagonal.jpg>
+<images/diagonal.jpg, id=39, 36.135pt x 39.14626pt>
+File: images/diagonal.jpg Graphic file (type jpg)
+ <use images/diagonal.jpg>
 Package pdftex.def Info: images/diagonal.jpg used on input line 102.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
- [7 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/dot.jpg>
- <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/diagonal.jp
-g>]
+
+[7 <./images/loop.jpg> <./images/dot.jpg> <./images/diagonal.jpg>]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 141.
- [8]
-<images/missouri_crop.jpg, id=47, 235.88126pt x 44.165pt>
+ [8] [9]
+<images/missouri_crop.jpg, id=51, 235.88126pt x 44.165pt>
 File: images/missouri_crop.jpg Graphic file (type jpg)
 
 <use images/missouri_crop.jpg>
 Package pdftex.def Info: images/missouri_crop.jpg used on input line 191.
 (pdftex.def)             Requested size: 227.62206pt x 42.61893pt.
 
-<images/missouri/0.jpg, id=48, 36.135pt x 39.14626pt>
+<images/missouri/0.jpg, id=52, 36.135pt x 39.14626pt>
 File: images/missouri/0.jpg Graphic file (type jpg)
 
 <use images/missouri/0.jpg>
 Package pdftex.def Info: images/missouri/0.jpg used on input line 198.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/1.jpg, id=49, 36.135pt x 39.14626pt>
+<images/missouri/1.jpg, id=53, 36.135pt x 39.14626pt>
 File: images/missouri/1.jpg Graphic file (type jpg)
 
 <use images/missouri/1.jpg>
 Package pdftex.def Info: images/missouri/1.jpg used on input line 200.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/2.jpg, id=50, 36.135pt x 39.14626pt>
+<images/missouri/2.jpg, id=54, 36.135pt x 39.14626pt>
 File: images/missouri/2.jpg Graphic file (type jpg)
 
 <use images/missouri/2.jpg>
 Package pdftex.def Info: images/missouri/2.jpg used on input line 202.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/3.jpg, id=51, 36.135pt x 39.14626pt>
+<images/missouri/3.jpg, id=55, 36.135pt x 39.14626pt>
 File: images/missouri/3.jpg Graphic file (type jpg)
 
 <use images/missouri/3.jpg>
 Package pdftex.def Info: images/missouri/3.jpg used on input line 204.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/4.jpg, id=52, 36.135pt x 39.14626pt>
+<images/missouri/4.jpg, id=56, 36.135pt x 39.14626pt>
 File: images/missouri/4.jpg Graphic file (type jpg)
 
 <use images/missouri/4.jpg>
 Package pdftex.def Info: images/missouri/4.jpg used on input line 206.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/5.jpg, id=53, 36.135pt x 39.14626pt>
+<images/missouri/5.jpg, id=57, 36.135pt x 39.14626pt>
 File: images/missouri/5.jpg Graphic file (type jpg)
 
 <use images/missouri/5.jpg>
 Package pdftex.def Info: images/missouri/5.jpg used on input line 208.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/6.jpg, id=54, 36.135pt x 39.14626pt>
+<images/missouri/6.jpg, id=58, 36.135pt x 39.14626pt>
 File: images/missouri/6.jpg Graphic file (type jpg)
 
 <use images/missouri/6.jpg>
 Package pdftex.def Info: images/missouri/6.jpg used on input line 210.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/7.jpg, id=55, 36.135pt x 39.14626pt>
+<images/missouri/7.jpg, id=59, 36.135pt x 39.14626pt>
 File: images/missouri/7.jpg Graphic file (type jpg)
 
 <use images/missouri/7.jpg>
 Package pdftex.def Info: images/missouri/7.jpg used on input line 212.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/8.jpg, id=56, 36.135pt x 39.14626pt>
+<images/missouri/8.jpg, id=60, 36.135pt x 39.14626pt>
 File: images/missouri/8.jpg Graphic file (type jpg)
 
 <use images/missouri/8.jpg>
 Package pdftex.def Info: images/missouri/8.jpg used on input line 214.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/9.jpg, id=57, 36.135pt x 39.14626pt>
+<images/missouri/9.jpg, id=61, 36.135pt x 39.14626pt>
 File: images/missouri/9.jpg Graphic file (type jpg)
 
 <use images/missouri/9.jpg>
 Package pdftex.def Info: images/missouri/9.jpg used on input line 216.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/10.jpg, id=58, 36.135pt x 39.14626pt>
+<images/missouri/10.jpg, id=62, 36.135pt x 39.14626pt>
 File: images/missouri/10.jpg Graphic file (type jpg)
 
 <use images/missouri/10.jpg>
 Package pdftex.def Info: images/missouri/10.jpg used on input line 218.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/11.png, id=59, 36.135pt x 38.1425pt>
+<images/missouri/11.png, id=63, 36.135pt x 38.1425pt>
 File: images/missouri/11.png Graphic file (type png)
 
 <use images/missouri/11.png>
 Package pdftex.def Info: images/missouri/11.png used on input line 220.
 (pdftex.def)             Requested size: 27.31352pt x 28.83086pt.
 
-<images/missouri/12.png, id=60, 36.135pt x 38.1425pt>
+<images/missouri/12.png, id=64, 36.135pt x 38.1425pt>
 File: images/missouri/12.png Graphic file (type png)
 
 <use images/missouri/12.png>
@@ -473,21 +481,11 @@ File: images/missouri/4.jpg Graphic file (type jpg)
  <use images/missouri/4.jpg>
 Package pdftex.def Info: images/missouri/4.jpg used on input line 250.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
- [9 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/missouri
-_crop.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/m
-issouri/0.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/imag
-es/missouri/1.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/
-images/missouri/2.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/
-doc/images/missouri/3.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutCluster
-ing/doc/images/missouri/4.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClu
-stering/doc/images/missouri/5.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCu
-tClustering/doc/images/missouri/6.jpg> <C:/Users/Francesco.Francesco-PC/git/Ima
-geCutClustering/doc/images/missouri/7.jpg> <C:/Users/Francesco.Francesco-PC/git
-/ImageCutClustering/doc/images/missouri/8.jpg> <C:/Users/Francesco.Francesco-PC
-/git/ImageCutClustering/doc/images/missouri/9.jpg> <C:/Users/Francesco.Francesc
-o-PC/git/ImageCutClustering/doc/images/missouri/10.jpg> <C:/Users/Francesco.Fra
-ncesco-PC/git/ImageCutClustering/doc/images/missouri/11.png> <C:/Users/Francesc
-o.Francesco-PC/git/ImageCutClustering/doc/images/missouri/12.png>]
+ [10 <./images/missouri_crop.jpg> <./images/missouri/0.jpg> <./images/missouri/
+1.jpg> <./images/missouri/2.jpg> <./images/missouri/3.jpg> <./images/missouri/4
+.jpg> <./images/missouri/5.jpg> <./images/missouri/6.jpg> <./images/missouri/7.
+jpg> <./images/missouri/8.jpg> <./images/missouri/9.jpg> <./images/missouri/10.
+jpg> <./images/missouri/11.png> <./images/missouri/12.png>]
 File: images/missouri/5.jpg Graphic file (type jpg)
  <use images/missouri/5.jpg>
 Package pdftex.def Info: images/missouri/5.jpg used on input line 255.
@@ -524,104 +522,98 @@ File: images/missouri/12.png Graphic file (type png)
 <use images/missouri/12.png>
 Package pdftex.def Info: images/missouri/12.png used on input line 290.
 (pdftex.def)             Requested size: 27.31352pt x 28.83086pt.
-)
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\lcs.tex [10]
+) (./lcs.tex [11]
 Missing character: There is no â in font cmr12!
 Missing character: There is no ˆ in font cmr12!
 Missing character: There is no ’ in font cmr12!
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 42.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 42.
- [11])
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\clustering.tex)
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\affinitypropagation
-.tex
+ [12])
+(./clustering.tex) (./affinitypropagation.tex
 Underfull \hbox (badness 2644) in paragraph at lines 4--4
 [][]\T1/cmr/m/n/10 Brendan J. Frey, Del-bert Dueck, \T1/cmr/m/it/10 Clus-ter-in
 g by Pass-ing Mes-sages Be-tween Data Points\T1/cmr/m/n/10 ,
  []
 
-[12]
+[13]
 Missing character: There is no â in font cmr12!
 Missing character: There is no ˆ in font cmr12!
 Missing character: There is no ’ in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no ˆ in font cmr12!
 Missing character: There is no ’ in font cmr12!
- <images/ap.jpg, id=85, 1284.8pt x 1124.2pt>
+ <images/ap.jpg, id=90, 1284.8pt x 1124.2pt>
 File: images/ap.jpg Graphic file (type jpg)
  <use images/ap.jpg>
 Package pdftex.def Info: images/ap.jpg used on input line 49.
 (pdftex.def)             Requested size: 318.66948pt x 278.83646pt.
 )
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\results.tex
-[13 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/ap.jpg>]
-
+(./results.tex [14 <./images/ap.jpg>]
 Overfull \hbox (9.44653pt too wide) in paragraph at lines 29--51
  [][] 
  []
 
-[14] <images/precisione.png, id=93, 553.1064pt x 310.761pt>
+[15] <images/precisione.png, id=97, 553.1064pt x 310.761pt>
 File: images/precisione.png Graphic file (type png)
 
 <use images/precisione.png>
 Package pdftex.def Info: images/precisione.png used on input line 61.
 (pdftex.def)             Requested size: 318.66948pt x 179.04655pt.
- [15 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/precisi
-one.png>]
-<images/esecuzione.png, id=99, 565.6332pt x 324.7332pt>
+ [16 <./images/precisione.png>]
+<images/esecuzione.png, id=103, 565.6332pt x 324.7332pt>
 File: images/esecuzione.png Graphic file (type png)
 
 <use images/esecuzione.png>
 Package pdftex.def Info: images/esecuzione.png used on input line 103.
 (pdftex.def)             Requested size: 318.66948pt x 182.94936pt.
-)
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\code.tex [16 <C:/Us
-ers/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/esecuzione.png>])
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\conclusion.tex)
-[17] (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.aux)
+) (./code.tex [17 <./images/esecuzione.png>])
+(./conclusion.tex [18]) [19] (./doc.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4403 strings out of 493921
- 62765 string characters out of 3147231
- 135237 words of memory out of 3000000
- 7582 multiletter control sequences out of 15000+200000
- 20836 words of font info for 44 fonts, out of 3000000 for 9000
- 841 hyphenation exceptions out of 8191
- 29i,13n,32p,864b,352s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1000.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1095.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/cm-super/sfbx1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/cm-super/sfbx1728.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-
-super/sfbx2074.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfr
-m0700.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0800.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1000.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1095.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/cm-super/sfrm1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/
-type1/public/cm-super/sfti1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/cm-super/sfti1095.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-su
-per/sfti1200.pfb>
-Output written on doc.pdf (17 pages, 1319669 bytes).
+ 4564 strings out of 493315
+ 65501 string characters out of 6137904
+ 144156 words of memory out of 5000000
+ 7891 multiletter control sequences out of 15000+600000
+ 20836 words of font info for 44 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 38i,13n,32p,864b,346s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
+</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
+ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
+al/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
+texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
+exlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
+live/2013/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texli
+ve/2013/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive
+/2013/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2
+013/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/201
+3/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2013/
+texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2013/te
+xmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2013/texm
+f-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2013/texmf-
+dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2013/texmf-di
+st/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2013/texmf-dist
+/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2013/texmf-dist/f
+onts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2013/texmf-dist/fon
+ts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2013/texmf-dist/fonts
+/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2013/texmf-dist/fonts/t
+ype1/public/cm-super/sfti1200.pfb>
+Output written on doc.pdf (19 pages, 1303211 bytes).
 PDF statistics:
- 182 PDF objects out of 1000 (max. 8388607)
+ 192 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  126 words of extra memory for PDF output out of 10000 (max. 10000000)
 
