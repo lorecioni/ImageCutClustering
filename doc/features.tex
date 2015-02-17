@@ -44,8 +44,8 @@ In particular, the features with less space requirements are searched in both 20
 
 \begin{figure}[!htpb]
 \centering
-\includegraphics[width=0.35\textwidth]{images/missouri_windows.jpg}
-\caption{A window and its first half}
+\includegraphics[width=0.4\textwidth]{images/missouri_windows.jpg}
+\caption{A window (40px) and its first half(20px)}
 \end{figure} 
 
 The height of the windows used is never considered as a parameter since for all the features searching functions the height is customarily the height of the sample.  
@@ -90,7 +90,7 @@ The string associated with the Loop feature is "LL".
 \begin{wrapfigure}{r}{0.3\textwidth}
   \vspace{-20pt}
   \begin{center}
-    \includegraphics[width=0.06\textwidth]{images/dot}
+    \includegraphics[width=0.08\textwidth]{images/dot}
   \end{center}
   \vspace{-20pt}
   \caption{A dot}
@@ -116,7 +116,7 @@ In the case of an upward facing diagonal, given a black pixel we consider it con
 \begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.12\textwidth]{images/diagP.jpg}
-\caption{Given the black pixel we search for other black pixels in the 3 positions, the red one is given priority}
+\caption{Given the black pixel we search for other black pixels in the 3 positions, the closer red one is given priority}
 \label{pixels}
 \end{figure} 
 \vspace{3mm}
@@ -148,7 +148,7 @@ The problems with this sub-feature are that intersections of bottom and upper li
 \begin{wrapfigure}{l}{0.3\textwidth}
   \vspace{-20pt}
   \begin{center}
-    \includegraphics[width=0.06\textwidth]{images/cross.jpg}
+    \includegraphics[width=0.08\textwidth]{images/cross.jpg}
   \end{center}
   \vspace{-20pt}
   \caption{A cross}
@@ -186,10 +186,10 @@ The corresponding string as thus no limitation in length other than the ones pos
 \vspace{2mm}
 
 There still persists the problem that the stroke width is not fully considered so a big blob of black pixels is seen as a series of horizontal and vertical lines, at the same time such an occurrence is rare so the presence of many horizontal and vertical lines ends up distinguishing the word in itself.    
-
+\newpage
 \subsubsection*{Recapitulation}
 We present a recapitulation of the various features and their correspondent strings in Table \ref{features}.
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \footnotesize
 \begin{tabular}{|l | c |} 
@@ -281,71 +281,74 @@ We initially create, as described in the section above, a sliding window that sc
 
 \begin{enumerate}[label=(\alph*)]
 \item Some \textbf{diagonal lines} (ascending (s) and descending (u) ), at the top (S) and at the bottom (s) of the image. Generated string: ''\emph{sSUusSUSu}''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/0.jpg}
 \end{figure} 
 \item As the previous image and two more diagonal lines representing the "\emph{i}". An \textbf{horizonal line} (H). Generated string: ''\emph{sSUusSUSuHsu}''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/1.jpg}
 \end{figure} 
 \item Some diagonal lines and, at the end of the window, an horizontal line. Generated string: ''\emph{ssSusSsH}''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/2.jpg}
 \end{figure} 
 \item Two consecutive similar character represented by diagonal lines and \textbf{vertical lines} in the middle. Generated string: ''\emph{sVHsV}''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/3.jpg}
 \end{figure} 
 \item In that window we can find a \textbf{dot} (.). Generated string: ''\emph{ssVHs.}''
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/4.jpg}
 \end{figure} 
 \item The same previous dot and a little \textbf{loop} (L) at the bottom. Generated string: ''\emph{ssVs.LssH}''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/5.jpg}
 \end{figure} 
 \item The same loop as previous, an horizontal line a vertical line and two diagonal. Generated string: ''\emph{LVHssu}''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/6.jpg}
 \end{figure} 
 \item Generated string: ''\emph{ssVHus}''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/7.jpg}
 \end{figure} 
 \item The other dot here. Generated string ''\emph{ssus.H}''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/8.jpg}
 \end{figure} 
 \item An i. Generated string: ''\emph{ssuu.}''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/9.jpg}
 \end{figure} 
 \item Only a diagonal line. Generated string: ''\emph{s}''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/10.jpg}
 \end{figure} 
 \item Empty window. Generated string: ''\emph{ }''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/11.png}
 \end{figure} 
 \item Empty window. Generated string: ''\emph{ }''.
-\begin{figure}[!htpb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.06\textwidth]{images/missouri/12.png}
 \end{figure} 
 \end{enumerate}
+The resulting string is: \newline \emph{"sSUusSUSusSUusSUSuHsussSusSsHsVHsVssVHsssVs.LssHLVHssussVHusssus.Hssuu.s"}
+
+\vspace{3mm}
 
 Once those strings are generated they are combined together to generate the \textit{structure string} associated with the word sample. 
 

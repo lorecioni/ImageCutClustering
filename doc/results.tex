@@ -59,7 +59,7 @@ In the next table we're going to show the main results of the tests.
 \label{table:1}
 \end{table}
 
-As we can see in Table \ref{table:1} the number of extracted words is much less than the estimated number of words. This is mainly due to the fact that not all census tables are filled in full: in some cases there are only a few lines or it has not been filled in the status column. In other cases the error is due to a difficulty in removing the word from the scan due to a wrong interpretation of the rows or the columns.
+As we can see in Table \ref{table:1} the number of extracted words is much lower than the estimated number of words. This is mainly due to the fact that not all census tables are completely filled: in some cases there are only a few lines or the states column was purposefully left blank. In other cases the absence of the state samples is due to errors occurring in the segmentation phase due to a wrong interpretation of the rows or the columns.
 
 As we can see in Table \ref{table:prec} and in Figure \ref{fig:precision} the accuracy of the cluster grows with the amount of words extracted. This phenomenon is due to the fact that Affinity Propagation works best with a large number of available data: the greater the number of words, the greater the chances of finding words similar between them, and then combine them within a single cluster.
 
@@ -99,7 +99,7 @@ As we can see in Table \ref{table:prec} and in Figure \ref{fig:precision} the ac
 \label{fig:precision}
 \end{figure}
 
-Now we're going to focus our attention to time. The running time is divided mainly into three distinct phases: time for the extraction of features, time for the creation of similarity matrix (calculation of distances) and clustering.
+In the next table we'll present the results regarding the time needed for the calculations. The running time is divided mainly into three distinct categories corresponding to different phases of the process: time needed for the extraction of features, time needed for the creation of similarity matrix (calculation of distances) and time needed for the clustering.
 
 \begin{table}[!htbp]
 \centering

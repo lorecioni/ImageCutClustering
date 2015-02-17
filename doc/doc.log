@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.21)  17 FEB 2015 21:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.21)  17 FEB 2015 22:03
 entering extended mode
 **doc.tex
 (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.tex
@@ -207,35 +207,43 @@ Package: ifmtarg 2009/09/02 v1.2a check for an empty argument
 Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
 \etb@tempcnta=\count109
 ))
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count110
+\float@exts=\toks22
+\float@box=\box30
+\@float@everytoks=\toks23
+\@floatcapt=\box31
+)
 (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count110
+\scratchcounter=\count111
 \scratchdimen=\dimen126
-\scratchbox=\box30
-\nofMPsegments=\count111
-\nofMParguments=\count112
-\everyMPshowfont=\toks22
-\MPscratchCnt=\count113
+\scratchbox=\box32
+\nofMPsegments=\count112
+\nofMParguments=\count113
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count114
 \MPscratchDim=\dimen127
-\MPnumerator=\count114
-\makeMPintoPDFobject=\count115
-\everyMPtoPDFconversion=\toks23
+\MPnumerator=\count115
+\makeMPintoPDFobject=\count116
+\everyMPtoPDFconversion=\toks25
 )
-\c@lstlisting=\count116
+\c@lstlisting=\count117
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -272,9 +280,9 @@ LaTeX Font Info:    ... okay on input line 18.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 19.
+(Font)              <14.4> on input line 20.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 19.
+(Font)              <7> on input line 20.
 (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 3.
@@ -292,7 +300,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 File: images/img1.jpg Graphic file (type jpg)
  <use images/img1.jpg>
 Package pdftex.def Info: images/img1.jpg used on input line 20.
-(pdftex.def)             Requested size: 273.14923pt x 211.2369pt.
+(pdftex.def)             Requested size: 300.46277pt x 232.35774pt.
 )
 (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\progetto.tex
 [2] [3 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/img1.
@@ -340,7 +348,7 @@ File: images/missouri_windows.jpg Graphic file (type jpg)
 
 <use images/missouri_windows.jpg>
 Package pdftex.def Info: images/missouri_windows.jpg used on input line 47.
-(pdftex.def)             Requested size: 159.33821pt x 26.55797pt.
+(pdftex.def)             Requested size: 182.09486pt x 30.351pt.
 
 <images/whitespace.jpg, id=38, 25.97203pt x 47.42719pt>
 File: images/whitespace.jpg Graphic file (type jpg)
@@ -361,7 +369,7 @@ s/whitespace.jpg>]
 File: images/dot.jpg Graphic file (type jpg)
  <use images/dot.jpg>
 Package pdftex.def Info: images/dot.jpg used on input line 93.
-(pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
+(pdftex.def)             Requested size: 36.42035pt x 39.45735pt.
 
 <images/diagP.jpg, id=45, 31.61812pt x 29.9243pt>
 File: images/diagP.jpg Graphic file (type jpg)
@@ -387,7 +395,7 @@ C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/diagP.jpg>]
 File: images/cross.jpg Graphic file (type jpg)
  <use images/cross.jpg>
 Package pdftex.def Info: images/cross.jpg used on input line 151.
-(pdftex.def)             Requested size: 27.31352pt x 31.10698pt.
+(pdftex.def)             Requested size: 36.42035pt x 41.4808pt.
 
 [9 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/diagonal.
 jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/blob.jp
@@ -403,11 +411,11 @@ File: images/ver.jpg Graphic file (type jpg)
  <use images/ver.jpg>
 Package pdftex.def Info: images/ver.jpg used on input line 183.
 (pdftex.def)             Requested size: 22.76358pt x 52.11598pt.
+ [10 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/hor.jpg
+> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/ver.jpg>]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 195.
- [10 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/hor.jpg
-> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/ver.jpg>] 
-[11]
+ [11]
 <images/missouri_crop.jpg, id=64, 235.88126pt x 44.165pt>
 File: images/missouri_crop.jpg Graphic file (type jpg)
 
@@ -527,15 +535,6 @@ File: images/missouri/4.jpg Graphic file (type jpg)
  <use images/missouri/4.jpg>
 Package pdftex.def Info: images/missouri/4.jpg used on input line 306.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
-File: images/missouri/5.jpg Graphic file (type jpg)
-
-<use images/missouri/5.jpg>
-Package pdftex.def Info: images/missouri/5.jpg used on input line 311.
-(pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
-File: images/missouri/6.jpg Graphic file (type jpg)
- <use images/missouri/6.jpg>
-Package pdftex.def Info: images/missouri/6.jpg used on input line 316.
-(pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
  [12 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/missour
 i_crop.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/
 missouri/0.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/ima
@@ -551,6 +550,15 @@ C/git/ImageCutClustering/doc/images/missouri/9.jpg> <C:/Users/Francesco.Frances
 co-PC/git/ImageCutClustering/doc/images/missouri/10.jpg> <C:/Users/Francesco.Fr
 ancesco-PC/git/ImageCutClustering/doc/images/missouri/11.png> <C:/Users/Frances
 co.Francesco-PC/git/ImageCutClustering/doc/images/missouri/12.png>]
+File: images/missouri/5.jpg Graphic file (type jpg)
+ <use images/missouri/5.jpg>
+Package pdftex.def Info: images/missouri/5.jpg used on input line 311.
+(pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
+File: images/missouri/6.jpg Graphic file (type jpg)
+
+<use images/missouri/6.jpg>
+Package pdftex.def Info: images/missouri/6.jpg used on input line 316.
+(pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 File: images/missouri/7.jpg Graphic file (type jpg)
  <use images/missouri/7.jpg>
 Package pdftex.def Info: images/missouri/7.jpg used on input line 321.
@@ -578,13 +586,17 @@ File: images/missouri/12.png Graphic file (type png)
 <use images/missouri/12.png>
 Package pdftex.def Info: images/missouri/12.png used on input line 346.
 (pdftex.def)             Requested size: 27.31352pt x 28.83086pt.
-)
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\lcs.tex [13]
+
+Overfull \hbox (5.0932pt too wide) in paragraph at lines 349--350
+\T1/cmr/m/it/12 "sSUusSUSusSUusSUSuHsussSusSsHsVHsVssVHsssVs.LssHLVHssussVHusss
+us.Hssuu.s" 
+ []
+
+[13]) (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\lcs.tex
+[14]
 Missing character: There is no â in font cmr12!
 Missing character: There is no ˆ in font cmr12!
 Missing character: There is no ’ in font cmr12!
-
-[14]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 43.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -611,7 +623,7 @@ Missing character: There is no ’ in font cmr12!
 File: images/ap.jpg Graphic file (type jpg)
  <use images/ap.jpg>
 Package pdftex.def Info: images/ap.jpg used on input line 49.
-(pdftex.def)             Requested size: 318.66948pt x 278.83646pt.
+(pdftex.def)             Requested size: 332.32625pt x 290.77556pt.
 )
 (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\results.tex
 [16] [17 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/ap.
@@ -636,43 +648,43 @@ Package pdftex.def Info: images/esecuzione.png used on input line 139.
 (pdftex.def)             Requested size: 318.66948pt x 182.94936pt.
  [20 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/esecuzi
 one.png>])
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\code.tex)
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\conclusion.tex
-[21]) [22] (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.aux)
- ) 
+(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\code.tex [21])
+(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\conclusion.tex)
+[22] (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.aux) ) 
 Here is how much of TeX's memory you used:
- 4448 strings out of 493921
- 63629 string characters out of 3147231
- 140233 words of memory out of 3000000
- 7620 multiletter control sequences out of 15000+200000
+ 4502 strings out of 493921
+ 64324 string characters out of 3147231
+ 141607 words of memory out of 3000000
+ 7670 multiletter control sequences out of 15000+200000
  20836 words of font info for 44 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,13n,32p,952b,350s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx1000.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/public/cm-super/sfbx1095.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/cm-super/sfbx1200.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/cm-super/sfbx1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-s
-uper/sfbx1728.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx
-2074.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0700.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0800.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1000.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1095.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/cm-super/sfrm1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/cm-super/sfti1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-sup
-er/sfti1095.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfti12
-00.pfb>
-Output written on doc.pdf (22 pages, 1377703 bytes).
+ 29i,13n,32p,952b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/
+Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/cm-super/sfbx1000.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/cm-super/sfbx1095.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/cm-super/sfbx1200.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/c
+m-super/sfbx1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/s
+fbx1728.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfbx2074.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0700.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm0800.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1000.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/cm-super/sfrm1095.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/cm-super/sfrm1200.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/cm-super/sfrm1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-
+super/sfti1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sft
+i1095.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfti1200.pfb
+>
+Output written on doc.pdf (22 pages, 1378207 bytes).
 PDF statistics:
  210 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

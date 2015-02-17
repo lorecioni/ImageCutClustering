@@ -14,7 +14,7 @@
 \contentsline {subsubsection}{\numberline {3.1.4}Diagonal line}{8}
 \contentsline {subsubsection}{\numberline {3.1.5}Cross}{9}
 \contentsline {subsubsection}{\numberline {3.1.6}Horizontal and Vertical line}{9}
-\contentsline {subsection}{\numberline {3.2}Dimensional features}{10}
+\contentsline {subsection}{\numberline {3.2}Dimensional features}{11}
 \contentsline {subsection}{\numberline {3.3}Features extraction example}{12}
 \contentsline {section}{\numberline {4}Evaluating distances}{14}
 \contentsline {subsection}{\numberline {4.1}Longest Common Subsequence}{14}
