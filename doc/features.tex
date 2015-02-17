@@ -22,35 +22,51 @@ After having recognised the presence of a feature in a given window the correspo
 
 \paragraph{Windows}
 
-Currently we have chosen to cut the samples in windows of 40 pixels each, with the exception of the last part of the sample that, deemed irrelevant to the end of characterization due to containing almost always white space, is simply ignored.
+Currently we have chosen to cut the samples in windows of 40 pixels each, with the exception of the last segment of the sample that, deemed irrelevant to the end of characterization due to containing almost always white space, is simply ignored to prevent eventual troubles due to the irregular number of pixels.
 
-These windows are spaced only 7 pixels from the preceding and succeeding one, with the intent of creating overlap and lengthening the string that characterizes the samples.
+These windows are spaced only 7 pixels from the preceding and succeeding ones, with the intent of creating overlap and lengthening the string that characterizes the samples.
 (Both the dimension of the window and the spacing between them was decided through tests to obtain the optimal efficacy of the program)
 
-While the simplest way to create the windows in the code would be simply cutting the original image in pieces these steps require memory and time. We have thus preferred to increase the complexity of the functions that search for the features, to whom we pass as a variable the original images with information about the \textit{offset} at which to start the search and the \textit{width} of the window. The width of the window passed has actually a non banal meaning due to the fact that different features are linked to areas of the image with varying dimensions: for example it is not efficient to search for an horizontal line and a vertical line utilizing windows with the same width due to the fact that horizontal lines realistically will require windows with great width but will not have requisites on the height.
+\begin{figure}[!htpb]
+\centering
+\includegraphics[width=0.19\textwidth]{images/sliding.jpg}
+\caption{Overlapping windows 40 pixels wide, spaced 7 pixels}
+\end{figure} 
 
-In particular, the features with less space requirements are searched in both 20 pixels halves of the windows and their strings are appended to the image string the whole 40 pixels window is then searched for the space-hungry features and their strings are added to the "counter". 
 
-The height of the windows used is never considered as a parameter since for all the features searching functions the height is customarily the whole height of the sample.  
+
+While the simplest way to create the windows in the code would be simply cutting the original image in pieces through specialized functions of the \textit{Leptonica} library, these steps require a great amount of memory and time. We have thus preferred to increase the complexity of the functions that search for the features, to whom we pass as a variable the original images with information about the \textit{offset} at which to start the search and the \textit{width} of the window. The width of the window passed has actually a non banal meaning due to the fact that different features are associated with areas of the image with varying dimensions: for example it is not sensible to search for an horizontal line and a vertical line utilizing windows with the same width due to the fact that horizontal lines realistically will require windows with great width but will not have requisites on the height.
+
+
+In particular, the features with less space requirements are searched in both 20 pixels halves of the windows and their strings are appended to the image string, the whole 40 pixels window is then searched for the space-hungry features, only then their identifiers are added to the general string. 
+
+\begin{figure}[!htpb]
+\centering
+\includegraphics[width=0.35\textwidth]{images/missouri_windows.jpg}
+\caption{A window and its first half}
+\end{figure} 
+
+The height of the windows used is never considered as a parameter since for all the features searching functions the height is customarily the height of the sample.  
 
 \subsubsection{Whitespace}  
 
-The first feature that is searched in the windows is the white space. This way if a window is identified as blank there won't be a need to proceed with the search of the other features, saving time.
+The first feature that is searched in the windows is the presence of white space. This way if a window is identified as blank there won't be a need to proceed with the search of the other features, saving time.
 
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
 \centering
 \includegraphics[width=0.06\textwidth]{images/whitespace.jpg}
-\caption{A whitespace}
+\caption{A Whitespace}
 \end{figure} 
 
 A window is identified as blank if the average pixel values is below a pre-set threshold.
 
 The string associated with the Whitespace is " ".
+This string is not given much consideration when calculating distances since it may bring problems if images with the same word are not properly centered in the segmented samples, while differentiating words through the presence of spaces doesn't bring many fruits.
 
 \subsubsection{Loop}
 
-The feature that represents a loop requires the search of the window with greater size.
-The localization of a loop starts by searching for a black pixel which is then tested appropriately. The idea behind is that a point on the border of a loop is such that by looking in a decided direction (in this case the y axis) we meet two pixel value transitions first from black to white and then from white to black. Between the two transitions for a loop to be recognised there must be a minimum number of white pixel, number that is decided discretionally in the code.
+The feature that represents a loop requires the search of the whole 40 pixels window.
+The localization of a loop starts from the search of a black pixel. The idea behind is that a point on the border of a loop is such that by looking in a decided direction (in this case the y axis) we meet two pixel's value transitions first from black to white and then from white to black. Between the two transitions for a loop to be recognised there must be a minimum number of white pixel, number that is decided discretionally in the code.
 
 \begin{wrapfigure}{l}{0.3\textwidth}
   \vspace{-20pt}
@@ -83,43 +99,66 @@ To search for Dots within the segment we first proceed locating the \emph{connec
 
 
 At this point we search for those boxes with dimensions between two pre-set values (minimum and maximum radius), those that meet this condition are boxes that contain most likely points.
-
 Using the connected components we can thus retrieve dots in a simple way.
 
 The string associated with the Dot feature is "....."
-It is particularly long because the dot helps distinguish the words that contain the "i" letter and is easily recognised with little error.
+It is particularly long because the dot helps distinguish the words that contain the "i" letter and a dot is easily recognised with little error.
 
 \subsubsection{Diagonal line}
 
 The feature representing a diagonal line, both upward and downward facing, is extracted through a simple exhaustive scansion of the window for lines of connected black pixels that have an incline in a range of values and are sufficiently long.
 
-At the moment the function doesn't account for the width of the lines found, thus diagonal features can be recognised in a shapeless blob of black pixel that is sufficiently big. 
-\begin{wrapfigure}{l}{0.3\textwidth}
-  \vspace{-20pt}
-  \begin{center}
-    \includegraphics[width=0.06\textwidth]{images/diagonal.jpg}
-  \end{center}
-  \vspace{-20pt}
-  \caption{A diagonal line}
-  \vspace{-10pt}
-\end{wrapfigure}
+In the case of an upward facing diagonal, given a black pixel we consider it connected to another black pixel if this second one is in one of 3 different position that are illustrated in Figure \ref{pixels}.
+
+\begin{figure}[!htpb]
+\centering
+\includegraphics[width=0.12\textwidth]{images/diagP.jpg}
+\caption{Given the black pixel we search for other black pixels in the 3 positions, the red one is given priority}
+\label{pixels}
+\end{figure} 
+\vspace{3mm}
+At the moment the function doesn't account for the width of the lines found, thus diagonal features can be recognised in a formless blob of black pixels that is sufficiently big. 
+
+\begin{figure}[!htpb]
+ \centering
+ \subfigure[]
+   {\includegraphics[width=0.07\textwidth]{images/diagonal.jpg}}
+ \hspace{15mm}
+ \subfigure[]
+   {\includegraphics[width=0.046\textwidth]{images/blob.jpg}}
+ \caption{proper Diagonal feature(a) and a formless blob that introduces errors(b), in this second both upward and downward diagonal lines are recognised}
+  \end{figure}
+\vspace{2mm}
    
-There's a distinction for diagonal features that appear in the lower and upper bottom of the window.
+A distinction in the associated string is introduced for the diagonal features that appear in the lower or upper bottom of the window, moreover the searches for the two kinds of lines are separate.
 At most in a window the function identifies a couple of upward and a couple of downward facing lines (lower and upper parts), once one has been found it stops searching for the same type.
 The lines that are found are further categorised on their length if medium or long.
 
-Many strings are associated with the Diagonal feature, they will be properly listed in the Table \ref{features}.
+Many different strings are associated with the Diagonal feature, they will be properly listed in the Table \ref{features}.
 In particular the string associated with the "long" version of a feature is made from the "medium" version of the string at which is attached an other character: this allows to distinguish features based on their length while at the same time maintaining similarity with a shorter version of themselves to account for variation in the stroke used to write the same word.  
  
 \subsubsection{Cross}
-The function, having found at most a lower and upper case for upward and downward diagonal lines, proceeds to confront the edge points of these lines: if they possibly intersects it extracts a \emph{crossing} feature with distinction if the crossing happens in the lower or upper part of the window. 
+The function, having found at most a lower and upper case for upward and downward diagonal lines, proceeds to confront the edge points of these lines: if they possibly intersects it extracts a \emph{crossing} feature with distinction if the crossing happens in the lower or upper part of the window, priority is given to the bottom part if for example a bottom upward diagonal intersects an upper downward diagonal. 
 
 The problems with this sub-feature are that intersections of bottom and upper lines of the same type (e.g. both upward facing) with different inclines are not recognised, in the same way there's no consideration for intersections made from lines that are not the "primary" bottom and upper diagonals: if in a single windows are present more lower upwards diagonals and one of them other than the first intersects the recognised downward diagonal, such a crossing is ignored.
+
+\begin{wrapfigure}{l}{0.3\textwidth}
+  \vspace{-20pt}
+  \begin{center}
+    \includegraphics[width=0.06\textwidth]{images/cross.jpg}
+  \end{center}
+  \vspace{-20pt}
+  \caption{A cross}
+  \vspace{-10pt}
+\end{wrapfigure}
+
 
 The crossing feature may also not necessarily be a complete intersection, in fact for recognition there just needs to be a merging of a downward and upward line. 
 
 The string associated depending if the cross is found in the upper or lower half is "X" and "x" respectively.
-
+While it may seem that a crossing is distinctive of a word and thus deserving of more "characterizing force", that is the length of the associated strings, the difficulty in recognising the feature and it's uncertainty renders an excessive weight given to its presence dangerous for clustering purposes.
+The feature is thus maintained for future improvements but doesn't bring immediate 
+contributions to the application.
 
 \subsubsection{Horizontal and Vertical line}
 Both horizontal and vertical lines' features are extracted through
@@ -127,12 +166,26 @@ a simple scan of the window.
 
 The horizontal lines requires a double-window for their implicit characteristic.
 The function identifies a line if it finds a connected row or column of black pixels that has sufficient length, in particular it distinguishes the lines found in normal or long through an ulterior threshold.
+In particular, as obvious difference from the diagonal line, no play is left to recognise inclined lines as horizontal or vertical.
 
-Once a fitting line has been found the function keeps searching for more, continuing the scansion of the window after having moved a certain distance from the last line found in order not to confuse a particularly thick stroke as different separate lines.
+Once a fitting line has been found the function keeps searching for more until the exhaustion of the allotted space. The scansion of the window is continued after having moved a certain distance from the last line found in order not to confuse a particularly thick stroke as different separate lines.
+The corresponding string as thus no limitation in length other than the ones posed by the maximum number of lines that can fit in a window.
+
+\begin{figure}[!htpb]
+ \centering
+ \subfigure[]
+   {\includegraphics[width=0.07\textwidth]{images/hor.jpg}}
+ \hspace{15mm}
+ \subfigure[]
+   {\includegraphics[width=0.05\textwidth]{images/ver.jpg}}
+ \caption{Horizontal(a) and Vertical(b) features}
+  \end{figure}
+\vspace{2mm}
 
 There still persists the problem that the stroke width is not fully considered so a big blob of black pixels is seen as a series of horizontal and vertical lines, at the same time such an occurrence is rare so the presence of many horizontal and vertical lines ends up distinguishing the word in itself.    
 
-
+\subsubsection*{Recapitulation}
+We present a recapitulation of the various features and their correspondent strings.
 \begin{table}[!htbp]
 \centering
 \footnotesize
@@ -163,7 +216,7 @@ There still persists the problem that the stroke width is not fully considered s
     Vertical line upper half, long & "VIIii"\\ 
  \hline
 \end{tabular}
-\caption{Recap of the string associated to the features}
+\caption{Recapitulation of the strings associated to each feature}
 \label{features}
 \end{table}
 

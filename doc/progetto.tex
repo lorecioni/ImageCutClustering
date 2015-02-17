@@ -40,8 +40,8 @@ At the end of this phase, ideally each word is contained in an individual image.
 \label{oldFeatures}
 In the post-processing phase the individual images extracted are reworked in order to remove any  vertical or horizontal residual lines left from an imperfect previous cut.
 
-////NON CAPISCO CHE SIGNIFICHI////
-Delete row/column strokes can be about as bring back the black pixels related to the residual value of pure white (255 as grayscale).
+This operation of "deletion" consists in setting the related black pixels to the value of 255, pure white.
+In case the spurious rows are intersected by the word additional steps are taken to leave the intersecting pixels to the original value. We find an example of this in Figure \ref{postProcessing}.
 
 This allows us to extract the most significant features in the next steps of the process.
 To extract the features each image is divided in windows with width of 1 pixel, on these windows are then applied the functions utilized for the extraction.
@@ -67,11 +67,19 @@ The localization of words and their segmentation has inherent persistent difficu
 A first error source is represented by the inherent document skew. The skew may be due to a not perfectly horizontal scan of the original document, its presence reduces the efficacy of the work in searching for rows and columns of the grid, making the segmentation impossible with the given implementation of the project.
 
 Other source of errors is the presence in some scanned images of other census forms below the current one: black columns from the lower document are seen as belonging to the upper one, making the application recognize them as the first column of the form.
+
+
 This erroneous association renders the scan unusable since the targeted state area is found from the first black column through an hard-coded distance in pixels, moreover the analysis of the scan introduces in the clustering phase incorrect images that, recognised as similar, due to the particular way the code is implemented, skew the results in favour of the application increasing the supposed precision. 
+
+\begin{figure}[!htpb]
+\centering
+\includegraphics[width=0.26\textwidth]{images/wrongColumn.jpg}
+\caption{The resulting erroneous images}
+\end{figure} 
 
 The identification of extraneous lines is another source of difficulties: the large number of dashed lines present makes the correct recognition extremely hard, it isn't always possible to \emph{clean} the images and this can cause errors in the clustering phase.
 
-\begin{figure}[!ht]
+\begin{figure}[!htpb]
  \centering
  \subfigure[An image with a dashed line]
    {\includegraphics[width=0.3\textwidth]{images/img3.jpg}}
@@ -79,6 +87,7 @@ The identification of extraneous lines is another source of difficulties: the la
  \subfigure[The line intersects the word]
    {\includegraphics[width=0.3\textwidth]{images/img4.jpg}}
  \caption{Segmentation and post-processing issues}
+ \label{postProcessing}
  \end{figure}
 \hspace{1mm}
 In other cases the word intersects directly gridlines. Because of this we may experience a loss of information about words if the line is removed using the method described above.
