@@ -95,7 +95,7 @@ As we can see in Table \ref{table:prec} and in Figure \ref{fig:precision} the ac
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{images/precisione.png}
-\caption{Clustering precision based on number of scans}
+\caption{Clustering precision relative to the number of scans}
 \label{fig:precision}
 \end{figure}
 
@@ -130,20 +130,20 @@ In the next table we'll present the results regarding the time needed for the ca
 \label{table:2}
 \end{table}
 
-As we can see in Table \ref{table:2} the computational time is mainly due to the construction phase of similarity matrix, so the calculation of distances. This occurs especially in calculating LCS distance due to the fact that structural strings of words are very long and the cost of the algorithm is $O(nm)$, with $n$ and $m$ the lengths of the two strings.
+As we can see in Table \ref{table:2} the complexity is mainly due to the construction phase of the similarity matrix, that is the calculation of distances. This high operative cost occurs especially in calculating the LCS distance due to the fact that the structural strings of our words are very long and the cost of the algorithm is $O(nm)$, with $n$ and $m$ the lengths of the two strings, cost that must be considered in each comparison between couples of samples.
 
-Structural long strings characterize better the word (and therefore make more accurate clustering), but involve a longer calculation time.
+We sought long structural strings to obtain a deeper characterization of the words (and therefore make more accurate clustering), but this necessarily increases the calculation time.
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{images/esecuzione}
-\caption{Running time on number of scans}
+\caption{Running time relative to the number of scans}
 \label{fig:time}
 \end{figure}
 
-A parameter to evaluate the goodness of the newly formed clusters can be the number of clusters that have a maximum precision, which contain all similar elements between them and properly classified. This parameter is indicative as it can still exist cases of \emph{false negatives} (words properly classified but labelled incorrectly) that then cut out the entire cluster.
+A parameter to evaluate the goodness of our application relatively to the task can be the number of clusters that have the absolute precision, that is contain only similar elements that are properly classified(due to human error sometimes the words in the debug files suffer a faulty categorization).
 
-In the following table are collected the number of clusters that respect the above described property and the number of items that they contain. 
+In the following table are presented the number of clusters that respect the above property and the number of items that they contain. 
 
 \begin{table}[!htbp]
 \centering
