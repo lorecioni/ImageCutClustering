@@ -1,10 +1,10 @@
 \section{Results}
 
-Let's explore the test phase and see the results in detail. Initially we ran debug tests on our personal pc by porter quickly modify some code.
+Let's explore the test phase and see the results in detail. Initially we ran debug tests on our personal pc in order to easily modify code.
 
-All tests will be shown below were performed on a single machine that has enabled us to work with much larger data in less time. The machine used is composed of two Xeon processors for a total of 16 cores @ 2.80Ghz and 48 Gb of RAM.
+All tests will be shown below were performed on a single machine that has enabled us to work with much larger data in less time. The machine used is composed of two Xeon processors for a total of 16 cores 2.80 Ghz and 48 Gb of RAM.
 
-The tests were performed on a growing number of scans, each containing a maximum of 50 lines from which we extract the word that represents the State. For each number of different scans have been tried the three possible distances calculation: only LCS, only L1 (Euclidean distance) and LCS and L1 combined together.
+The tests were performed on a growing number of scans, each containing a maximum of 50 lines from which we extract the words that represent the States. For each number of different scans have been tried the three possible distances calculation: only LCS, only L1 (Euclidean distance) and LCS and L1 combined together.
 
 The data collected for each test are as follows:
 \begin{itemize}
@@ -12,7 +12,7 @@ The data collected for each test are as follows:
 \item \textbf{Estimated words}: the number of words estimated on the basis of the number of scans.
 \item\textbf{Extracted words}: the number of words actually mined and processed, as well as a percentage.
 \item \textbf{Number of clusters}: the number of clusters created in process.
-\item \textbf{Features extraction time}: the time, in seconds, required for the extraction of features from the words.
+\item \textbf{Features extraction time}: the time, in seconds, required for features extraction from words.
 \item \textbf{Evaluating distances time}: the time, in seconds, required to generate the similarity matrix with the distances between all the words extracted.
 \item \textbf{Clustering time}: the time, in seconds, required for the creation of clusters.
 \item \textbf{Running time}: the total execution time, in seconds.
@@ -21,7 +21,7 @@ The data collected for each test are as follows:
 \item \textbf{Precision}: the accuracy of the result, the average accuracy of individual clusters weighted with the number of words.
 \end{itemize}
 
-In the next table we're going to show the main results for the tests. 
+In the next table we're going to show the main results of the tests. 
 
 \begin{table}[!htbp]
 \centering
@@ -43,8 +43,8 @@ In the next table we're going to show the main results for the tests.
 130 scans (L1) & 6500 & 5050 & 425 & 5444.43 & 71.12\\ 
 130 scans (LCS) & 6500 & 5050 & 441 & 5629.71 & 74.41\\ 
 130 scans (LCS and L1) & 6500 & 5050 & 463 & 6729.62 & 77.94\\ 
-500 scans (L1) & 25000 & 18146 & 3957 & 85545.11 & 80.89\\ 
-500 scans (LCS) & 0 & 0 & 0 & 0 & 0\\ 
+500 scans (L1) & 25000 & 18146 & 3957 & 85545.11 & 77.89\\ 
+500 scans (LCS) & 25000 & 18146 & 3316 &  76324.63 & 81.22\\ 
 500 scans (LCS and L1) & 25000 & 18146 & 3941 & 138309.85\tablefootnote{During this test, the machine used was concurrently executing other tasks creating a bottleneck in the memory used.} & 82.14\\ 
  \hline
 \end{tabular}
@@ -52,7 +52,7 @@ In the next table we're going to show the main results for the tests.
 \label{table:1}
 \end{table}
 
-As we can see in Table \ref{table:1} the number of extracted words is much less than the estimated number of words. This is mainly due to the fact that not all census tables are filled in full: in some cases there are only a few lines or has not been filled in the status column. In other cases, the error is due to a difficulty in removing the word from the scan due to a wrong interpretation of the rows.
+As we can see in Table \ref{table:1} the number of extracted words is much less than the estimated number of words. This is mainly due to the fact that not all census tables are filled in full: in some cases there are only a few lines or it has not been filled in the status column. In other cases the error is due to a difficulty in removing the word from the scan due to a wrong interpretation of the rows or the columns.
 
 As we can see in Figure \ref{fig:precision} the accuracy of the cluster grows with the amount of words extracted. This phenomenon is due to the fact that Affinity Propagation works best with a large number of available data: the greater the number of words, the greater the chances of finding words similar between them, and then combine them within a single cluster.
 
@@ -86,7 +86,7 @@ Now we're going to focus our attention to time. The running time is divided main
 130 scans (LCS) & 68.17 & 4353.85 & 1207.69 & 5629.71\\ 
 130 scans (LCS and L1) & 73.10 & 5608.82 & 1047.70 & 6729.62\\ 
 500 scans (L1) & 289.33 & 4482.02 & 80773.76 & 85545.11 \\ 
-500 scans (LCS) & 0 & 0 & 0 & 0\\ 
+500 scans (LCS) & 323.66 & 57699.51 & 18301.46 & 76324.63\\ 
 500 scans (LCS and L1) & 403.41 & 61424.57 & 76481.87 & 138309.85\\ 
  \hline
 \end{tabular}
@@ -105,7 +105,7 @@ Structural long strings characterize better the word (and therefore make more ac
 \label{fig:time}
 \end{figure}
 
-A parameter to evaluate the goodness of the newly formed clusters can be the number of clusters that have a maximum precision, or which contain all similar elements between them and properly classified. This parameter is indicative as it can still exist cases of \emph{false negatives} (words properly classified but labelled incorrectly) that then cut out the entire cluster.
+A parameter to evaluate the goodness of the newly formed clusters can be the number of clusters that have a maximum precision, which contain all similar elements between them and properly classified. This parameter is indicative as it can still exist cases of \emph{false negatives} (words properly classified but labelled incorrectly) that then cut out the entire cluster.
 
 In the following table are collected the number of clusters that respect the above described property and the number of items that they contain. 
 
@@ -130,7 +130,7 @@ In the following table are collected the number of clusters that respect the abo
 130 scans (LCS) & 208 & 713 & 14.12 &  3.43\\ 
 130 scans (LCS and L1) & 215 & 860 & 17.03 & 4.00\\ 
 500 scans (L1) & 2854 & 7354 & 40.53 & 2.58\\ 
-500 scans (LCS) & 0 & 0 & 0 & 0\\ 
+500 scans (LCS) & 2902 & 7423 & 40.91 & 2.56\\ 
 500 scans (LCS and L1) & 3020 & 7616 & 41.97 & 2.52\\ 
  \hline
 \end{tabular}
