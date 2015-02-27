@@ -36,14 +36,15 @@ where $x$ and $y$ are the strings and the $length()$ function returns the length
 The Longest Common Subsequence is only used with strings. In order to improve the correctness of the words' distance matrix we combine LCS distance with the Euclidean Distance obtained through the use of the \textit{dimensional features}.
 
 The Euclidean Distance between two samples is evaluated through the formula:
-$$d = \sqrt{((a_b - a_t)−(b_b - b_t))^2 -(a_c - b_c)^2}$$
+$$d_{a,b} = \sum_{i = 1}^{W} \sqrt{((t_{a}^{(i)} - b_{a}^{(i)}) - (t_{b}^{(i)} - b_{b}^{(i)}))^2 - (n_{a}^{(i)} - n_{b}^{(i)})^2}$$
 
 where:
 \begin{itemize}
-\item $a_b$ representing the end of the stroke $a$
-\item $a_t$ representing the begin of the stroke $a$
-\item $b_b$ representing the end of the stroke $b$
-\item $b_t$ representing the begin of the stroke $b$
-\item $a_c$ representing the number of transition (normalized) of $a$
-\item $b_c$ representing the number of transition (normalized) of $b$
+\item $W$ is the word image width.
+\item $t_{a}^{(i)}$ is the top black pixel in $i$ column in word $a$.
+\item $t_{b}^{(i)}$ is the top black pixel in $i$ column in in word $b$.
+\item $b_{a}^{(i)}$ is the bottom black pixel in $i$ column in in word $a$.
+\item $b_{b}^{(i)}$ is the bottom black pixel in $i$ column in in word $b$.
+\item $n_{a}^{(i)}$ is the number of transitions in $i$ column in in word $a$.
+\item $n_{b}^{(i)}$ is the number of transitions in $i$ column in in word $a$.
 \end{itemize}
