@@ -80,17 +80,6 @@ This erroneous association renders the scan unusable since the targeted state ar
 
 The identification of extraneous lines is another source of difficulties: the large number of dashed lines present makes the correct recognition extremely hard, it isn't always possible to \emph{clean} the images and this can cause errors in the clustering phase.
 
-\begin{figure}[!htpb]
- \centering
- \subfigure[An image with a dashed line]
-   {\includegraphics[width=0.3\textwidth]{images/img3.jpg}}
- \hspace{5mm}
- \subfigure[The line intersects the word]
-   {\includegraphics[width=0.3\textwidth]{images/img4.jpg}}
- \caption{Segmentation and post-processing issues}
- \label{postProcessing}
- \end{figure}
-\hspace{1mm}
 In other cases the word intersects directly gridlines. Because of this we may experience a loss of information about words if the line is removed using the method described above.
 
 
