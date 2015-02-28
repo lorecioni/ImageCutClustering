@@ -21,9 +21,9 @@ $$Precision = \frac{\sum_i P_i * n_i}{N_w}$$
 where $P_i$ is the precision of cluster $i$, $n_i$ is the number of words in cluster $i$ and $N_w$ is the number of words. 
 \end{itemize}
 
-In the next table we are going to show the main results of the tests. 
+In the next table are shown the main results of the tests. 
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \footnotesize
 \begin{tabular}{|l | c | c | c | c | c | c |} 
@@ -57,14 +57,14 @@ As we can see in Table \ref{table:1} the number of extracted words is much lower
 As we can see in Figure \ref{fig:precision} the accuracy of the cluster grows with the amount of words extracted. This phenomenon is due to the fact that Affinity Propagation works best with a large number of available data: the greater the number of words, the greater the chances of finding words similar between them, and then combine them within a single cluster.
 
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{images/precisione.png}
 \caption{Clustering precision relative to the number of scans}
 \label{fig:precision}
 \end{figure}
 
-In the next table we will present the results regarding the time needed for the calculations. The running time is divided mainly into three distinct categories corresponding to different phases of the process: time needed for the extraction of features, time needed for the creation of similarity matrix (calculation of distances) and time needed for the clustering.
+In the next table are presented the results regarding the time needed for the calculations. The running time is divided mainly into three distinct categories corresponding to different phases of the process: time needed for the extraction of features, time needed for the creation of similarity matrix (calculation of distances) and time needed for the clustering.
 
 \begin{itemize}
 \item \textbf{Features extraction time}: the time, in seconds, required for features extraction from the words.
@@ -73,7 +73,7 @@ In the next table we will present the results regarding the time needed for the 
 \item \textbf{Running time}: the total execution time, in seconds.
 \end{itemize}
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \footnotesize
 \begin{tabular}{|l | c | c | c | c |} 
@@ -115,27 +115,28 @@ We sought long structural strings to obtain a deeper characterization of the wor
 
 A parameter to evaluate the goodness of our application relatively to the task can be the number of clusters that have the absolute precision, that is contain only similar elements that are properly classified(due to human error sometimes the words in the debug files suffer a faulty categorization).
 
-In the following table are presented the number of clusters that respect the above property and the number of items that they contain. 
+In the following table are presented the number of clusters which respect the above property and the number of items that they contain. 
 
 \begin{itemize}
 
 \item \textbf{Correct clusters}: the number of clusters with absolute precision, therefore containing only words equal to each other.
 \item \textbf{Correct words}: the number of words within the Correct clusters and their corresponding percentage respect to all the elements.
 \item \textbf{Single clusters}: clusters containing only one word.
+\item \textbf{Average words for correct non-single cluster} (\textbf{AWCC}): number of words in average in the correct clusters that do not contain a single element.
 \end{itemize}
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \footnotesize
 \begin{tabular}{|l | c | c | c | c |} 
  \hline 
- & \multicolumn{1}{p{2cm}|}{\centering\bfseries Correct\\ clusters}&  \multicolumn{1}{p{2cm}|}{\centering\bfseries Correct\\words} & \multicolumn{1}{p{2cm}|}{\centering\bfseries Single\\clusters} & \multicolumn{1}{p{2cm}|}{\centering\bfseries Average words\\for cluster} \\ [0.5ex] 
+ & \multicolumn{1}{p{2cm}|}{\centering\bfseries Correct\\ clusters}&  \multicolumn{1}{p{2cm}|}{\centering\bfseries Correct\\words} & \multicolumn{1}{p{2cm}|}{\centering\bfseries Single\\clusters} & \multicolumn{1}{p{2cm}|}{\centering\bfseries AWCC} \\ [0.5ex] 
  \hline\hline
 %% label & clusters & words & percentage %%
-16 scans (L1) & 12 & 18 & 10 &  1.50\\ 
-16 scans (LCS) & 33 & 44 & 29 &1.33\\ 
-16 scans (LCS and L1) & 25 & 45 & 18 & 1.80\\ \hline
-32 scans (L1) & 11 & 11 & 10 & 1.00\\ 
+16 scans (L1) & 12 & 18 & 10 &  3.00\\ 
+16 scans (LCS) & 33 & 44 & 29 & 2.75\\ 
+16 scans (LCS and L1) & 25 & 45 & 18 & 6.43\\ \hline >>>CONTINUAMI
+32 scans (L1) & 11 & 11 & 10 & xx.00\\ 
 32 scans (LCS) & 39 & 48 & 36 &1.23\\ 
 32 scans (LCS and L1) & 32 & 43 & 28 & 1.34\\ \hline
 75 scans (L1) & 39 & 172 & 11 & 4.41\\ 

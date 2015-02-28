@@ -188,35 +188,36 @@ The corresponding string as thus no limitation in length other than the ones pos
 There still persists the problem that the stroke width is not fully considered so a big blob of black pixels is seen as a series of horizontal and vertical lines, at the same time such an occurrence is rare so the presence of many horizontal and vertical lines ends up distinguishing the word in itself.    
 \newpage
 \subsubsection*{Recapitulation}
-We present a recapitulation of the various features and their correspondent strings in Table \ref{features}.
+Follows a recapitulation of the various features and their associated strings in Table \ref{features}.
+In the \textit{Simplified} column are contained the corresponding strings utilized in the example of features' extraction of Section \ref{FEE}.
 \begin{table}[H]
 \centering
 \footnotesize
-\begin{tabular}{|l | c |} 
+\begin{tabular}{|l | c | c |} 
  \hline  \multicolumn{1}{|p{2cm}|}{\bfseries Feature}
- & \multicolumn{1}{p{2cm}|}{\centering\bfseries Associated string} \\ [0.5ex] 
+ & \multicolumn{1}{p{2cm}|}{\centering\bfseries Associated string}  & \multicolumn{1}{p{2cm}|}{\centering\bfseries Simplified string} \\ [0.5ex] 
  \hline\hline
- Whitespace & " " \\ \hline
- Loop & "LL"\\\hline
- Dot & "....."\\ \hline
- Upward facing diagonal lower half, medium & "s" \\ \hline
- Upward facing diagonal lower half, long & "bs"  \\\hline
- Upward facing diagonal upper half, medium & "S" \\ \hline
- Upward facing diagonal upper half, long & "BS" \\\hline
- Downward facing diagonal lower half, medium& "u"\\ \hline
- Downward facing diagonal lower half, long &"vu" \\ \hline
- Downward facing diagonal upper half, medium& "U" \\\hline
- Downward facing diagonal upper half, long &"VU" \\\hline
- Cross upper & "X"\\\hline
- Cross lower & "x"\\\hline
- Horizontal line lower half, medium & "-"\\\hline
-  Horizontal line lower half, long & "h-"\\\hline
-   Horizontal line upper half, medium & "H-"\\\hline
-    Horizontal line upper half, long & "Hh-"\\\hline
- Vertical line lower half, medium & "ii"\\\hline
-  Vertical line lower half, long & "IIii"\\\hline
-   Vertical line upper half, medium & "Vii"\\\hline
-    Vertical line upper half, long & "VIIii"\\ 
+ Whitespace & " " & " "\\ \hline
+ Loop & "LL" & "L"\\\hline
+ Dot & "....." & "."\\ \hline
+ Upward facing diagonal lower half, medium & "s" & "s" \\ \hline
+ Upward facing diagonal lower half, long & "bs" & "s" \\\hline
+ Upward facing diagonal upper half, medium & "S"& "S" \\ \hline
+ Upward facing diagonal upper half, long & "BS" & "S"\\\hline
+ Downward facing diagonal lower half, medium& "u"& "u"\\ \hline
+ Downward facing diagonal lower half, long &"vu" & "u"\\ \hline
+ Downward facing diagonal upper half, medium& "U" & "U"\\\hline
+ Downward facing diagonal upper half, long &"VU" & "U"\\\hline
+ Cross upper & "X"& "X"\\\hline
+ Cross lower & "x"& "x"\\\hline
+ Horizontal line lower half, medium & "-"& "H"\\\hline
+  Horizontal line lower half, long & "h-"& "H"\\\hline
+   Horizontal line upper half, medium & "H-"& "H"\\\hline
+    Horizontal line upper half, long & "Hh-"& "H"\\\hline
+ Vertical line lower half, medium & "ii"& "V"\\\hline
+  Vertical line lower half, long & "IIii"& "V"\\\hline
+   Vertical line upper half, medium & "Vii"& "V"\\\hline
+    Vertical line upper half, long & "VIIii"& "V"\\ 
  \hline
 \end{tabular}
 \caption{Recapitulation of the strings associated to each feature}
@@ -236,7 +237,7 @@ These dimensional features are exactly the ones previously utilized by our colle
 A simple explanation on how they are extracted can be found in section \ref{oldFeatures}.
 
 \subsection{Features extraction example}
-
+\label{FEE}
 We present now an example of features extraction from a word sample, in this case it is presented an older implementation of our application but the ideas and process scheme are maintained constant.
 In particular the older version was chosen to simplify the explanation since it uses smaller windows with lesser overlap so that it is visually more self-explanatory.
 
@@ -251,31 +252,29 @@ We initially create, as described in the section above, a sliding window that sc
 \begin{figure}[!htpb]
  \centering
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/0.jpg}}
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/0.jpg}}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/1.jpg}}
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/1.jpg}}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/2.jpg}}
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/2.jpg}}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/3.jpg}}
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/3.jpg}}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/4.jpg}}
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/4.jpg}}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/5.jpg}}
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/5.jpg}}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/6.jpg}}
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/6.jpg}}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/7.jpg}}
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/7.jpg}}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/8.jpg}}  
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/8.jpg}}} 
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/9.jpg}}
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/9.jpg}}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/10.jpg}}
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/10.jpg}}}
  \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/11.png}}
- \subfigure[]
-   {\includegraphics[width=0.06\textwidth]{images/missouri/12.png}}   
+   {\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/11.png}}}
  \caption{Sliding window segmentation}
  \end{figure}
 
@@ -283,67 +282,62 @@ We initially create, as described in the section above, a sliding window that sc
 \item Some \textbf{diagonal lines} (ascending (s) and descending (u) ), at the top (S) and at the bottom (s) of the image. Generated string: ''\emph{sSUusSUSu}''.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/0.jpg}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/0.jpg}}
 \end{figure} 
 \item As the previous image and two more diagonal lines representing the "\emph{i}". An \textbf{horizonal line} (H). Generated string: ''\emph{sSUusSUSuHsu}''.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/1.jpg}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/1.jpg}}
 \end{figure} 
 \item Some diagonal lines and, at the end of the window, an horizontal line. Generated string: ''\emph{ssSusSsH}''.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/2.jpg}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/2.jpg}}
 \end{figure} 
 \item Two consecutive similar character represented by diagonal lines and \textbf{vertical lines} in the middle. Generated string: ''\emph{sVHsV}''.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/3.jpg}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/3.jpg}}
 \end{figure} 
 \item In that window we can find a \textbf{dot} (.). Generated string: ''\emph{ssVHs.}''
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/4.jpg}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/4.jpg}}
 \end{figure} 
 \item The same previous dot and a little \textbf{loop} (L) at the bottom. Generated string: ''\emph{ssVs.LssH}''.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/5.jpg}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/5.jpg}}
 \end{figure} 
 \item The same loop as previous, an horizontal line a vertical line and two diagonal. Generated string: ''\emph{LVHssu}''.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/6.jpg}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/6.jpg}}
 \end{figure} 
 \item Generated string: ''\emph{ssVHus}''.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/7.jpg}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/7.jpg}}
 \end{figure} 
 \item The other dot here. Generated string ''\emph{ssus.H}''.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/8.jpg}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/8.jpg}}
 \end{figure} 
 \item An i. Generated string: ''\emph{ssuu.}''.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/9.jpg}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/9.jpg}}
 \end{figure} 
 \item Only a diagonal line. Generated string: ''\emph{s}''.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/10.jpg}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/10.jpg}}
 \end{figure} 
 \item Empty window. Generated string: ''\emph{ }''.
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.06\textwidth]{images/missouri/11.png}
-\end{figure} 
-\item Empty window. Generated string: ''\emph{ }''.
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.06\textwidth]{images/missouri/12.png}
+\fbox{\includegraphics[width=0.06\textwidth]{images/missouri/11.png}}
 \end{figure} 
 \end{enumerate}
 The resulting string is: \newline \emph{"sSUusSUSusSUusSUSuHsussSusSsHsVHsVssVHsssVs.LssHLVHssussVHusssus.Hssuu.s"}
