@@ -21,6 +21,6 @@
 \contentsline {subsection}{\numberline {4.2}Euclidean Distance}{14}
 \contentsline {section}{\numberline {5}Clustering}{15}
 \contentsline {subsection}{\numberline {5.1}Affinity Propagation}{15}
-\contentsline {section}{\numberline {6}Results}{16}
-\contentsline {section}{\numberline {7}Compiling and running notes}{22}
+\contentsline {section}{\numberline {6}Results}{17}
+\contentsline {section}{\numberline {7}Compiling and running notes}{21}
 \contentsline {section}{\numberline {8}Conclusion}{22}

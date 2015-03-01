@@ -36,7 +36,7 @@ where $x$ and $y$ are the strings and the $length()$ function returns the length
 The Longest Common Subsequence is only used with strings. In order to improve the correctness of the words' distance matrix we combine LCS distance with the Euclidean Distance obtained through the use of the \textit{dimensional features}.
 
 The Euclidean Distance between two samples is evaluated through the formula:
-$$d_{a,b} = \sum_{i = 1}^{W} \sqrt{((t_{a}^{(i)} - b_{a}^{(i)}) - (t_{b}^{(i)} - b_{b}^{(i)}))^2 - (n_{a}^{(i)} - n_{b}^{(i)})^2}$$
+$$d_{a,b} = \sum_{i = 1}^{W} \sqrt{[(t_{a}^{(i)} - b_{a}^{(i)}) - (t_{b}^{(i)} - b_{b}^{(i)})]^2 - (n_{a}^{(i)} - n_{b}^{(i)})^2}$$
 
 where:
 \begin{itemize}

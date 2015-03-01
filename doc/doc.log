@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.21)  17 FEB 2015 22:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.21)  1 MAR 2015 11:12
 entering extended mode
 **doc.tex
 (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.tex
@@ -318,24 +318,17 @@ File: images/wrongColumn.jpg Graphic file (type jpg)
 <use images/wrongColumn.jpg>
 Package pdftex.def Info: images/wrongColumn.jpg used on input line 76.
 (pdftex.def)             Requested size: 118.36096pt x 26.45686pt.
- <images/img3.jpg, id=27, 336.25626pt x 70.2625pt>
-File: images/img3.jpg Graphic file (type jpg)
 
-<use images/img3.jpg>
-Package pdftex.def Info: images/img3.jpg used on input line 86.
-(pdftex.def)             Requested size: 136.57462pt x 28.53763pt.
- <images/img4.jpg, id=28, 344.28625pt x 89.33376pt>
+<images/img4.jpg, id=27, 344.28625pt x 89.33376pt>
 File: images/img4.jpg Graphic file (type jpg)
-
-<use images/img4.jpg>
-Package pdftex.def Info: images/img4.jpg used on input line 89.
+ <use images/img4.jpg>
+Package pdftex.def Info: images/img4.jpg used on input line 86.
 (pdftex.def)             Requested size: 136.57462pt x 35.43706pt.
 )
 (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\features.tex
 [5 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/wrongColu
-mn.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/img3
-.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/img4.j
-pg>] <images/sliding.jpg, id=33, 114.05109pt x 45.16875pt>
+mn.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/img4
+.jpg>] <images/sliding.jpg, id=31, 114.05109pt x 45.16875pt>
 File: images/sliding.jpg Graphic file (type jpg)
 
 <use images/sliding.jpg>
@@ -343,20 +336,20 @@ Package pdftex.def Info: images/sliding.jpg used on input line 34.
 (pdftex.def)             Requested size: 86.49748pt x 34.25691pt.
  [6 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/sliding.
 jpg>]
-<images/missouri_windows.jpg, id=37, 132.11859pt x 22.01976pt>
+<images/missouri_windows.jpg, id=35, 132.11859pt x 22.01976pt>
 File: images/missouri_windows.jpg Graphic file (type jpg)
 
 <use images/missouri_windows.jpg>
 Package pdftex.def Info: images/missouri_windows.jpg used on input line 47.
 (pdftex.def)             Requested size: 182.09486pt x 30.351pt.
 
-<images/whitespace.jpg, id=38, 25.97203pt x 47.42719pt>
+<images/whitespace.jpg, id=36, 25.97203pt x 47.42719pt>
 File: images/whitespace.jpg Graphic file (type jpg)
 
 <use images/whitespace.jpg>
 Package pdftex.def Info: images/whitespace.jpg used on input line 59.
 (pdftex.def)             Requested size: 27.31352pt x 49.87888pt.
- <images/loop.jpg, id=39, 36.135pt x 39.14626pt>
+ <images/loop.jpg, id=37, 36.135pt x 39.14626pt>
 File: images/loop.jpg Graphic file (type jpg)
 
 <use images/loop.jpg>
@@ -365,25 +358,25 @@ Package pdftex.def Info: images/loop.jpg used on input line 76.
  [7 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/missouri
 _windows.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/image
 s/whitespace.jpg>]
-<images/dot.jpg, id=44, 36.135pt x 39.14626pt>
+<images/dot.jpg, id=42, 36.135pt x 39.14626pt>
 File: images/dot.jpg Graphic file (type jpg)
  <use images/dot.jpg>
 Package pdftex.def Info: images/dot.jpg used on input line 93.
 (pdftex.def)             Requested size: 36.42035pt x 39.45735pt.
 
-<images/diagP.jpg, id=45, 31.61812pt x 29.9243pt>
+<images/diagP.jpg, id=43, 31.61812pt x 29.9243pt>
 File: images/diagP.jpg Graphic file (type jpg)
  <use images/diagP.jpg>
 Package pdftex.def Info: images/diagP.jpg used on input line 118.
 (pdftex.def)             Requested size: 54.62706pt x 51.70163pt.
 
-<images/diagonal.jpg, id=46, 36.135pt x 39.14626pt>
+<images/diagonal.jpg, id=44, 36.135pt x 39.14626pt>
 File: images/diagonal.jpg Graphic file (type jpg)
  <use images/diagonal.jpg>
 Package pdftex.def Info: images/diagonal.jpg used on input line 128.
 (pdftex.def)             Requested size: 31.8704pt x 34.52585pt.
 
-<images/blob.jpg, id=47, 32.12pt x 77.28876pt>
+<images/blob.jpg, id=45, 32.12pt x 77.28876pt>
 File: images/blob.jpg Graphic file (type jpg)
  <use images/blob.jpg>
 Package pdftex.def Info: images/blob.jpg used on input line 131.
@@ -391,7 +384,7 @@ Package pdftex.def Info: images/blob.jpg used on input line 131.
  [8 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/loop.jpg
 > <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/dot.jpg> <
 C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/diagP.jpg>]
-<images/cross.jpg, id=51, 36.135pt x 41.15375pt>
+<images/cross.jpg, id=49, 36.135pt x 41.15375pt>
 File: images/cross.jpg Graphic file (type jpg)
  <use images/cross.jpg>
 Package pdftex.def Info: images/cross.jpg used on input line 151.
@@ -400,13 +393,13 @@ Package pdftex.def Info: images/cross.jpg used on input line 151.
 [9 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/diagonal.
 jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/blob.jp
 g> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/cross.jpg
->] <images/hor.jpg, id=55, 25.40742pt x 41.21649pt>
+>] <images/hor.jpg, id=54, 25.40742pt x 41.21649pt>
 File: images/hor.jpg Graphic file (type jpg)
  <use images/hor.jpg>
 Package pdftex.def Info: images/hor.jpg used on input line 180.
 (pdftex.def)             Requested size: 31.8704pt x 51.70284pt.
 
-<images/ver.jpg, id=56, 21.45515pt x 49.12102pt>
+<images/ver.jpg, id=55, 21.45515pt x 49.12102pt>
 File: images/ver.jpg Graphic file (type jpg)
  <use images/ver.jpg>
 Package pdftex.def Info: images/ver.jpg used on input line 183.
@@ -414,126 +407,119 @@ Package pdftex.def Info: images/ver.jpg used on input line 183.
  [10 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/hor.jpg
 > <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/ver.jpg>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 195.
+(Font)              <5> on input line 196.
  [11]
-<images/missouri_crop.jpg, id=64, 235.88126pt x 44.165pt>
+<images/missouri_crop.jpg, id=63, 235.88126pt x 44.165pt>
 File: images/missouri_crop.jpg Graphic file (type jpg)
 
 <use images/missouri_crop.jpg>
-Package pdftex.def Info: images/missouri_crop.jpg used on input line 247.
+Package pdftex.def Info: images/missouri_crop.jpg used on input line 248.
 (pdftex.def)             Requested size: 227.62206pt x 42.61893pt.
 
-<images/missouri/0.jpg, id=65, 36.135pt x 39.14626pt>
+<images/missouri/0.jpg, id=64, 36.135pt x 39.14626pt>
 File: images/missouri/0.jpg Graphic file (type jpg)
 
 <use images/missouri/0.jpg>
-Package pdftex.def Info: images/missouri/0.jpg used on input line 254.
+Package pdftex.def Info: images/missouri/0.jpg used on input line 255.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/1.jpg, id=66, 36.135pt x 39.14626pt>
+<images/missouri/1.jpg, id=65, 36.135pt x 39.14626pt>
 File: images/missouri/1.jpg Graphic file (type jpg)
 
 <use images/missouri/1.jpg>
-Package pdftex.def Info: images/missouri/1.jpg used on input line 256.
+Package pdftex.def Info: images/missouri/1.jpg used on input line 257.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/2.jpg, id=67, 36.135pt x 39.14626pt>
+<images/missouri/2.jpg, id=66, 36.135pt x 39.14626pt>
 File: images/missouri/2.jpg Graphic file (type jpg)
 
 <use images/missouri/2.jpg>
-Package pdftex.def Info: images/missouri/2.jpg used on input line 258.
+Package pdftex.def Info: images/missouri/2.jpg used on input line 259.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/3.jpg, id=68, 36.135pt x 39.14626pt>
+<images/missouri/3.jpg, id=67, 36.135pt x 39.14626pt>
 File: images/missouri/3.jpg Graphic file (type jpg)
 
 <use images/missouri/3.jpg>
-Package pdftex.def Info: images/missouri/3.jpg used on input line 260.
+Package pdftex.def Info: images/missouri/3.jpg used on input line 261.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/4.jpg, id=69, 36.135pt x 39.14626pt>
+<images/missouri/4.jpg, id=68, 36.135pt x 39.14626pt>
 File: images/missouri/4.jpg Graphic file (type jpg)
 
 <use images/missouri/4.jpg>
-Package pdftex.def Info: images/missouri/4.jpg used on input line 262.
+Package pdftex.def Info: images/missouri/4.jpg used on input line 263.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/5.jpg, id=70, 36.135pt x 39.14626pt>
+<images/missouri/5.jpg, id=69, 36.135pt x 39.14626pt>
 File: images/missouri/5.jpg Graphic file (type jpg)
 
 <use images/missouri/5.jpg>
-Package pdftex.def Info: images/missouri/5.jpg used on input line 264.
+Package pdftex.def Info: images/missouri/5.jpg used on input line 265.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/6.jpg, id=71, 36.135pt x 39.14626pt>
+<images/missouri/6.jpg, id=70, 36.135pt x 39.14626pt>
 File: images/missouri/6.jpg Graphic file (type jpg)
 
 <use images/missouri/6.jpg>
-Package pdftex.def Info: images/missouri/6.jpg used on input line 266.
+Package pdftex.def Info: images/missouri/6.jpg used on input line 267.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/7.jpg, id=72, 36.135pt x 39.14626pt>
+<images/missouri/7.jpg, id=71, 36.135pt x 39.14626pt>
 File: images/missouri/7.jpg Graphic file (type jpg)
 
 <use images/missouri/7.jpg>
-Package pdftex.def Info: images/missouri/7.jpg used on input line 268.
+Package pdftex.def Info: images/missouri/7.jpg used on input line 269.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/8.jpg, id=73, 36.135pt x 39.14626pt>
+<images/missouri/8.jpg, id=72, 36.135pt x 39.14626pt>
 File: images/missouri/8.jpg Graphic file (type jpg)
 
 <use images/missouri/8.jpg>
-Package pdftex.def Info: images/missouri/8.jpg used on input line 270.
+Package pdftex.def Info: images/missouri/8.jpg used on input line 271.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/9.jpg, id=74, 36.135pt x 39.14626pt>
+<images/missouri/9.jpg, id=73, 36.135pt x 39.14626pt>
 File: images/missouri/9.jpg Graphic file (type jpg)
 
 <use images/missouri/9.jpg>
-Package pdftex.def Info: images/missouri/9.jpg used on input line 272.
+Package pdftex.def Info: images/missouri/9.jpg used on input line 273.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/10.jpg, id=75, 36.135pt x 39.14626pt>
+<images/missouri/10.jpg, id=74, 36.135pt x 39.14626pt>
 File: images/missouri/10.jpg Graphic file (type jpg)
 
 <use images/missouri/10.jpg>
-Package pdftex.def Info: images/missouri/10.jpg used on input line 274.
+Package pdftex.def Info: images/missouri/10.jpg used on input line 275.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 
-<images/missouri/11.png, id=76, 36.135pt x 38.1425pt>
+<images/missouri/11.png, id=75, 36.135pt x 38.1425pt>
 File: images/missouri/11.png Graphic file (type png)
 
 <use images/missouri/11.png>
-Package pdftex.def Info: images/missouri/11.png used on input line 276.
-(pdftex.def)             Requested size: 27.31352pt x 28.83086pt.
-
-<images/missouri/12.png, id=77, 36.135pt x 38.1425pt>
-File: images/missouri/12.png Graphic file (type png)
-
-<use images/missouri/12.png>
-Package pdftex.def Info: images/missouri/12.png used on input line 278.
+Package pdftex.def Info: images/missouri/11.png used on input line 277.
 (pdftex.def)             Requested size: 27.31352pt x 28.83086pt.
 File: images/missouri/0.jpg Graphic file (type jpg)
  <use images/missouri/0.jpg>
-Package pdftex.def Info: images/missouri/0.jpg used on input line 286.
+Package pdftex.def Info: images/missouri/0.jpg used on input line 285.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 File: images/missouri/1.jpg Graphic file (type jpg)
 
 <use images/missouri/1.jpg>
-Package pdftex.def Info: images/missouri/1.jpg used on input line 291.
+Package pdftex.def Info: images/missouri/1.jpg used on input line 290.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 File: images/missouri/2.jpg Graphic file (type jpg)
  <use images/missouri/2.jpg>
-Package pdftex.def Info: images/missouri/2.jpg used on input line 296.
+Package pdftex.def Info: images/missouri/2.jpg used on input line 295.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 File: images/missouri/3.jpg Graphic file (type jpg)
 
 <use images/missouri/3.jpg>
-Package pdftex.def Info: images/missouri/3.jpg used on input line 301.
+Package pdftex.def Info: images/missouri/3.jpg used on input line 300.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 File: images/missouri/4.jpg Graphic file (type jpg)
  <use images/missouri/4.jpg>
-Package pdftex.def Info: images/missouri/4.jpg used on input line 306.
+Package pdftex.def Info: images/missouri/4.jpg used on input line 305.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
  [12 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/missour
 i_crop.jpg> <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/
@@ -548,55 +534,46 @@ ageCutClustering/doc/images/missouri/7.jpg> <C:/Users/Francesco.Francesco-PC/gi
 t/ImageCutClustering/doc/images/missouri/8.jpg> <C:/Users/Francesco.Francesco-P
 C/git/ImageCutClustering/doc/images/missouri/9.jpg> <C:/Users/Francesco.Frances
 co-PC/git/ImageCutClustering/doc/images/missouri/10.jpg> <C:/Users/Francesco.Fr
-ancesco-PC/git/ImageCutClustering/doc/images/missouri/11.png> <C:/Users/Frances
-co.Francesco-PC/git/ImageCutClustering/doc/images/missouri/12.png>]
+ancesco-PC/git/ImageCutClustering/doc/images/missouri/11.png>]
 File: images/missouri/5.jpg Graphic file (type jpg)
  <use images/missouri/5.jpg>
-Package pdftex.def Info: images/missouri/5.jpg used on input line 311.
+Package pdftex.def Info: images/missouri/5.jpg used on input line 310.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 File: images/missouri/6.jpg Graphic file (type jpg)
 
 <use images/missouri/6.jpg>
-Package pdftex.def Info: images/missouri/6.jpg used on input line 316.
+Package pdftex.def Info: images/missouri/6.jpg used on input line 315.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 File: images/missouri/7.jpg Graphic file (type jpg)
  <use images/missouri/7.jpg>
-Package pdftex.def Info: images/missouri/7.jpg used on input line 321.
+Package pdftex.def Info: images/missouri/7.jpg used on input line 320.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 File: images/missouri/8.jpg Graphic file (type jpg)
 
 <use images/missouri/8.jpg>
-Package pdftex.def Info: images/missouri/8.jpg used on input line 326.
+Package pdftex.def Info: images/missouri/8.jpg used on input line 325.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 File: images/missouri/9.jpg Graphic file (type jpg)
  <use images/missouri/9.jpg>
-Package pdftex.def Info: images/missouri/9.jpg used on input line 331.
+Package pdftex.def Info: images/missouri/9.jpg used on input line 330.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 File: images/missouri/10.jpg Graphic file (type jpg)
 
 <use images/missouri/10.jpg>
-Package pdftex.def Info: images/missouri/10.jpg used on input line 336.
+Package pdftex.def Info: images/missouri/10.jpg used on input line 335.
 (pdftex.def)             Requested size: 27.31352pt x 29.58957pt.
 File: images/missouri/11.png Graphic file (type png)
  <use images/missouri/11.png>
-Package pdftex.def Info: images/missouri/11.png used on input line 341.
-(pdftex.def)             Requested size: 27.31352pt x 28.83086pt.
-File: images/missouri/12.png Graphic file (type png)
-
-<use images/missouri/12.png>
-Package pdftex.def Info: images/missouri/12.png used on input line 346.
+Package pdftex.def Info: images/missouri/11.png used on input line 340.
 (pdftex.def)             Requested size: 27.31352pt x 28.83086pt.
 
-Overfull \hbox (5.0932pt too wide) in paragraph at lines 349--350
+Overfull \hbox (5.0932pt too wide) in paragraph at lines 343--344
 \T1/cmr/m/it/12 "sSUusSUSusSUusSUSuHsussSusSsHsVHsVssVHsssVs.LssHLVHssussVHusss
 us.Hssuu.s" 
  []
 
 [13]) (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\lcs.tex
 [14]
-Missing character: There is no â in font cmr12!
-Missing character: There is no ˆ in font cmr12!
-Missing character: There is no ’ in font cmr12!
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 43.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -619,48 +596,42 @@ Missing character: There is no ’ in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no ˆ in font cmr12!
 Missing character: There is no ’ in font cmr12!
- <images/ap.jpg, id=103, 1284.8pt x 1124.2pt>
+ <images/ap.jpg, id=101, 1284.8pt x 1124.2pt>
 File: images/ap.jpg Graphic file (type jpg)
  <use images/ap.jpg>
-Package pdftex.def Info: images/ap.jpg used on input line 49.
+Package pdftex.def Info: images/ap.jpg used on input line 46.
 (pdftex.def)             Requested size: 332.32625pt x 290.77556pt.
-)
+ [16 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/ap.jpg>
+])
 (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\results.tex
-[16] [17 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/ap.
-jpg>]
-Overfull \hbox (9.44653pt too wide) in paragraph at lines 36--58
- [][] 
- []
-
-<images/precisione.png, id=110, 553.1064pt x 310.761pt>
+[17] <images/precisione.png, id=108, 553.1064pt x 310.761pt>
 File: images/precisione.png Graphic file (type png)
 
 <use images/precisione.png>
-Package pdftex.def Info: images/precisione.png used on input line 97.
+Package pdftex.def Info: images/precisione.png used on input line 63.
 (pdftex.def)             Requested size: 318.66948pt x 179.04655pt.
  [18] [19 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/pr
 ecisione.png>]
-<images/esecuzione.png, id=120, 565.6332pt x 324.7332pt>
+<images/esecuzione.png, id=119, 565.6332pt x 324.7332pt>
 File: images/esecuzione.png Graphic file (type png)
 
 <use images/esecuzione.png>
-Package pdftex.def Info: images/esecuzione.png used on input line 139.
+Package pdftex.def Info: images/esecuzione.png used on input line 112.
 (pdftex.def)             Requested size: 318.66948pt x 182.94936pt.
 )
-(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\code.tex [20]
-[21 <C:/Users/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/esecuzio
-ne.png>])
+(C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\code.tex [20 <C:/Us
+ers/Francesco.Francesco-PC/git/ImageCutClustering/doc/images/esecuzione.png>])
 (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\conclusion.tex
-[22]) [23] (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.aux)
+[21]) [22] (C:\Users\Francesco.Francesco-PC\git\ImageCutClustering\doc\doc.aux)
  ) 
 Here is how much of TeX's memory you used:
- 4502 strings out of 493921
- 64324 string characters out of 3147231
- 136607 words of memory out of 3000000
- 7670 multiletter control sequences out of 15000+200000
+ 4492 strings out of 493921
+ 64117 string characters out of 3147231
+ 135612 words of memory out of 3000000
+ 7662 multiletter control sequences out of 15000+200000
  20836 words of font info for 44 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,13n,32p,952b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,13n,32p,952b,351s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTe
@@ -685,9 +656,9 @@ ype1/public/cm-super/sfrm1440.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/cm-super/sfti1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-sup
 er/sfti1095.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfti12
 00.pfb>
-Output written on doc.pdf (23 pages, 1378593 bytes).
+Output written on doc.pdf (22 pages, 1368395 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
+ 208 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 166 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 156 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,13 +1,13 @@
 \section{Compiling and running notes}
 
 This software was developed entirely in C++, and uses an open source library specialized in image processing and analysis, \emph{Leptonica}\footnote{Leptonica, \emph{a pedagogically-oriented open source site containing software that is broadly useful for image processing and image analysis applications} -http://www.leptonica.org/}, version 1.70.
-Due to technical reasons we couldn't use the newest version 1.71 were even .j2k files are supported, instead we manually converted the files to the already supported .jpg extension and proceeded with them. 
+Due to technical reasons the newest \emph{Leptonica} version 1.71 could not be used. In this new version even .j2k files are supported, utilizing the older version meant manually converting the files to the already supported .jpg extension to elaborate them. 
 
-\emph{Leptonica} provides many functions for manipulating images pixel by pixel using a high-level approach. Thanks to this library for example, you can draw up a diagram of projections, crop images, or find the connected components in a portion of the image.
+\emph{Leptonica} provides many functions for manipulating images pixel by pixel using a high-level approach. Thanks to this library for example, one can draw up a diagram of projections, crop images, or find the connected components in a portion of the image.
 
-To compile the code, once included the library described above, it is necessary, in the case of version of \emph{GCC/G++} less than 4.7, compile with version 11 of C++ that introduces support for threads.
+To compile the code, once included the library described above, it is necessary, in the case of version of \emph{GCC/G++} less than 4.7, to compile with version 11 of C++ that introduces support for threads.
 
-To run this program we use the following parameters:
+To run this program the following parameters are used:
 \begin{itemize}
 \item \textbf{-d} to specify the images directory, from there the program will automatically load all the files with the specified extension (in our case .jpg) and the corresponding .txt files utilized in the determination of the precision.
 \item \textbf{-t} to specify the number of threads. Default is 2.

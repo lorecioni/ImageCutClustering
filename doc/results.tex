@@ -12,6 +12,7 @@ The tests were performed on a growing number of scans, each containing a maximum
 \item \textbf{Estimated words (E)}: the number of words estimated on the basis of the number of scans(50x).
 \item \textbf{Extracted words (W)}: the number of words actually mined and processed, as well as the corresponding percentage.
 \item \textbf{Number of clusters (C)}: the number of clusters created in process.
+\item \textbf{Average words per cluster (AWC)}: the average number of words in each cluster.
 \item \textbf{Running time (T)}: the total execution time, in seconds.
 \item \textbf{Average precision (AP)}: the accuracy of the results, the average accuracy of clusters.
 $$Precision_{average} = \frac{\sum_i P_i}{N_c}$$
@@ -26,35 +27,35 @@ In the next table are shown the main results of the tests.
 \begin{table}[H]
 \centering
 \footnotesize
-\begin{tabular}{|l | c | c | c | c | c | c |} 
+\begin{tabular}{|l | c | c | c | c | c | c | c |} 
  \hline 
- & \textbf{E} &  \textbf{W} & \textbf{C} & \textbf{T} & \textbf{AP} & \textbf{P} \\ [0.5ex] 
+ & \textbf{E} &  \textbf{W} & \textbf{C} & \textbf{AWC} & \textbf{T} & \textbf{AP} & \textbf{P} \\ [0.5ex] 
  \hline\hline
 %% label & estimated words & extracted words & clusters & time & precision %%
-16 scans (L1) & 800 & 550 & 55 & 15.52 & 65.06 & 58.00\\ 
-16 scans (LCS) & 800 & 550 & 71 & 44.39  & 76.56 & 60.00\\ 
-16 scans (LCS and L1) & 800 & 550 & 66 & 47.41 & 74.37 & 62.91\\ \hline
-32 scans (L1) & 1600 & 800 & 67 & 38.58 & 59.85 & 52.87\\ 
-32 scans (LCS) & 1600 & 800 & 92 & 94.54 & 72.97 & 55.50\\ 
-32 scans (LCS and L1) & 1600 & 800 & 86 & 112.90 & 70.19 & 56.25\\ \hline
-75 scans (L1) & 3750 & 2350 & 173 & 221.03 & 69.03 & 63.65\\ 
-75 scans (LCS) & 3750 & 2350 & 189 & 1169.72 & 75.09 & 67.49\\ 
-75 scans (LCS and L1) & 3750 & 2350 & 199 & 1203.28 & 78.01 & 71.16\\ \hline
-130 scans (L1) & 6500 & 5050 & 425 & 5444.43 & 76.66 & 71.12\\ 
-130 scans (LCS) & 6500 & 5050 & 441 & 5629.71 & 82.11 & 74.41\\ 
-130 scans (LCS and L1) & 6500 & 5050 & 463 & 6729.62 & 84.87 & 77.94\\ \hline
-500 scans (L1) & 25000 & 18146 & 3957 & 85545.11 & 90.66 & 77.89\\ 
-500 scans (LCS) & 25000 & 18146 & 3316 &  76324.63 & 91.02 & 81.22\\ 
-500 scans (LCS and L1) & 25000 & 18146 & 3941 & 138309.85\tablefootnote{During this test, the machine used was concurrently executing other tasks creating a bottleneck in the allotted memory, in all similar tests the time was in the order of 90k seconds.} & 92.27 & 82.14\\ 
+16 scans (L1) & 800 & 550 & 55 & 11.00 & 15.52 & 65.06 & 58.00\\ 
+16 scans (LCS) & 800 & 550 & 71 & 7.74& 44.39  & 76.56 & 60.00\\ 
+16 scans (LCS and L1) & 800 & 550 & 66 & 8.33& 47.41 & 74.37 & 62.91\\ \hline
+32 scans (L1) & 1600 & 800 & 67 & 11.94& 38.58 & 59.85 & 52.87\\ 
+32 scans (LCS) & 1600 & 800 & 92 & 8.69& 94.54 & 72.97 & 55.50\\ 
+32 scans (LCS and L1) & 1600 & 800 & 86 & 9.30& 112.90 & 70.19 & 56.25\\ \hline
+75 scans (L1) & 3750 & 2350 & 173 & 13.58 & 221.03 & 69.03 & 63.65\\ 
+75 scans (LCS) & 3750 & 2350 & 189 & 12.43& 1169.72 & 75.09 & 67.49\\ 
+75 scans (LCS and L1) & 3750 & 2350 & 199 & 11.81& 1203.28 & 78.01 & 71.16\\ \hline
+130 scans (L1) & 6500 & 5050 & 425 & 11.88& 5444.43 & 76.66 & 71.12\\ 
+130 scans (LCS) & 6500 & 5050 & 441 & 11.45& 5629.71 & 82.11 & 74.41\\ 
+130 scans (LCS and L1) & 6500 & 5050 & 463 & 10.91& 6729.62 & 84.87 & 77.94\\ \hline
+500 scans (L1) & 25000 & 18146 & 3957 & 4.58 & 85545.11 & 90.66 & 77.89\\ 
+500 scans (LCS) & 25000 & 18146 & 3316 & 5.47&  76324.63 & 91.02 & 81.22\\ 
+500 scans (LCS and L1) & 25000 & 18146 & 3941 & 4.60& 138309.85\tablefootnote{During this test, the machine used was concurrently executing other tasks creating a bottleneck in the allotted memory, in all similar tests the time was in the order of 90k seconds.} & 92.27 & 82.14\\ 
  \hline
 \end{tabular}
 \caption{Main results}
 \label{table:1}
 \end{table}
 
-As we can see in Table \ref{table:1} the number of extracted words is much lower than the estimated number of words. This is mainly due to the fact that not all census tables are completely filled: in some cases there are only a few lines or the states column was purposefully left blank. In other cases the absence of the state samples is due to errors occurring in the segmentation phase due to a wrong interpretation of the rows or the columns.
+As can be seen in Table \ref{table:1} the number of extracted words is much lower than the estimated number of words. This is mainly due to the fact that not all census tables are completely filled: in some cases there are only a few lines or the states column was purposefully left blank. In other cases the absence of the state samples is due to errors occurring in the segmentation phase due to a wrong interpretation of the rows or the columns.
 
-As we can see in Figure \ref{fig:precision} the accuracy of the cluster grows with the amount of words extracted. This phenomenon is due to the fact that Affinity Propagation works best with a large number of available data: the greater the number of words, the greater the chances of finding words similar between them, and then combine them within a single cluster.
+As one can see in Figure \ref{fig:precision} the accuracy of the cluster grows with the amount of words extracted. This phenomenon is due to the fact that Affinity Propagation works best with a large number of available data: the greater the number of words, the greater the chances of finding words similar between them, and then combine them within a single cluster.
 
 
 \begin{figure}[H]
@@ -102,9 +103,9 @@ In the next table are presented the results regarding the time needed for the ca
 \label{table:2}
 \end{table}
 
-As we can see in Table \ref{table:2} the complexity is mainly due to the construction phase of the similarity matrix, that is the calculation of distances. This high operative cost occurs especially in calculating the LCS distance due to the fact that the structural strings of our words are very long and the cost of the algorithm is $O(nm)$, with $n$ and $m$ the lengths of the two strings, cost that must be considered in each comparison between couples of samples.
+As can be seen in Table \ref{table:2} the complexity is mainly due to the phase of construction of the similarity matrix, that is the calculation of distances. This high operative cost occurs especially in calculating the LCS distance due to the fact that the structural strings of our words are very long and the cost of the algorithm is $O(nm)$, with $n$ and $m$ the lengths of the two strings, cost that must be considered in each comparison between couples of samples.
 
-We sought long structural strings to obtain a deeper characterization of the words (and therefore make more accurate clustering), but this necessarily increases the calculation time.
+Since long structural strings were sought to obtain a better characterization of the words (and therefore make more accurate clustering) the calculation time necessarily increased.
 
 \begin{figure}[!htbp]
 \centering
@@ -113,7 +114,7 @@ We sought long structural strings to obtain a deeper characterization of the wor
 \label{fig:time}
 \end{figure}
 
-A parameter to evaluate the goodness of our application relatively to the task can be the number of clusters that have the absolute precision, that is contain only similar elements that are properly classified(due to human error sometimes the words in the debug files suffer a faulty categorization).
+A parameter to evaluate the goodness of this application relatively to the task can be the number of clusters that have absolute precision, that is contain only similar elements that are properly classified. Proper classification is important since due to human error sometimes the words in the debug files are wrongly categorized.
 
 In the following table are presented the number of clusters which respect the above property and the number of items that they contain. 
 

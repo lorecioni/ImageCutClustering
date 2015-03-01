@@ -1,7 +1,7 @@
 \section{Clustering}
 The clustering phase consists in the categorization of the various segments in homogeneous groups, so that, at the end of the process, each cluster contains only words corresponding to the same state of birth.
 
-To do so we utilize the previously built distance matrices obtained by the processing of the structural and dimensional features: the matrices are combined in a single one through a simple weighted sum.
+To do so the previously built distance matrices, obtained by the processing of the structural and dimensional features, are utilized: the matrices are combined in a single one through a simple weighted sum.
 \begin{displaymath} 
 ClusteringMatrix[i,j]= StructuralMatrix[i,j]+0.5*DimensionalMatrix[i,j]
 \end{displaymath}
