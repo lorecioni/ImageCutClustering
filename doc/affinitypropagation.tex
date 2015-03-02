@@ -1,9 +1,9 @@
 \subsection{Affinity Propagation}
 
 Affinity Propagation is a clustering algorithm that identifies a set of \textit{exemplars} that represents the dataset\footnote{Brendan J. Frey, Delbert Dueck, \emph{Clustering by Passing Messages
-Between Data Points}, http://www.sciencemag.org/, 2007}. The input of Affinity Propagation is the pair-wise similarities between each pair of data points\footnote{$s[i,j]$ for each data point is called preference and impacts the number of clusters.}, $s[i, j]  \forall  i, j = 1, \ldots, n$. Any type of similarities is acceptable thus Affinity Propagation is widely applicable.
+Between Data Points}, http://www.sciencemag.org/, 2007}. The input of Affinity Propagation is the pair-wise similarities between each pair of data points\footnote{$s[i,j]$ for each data point is called preference and impacts the number of clusters.}, $s[i, j] \quad \forall  i = 1, \ldots, n;\; j = 1, \ldots, n$. Any type of similarities is acceptable thus Affinity Propagation is widely applicable.
 
-Given similarity matrix $s[i, j]$, Affinity Propagation attempts to find the exemplars that maximize the net similarity, i.e. the overall sum of similarities between all exemplars and their member data points. The process of Affinity Propagation can be viewed as a message passing process with two
+Given the similarity matrix $s[i, j]$, Affinity Propagation attempts to find the exemplars that maximize the net similarity, i.e. the overall sum of similarities between all exemplars and their member data points. The process of Affinity Propagation can be viewed as a message passing process with two
 kinds of messages exchanged among data points: \emph{responsibility} and \emph{availability}. 
 
 Responsibility, $r[i, j]$, is a message from data point $i$ to $j$ that reflects the accumulated evidence for how well-suited data point j is to serve as the exemplar for data point i. 

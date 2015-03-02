@@ -1,15 +1,15 @@
 \section{Evaluating distances}
-After the extraction of good features from the words our aim is to construct a similarity matrix between different samples so that they can be used as input to the clustering algorithm. To do that we generate a measure of distance between couples of words through the use of the \emph{Longest Common Subsequence} algorithm in which the handled strings  are constructed through the appending of conventional identifiers associated with the features found in the word in a consistent order. 
+After the extraction of good features from the words our aim is to construct a similarity matrix between different samples that can be used as input to the clustering algorithm. To do that we compute the distance between pairs of words through the use of the \emph{Longest Common Subsequence} algorithm in which the strings  are constructed by appending of conventional identifiers associated with the features found in the word in a consistent order. 
 
 
 \subsection{Longest Common Subsequence} 
 
-In order to compare the generated strings one another we must define a distance on the samples.
-The distance used in our work is based on the \emph{Longest Common Subsequence} (\textbf{LCS}) algorithm. 
+In order to compare the generated strings we must define a distance on the samples.
+The distance used in our work is based on the \emph{Longest Common Subsequence} (\textit{LCS}) algorithm. 
 
-The LCS algorithm has the aim of extracting from a set of sequences (in this case only two) the longest common subsequence, that is a sequence that is obtainable from both the starting sequences by deleting some elements without changing the order of the remaining ones.
+The LCS algorithm aims at extracting from a set of sequences (in this case only two) the longest common subsequence, that is a sequence that is obtainable from both sequences by deleting some elements without changing the order of the remaining ones.
 
-LCS is a particular case of the \emph{Edit Distance} algorithm where the only allowed operations are insertion and deletion.
+LCS is a particular case of the \emph{Edit Distance} algorithm where the only allowed operations are insertions and deletion.
 The distance associated with LCS in our current work is the number of insertion and deletions that must be applied to obtain the longest subsequence, in accordance with the Edit distance where the distance is calculated with the number of operations needed to morph a string in the other (in Edit Distance it's possible moreover to confer customizable costs to the substitutions).   
 
 While the LCS algorithm may require high costs when applied concurrently to high numbers of sequences, in our case there exists an easy and light implementation that exploits \textit{dynamic programming}, in this type of implementation the cost ends up being $O(n*m)$ where $n$ and $m$ are the length of the compared strings.  
@@ -35,7 +35,7 @@ where $x$ and $y$ are the strings and the $length()$ function returns the length
 
 The Longest Common Subsequence is only used with strings. In order to improve the correctness of the words' distance matrix we combine LCS distance with the Euclidean Distance obtained through the use of the \textit{dimensional features}.
 
-The Euclidean Distance between two samples is evaluated through the formula:
+The Euclidean Distance between two samples, $a$ and $b$, is evaluated through the formula:
 $$d_{a,b} = \sum_{i = 1}^{W} \sqrt{[(t_{a}^{(i)} - b_{a}^{(i)}) - (t_{b}^{(i)} - b_{b}^{(i)})]^2 - (n_{a}^{(i)} - n_{b}^{(i)})^2}$$
 
 where:

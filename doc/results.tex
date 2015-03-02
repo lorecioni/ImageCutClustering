@@ -1,15 +1,15 @@
 \section{Results}
 
-Let's explore the test phase and see the results in detail. Initially we ran debug tests on our personal PCs in order to easily modify the code, these starting tests and the tests utilized to determine the right value for the many defined constants are not shown here. 
+Initially we ran debug tests on our personal PCs in order to easily modify the code, these starting tests and the tests utilized to determine the right value for the many defined constants are not shown here. 
 
 All the tests shown below were performed on a single more powerful machine that has enabled us to work with much larger data in less time. The machine used is composed of two Xeon processors for a total of 16 cores 2.80 Ghz and 48 Gb of RAM.
 
-The tests were performed on a growing number of scans, each containing a maximum of 50 lines from which we extracted the words that represent the states. For each set of scans we present three possible distances calculation: only LCS, only L1 (Euclidean distance) and LCS and L1 combined together through the formula presented in Section 5.
+The tests were performed on a growing number of forms, each containing a maximum of 50 lines from which we extracted the words that represent the states. For each set of forms we present three possible distances calculation: only LCS, only L1 (Euclidean distance) and LCS and L1 combined together through the formula presented in Section 5.
 
 \vspace{3mm}
 
 \begin{itemize}
-\item \textbf{Estimated words (E)}: the number of words estimated on the basis of the number of scans(50x).
+\item \textbf{Estimated words (E)}: the number of words estimated on the basis of the number of forms(50x).
 \item \textbf{Extracted words (W)}: the number of words actually mined and processed, as well as the corresponding percentage.
 \item \textbf{Number of clusters (C)}: the number of clusters created in process.
 \item \textbf{Average words per cluster (AWC)}: the average number of words in each cluster.
@@ -32,21 +32,21 @@ In the next table are shown the main results of the tests.
  & \textbf{E} &  \textbf{W} & \textbf{C} & \textbf{AWC} & \textbf{T} & \textbf{AP} & \textbf{P} \\ [0.5ex] 
  \hline\hline
 %% label & estimated words & extracted words & clusters & time & precision %%
-16 scans (L1) & 800 & 550 & 55 & 11.00 & 15.52 & 65.06 & 58.00\\ 
-16 scans (LCS) & 800 & 550 & 71 & 7.74& 44.39  & 76.56 & 60.00\\ 
-16 scans (LCS and L1) & 800 & 550 & 66 & 8.33& 47.41 & 74.37 & 62.91\\ \hline
-32 scans (L1) & 1600 & 800 & 67 & 11.94& 38.58 & 59.85 & 52.87\\ 
-32 scans (LCS) & 1600 & 800 & 92 & 8.69& 94.54 & 72.97 & 55.50\\ 
-32 scans (LCS and L1) & 1600 & 800 & 86 & 9.30& 112.90 & 70.19 & 56.25\\ \hline
-75 scans (L1) & 3750 & 2350 & 173 & 13.58 & 221.03 & 69.03 & 63.65\\ 
-75 scans (LCS) & 3750 & 2350 & 189 & 12.43& 1169.72 & 75.09 & 67.49\\ 
-75 scans (LCS and L1) & 3750 & 2350 & 199 & 11.81& 1203.28 & 78.01 & 71.16\\ \hline
-130 scans (L1) & 6500 & 5050 & 425 & 11.88& 5444.43 & 76.66 & 71.12\\ 
-130 scans (LCS) & 6500 & 5050 & 441 & 11.45& 5629.71 & 82.11 & 74.41\\ 
-130 scans (LCS and L1) & 6500 & 5050 & 463 & 10.91& 6729.62 & 84.87 & 77.94\\ \hline
-500 scans (L1) & 25000 & 18146 & 3957 & 4.58 & 85545.11 & 90.66 & 77.89\\ 
-500 scans (LCS) & 25000 & 18146 & 3316 & 5.47&  76324.63 & 91.02 & 81.22\\ 
-500 scans (LCS and L1) & 25000 & 18146 & 3941 & 4.60& 138309.85\tablefootnote{During this test, the machine used was concurrently executing other tasks creating a bottleneck in the allotted memory, in all similar tests the time was in the order of 90k seconds.} & 92.27 & 82.14\\ 
+16 forms (L1) & 800 & 550 & 55 & 11.00 & 15.52 & 65.06 & 58.00\\ 
+16 forms (LCS) & 800 & 550 & 71 & 7.74& 44.39  & 76.56 & 60.00\\ 
+16 forms (LCS and L1) & 800 & 550 & 66 & 8.33& 47.41 & 74.37 & 62.91\\ \hline
+32 forms (L1) & 1600 & 800 & 67 & 11.94& 38.58 & 59.85 & 52.87\\ 
+32 forms (LCS) & 1600 & 800 & 92 & 8.69& 94.54 & 72.97 & 55.50\\ 
+32 forms (LCS and L1) & 1600 & 800 & 86 & 9.30& 112.90 & 70.19 & 56.25\\ \hline
+75 forms (L1) & 3750 & 2350 & 173 & 13.58 & 221.03 & 69.03 & 63.65\\ 
+75 forms (LCS) & 3750 & 2350 & 189 & 12.43& 1169.72 & 75.09 & 67.49\\ 
+75 forms (LCS and L1) & 3750 & 2350 & 199 & 11.81& 1203.28 & 78.01 & 71.16\\ \hline
+130 forms (L1) & 6500 & 5050 & 425 & 11.88& 5444.43 & 76.66 & 71.12\\ 
+130 forms (LCS) & 6500 & 5050 & 441 & 11.45& 5629.71 & 82.11 & 74.41\\ 
+130 forms (LCS and L1) & 6500 & 5050 & 463 & 10.91& 6729.62 & 84.87 & 77.94\\ \hline
+500 forms (L1) & 25000 & 18146 & 3957 & 4.58 & 85545.11 & 90.66 & 77.89\\ 
+500 forms (LCS) & 25000 & 18146 & 3316 & 5.47&  76324.63 & 91.02 & 81.22\\ 
+500 forms (LCS and L1) & 25000 & 18146 & 3941 & 4.60& 138309.85\tablefootnote{During this test, the machine used was concurrently executing other tasks creating a bottleneck in the allotted memory, in all similar tests the time was in the order of 90k seconds.} & 92.27 & 82.14\\ 
  \hline
 \end{tabular}
 \caption{Main results}
@@ -61,7 +61,7 @@ As one can see in Figure \ref{fig:precision} the accuracy of the cluster grows w
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{images/precisione.png}
-\caption{Clustering precision relative to the number of scans}
+\caption{Clustering precision relative to the number of forms}
 \label{fig:precision}
 \end{figure}
 
@@ -82,21 +82,21 @@ In the next table are presented the results regarding the time needed for the ca
  & \multicolumn{1}{p{2cm}|}{\centering\bfseries Features extraction\\time (s)}&  \multicolumn{1}{p{2cm}|}{\centering\bfseries Evaluating distances\\time (s)} & \multicolumn{1}{p{2cm}|}{\centering\bfseries Clustering\\ time (s)} & \multicolumn{1}{p{2cm}|}{\centering\bfseries Total (s)} \\ [0.5ex] 
  \hline\hline
 %% label & features & distances & clusters & total %%
-16 scans (L1) & 6.81 & 5.02 & 3.69 & 15.52\\ 
-16 scans (LCS) & 6.84 & 34.40 & 3.15 & 44.39\\ 
-16 scans (LCS and L1) & 6.84 & 37.32 & 2.85 & 47.41\\ \hline
-32 scans (L1) & 11.54 & 7.22 & 19.82 & 38.58\\ 
-32 scans (LCS) & 11.27 & 74.72 & 8.55 & 94.54\\ 
-32 scans (LCS and L1) & 11.34 & 89.96 & 11.60 & 112.90\\ \hline
-75 scans (L1) & 33.65 & 69.00 & 118.38 & 221.03\\ 
-75 scans (LCS) & 35.13 & 1002.63 & 131.96 & 1169.72\\ 
-75 scans (LCS and L1) & 34.70 & 1070.92 & 97.66 & 1203.28\\ \hline
-130 scans (L1) & 70.80 & 313.70 & 5059.93 & 5444.43\\ 
-130 scans (LCS) & 68.17 & 4353.85 & 1207.69 & 5629.71\\ 
-130 scans (LCS and L1) & 73.10 & 5608.82 & 1047.70 & 6729.62\\ \hline
-500 scans (L1) & 289.33 & 4482.02 & 80773.76 & 85545.11 \\ 
-500 scans (LCS) & 323.66 & 57699.51 & 18301.46 & 76324.63\\ 
-500 scans (LCS and L1) & 403.41 & 61424.57 & $76481.87^5$ & $138309.85^5$\\ 
+16 forms (L1) & 6.81 & 5.02 & 3.69 & 15.52\\ 
+16 forms (LCS) & 6.84 & 34.40 & 3.15 & 44.39\\ 
+16 forms (LCS and L1) & 6.84 & 37.32 & 2.85 & 47.41\\ \hline
+32 forms (L1) & 11.54 & 7.22 & 19.82 & 38.58\\ 
+32 forms (LCS) & 11.27 & 74.72 & 8.55 & 94.54\\ 
+32 forms (LCS and L1) & 11.34 & 89.96 & 11.60 & 112.90\\ \hline
+75 forms (L1) & 33.65 & 69.00 & 118.38 & 221.03\\ 
+75 forms (LCS) & 35.13 & 1002.63 & 131.96 & 1169.72\\ 
+75 forms (LCS and L1) & 34.70 & 1070.92 & 97.66 & 1203.28\\ \hline
+130 forms (L1) & 70.80 & 313.70 & 5059.93 & 5444.43\\ 
+130 forms (LCS) & 68.17 & 4353.85 & 1207.69 & 5629.71\\ 
+130 forms (LCS and L1) & 73.10 & 5608.82 & 1047.70 & 6729.62\\ \hline
+500 forms (L1) & 289.33 & 4482.02 & 80773.76 & 85545.11 \\ 
+500 forms (LCS) & 323.66 & 57699.51 & 18301.46 & 76324.63\\ 
+500 forms (LCS and L1) & 403.41 & 61424.57 & $76481.87^5$ & $138309.85^5$\\ 
  \hline
 \end{tabular}
 \caption{Running time}
@@ -110,7 +110,7 @@ Since long structural strings were sought to obtain a better characterization of
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.7\textwidth]{images/esecuzione}
-\caption{Running time relative to the number of scans}
+\caption{Running time relative to the number of forms}
 \label{fig:time}
 \end{figure}
 
@@ -123,7 +123,7 @@ In the following table are presented the number of clusters which respect the ab
 \item \textbf{Correct clusters}: the number of clusters with absolute precision, therefore containing only words equal to each other.
 \item \textbf{Correct words}: the number of words within the Correct clusters and their corresponding percentage respect to all the elements.
 \item \textbf{Single clusters}: clusters containing only one word.
-\item \textbf{Average words for correct non-single cluster} (\textbf{AWCC}): number of words in average in the correct clusters that do not contain a single element.
+\item \textbf{Average words per correct non-single cluster} (\textbf{AWCC}): number of words in average in the correct clusters that do not contain a single element.
 \end{itemize}
 
 \begin{table}[H]
@@ -134,21 +134,21 @@ In the following table are presented the number of clusters which respect the ab
  & \multicolumn{1}{p{2cm}|}{\centering\bfseries Correct\\ clusters}&  \multicolumn{1}{p{2cm}|}{\centering\bfseries Correct\\words} & \multicolumn{1}{p{2cm}|}{\centering\bfseries Single\\clusters} & \multicolumn{1}{p{2cm}|}{\centering\bfseries AWCC} \\ [0.5ex] 
  \hline\hline
 %% label & clusters & words & percentage %%
-16 scans (L1) & 12 & 18 & 10 &  4.00\\ 
-16 scans (LCS) & 33 & 44 & 29 & 3.75\\ 
-16 scans (LCS and L1) & 25 & 45 & 18 & 3.86\\ \hline
-32 scans (L1) & 11 & 11 & 11 & --\\ 
-32 scans (LCS) & 39 & 48 & 36 &4.00\\ 
-32 scans (LCS and L1) & 32 & 43 & 28 & 3.75\\ \hline
-75 scans (L1) & 39 & 172 & 11 & 5.75\\ 
-75 scans (LCS) & 78 & 265 & 43 & 6.34\\ 
-75 scans (LCS and L1) & 77 & 316 & 43 & 8.03\\ \hline
-130 scans (L1) & 138 & 651 & 23 & 5.46\\ 
-130 scans (LCS) & 208 & 713 & 107 &  6.00\\ 
-130 scans (LCS and L1) & 215 & 860 & 89 & 6.12\\ \hline
-500 scans (L1) & 2854 & 7354 & 151 & 2.66\\ 
-500 scans (LCS) & 2902 & 7423 & 163 & 2.65\\ 
-500 scans (LCS and L1) & 3020 & 7616 & 145 & 2.60\\ 
+16 forms (L1) & 12 & 18 & 10 &  4.00\\ 
+16 forms (LCS) & 33 & 44 & 29 & 3.75\\ 
+16 forms (LCS and L1) & 25 & 45 & 18 & 3.86\\ \hline
+32 forms (L1) & 11 & 11 & 11 & --\\ 
+32 forms (LCS) & 39 & 48 & 36 &4.00\\ 
+32 forms (LCS and L1) & 32 & 43 & 28 & 3.75\\ \hline
+75 forms (L1) & 39 & 172 & 11 & 5.75\\ 
+75 forms (LCS) & 78 & 265 & 43 & 6.34\\ 
+75 forms (LCS and L1) & 77 & 316 & 43 & 8.03\\ \hline
+130 forms (L1) & 138 & 651 & 23 & 5.46\\ 
+130 forms (LCS) & 208 & 713 & 107 &  6.00\\ 
+130 forms (LCS and L1) & 215 & 860 & 89 & 6.12\\ \hline
+500 forms (L1) & 2854 & 7354 & 151 & 2.66\\ 
+500 forms (LCS) & 2902 & 7423 & 163 & 2.65\\ 
+500 forms (LCS and L1) & 3020 & 7616 & 145 & 2.60\\ 
  \hline
 \end{tabular}
 \caption{Correct clusters}
