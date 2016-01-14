@@ -1,26 +1,28 @@
 \relax 
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}The pre-existing project}{2}}
+\citation{vecchioBib}
+\citation{vecchioBib}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces An example of a table containing census data}}{3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Process steps}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Processing steps}{3}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Localization of the area of interest}{3}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Row segmentation}{4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}Post-processing and clustering}{4}}
 \newlabel{oldFeatures}{{2.1.3}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces An image extracted from document, the red box delineates the 1 pixel wide window.}}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces An image sample extracted from document, the red box delineates the 1 pixel wide window.}}{4}}
 \newlabel{fig:extracted_image}{{2}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Problems}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The resulting erroneous images}}{5}}
 \newlabel{err}{{3}{5}}
 \newlabel{postProcessing}{{2.2}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Cut-out with intersecting lower line}}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Features extraction}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Features extraction and implementation}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Structural features}{6}}
 \@writefile{toc}{\contentsline {paragraph}{Windows}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Overlapping windows 40 pixels wide, spaced 7 pixels}}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Overlapping windows 40 pixels wide, spaced 7 pixels}}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces A window (40px) and its first half(20px)}}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Whitespace}{7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces A Whitespace}}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces A \textit  {Whitespace}}}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Loop}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces A loop}}{8}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Dot}{8}}
@@ -28,12 +30,12 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Diagonal line}{8}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Given the black pixel we search for other black pixels in the 3 positions, the closer red one is given priority}}{8}}
 \newlabel{pixels}{{10}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces proper Diagonal feature(a) and a formless blob that introduces errors(b), in this second both upward and downward diagonal lines are recognised}}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces proper \textit  {Diagonal} feature(a) and a formless blob that introduces errors(b), in this second both upward and downward diagonal lines are recognised}}{9}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{9}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{9}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.5}Cross}{9}}
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces A cross}}{9}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.6}Horizontal and Vertical line}{9}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.6}Horizontal and Vertical line}{10}}
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Horizontal(a) and Vertical(b) features}}{10}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{10}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{10}}
@@ -67,13 +69,15 @@
 \@writefile{toc}{\contentsline {section}{\numberline {6}Results}{17}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Main results}}{18}}
 \newlabel{table:1}{{2}{18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Clustering precision relative to the number of scans}}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Clustering precision relative to the number of forms}}{19}}
 \newlabel{fig:precision}{{17}{19}}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Running time}}{19}}
 \newlabel{table:2}{{3}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Running time relative to the number of scans}}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Running time relative to the number of forms}}{20}}
 \newlabel{fig:time}{{18}{20}}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Correct clusters}}{21}}
 \newlabel{table:3}{{4}{21}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Compiling and running notes}{21}}
+\bibcite{vecchioBib}{1}
+\bibcite{clustBib}{2}
 \@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{22}}
